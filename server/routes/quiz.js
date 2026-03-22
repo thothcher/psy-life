@@ -1,5 +1,6 @@
 const express = require('express');
 const { authenticate } = require('../middleware');
+const { awardXp, XP_REWARDS } = require('./gamification');
 
 const router = express.Router();
 
@@ -16,12 +17,26 @@ router.post('/submit', authenticate, (req, res) => {
     VALUES (?, ?, ?, ?, ?)
   `).run(req.user.id, chapterId, quizId, score, totalQuestions);
 
+  // Award XP based on score percentage
+  const pct = (score / totalQuestions) * 100;
+  let xpAmount = 0;
+  let xpSource = 'quiz_pass';
+  if (pct === 100) { xpAmount = XP_REWARDS.quiz_perfect; xpSource = 'quiz_perfect'; }
+  else if (pct >= 80) { xpAmount = XP_REWARDS.quiz_good; xpSource = 'quiz_good'; }
+  else if (pct >= 60) { xpAmount = XP_REWARDS.quiz_pass; xpSource = 'quiz_pass'; }
+
+  let gamification = null;
+  if (xpAmount > 0) {
+    gamification = awardXp(req.db, req.user.id, xpAmount, xpSource, `ch${chapterId}`);
+  }
+
   res.status(201).json({
     id: result.lastInsertRowid,
     chapterId,
     quizId,
     score,
-    totalQuestions
+    totalQuestions,
+    gamification
   });
 });
 

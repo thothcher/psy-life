@@ -235,6 +235,7 @@ export class NotesPage implements OnInit {
   }
 
   deleteNote(id: number) {
+    if (!confirm(this.t.t('notes.confirmDelete'))) return;
     this.notesService.delete(id).subscribe({
       next: () => this.loadNotes(),
       error: () => {}

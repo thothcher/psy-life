@@ -1,5 +1,6 @@
 const express = require('express');
 const { authenticate } = require('../middleware');
+const { awardXp, XP_REWARDS } = require('./gamification');
 
 const router = express.Router();
 
@@ -33,12 +34,21 @@ router.post('/', authenticate, (req, res) => {
     VALUES (?, ?, ?, ?, ?)
   `).run(req.user.id, title, content, chapterId || null, color || '#f0e6ff');
 
+  // Award XP for creating notes (max 3 per day)
+  let gamification = null;
+  const today = new Date().toISOString().slice(0, 10);
+  const noteXpToday = req.db.prepare(`SELECT COUNT(*) as c FROM user_xp WHERE user_id = ? AND source = 'note_created' AND DATE(created_at) = ?`).get(req.user.id, today).c;
+  if (noteXpToday < 3) {
+    gamification = awardXp(req.db, req.user.id, XP_REWARDS.note_created, 'note_created', `note${result.lastInsertRowid}`);
+  }
+
   res.status(201).json({
     id: result.lastInsertRowid,
     title,
     content,
     chapterId,
-    color: color || '#f0e6ff'
+    color: color || '#f0e6ff',
+    gamification
   });
 });
 

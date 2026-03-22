@@ -192,21 +192,22 @@ export class AdminPage implements OnInit {
   activateSubscription(userId: number) {
     this.adminService.updateSubscription(userId, 'active').subscribe({
       next: () => this.loadData(),
-      error: () => {}
+      error: () => alert('Failed to activate subscription')
     });
   }
 
   expireSubscription(userId: number) {
     this.adminService.updateSubscription(userId, 'expired').subscribe({
       next: () => this.loadData(),
-      error: () => {}
+      error: () => alert('Failed to expire subscription')
     });
   }
 
   deleteUser(userId: number) {
+    if (!confirm('Are you sure you want to delete this user? This action cannot be undone.')) return;
     this.adminService.deleteUser(userId).subscribe({
       next: () => this.loadData(),
-      error: () => {}
+      error: () => alert('Failed to delete user')
     });
   }
 

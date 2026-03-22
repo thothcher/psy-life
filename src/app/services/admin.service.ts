@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 export interface AdminUser {
   id: number;
@@ -21,7 +22,7 @@ export interface AdminStats {
   totalNotes: number;
 }
 
-const API = 'http://localhost:3000/api/admin';
+const API = `${environment.apiUrl}/api/admin`;
 
 @Injectable({ providedIn: 'root' })
 export class AdminService {

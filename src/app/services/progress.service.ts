@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 export interface ChapterProgress {
   chapterId: number;
@@ -26,7 +27,7 @@ export interface UserProgress {
   gameScores: GameScore[];
 }
 
-const API = 'http://localhost:3000/api';
+const API = `${environment.apiUrl}/api`;
 
 @Injectable({ providedIn: 'root' })
 export class ProgressService {

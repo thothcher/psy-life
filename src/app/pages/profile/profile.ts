@@ -1,12 +1,13 @@
 import { Component, ChangeDetectionStrategy, signal, inject, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ProgressService } from '../../services/progress.service';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-profile',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
@@ -100,8 +101,16 @@ import { LanguageService } from '../../services/language.service';
             @if (authService.currentUser(); as user) {
               @if (user.subscriptionStatus === 'trial') {
                 <div class="sub-info">
+                  <div class="trial-countdown">
+                    <iconify-icon icon="mdi:clock-outline" width="20" height="20" style="vertical-align: -0.15em"></iconify-icon>
+                    <strong>{{ authService.trialDaysLeft() }}</strong> {{ t.t('profile.daysLeft') }}
+                  </div>
                   <p [innerHTML]="t.t('profile.trialText')"></p>
                   <p class="text-muted">{{ t.t('profile.trialSubText') }}</p>
+                  <a routerLink="/subscribe" class="btn btn-accent" style="margin-top: 1rem">
+                    <iconify-icon icon="mdi:crown-outline" style="vertical-align: -0.125em; margin-right: 0.35rem"></iconify-icon>
+                    {{ t.t('profile.subscribeCta') }}
+                  </a>
                 </div>
               } @else if (user.subscriptionStatus === 'active') {
                 <div class="sub-info">
@@ -110,7 +119,10 @@ import { LanguageService } from '../../services/language.service';
               } @else {
                 <div class="sub-info">
                   <p [innerHTML]="t.t('profile.expiredText')"></p>
-                  <button class="btn btn-accent" style="margin-top: 1rem"><iconify-icon icon="mdi:credit-card-refresh-outline" style="vertical-align: -0.125em; margin-right: 0.35rem"></iconify-icon>{{ t.t('profile.renewSubscription') }}</button>
+                  <a routerLink="/subscribe" class="btn btn-accent" style="margin-top: 1rem">
+                    <iconify-icon icon="mdi:credit-card-refresh-outline" style="vertical-align: -0.125em; margin-right: 0.35rem"></iconify-icon>
+                    {{ t.t('profile.renewSubscription') }}
+                  </a>
                 </div>
               }
             }
@@ -189,6 +201,21 @@ import { LanguageService } from '../../services/language.service';
       margin-bottom: 0.5rem;
     }
 
+    .trial-countdown {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-md);
+      background: #fff8e1;
+      color: #f57f17;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .trial-countdown strong {
+      font-size: 1.25rem;
+    }
+
     @media (max-width: 640px) {
       .profile-grid { grid-template-columns: 1fr; }
     }
@@ -255,7 +282,9 @@ export class ProfilePage implements OnInit {
           notesCount: 0
         });
       },
-      error: () => {}
+      error: () => {
+        this.progressData.set({ chaptersCompleted: 0, quizzesTaken: 0, avgScore: 0, notesCount: 0 });
+      }
     });
   }
 }

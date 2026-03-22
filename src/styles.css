@@ -52,6 +52,7 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -62,6 +63,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 a {

@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 export interface Note {
   id: number;
@@ -11,7 +12,7 @@ export interface Note {
   updatedAt: string;
 }
 
-const API = 'http://localhost:3000/api/notes';
+const API = `${environment.apiUrl}/api/notes`;
 
 @Injectable({ providedIn: 'root' })
 export class NotesService {

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const { initDatabase } = require('./database');
@@ -8,15 +9,20 @@ const adminRoutes = require('./routes/admin');
 const quizRoutes = require('./routes/quiz');
 const gameRoutes = require('./routes/game');
 const contactRoutes = require('./routes/contact');
+const gamificationRoutes = require('./routes/gamification');
+const flashcardRoutes = require('./routes/flashcards');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Initialize database
 const db = initDatabase();
 
 // Middleware
-app.use(cors({ origin: ['http://localhost:4200', 'http://localhost:4201'], credentials: true }));
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(',')
+  : ['http://localhost:4200', 'http://localhost:4201'];
+app.use(cors({ origin: allowedOrigins, credentials: true }));
 app.use(express.json());
 
 // Attach db to request
@@ -33,6 +39,8 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/quiz', quizRoutes);
 app.use('/api/game', gameRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/gamification', gamificationRoutes);
+app.use('/api/flashcards', flashcardRoutes);
 
 // Health check
 app.get('/api/health', (_req, res) => {

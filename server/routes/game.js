@@ -1,5 +1,6 @@
 const express = require('express');
 const { authenticate } = require('../middleware');
+const { awardXp, XP_REWARDS } = require('./gamification');
 
 const router = express.Router();
 
@@ -16,7 +17,16 @@ router.post('/score', authenticate, (req, res) => {
     VALUES (?, ?, ?, ?)
   `).run(req.user.id, level, moves, timeSeconds);
 
-  res.status(201).json({ id: result.lastInsertRowid });
+  // Award XP (once per level per day)
+  const today = new Date().toISOString().slice(0, 10);
+  const alreadyToday = req.db.prepare(`SELECT id FROM user_xp WHERE user_id = ? AND source = 'memory_game' AND source_id = ? AND DATE(created_at) = ?`).get(req.user.id, level, today);
+
+  let gamification = null;
+  if (!alreadyToday) {
+    gamification = awardXp(req.db, req.user.id, XP_REWARDS.memory_game, 'memory_game', level);
+  }
+
+  res.status(201).json({ id: result.lastInsertRowid, gamification });
 });
 
 // Get leaderboard

@@ -183,12 +183,13 @@ export class ChaptersPage implements OnInit {
 
   protected readonly chapters = CHAPTERS;
   protected readonly chapterProgress = signal<ChapterProgress[]>([]);
+  protected readonly progressError = signal(false);
 
   ngOnInit() {
     if (this.auth.isLoggedIn()) {
       this.progressService.getProgress().subscribe({
         next: (p) => this.chapterProgress.set(p.chapters),
-        error: () => {} // Silently handle if not authenticated
+        error: () => this.progressError.set(true)
       });
     }
   }

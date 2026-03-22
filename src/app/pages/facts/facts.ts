@@ -30,6 +30,11 @@ import { LanguageService } from '../../services/language.service';
               <p>{{ langService.lang() === 'ka' ? fact.textKa : fact.text }}</p>
               <div class="fact-source"><iconify-icon icon="mdi:book-open-variant" style="vertical-align: -0.125em"></iconify-icon> {{ fact.source }}</div>
             </article>
+          } @empty {
+            <div class="empty-state">
+              <iconify-icon icon="mdi:lightbulb-off-outline" width="36" height="36"></iconify-icon>
+              <p>{{ langService.t('facts.noResults') }}</p>
+            </div>
           }
         </div>
       </div>
@@ -97,6 +102,14 @@ import { LanguageService } from '../../services/language.service';
     @media (max-width: 640px) {
       .facts-grid { grid-template-columns: 1fr; }
     }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem;
+      color: var(--color-text-muted);
+    }
+    .empty-state p { margin-top: 0.75rem; }
   `
 })
 export class FactsPage {

@@ -1,5 +1,6 @@
 const express = require('express');
 const { authenticate } = require('../middleware');
+const { awardXp, XP_REWARDS } = require('./gamification');
 
 const router = express.Router();
 
@@ -47,13 +48,21 @@ router.post('/chapter', authenticate, (req, res) => {
     return res.status(400).json({ error: 'chapterId and status are required.' });
   }
 
+  // Check if already completed to avoid duplicate XP
+  const prev = req.db.prepare('SELECT status FROM chapter_progress WHERE user_id = ? AND chapter_id = ?').get(req.user.id, chapterId);
+
   req.db.prepare(`
     INSERT INTO chapter_progress (user_id, chapter_id, status)
     VALUES (?, ?, ?)
     ON CONFLICT(user_id, chapter_id) DO UPDATE SET status = ?, updated_at = datetime('now')
   `).run(req.user.id, chapterId, status, status);
 
-  res.json({ message: 'Chapter progress updated.' });
+  let gamification = null;
+  if (status === 'completed' && (!prev || prev.status !== 'completed')) {
+    gamification = awardXp(req.db, req.user.id, XP_REWARDS.chapter_complete, 'chapter_complete', `ch${chapterId}`);
+  }
+
+  res.json({ message: 'Chapter progress updated.', gamification });
 });
 
 module.exports = router;

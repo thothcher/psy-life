@@ -18,7 +18,7 @@ import { LanguageService } from '../../services/language.service';
         <div class="stories-list">
           @for (story of STORIES; track story.id; let i = $index) {
             <article class="story-card card" [class.expanded]="expandedId() === story.id">
-              <div class="story-header" (click)="toggle(story.id)">
+              <div class="story-header" (click)="toggle(story.id)" (keydown.enter)="toggle(story.id)" (keydown.space)="toggle(story.id); $event.preventDefault()" role="button" tabindex="0" [attr.aria-expanded]="expandedId() === story.id">
                 <div class="story-num"><iconify-icon [attr.icon]="story.icon" width="18" height="18"></iconify-icon></div>
                 <div class="story-heading">
                   <h2>{{ langService.lang() === 'ka' ? story.titleKa : story.title }}</h2>

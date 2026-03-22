@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const JWT_SECRET = 'psylearn_secret_key_2026_zimbardo';
+const JWT_SECRET = process.env.JWT_SECRET || 'psylearn_secret_key_2026_zimbardo';
 
 // Verify JWT token middleware
 function authenticate(req, res, next) {

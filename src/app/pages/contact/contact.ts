@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy, signal, inject, CUSTOM_ELEMENTS_SCH
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { LanguageService } from '../../services/language.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-contact',
@@ -276,14 +277,18 @@ export class ContactPage {
     this.successMsg.set('');
     this.errorMsg.set('');
 
-    this.http.post<{ message: string }>('http://localhost:3000/api/contact', this.form.getRawValue())
+    const payload = this.form.getRawValue();
+    console.log('[CONTACT] Sending:', payload);
+    this.http.post<{ message: string }>(`${environment.apiUrl}/api/contact`, payload)
       .subscribe({
-        next: () => {
+        next: (res) => {
+          console.log('[CONTACT] Success:', res);
           this.successMsg.set(this.t.t('contact.successMsg'));
           this.form.reset();
           this.sending.set(false);
         },
-        error: () => {
+        error: (err) => {
+          console.error('[CONTACT] Error:', err);
           this.errorMsg.set(this.t.t('contact.errorMsg'));
           this.sending.set(false);
         }

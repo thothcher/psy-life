@@ -49,6 +49,10 @@ import { LanguageService } from '../../services/language.service';
           </button>
         </form>
 
+        <p class="forgot-link">
+          <a routerLink="/forgot-password">{{ t.t('login.forgotPassword') }}</a>
+        </p>
+
         <p class="auth-footer">
           {{ t.t('login.noAccount') }} <a routerLink="/register">{{ t.t('login.createOne') }}</a>
         </p>
@@ -127,6 +131,12 @@ import { LanguageService } from '../../services/language.service';
       cursor: not-allowed;
     }
 
+    .forgot-link {
+      text-align: right;
+      margin-top: 0.25rem;
+      font-size: 0.85rem;
+    }
+
     .auth-footer {
       text-align: center;
       margin-top: 1.5rem;
@@ -169,7 +179,11 @@ export class LoginPage {
     this.auth.login(login, password).subscribe({
       next: () => {
         this.loading.set(false);
-        this.router.navigate(['/']);
+        if (!this.auth.isEmailVerified()) {
+          this.router.navigate(['/verify-email']);
+        } else {
+          this.router.navigate(['/']);
+        }
       },
       error: (err) => {
         this.loading.set(false);

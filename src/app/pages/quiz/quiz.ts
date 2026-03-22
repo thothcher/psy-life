@@ -81,6 +81,9 @@ import { LanguageService } from '../../services/language.service';
               <button class="btn btn-accent" (click)="retryQuiz()"><iconify-icon icon="mdi:refresh" style="vertical-align: -0.125em; margin-right: 0.35rem"></iconify-icon>{{ t.t('quiz.retryQuiz') }}</button>
               <a routerLink="/chapters" class="btn btn-outline"><iconify-icon icon="mdi:arrow-left" style="vertical-align: -0.125em; margin-right: 0.25rem"></iconify-icon>{{ t.t('quiz.backToChapters') }}</a>
             </div>
+            @if (submitError()) {
+              <p class="submit-error" role="alert"><iconify-icon icon="mdi:alert-circle-outline" style="vertical-align: -0.125em"></iconify-icon> Score could not be saved. Please try again later.</p>
+            }
           </div>
         }
       </div>
@@ -217,6 +220,7 @@ import { LanguageService } from '../../services/language.service';
     .results-bar-fill.low { background: var(--color-accent); }
 
     .results-actions { display: flex; gap: 1rem; justify-content: center; }
+    .submit-error { color: #e53935; font-size: 0.85rem; margin-top: 1rem; }
   `
 })
 export class QuizPage implements OnInit {
@@ -233,6 +237,7 @@ export class QuizPage implements OnInit {
   protected readonly score = signal(0);
   protected readonly quizStarted = signal(false);
   protected readonly quizFinished = signal(false);
+  protected readonly submitError = signal(false);
 
   protected readonly currentQuestion = computed(() => this.questions()[this.currentIndex()]);
   protected readonly isCorrect = computed(() => this.selectedIndex() === this.currentQuestion()?.correctIndex);
@@ -279,6 +284,7 @@ export class QuizPage implements OnInit {
       this.answered.set(false);
     } else {
       this.quizFinished.set(true);
+      this.submitError.set(false);
       // Submit score to backend
       const quiz = QUIZZES.find(q => q.chapterId === this.chapterId());
       if (quiz) {
@@ -287,7 +293,7 @@ export class QuizPage implements OnInit {
           quizId: quiz.id,
           score: this.score(),
           totalQuestions: this.questions().length
-        }).subscribe({ error: () => {} });
+        }).subscribe({ error: () => this.submitError.set(true) });
       }
     }
   }

@@ -1,8 +1,9 @@
 const express = require('express');
+const { sendContactNotification } = require('../mailer');
 const router = express.Router();
 
 // POST /api/contact — submit a contact message
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   const { username, email, message } = req.body;
 
   if (!username || !email || !message) {
@@ -27,7 +28,18 @@ router.post('/', (req, res) => {
     );
     stmt.run(username.trim(), email.trim(), message.trim());
 
-    res.status(201).json({ message: 'Message sent successfully! We will get back to you soon.' });
+    // Send email notification to admin
+    let emailSent = false;
+    try {
+      console.log('[CONTACT] Sending email notification...');
+      await sendContactNotification({ username: username.trim(), email: email.trim(), message: message.trim() });
+      console.log('[CONTACT] Email sent successfully!');
+      emailSent = true;
+    } catch (mailErr) {
+      console.error('[CONTACT] Failed to send email:', mailErr.message);
+    }
+
+    res.status(201).json({ message: 'Message sent successfully! We will get back to you soon.', emailSent });
   } catch (err) {
     console.error('Contact submission error:', err);
     res.status(500).json({ error: 'Failed to send message' });

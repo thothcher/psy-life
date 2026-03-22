@@ -1,3 +1,6 @@
+<!-- XP Toast -->
+<app-xp-toast />
+
 <!-- Main navigation bar -->
 <nav class="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-container">
@@ -6,21 +9,63 @@
       <span class="logo-text">PsyLearn</span>
     </a>
 
-    <!-- Desktop navigation links -->
+    <!-- Navigation links -->
     <div class="nav-links" [class.open]="mobileMenuOpen()">
-      <a routerLink="/chapters" routerLinkActive="active" (click)="closeMenu()">{{ langService.t('nav.chapters') }}</a>
-      <a routerLink="/facts" routerLinkActive="active" (click)="closeMenu()">{{ langService.t('nav.facts') }}</a>
-      <a routerLink="/psychologists" routerLinkActive="active" (click)="closeMenu()">{{ langService.t('nav.psychologists') }}</a>
-      <a routerLink="/stories" routerLinkActive="active" (click)="closeMenu()">{{ langService.t('nav.stories') }}</a>
+      @if (auth.isLoggedIn()) {
+        <a routerLink="/dashboard" routerLinkActive="active" (click)="closeMenu()">{{ langService.t('nav.dashboard') }}</a>
+      }
+
+      <!-- Learn dropdown -->
+      <div class="nav-dropdown">
+        <button class="nav-drop-btn" type="button">
+          {{ langService.t('nav.learn') }}
+          <iconify-icon icon="mdi:chevron-down" width="14" height="14"></iconify-icon>
+        </button>
+        <div class="nav-drop-menu">
+          <a routerLink="/chapters" routerLinkActive="active" (click)="closeMenu()">{{ langService.t('nav.chapters') }}</a>
+          @if (auth.isLoggedIn()) {
+            <a routerLink="/flashcards" routerLinkActive="active" (click)="closeMenu()">{{ langService.t('nav.flashcards') }}</a>
+            <a routerLink="/notes" routerLinkActive="active" (click)="closeMenu()">{{ langService.t('nav.notes') }}</a>
+          }
+        </div>
+      </div>
+
+      <!-- Explore dropdown -->
+      <div class="nav-dropdown">
+        <button class="nav-drop-btn" type="button">
+          {{ langService.t('nav.explore') }}
+          <iconify-icon icon="mdi:chevron-down" width="14" height="14"></iconify-icon>
+        </button>
+        <div class="nav-drop-menu">
+          <a routerLink="/facts" routerLinkActive="active" (click)="closeMenu()">{{ langService.t('nav.facts') }}</a>
+          <a routerLink="/psychologists" routerLinkActive="active" (click)="closeMenu()">{{ langService.t('nav.psychologists') }}</a>
+          <a routerLink="/stories" routerLinkActive="active" (click)="closeMenu()">{{ langService.t('nav.stories') }}</a>
+        </div>
+      </div>
+
       <a routerLink="/memory-game" routerLinkActive="active" (click)="closeMenu()">{{ langService.t('nav.memoryGame') }}</a>
       <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">{{ langService.t('nav.contact') }}</a>
 
       @if (auth.isLoggedIn()) {
-        <a routerLink="/notes" routerLinkActive="active" (click)="closeMenu()">{{ langService.t('nav.notes') }}</a>
+        <a routerLink="/achievements" routerLinkActive="active" (click)="closeMenu()">{{ langService.t('nav.achievements') }}</a>
         @if (auth.isAdmin()) {
           <a routerLink="/admin" routerLinkActive="active" class="admin-link" (click)="closeMenu()">{{ langService.t('nav.admin') }}</a>
         }
       }
+
+      <!-- Mobile-only auth buttons -->
+      <div class="mobile-auth">
+        @if (auth.isLoggedIn()) {
+          <a routerLink="/profile" class="btn-profile" (click)="closeMenu()">
+            <span class="profile-icon"><iconify-icon icon="mdi:account-circle-outline" width="18" height="18"></iconify-icon></span>
+            {{ auth.currentUser()?.displayName }}
+          </a>
+          <button class="btn btn-ghost" (click)="auth.logout(); closeMenu()">{{ langService.t('nav.logout') }}</button>
+        } @else {
+          <a routerLink="/login" class="btn btn-ghost" (click)="closeMenu()">{{ langService.t('nav.login') }}</a>
+          <a routerLink="/register" class="btn btn-accent" (click)="closeMenu()">{{ langService.t('nav.signUp') }}</a>
+        }
+      </div>
     </div>
 
     <!-- Language selector -->
@@ -31,9 +76,15 @@
       <button class="lang-flag" [class.active]="langService.lang() === 'ka'" (click)="langService.lang.set('ka')" aria-label="ქართული">
         <iconify-icon icon="circle-flags:ge" width="20" height="20"></iconify-icon>
       </button>
+      <button class="lang-flag" [class.active]="langService.lang() === 'ru'" (click)="langService.lang.set('ru')" aria-label="Русский">
+        <iconify-icon icon="circle-flags:ru" width="20" height="20"></iconify-icon>
+      </button>
+      <button class="lang-flag" [class.active]="langService.lang() === 'hy'" (click)="langService.lang.set('hy')" aria-label="Հայերեն">
+        <iconify-icon icon="circle-flags:am" width="20" height="20"></iconify-icon>
+      </button>
     </div>
 
-    <!-- Auth buttons -->
+    <!-- Auth buttons (desktop) -->
     <div class="nav-auth">
       @if (auth.isLoggedIn()) {
         <a routerLink="/profile" class="btn-profile" (click)="closeMenu()">
@@ -62,6 +113,20 @@
 
 <!-- Main content area -->
 <main class="main-content">
+  @if (auth.isLoggedIn() && !auth.isAdmin() && auth.currentUser()?.subscriptionStatus === 'trial') {
+    <div class="trial-banner">
+      <iconify-icon icon="mdi:clock-outline" width="16" height="16" style="vertical-align: -0.15em"></iconify-icon>
+      {{ langService.t('subscribe.trialBanner', { days: auth.trialDaysLeft().toString() }) }}
+      <a routerLink="/subscribe" class="trial-banner-link">{{ langService.t('subscribe.upgradeNow') }}</a>
+    </div>
+  }
+  @if (auth.isLoggedIn() && !auth.isAdmin() && auth.currentUser()?.subscriptionStatus === 'expired') {
+    <div class="expired-banner">
+      <iconify-icon icon="mdi:alert-circle-outline" width="16" height="16" style="vertical-align: -0.15em"></iconify-icon>
+      {{ langService.t('subscribe.expiredBanner') }}
+      <a routerLink="/subscribe" class="trial-banner-link">{{ langService.t('subscribe.subscribeCta') }}</a>
+    </div>
+  }
   <router-outlet />
 </main>
 

@@ -164,7 +164,7 @@ export class RegisterPage {
     this.auth.register(email, username, password, displayName).subscribe({
       next: () => {
         this.loading.set(false);
-        this.router.navigate(['/']);
+        this.router.navigate(['/verify-email']);
       },
       error: (err) => {
         this.loading.set(false);

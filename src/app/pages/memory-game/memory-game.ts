@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, signal, computed, inject, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, computed, inject, OnDestroy, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MEMORY_CARDS, MemoryCard } from '../../data/book-data';
 import { ProgressService } from '../../services/progress.service';
 import { LanguageService } from '../../services/language.service';
@@ -153,7 +153,7 @@ interface GameCard {
       margin: 0 auto;
     }
     .game-board.medium { grid-template-columns: repeat(4, 1fr); max-width: 750px; }
-    .game-board.hard { grid-template-columns: repeat(5, 1fr); max-width: 850px; }
+    .game-board.hard { grid-template-columns: repeat(6, 1fr); max-width: 960px; gap: 0.6rem; }
 
     .game-card {
       aspect-ratio: 1;
@@ -162,6 +162,9 @@ interface GameCard {
       background: none;
       border: none;
       padding: 0;
+    }
+    .game-board.hard .game-card {
+      aspect-ratio: 3 / 2;
     }
     .game-card:disabled { cursor: default; }
 
@@ -238,12 +241,13 @@ interface GameCard {
 
     @media (max-width: 640px) {
       .game-board { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
-      .game-board.hard { grid-template-columns: repeat(4, 1fr); }
+      .game-board.hard { grid-template-columns: repeat(4, 1fr); gap: 0.4rem; }
+      .game-board.hard .game-card { aspect-ratio: 1; }
       .game-stats { flex-wrap: wrap; gap: 1rem; }
     }
   `
 })
-export class MemoryGamePage {
+export class MemoryGamePage implements OnDestroy {
   private readonly progressService = inject(ProgressService);
   protected readonly t = inject(LanguageService);
 
@@ -260,6 +264,13 @@ export class MemoryGamePage {
 
   private flippedCards: GameCard[] = [];
   private timer: ReturnType<typeof setInterval> | null = null;
+
+  ngOnDestroy() {
+    if (this.timer) {
+      clearInterval(this.timer);
+      this.timer = null;
+    }
+  }
 
   startGame(level: 'easy' | 'medium' | 'hard') {
     this.currentLevel.set(level);
