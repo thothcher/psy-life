@@ -1,9 +1,9 @@
 [build]
-  command = "npm run build"
+  command = "npm ci --include=dev && npm run build"
   publish = "dist/psy/browser"
 
 [build.environment]
-  NPM_CONFIG_PRODUCTION = "false"
+  NODE_ENV = ""
 
 [[redirects]]
   from = "/*"
