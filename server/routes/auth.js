@@ -37,8 +37,9 @@ router.post('/register', async (req, res) => {
 
   try {
     await sendVerificationEmail(email, code, displayName);
+    console.log('[AUTH] Verification email sent to', email);
   } catch (err) {
-    console.error('[AUTH] Failed to send verification email:', err.message);
+    console.error('[AUTH] Failed to send verification email:', err.message, err.code);
   }
 
   const token = jwt.sign({ id: userId, username, role: 'user' }, JWT_SECRET, { expiresIn: '7d' });

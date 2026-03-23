@@ -24,7 +24,6 @@ const PORT = process.env.PORT || 3000;
     ? process.env.ALLOWED_ORIGINS.split(',').map(s => s.trim())
     : ['http://localhost:4200', 'http://localhost:4201'];
   app.use(cors({ origin: allowedOrigins, credentials: true }));
-  app.options('*', cors({ origin: allowedOrigins, credentials: true }));
   app.use(express.json());
 
   // Attach db to request
