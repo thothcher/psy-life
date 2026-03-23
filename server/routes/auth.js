@@ -22,7 +22,7 @@ router.post('/register', async (req, res) => {
     return res.status(409).json({ error: 'Email or username already exists.' });
   }
 
-  const hash = bcrypt.hashSync(password, 10);
+  const hash = await bcrypt.hash(password, 10);
   const result = await req.db.execute({
     sql: 'INSERT INTO users (email, username, password_hash, display_name, email_verified) VALUES (?, ?, ?, ?, 0)',
     args: [email, username, hash, displayName],

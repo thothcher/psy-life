@@ -6,7 +6,10 @@ const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'vakhtangishviligi@gmail.com';
 // To use: enable 2FA on your Google account, then generate an App Password at
 // https://myaccount.google.com/apppasswords
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false,
+  family: 4,
   auth: {
     user: ADMIN_EMAIL,
     pass: process.env.GMAIL_APP_PASSWORD || 'trxo ltst xmlt gqcy'
