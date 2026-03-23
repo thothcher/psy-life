@@ -1,10 +1,3 @@
-[build]
-  command = "npm ci --include=dev && npm run build"
-  publish = "dist/psy/browser"
-
-[build.environment]
-  NODE_ENV = ""
-
 [[redirects]]
   from = "/*"
   to = "/index.html"
