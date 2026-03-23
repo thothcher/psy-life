@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'vakhtangishviligi@gmail.com';
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
 
 // Gmail App Password transporter
 // To use: enable 2FA on your Google account, then generate an App Password at
@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
   family: 4,
   auth: {
     user: ADMIN_EMAIL,
-    pass: process.env.GMAIL_APP_PASSWORD || 'trxo ltst xmlt gqcy'
+    pass: process.env.GMAIL_APP_PASSWORD
   }
 });
 
