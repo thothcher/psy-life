@@ -94,7 +94,7 @@ import { environment } from '../../../environments/environment';
               <iconify-icon icon="mdi:email-fast-outline" width="20" height="20"></iconify-icon>
               <div>
                 <strong>{{ t.t('contact.emailLabel') }}</strong>
-                <span>support&#64;psylearn.ge</span>
+                <span>g.vakhtangishvili&#64;itstep.ge</span>
               </div>
             </div>
             <div class="info-item">
