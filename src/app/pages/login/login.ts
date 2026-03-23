@@ -56,10 +56,6 @@ import { LanguageService } from '../../services/language.service';
         <p class="auth-footer">
           {{ t.t('login.noAccount') }} <a routerLink="/register">{{ t.t('login.createOne') }}</a>
         </p>
-
-        <div class="demo-info">
-          <p><strong>{{ t.t('login.demoAdmin') }}</strong> admin / admin123</p>
-        </div>
       </div>
     </div>
   `,
@@ -142,16 +138,6 @@ import { LanguageService } from '../../services/language.service';
       margin-top: 1.5rem;
       font-size: 0.9rem;
       color: var(--color-text-light);
-    }
-
-    .demo-info {
-      margin-top: 1.25rem;
-      padding: 0.75rem;
-      background: var(--color-border-light);
-      border-radius: var(--radius-md);
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--color-text-muted);
     }
   `
 })
