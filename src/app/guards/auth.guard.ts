@@ -20,19 +20,6 @@ export const authGuard: CanActivateFn = () => {
   return true;
 };
 
-/** Blocks expired trial / expired subscription users — redirects to /subscribe */
-export const subscriptionGuard: CanActivateFn = () => {
-  const auth = inject(AuthService);
-  const router = inject(Router);
-
-  if (auth.isSubscriptionActive()) {
-    return true;
-  }
-
-  router.navigate(['/subscribe']);
-  return false;
-};
-
 /** Redirects non-admin users to home page */
 export const adminGuard: CanActivateFn = () => {
   const auth = inject(AuthService);

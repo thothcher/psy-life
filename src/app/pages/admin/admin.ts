@@ -24,16 +24,6 @@ import { LanguageService } from '../../services/language.service';
               <span class="stat-label">{{ t.t('admin.totalUsers') }}</span>
             </div>
             <div class="stat-card card">
-              <span class="stat-icon"><iconify-icon icon="mdi:gift-outline" width="20" height="20"></iconify-icon></span>
-              <span class="stat-num">{{ s.trialUsers }}</span>
-              <span class="stat-label">{{ t.t('admin.activeTrials') }}</span>
-            </div>
-            <div class="stat-card card">
-              <span class="stat-icon"><iconify-icon icon="mdi:diamond-stone" width="20" height="20"></iconify-icon></span>
-              <span class="stat-num">{{ s.activeUsers }}</span>
-              <span class="stat-label">{{ t.t('admin.activeUsers') }}</span>
-            </div>
-            <div class="stat-card card">
               <span class="stat-icon"><iconify-icon icon="mdi:note-edit-outline" width="20" height="20"></iconify-icon></span>
               <span class="stat-num">{{ s.totalQuizzes }}</span>
               <span class="stat-label">{{ t.t('admin.quizzesTaken') }}</span>
@@ -60,7 +50,6 @@ import { LanguageService } from '../../services/language.service';
                     <th>{{ t.t('admin.username') }}</th>
                     <th>{{ t.t('admin.email') }}</th>
                     <th>{{ t.t('admin.role') }}</th>
-                    <th>{{ t.t('admin.subscription') }}</th>
                     <th>{{ t.t('admin.joined') }}</th>
                     <th>{{ t.t('admin.actions') }}</th>
                   </tr>
@@ -74,23 +63,9 @@ import { LanguageService } from '../../services/language.service';
                       <td>
                         <span class="badge" [class.badge-accent]="user.role === 'admin'">{{ user.role }}</span>
                       </td>
-                      <td>
-                        <span class="badge" [class.badge-secondary]="user.subscriptionStatus === 'active'" [class.badge-accent]="user.subscriptionStatus === 'trial'">
-                          {{ user.subscriptionStatus }}
-                        </span>
-                      </td>
                       <td>{{ formatDate(user.createdAt) }}</td>
                       <td>
                         <div class="action-btns">
-                          @if (user.subscriptionStatus === 'trial') {
-                            <button class="btn-sm btn-success" (click)="activateSubscription(user.id)"><iconify-icon icon="mdi:check" style="vertical-align: -0.125em; margin-right: 0.2rem"></iconify-icon>{{ t.t('admin.activate') }}</button>
-                          }
-                          @if (user.subscriptionStatus === 'active') {
-                            <button class="btn-sm btn-warning" (click)="expireSubscription(user.id)"><iconify-icon icon="mdi:clock-alert-outline" style="vertical-align: -0.125em; margin-right: 0.2rem"></iconify-icon>{{ t.t('admin.expire') }}</button>
-                          }
-                          @if (user.subscriptionStatus === 'expired') {
-                            <button class="btn-sm btn-success" (click)="activateSubscription(user.id)"><iconify-icon icon="mdi:refresh" style="vertical-align: -0.125em; margin-right: 0.2rem"></iconify-icon>{{ t.t('admin.reactivate') }}</button>
-                          }
                           @if (user.role !== 'admin') {
                             <button class="btn-sm btn-danger" (click)="deleteUser(user.id)"><iconify-icon icon="mdi:trash-can-outline" style="vertical-align: -0.125em; margin-right: 0.2rem"></iconify-icon>{{ t.t('admin.delete') }}</button>
                           }
@@ -187,20 +162,6 @@ export class AdminPage implements OnInit {
 
   ngOnInit() {
     this.loadData();
-  }
-
-  activateSubscription(userId: number) {
-    this.adminService.updateSubscription(userId, 'active').subscribe({
-      next: () => this.loadData(),
-      error: () => alert('Failed to activate subscription')
-    });
-  }
-
-  expireSubscription(userId: number) {
-    this.adminService.updateSubscription(userId, 'expired').subscribe({
-      next: () => this.loadData(),
-      error: () => alert('Failed to expire subscription')
-    });
   }
 
   deleteUser(userId: number) {

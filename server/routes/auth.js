@@ -46,7 +46,7 @@ router.post('/register', async (req, res) => {
 
   res.status(201).json({
     token,
-    user: { id: userId, email, username, displayName, role: 'user', subscriptionStatus: 'trial', trialStartDate: new Date().toISOString(), emailVerified: false, avatar: null },
+    user: { id: userId, email, username, displayName, role: 'user', emailVerified: false, avatar: null },
     requiresVerification: true,
   });
 });
@@ -69,7 +69,7 @@ router.post('/verify-email', authenticate, async (req, res) => {
 
   res.json({
     message: 'Email verified successfully.',
-    user: { id: user.id, email: user.email, username: user.username, displayName: user.display_name, role: user.role, subscriptionStatus: user.subscription_status, trialStartDate: user.trial_start_date, emailVerified: true, avatar: user.avatar || null },
+    user: { id: user.id, email: user.email, username: user.username, displayName: user.display_name, role: user.role, emailVerified: true, avatar: user.avatar || null },
   });
 });
 
@@ -106,22 +106,12 @@ router.post('/login', async (req, res) => {
 
   await req.db.execute({ sql: 'UPDATE users SET last_login = datetime(?) WHERE id = ?', args: [new Date().toISOString(), user.id] });
 
-  let subscriptionStatus = user.subscription_status;
-  if (subscriptionStatus === 'trial' && user.trial_start_date) {
-    const trialEnd = new Date(user.trial_start_date);
-    trialEnd.setDate(trialEnd.getDate() + 7);
-    if (new Date() > trialEnd) {
-      subscriptionStatus = 'expired';
-      await req.db.execute({ sql: 'UPDATE users SET subscription_status = ? WHERE id = ?', args: ['expired', user.id] });
-    }
-  }
-
   const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: '7d' });
   const emailVerified = !!user.email_verified;
 
   res.json({
     token,
-    user: { id: user.id, email: user.email, username: user.username, displayName: user.display_name, role: user.role, subscriptionStatus, trialStartDate: user.trial_start_date, emailVerified, avatar: user.avatar || null },
+    user: { id: user.id, email: user.email, username: user.username, displayName: user.display_name, role: user.role, emailVerified, avatar: user.avatar || null },
     requiresVerification: !emailVerified,
   });
 });
@@ -177,19 +167,9 @@ router.get('/me', authenticate, async (req, res) => {
   const user = userResult.rows[0];
   if (!user) return res.status(404).json({ error: 'User not found.' });
 
-  let subscriptionStatus = user.subscription_status;
-  if (subscriptionStatus === 'trial' && user.trial_start_date) {
-    const trialEnd = new Date(user.trial_start_date);
-    trialEnd.setDate(trialEnd.getDate() + 7);
-    if (new Date() > trialEnd) {
-      subscriptionStatus = 'expired';
-      await req.db.execute({ sql: 'UPDATE users SET subscription_status = ? WHERE id = ?', args: ['expired', user.id] });
-    }
-  }
-
   res.json({
     id: user.id, email: user.email, username: user.username, displayName: user.display_name,
-    role: user.role, subscriptionStatus, trialStartDate: user.trial_start_date,
+    role: user.role,
     createdAt: user.created_at, lastLogin: user.last_login, emailVerified: !!user.email_verified,
     avatar: user.avatar || null,
   });

@@ -180,6 +180,37 @@ import { LanguageService } from '../../services/language.service';
       </div>
     </section>
 
+    <!-- Donation section -->
+    <section class="donation-section">
+      <div class="container">
+        <div class="donation-card">
+          <div class="donation-content">
+            <span class="donation-badge">
+              <iconify-icon icon="mdi:heart-outline" width="16" height="16" aria-hidden="true"></iconify-icon>
+              {{ t.t('home.donationBadge') }}
+            </span>
+            <h2>{{ t.t('home.donationTitle') }}</h2>
+            <p>{{ t.t('home.donationDesc') }}</p>
+            <div class="donation-accounts">
+              <div class="donation-account">
+                <span class="bank-label">TBC Bank</span>
+                <span class="bank-name">გ.ვ.</span>
+                <code class="iban">GE49TB7352645163300001</code>
+              </div>
+              <div class="donation-account">
+                <span class="bank-label">Bank of Georgia</span>
+                <span class="bank-name">გ.ვ.</span>
+                <code class="iban">GE19BG0000000570185286</code>
+              </div>
+            </div>
+          </div>
+          <div class="donation-icon-wrap" aria-hidden="true">
+            <iconify-icon icon="mdi:hand-heart-outline" width="120" height="120"></iconify-icon>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA section -->
     <section class="cta">
       <div class="container">
@@ -528,6 +559,87 @@ import { LanguageService } from '../../services/language.service';
       border-color: var(--color-accent);
     }
 
+    /* Donation section */
+    .donation-section { padding: 4rem 0; }
+    .donation-card {
+      background: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+    .donation-content { flex: 1; }
+    .donation-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(192,57,43,0.08);
+      color: var(--color-accent);
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+    .donation-card h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+    .donation-card > .donation-content > p {
+      color: var(--color-text-light);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .donation-accounts {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .donation-account {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.25rem;
+    }
+    .bank-label {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--color-primary);
+      min-width: 110px;
+    }
+    .bank-name {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      font-weight: 500;
+    }
+    .iban {
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      background: rgba(192,57,43,0.06);
+      padding: 0.3rem 0.6rem;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.04em;
+      margin-left: auto;
+    }
+    .donation-icon-wrap {
+      color: var(--color-accent);
+      opacity: 0.15;
+      flex-shrink: 0;
+    }
+
     /* CTA */
     .cta { padding: 3rem 0 5rem; }
     .cta-card {
@@ -589,6 +701,10 @@ import { LanguageService } from '../../services/language.service';
       }
       .cta-actions { justify-content: center; }
       .cta-img { width: 100%; max-width: 360px; height: 180px; }
+      .donation-card { flex-direction: column; padding: 2rem 1.5rem; text-align: center; }
+      .donation-icon-wrap { display: none; }
+      .iban { margin-left: 0; }
+      .donation-account { flex-direction: column; align-items: stretch; text-align: center; }
     }
     @media (max-width: 640px) {
       .hero { min-height: 480px; }

@@ -126,20 +126,6 @@
 
 <!-- Main content area -->
 <main class="main-content">
-  @if (auth.isLoggedIn() && !auth.isAdmin() && auth.currentUser()?.subscriptionStatus === 'trial') {
-    <div class="trial-banner">
-      <iconify-icon icon="mdi:clock-outline" width="16" height="16" style="vertical-align: -0.15em"></iconify-icon>
-      {{ langService.t('subscribe.trialBanner', { days: auth.trialDaysLeft().toString() }) }}
-      <a routerLink="/subscribe" class="trial-banner-link">{{ langService.t('subscribe.upgradeNow') }}</a>
-    </div>
-  }
-  @if (auth.isLoggedIn() && !auth.isAdmin() && auth.currentUser()?.subscriptionStatus === 'expired') {
-    <div class="expired-banner">
-      <iconify-icon icon="mdi:alert-circle-outline" width="16" height="16" style="vertical-align: -0.15em"></iconify-icon>
-      {{ langService.t('subscribe.expiredBanner') }}
-      <a routerLink="/subscribe" class="trial-banner-link">{{ langService.t('subscribe.subscribeCta') }}</a>
-    </div>
-  }
   <router-outlet />
 </main>
 

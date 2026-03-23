@@ -10,8 +10,6 @@ export interface User {
   username: string;
   displayName: string;
   role: 'user' | 'admin';
-  subscriptionStatus: 'trial' | 'active' | 'expired';
-  trialStartDate?: string;
   createdAt?: string;
   lastLogin?: string;
   emailVerified?: boolean;
@@ -39,30 +37,6 @@ export class AuthService {
   readonly isAdmin = computed(() => this.currentUser()?.role === 'admin');
   readonly isEmailVerified = computed(() => !!this.currentUser()?.emailVerified);
   readonly token = signal<string | null>(null);
-
-  /** Subscription helpers */
-  readonly subscriptionStatus = computed(() => this.currentUser()?.subscriptionStatus ?? 'trial');
-  readonly isSubscriptionActive = computed(() => {
-    const user = this.currentUser();
-    if (!user) return false;
-    if (user.role === 'admin') return true;
-    return user.subscriptionStatus === 'active' || (user.subscriptionStatus === 'trial' && !this.isTrialExpired());
-  });
-  readonly isTrialExpired = computed(() => {
-    const user = this.currentUser();
-    if (!user || user.subscriptionStatus !== 'trial' || !user.trialStartDate) return false;
-    const trialEnd = new Date(user.trialStartDate);
-    trialEnd.setDate(trialEnd.getDate() + 7);
-    return new Date() > trialEnd;
-  });
-  readonly trialDaysLeft = computed(() => {
-    const user = this.currentUser();
-    if (!user || user.subscriptionStatus !== 'trial' || !user.trialStartDate) return 0;
-    const trialEnd = new Date(user.trialStartDate);
-    trialEnd.setDate(trialEnd.getDate() + 7);
-    const diff = trialEnd.getTime() - Date.now();
-    return Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24)));
-  });
 
   constructor() {
     // Restore session from localStorage

@@ -8,16 +8,12 @@ export interface AdminUser {
   username: string;
   displayName: string;
   role: string;
-  subscriptionStatus: string;
-  trialStartDate: string;
   createdAt: string;
   lastLogin: string | null;
 }
 
 export interface AdminStats {
   totalUsers: number;
-  trialUsers: number;
-  activeUsers: number;
   totalQuizzes: number;
   totalNotes: number;
 }
@@ -34,10 +30,6 @@ export class AdminService {
 
   getStats() {
     return this.http.get<AdminStats>(`${API}/stats`);
-  }
-
-  updateSubscription(userId: number, status: string) {
-    return this.http.put(`${API}/users/${userId}/subscription`, { status });
   }
 
   deleteUser(userId: number) {

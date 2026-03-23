@@ -47,6 +47,9 @@
   'home.famousPsychologistsDesc': { en: 'Learn about the pioneers who shaped modern psychology', ka: 'გაიცანით თანამედროვე ფსიქოლოგიის ფუძემდებლები', ru: 'Узнайте о пионерах, которые сформировали современную психологию', hy: 'Ծանոթացեք այն առաջամարտիկներին, որոնք ձևավորեցին ժամանակակից հոգեբանությունը' },
   'home.psychologyStories': { en: 'Psychology Stories', ka: 'ფსიქოლოგიის ისტორიები', ru: 'Истории из психологии', hy: 'Հոգեբանության պատմություններ' },
   'home.psychologyStoriesDesc': { en: 'Read captivating real stories from the most famous experiments', ka: 'წაიკითხეთ ცნობილი ექსპერიმენტების რეალური ისტორიები', ru: 'Читайте захватывающие реальные истории о самых известных экспериментах', hy: 'Կարդացեք ամենահայտնի փորձերից գրավիչ իրական պատմություններ' },
+  'home.donationBadge': { en: 'Support Us', ka: '\u10DB\u10EE\u10D0\u10E0\u10D3\u10D0\u10ED\u10D4\u10E0\u10D0', ru: '\u041F\u043E\u0434\u0434\u0435\u0440\u0436\u0438\u0442\u0435 \u043D\u0430\u0441', hy: '\u0531\u057B\u0561\u056F\u0581\u0565\u0584 \u0574\u0565\u0566' },
+  'home.donationTitle': { en: 'This Platform is Completely Free', ka: '\u10D4\u10E1 \u10DE\u10DA\u10D0\u10E2\u10E4\u10DD\u10E0\u10DB\u10D0 \u10E1\u10E0\u10E3\u10DA\u10D8\u10D0\u10D3 \u10E3\u10E4\u10D0\u10E1\u10DD\u10D0', ru: '\u042D\u0442\u0430 \u043F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u0430 \u043F\u043E\u043B\u043D\u043E\u0441\u0442\u044C\u044E \u0431\u0435\u0441\u043F\u043B\u0430\u0442\u043D\u0430', hy: '\u0531\u0575\u057D \u0570\u0561\u0580\u0569\u0561\u056F\u0568 \u056C\u056B\u0578\u057E\u056B\u0576 \u0561\u0576\u057E\u0573\u0561\u0580 \u0567' },
+  'home.donationDesc': { en: 'PsyLearn is free for everyone. If you find it helpful, you can support the project with a donation.', ka: 'PsyLearn \u10E7\u10D5\u10D4\u10DA\u10D0\u10E1\u10D7\u10D5\u10D8\u10E1 \u10E3\u10E4\u10D0\u10E1\u10DD\u10D0. \u10D7\u10E3 \u10D2\u10D0\u10DB\u10DD\u10D2\u10D0\u10D3\u10D2\u10D4\u10D1\u10D0\u10D7, \u10E8\u10D4\u10D2\u10D8\u10EB\u10DA\u10D8\u10D0\u10D7 \u10DE\u10E0\u10DD\u10D4\u10E5\u10E2\u10D8\u10E1 \u10DB\u10EE\u10D0\u10E0\u10D3\u10D0\u10ED\u10D4\u10E0\u10D0 \u10E8\u10D4\u10DB\u10DD\u10EC\u10D8\u10E0\u10E3\u10DA\u10DD\u10D1\u10D8\u10D7.', ru: 'PsyLearn \u0431\u0435\u0441\u043F\u043B\u0430\u0442\u0435\u043D \u0434\u043B\u044F \u0432\u0441\u0435\u0445. \u0415\u0441\u043B\u0438 \u043E\u043D \u0432\u0430\u043C \u043F\u043E\u043B\u0435\u0437\u0435\u043D, \u0432\u044B \u043C\u043E\u0436\u0435\u0442\u0435 \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442 \u043F\u043E\u0436\u0435\u0440\u0442\u0432\u043E\u0432\u0430\u043D\u0438\u0435\u043C.', hy: 'PsyLearn-\u0568 \u0561\u0576\u057E\u0573\u0561\u0580 \u0567 \u0562\u0578\u056C\u0578\u0580\u056B \u0570\u0561\u0574\u0561\u0580\u0589 \u0535\u0569\u0565 \u0585\u0563\u057F\u0561\u056F\u0561\u0580 \u0567, \u056F\u0561\u0580\u0578\u0572 \u0565\u0584 \u0561\u057B\u0561\u056F\u0581\u0565\u056C \u0576\u057E\u056B\u0580\u0561\u057F\u057E\u0578\u0582\u0569\u0575\u0561\u0574\u0562\u0589' },
   'home.ctaTitle': { en: 'Ready to Ace Your Psychology Exam?', ka: 'მზად ხარ ფსიქოლოგიის გამოცდისთვის?', ru: 'Готовы отлично сдать экзамен по психологии?', hy: 'Պատրա՞ստ եք փայլել հոգեբանության քննությանը։' },
   'home.ctaDesc': { en: 'Create an account to track your progress, save notes, and unlock all features.', ka: '\u10E8\u10D4\u10E5\u10DB\u10D4\u10DC\u10D8 \u10D0\u10DC\u10D2\u10D0\u10E0\u10D8\u10E8\u10D8, \u10E0\u10DD\u10DB \u10D0\u10D9\u10DD\u10DC\u10E2\u10E0\u10DD\u10DA\u10DD \u10DE\u10E0\u10DD\u10D2\u10E0\u10D4\u10E1\u10D8 \u10D3\u10D0 \u10E8\u10D4\u10D8\u10DC\u10D0\u10EE\u10DD \u10E9\u10D0\u10DC\u10D0\u10EC\u10D4\u10E0\u10D4\u10D1\u10D8.', ru: '\u0421\u043E\u0437\u0434\u0430\u0439\u0442\u0435 \u0430\u043A\u043A\u0430\u0443\u043D\u0442, \u0447\u0442\u043E\u0431\u044B \u043E\u0442\u0441\u043B\u0435\u0436\u0438\u0432\u0430\u0442\u044C \u043F\u0440\u043E\u0433\u0440\u0435\u0441\u0441, \u0441\u043E\u0445\u0440\u0430\u043D\u044F\u0442\u044C \u0437\u0430\u043C\u0435\u0442\u043A\u0438 \u0438 \u043E\u0442\u043A\u0440\u044B\u0442\u044C \u0432\u0441\u0435 \u0444\u0443\u043D\u043A\u0446\u0438\u0438.', hy: '\u054D\u057F\u0565\u0572\u056E\u0565\u0584 \u0570\u0561\u0577\u056B\u057E, \u0578\u0580\u057A\u0565\u057D\u0566\u056B \u0570\u0565\u057F\u0587\u0565\u0584 \u0561\u057C\u0561\u057B\u0568\u0576\u0569\u0561\u0581\u056B\u0576, \u057A\u0561\u0570\u057A\u0561\u0576\u0565\u0584 \u0576\u0577\u0578\u0582\u0574\u0576\u0565\u0580\u0568 \u0587 \u0562\u0561\u0581\u0565\u0584 \u0562\u0578\u056C\u0578\u0580 \u0570\u0576\u0561\u0580\u0561\u057E\u0578\u0580\u0578\u0582\u0569\u0575\u0578\u0582\u0576\u0576\u0565\u0580\u0568\u0589' },
   'home.startFree': { en: 'Start Learning', ka: '\u10D3\u10D0\u10D8\u10EC\u10E7\u10D4 \u10E1\u10EC\u10D0\u10D5\u10DA\u10D0', ru: '\u041D\u0430\u0447\u0430\u0442\u044C \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435', hy: '\u054D\u056F\u057D\u0565\u056C \u057D\u0578\u057E\u0578\u0580\u0565\u056C' },
@@ -245,7 +248,6 @@
   'register.createFree': { en: 'Create Free Account', ka: 'უფასო ანგარიშის შექმნა', ru: 'Создать бесплатный аккаунт', hy: 'Ստեղծել անվճար հաշիվ' },
   'register.hasAccount': { en: 'Already have an account?', ka: 'უკვე გაქვთ ანგარიში?', ru: 'Уже есть аккаунт?', hy: 'Արդեն ունե՞ք հաշիվ։' },
   'register.signIn': { en: 'Sign in', ka: 'შესვლა', ru: 'Войти', hy: 'Մուտք' },
-  'register.trialInfo': { en: '7-day free trial — no credit card needed', ka: '7 დღიანი უფასო პერიოდი — საბანკო ბარათი არ არის საჭირო', ru: '7-дневный бесплатный пробный период — банковская карта не требуется', hy: '7-օրյա անվճար փորձաշրջան — բանկային քարտ պետք չէ' },
 
   // ── Profile ──
   'profile.title': { en: 'My Profile', ka: 'ჩემი პროფილი', ru: 'Мой профиль', hy: 'Իմ պրոֆիլը' },
@@ -253,10 +255,6 @@
   'profile.displayName': { en: 'Display Name', ka: 'სახელი', ru: 'Отображаемое имя', hy: 'Ցուցադրվող անուն' },
   'profile.username': { en: 'Username', ka: 'მომხმარებელი', ru: 'Имя пользователя', hy: 'Օգտանուն' },
   'profile.email': { en: 'Email', ka: 'ელ-ფოსტა', ru: 'Эл. почта', hy: 'Էլ. հասցե' },
-  'profile.subscription': { en: 'Subscription', ka: 'გამოწერა', ru: 'Подписка', hy: 'Բաժանորդագրություն' },
-  'profile.freeTrial': { en: 'Free Trial', ka: 'უფასო ვერსია', ru: 'Бесплатный пробный период', hy: 'Անվճար փորձաշրջան' },
-  'profile.active': { en: 'Active', ka: 'აქტიური', ru: 'Активна', hy: 'Ակտիվ' },
-  'profile.expired': { en: 'Expired', ka: 'ვადაგასული', ru: 'Истекла', hy: 'Ժամկետանց' },
   'profile.editProfile': { en: 'Edit Profile', ka: 'პროფილის რედაქტირება', ru: 'Редактировать профиль', hy: 'Խմբագրել պրոֆիլը' },
   'profile.save': { en: 'Save', ka: 'შენახვა', ru: 'Сохранить', hy: 'Պահպանել' },
   'profile.cancel': { en: 'Cancel', ka: 'გაუქმება', ru: 'Отмена', hy: 'Չեղարկել' },
@@ -266,21 +264,11 @@
   'profile.avgQuizScore': { en: 'Avg Quiz Score', ka: 'საშუალო ქულა', ru: 'Средний балл за викторины', hy: 'Վիկտորինաների միջին միավորը' },
   'profile.notesWritten': { en: 'Notes Written', ka: 'ჩანაწერები', ru: 'Написано заметок', hy: 'Գրված նշումներ' },
   'profile.loadingProgress': { en: 'Loading progress...', ka: 'პროგრესის ჩატვირთვა...', ru: 'Загрузка прогресса...', hy: 'Առաջընթացը բեռնվում է...' },
-  'profile.subscriptionSection': { en: 'Subscription', ka: 'გამოწერა', ru: 'Подписка', hy: 'Բաժանորդագրություն' },
-  'profile.trialText': { en: 'You are currently on a <strong>7-day free trial</strong>. Enjoy full access to all features!', ka: 'ამჟამად იყენებთ <strong>7 დღიან უფასო ვერსიას</strong>. ისარგებლეთ ყველა ფუნქციით!', ru: 'Сейчас у вас действует <strong>7-дневный бесплатный пробный период</strong>. Пользуйтесь всеми функциями без ограничений!', hy: 'Դուք այժմ օգտվում եք <strong>7-օրյա անվճար փորձաշրջանից</strong>։ Վայելեք բոլոր հնարավորությունների ամբողջական հասանելիությունը։' },
-  'profile.trialSubText': { en: 'After the trial, access to quizzes, notes, and memory game requires a subscription of just ₾5/month.', ka: 'უფასო პერიოდის შემდეგ, ვიქტორინებთან, ჩანაწერებთან და მეხსიერების თამაშთან წვდომა მხოლოდ ₾5/თვეში ღირს.', ru: 'После пробного периода доступ к викторинам, заметкам и игре на память будет стоить всего ₾5 в месяц.', hy: 'Փորձաշրջանից հետո վիկտորինաներին, նշումներին և հիշողության խաղին հասանելիությունը կարժենա ընդամենը ₾5/ամիս։' },
-  'profile.activeText': { en: 'Your subscription is <strong>active</strong>. Thank you for supporting PsyLearn!', ka: 'თქვენი გამოწერა <strong>აქტიურია</strong>. მადლობა PsyLearn-ის მხარდაჭერისთვის!', ru: 'Ваша подписка <strong>активна</strong>. Спасибо за поддержку PsyLearn!', hy: 'Ձեր բաժանորդագրությունը <strong>ակտիվ է</strong>։ Շնորհակալություն PsyLearn-ին աջակցելու համար։' },
-  'profile.expiredText': { en: 'Your subscription has <strong>expired</strong>. Subscribe to regain access to quizzes, notes, and the memory game.', ka: 'თქვენი გამოწერის <strong>ვადა ამოიწურა</strong>. გამოიწერეთ ვიქტორინებთან, ჩანაწერებთან და მეხსიერების თამაშთან წვდომისთვის.', ru: 'Срок вашей подписки <strong>истёк</strong>. Подпишитесь снова, чтобы вернуть доступ к викторинам, заметкам и игре на память.', hy: 'Ձեր բաժանորդագրությունը <strong>ավարտվել է</strong>։ Բաժանորդագրվեք կրկին՝ վիկտորինաներին, նշումներին և հիշողության խաղին հասանելիությունը վերականգնելու համար։' },
-  'profile.renewSubscription': { en: 'Subscribe Now', ka: 'გამოწერა', ru: 'Подписаться сейчас', hy: 'Բաժանորդագրվել հիմա' },
-  'profile.daysLeft': { en: 'days left in trial', ka: 'დღე დარჩა', ru: 'дней осталось в пробном периоде', hy: 'փորձաշրջանի մնացած օրեր' },
-  'profile.subscribeCta': { en: 'View Plans', ka: 'გეგმების ნახვა', ru: 'Посмотреть тарифы', hy: 'Տեսնել պլանները' },
 
   // ── Admin ──
   'admin.title': { en: 'Admin Panel', ka: 'ადმინ პანელი', ru: 'Панель администратора', hy: 'Ադմինի վահանակ' },
   'admin.subtitle': { en: 'User management & platform statistics', ka: 'მომხმარებლების მართვა და სტატისტიკა', ru: 'Управление пользователями и статистика платформы', hy: 'Օգտատերերի կառավարում և հարթակի վիճակագրություն' },
   'admin.totalUsers': { en: 'Total Users', ka: 'სულ მომხმარებლები', ru: 'Всего пользователей', hy: 'Ընդհանուր օգտատերեր' },
-  'admin.activeTrials': { en: 'Active Trials', ka: 'აქტიური ტესტები', ru: 'Активные пробные периоды', hy: 'Ակտիվ փորձաշրջաններ' },
-  'admin.activeUsers': { en: 'Active Users', ka: 'აქტიური მომხმარებლები', ru: 'Активные пользователи', hy: 'Ակտիվ օգտատերեր' },
   'admin.quizzesTaken': { en: 'Quizzes Taken', ka: 'გავლილი ვიქტორინები', ru: 'Пройдено викторин', hy: 'Անցած վիկտորինաներ' },
   'admin.notesCreated': { en: 'Notes Created', ka: 'შექმნილი ჩანაწერები', ru: 'Создано заметок', hy: 'Ստեղծված նշումներ' },
   'admin.users': { en: 'Users', ka: 'მომხმარებლები', ru: 'Пользователи', hy: 'Օգտատերեր' },
@@ -289,12 +277,8 @@
   'admin.username': { en: 'Username', ka: 'სახელი', ru: 'Имя пользователя', hy: 'Օգտանուն' },
   'admin.email': { en: 'Email', ka: 'ელ-ფოსტა', ru: 'Эл. почта', hy: 'Էլ. հասցե' },
   'admin.role': { en: 'Role', ka: 'როლი', ru: 'Роль', hy: 'Դեր' },
-  'admin.subscription': { en: 'Subscription', ka: 'გამოწერა', ru: 'Подписка', hy: 'Բաժանորդագրություն' },
   'admin.joined': { en: 'Joined', ka: 'შემოუერთდა', ru: 'Дата регистрации', hy: 'Միացել է' },
   'admin.actions': { en: 'Actions', ka: 'მოქმედებები', ru: 'Действия', hy: 'Գործողություններ' },
-  'admin.activate': { en: 'Activate', ka: 'აქტივაცია', ru: 'Активировать', hy: 'Ակտիվացնել' },
-  'admin.expire': { en: 'Expire', ka: 'შეწყვეტა', ru: 'Деактивировать', hy: 'Ավարտել' },
-  'admin.reactivate': { en: 'Reactivate', ka: 'აღდგენა', ru: 'Активировать снова', hy: 'Վերաակտիվացնել' },
   'admin.delete': { en: 'Delete', ka: 'წაშლა', ru: 'Удалить', hy: 'Ջնջել' },
 
   // ── Verify Email ──
@@ -330,39 +314,7 @@
   // ── Login ──
   'login.forgotPassword': { en: 'Forgot password?', ka: 'დაგავიწყდათ პაროლი?', ru: 'Забыли пароль?', hy: 'Մոռացե՞լ եք գաղտնաբառը։' },
 
-  // ── Subscribe / Pricing ──
-  'subscribe.title': { en: 'Choose Your Plan', ka: 'აირჩიეთ გეგმა', ru: 'Выберите тариф', hy: 'Ընտրեք ձեր պլանը' },
-  'subscribe.subtitle': { en: 'Unlock all PsyLearn features for just ₾5 per month', ka: 'გახსენით PsyLearn-ის ყველა ფუნქცია მხოლოდ ₾5/თვეში', ru: 'Откройте все возможности PsyLearn всего за ₾5 в месяц', hy: 'Բացեք PsyLearn-ի բոլոր հնարավորությունները ընդամենը ₾5/ամիս արժեքով' },
-  'subscribe.expiredBanner': { en: 'Your free trial has ended. Subscribe to continue learning!', ka: 'თქვენი უფასო პერიოდი დასრულდა. გამოიწერეთ სწავლის გასაგრძელებლად!', ru: 'Ваш бесплатный пробный период закончился. Подпишитесь, чтобы продолжить обучение!', hy: 'Ձեր անվճար փորձաշրջանը ավարտվել է։ Բաժանորդագրվեք՝ ուսումը շարունակելու համար։' },
-  'subscribe.trialBanner': { en: 'You have {days} days left in your free trial.', ka: 'თქვენი უფასო პერიოდის {days} დღე დარჩა.', ru: 'У вас осталось {days} дней бесплатного пробного периода.', hy: 'Ձեր անվճար փորձաշրջանից մնացել է {days} օր։' },
-  'subscribe.planName': { en: 'Monthly Plan', ka: 'ყოველთვიური გეგმა', ru: 'Ежемесячный тариф', hy: 'Ամսական պլան' },
-  'subscribe.month': { en: 'month', ka: 'თვე', ru: 'месяц', hy: 'ամիս' },
-  'subscribe.feature1': { en: 'Access all chapter quizzes', ka: 'ყველა თავის ვიქტორინა', ru: 'Доступ ко всем викторинам по главам', hy: 'Մուտք բոլոր գլուխների վիկտորինաներին' },
-  'subscribe.feature2': { en: 'Personal notes & bookmarks', ka: 'პირადი ჩანაწერები და სანიშნეები', ru: 'Личные заметки и закладки', hy: 'Անձնական նշումներ և էջանիշեր' },
-  'subscribe.feature3': { en: 'Memory training game', ka: 'მეხსიერების თამაში', ru: 'Игра для тренировки памяти', hy: 'Հիշողության մարզման խաղ' },
-  'subscribe.feature4': { en: 'Progress tracking & statistics', ka: 'პროგრესის თვალყურის დევნება', ru: 'Отслеживание прогресса и статистика', hy: 'Առաջընթացի հետևում և վիճակագրություն' },
-  'subscribe.feature5': { en: 'Priority email support', ka: 'პრიორიტეტული ელ-ფოსტის მხარდაჭერა', ru: 'Приоритетная поддержка по эл. почте', hy: 'Առաջնահերթ աջակցություն էլ. փոստով' },
-  'subscribe.howToPay': { en: 'How to Pay', ka: 'როგორ გადავიხადო', ru: 'Ինչպես վճարել', hy: 'Ինչպես վճարել' },
-  'subscribe.step1': { en: 'Transfer ₾5 to the bank account below', ka: 'გადარიცხეთ ₾5 ქვემოთ მითითებულ ანგარიშზე', ru: 'Переведите ₾5 на указанный ниже банковский счёт', hy: 'Փոխանցեք ₾5 ստորև նշված բանկային հաշվին' },
-  'subscribe.step2': { en: 'Include your registered email in the payment purpose', ka: 'გადახდის დანიშნულებაში მიუთითეთ თქვენი ელ-ფოსტა', ru: 'Укажите зарегистрированную эл. почту в назначении платежа', hy: 'Վճարման նշանակության մեջ նշեք ձեր գրանցված էլ. հասցեն' },
-  'subscribe.step3': { en: 'Your account will be activated within 24 hours', ka: 'თქვენი ანგარიში აქტიურდება 24 საათში', ru: 'Ваш аккаунт будет активирован в течение 24 часов', hy: 'Ձեր հաշիվը կակտիվացվի 24 ժամվա ընթացքում' },
-  'subscribe.bankName': { en: 'Bank', ka: 'ბანკი', ru: 'Банк', hy: 'Բանկ' },
-  'subscribe.bankValue': { en: 'Bank of Georgia', ka: 'საქართველოს ბანკი', ru: 'Bank of Georgia', hy: 'Bank of Georgia' },
-  'subscribe.receiver': { en: 'Receiver', ka: 'მიმღები', ru: 'Получатель', hy: 'Ստացող' },
-  'subscribe.amount': { en: 'Amount', ka: 'თანხა', ru: 'Сумма', hy: 'Գումար' },
-  'subscribe.purpose': { en: 'Purpose', ka: 'დანიშნულება', ru: 'Назначение', hy: 'Նշանակություն' },
-  'subscribe.contactNote': { en: 'Having trouble? Contact us and we\'ll help!', ka: 'პრობლემა შეგექმნათ? დაგვიკავშირდით და დაგეხმარებით!', ru: 'Возникли трудности? Свяжитесь с нами, и мы поможем!', hy: 'Խնդիր ունե՞ք։ Կապվեք մեզ հետ, և մենք կօգնենք։' },
-  'subscribe.contactLink': { en: 'Contact Support', ka: 'მხარდაჭერა', ru: 'Связаться с поддержкой', hy: 'Կապվել աջակցման թիմի հետ' },
-  'subscribe.freeTitle': { en: 'Always Free', ka: 'ყოველთვის უფასო', ru: 'Всегда бесплатно', hy: 'Միշտ անվճար' },
-  'subscribe.freeDesc': { en: 'Chapters, psychologist profiles, stories, and fun facts are always free — no subscription needed.', ka: 'თავები, ფსიქოლოგების პროფილები, ისტორიები და საინტერესო ფაქტები ყოველთვის უფასოა.', ru: 'Главы, профили психологов, истории и интересные факты всегда бесплатны — подписка не нужна.', hy: 'Գլուխները, հոգեբանների պրոֆիլները, պատմությունները և հետաքրքիր փաստերը միշտ անվճար են — բաժանորդագրություն պետք չէ։' },
-  'subscribe.upgradeNow': { en: 'Upgrade Now', ka: 'გამოწერა', ru: 'Обновить план', hy: 'Թարմացնել հիմա' },
-  'subscribe.subscribeCta': { en: 'Subscribe', ka: 'გამოწერა', ru: 'Подписаться', hy: 'Բաժանորդագրվել' },
 
-  // ── Trial / Subscription banners ──
-  'trial.banner': { en: '{days} days left in your free trial', ka: 'უფასო პერიოდის {days} დღე დარჩა', ru: 'В вашем бесплатном пробном периоде осталось {days} дней', hy: 'Ձեր անվճար փորձաշրջանից մնացել է {days} օր' },
-  'trial.upgrade': { en: 'Upgrade now', ka: 'გამოწერა', ru: 'Обновить план сейчас', hy: 'Թարմացրեք հիմա' },
-  'expired.banner': { en: 'Your free trial has expired', ka: 'უფასო პერიოდი ამოიწურა', ru: 'Ваш бесплатный пробный период истёк', hy: 'Ձեր անվճար փորձաշրջանը ավարտվել է' },
-  'expired.subscribe': { en: 'Subscribe to continue', ka: 'გამოიწერეთ გასაგრძელებლად', ru: 'Подпишитесь, чтобы продолжить', hy: 'Բաժանորդագրվեք՝ շարունակելու համար' },
 
   // ── Navbar & Footer / Navigation ──
   'nav.dashboard': { en: 'Dashboard', ka: 'მთავარი პანელი', ru: 'Панель', hy: 'Վահանակ' },
@@ -423,3 +375,6 @@
   'flashcards.reviewed': { en: 'You reviewed {count} cards', ka: 'თქვენ გადახედეთ {count} ბარათს', ru: 'Вы повторили {count} карточек', hy: 'Դուք կրկնել եք {count} քարտ' },
   'flashcards.studyAgain': { en: 'Study Again', ka: 'ხელახლა სწავლა', ru: 'Учить снова', hy: 'Կրկին սովորել' },
 };
+
+
+

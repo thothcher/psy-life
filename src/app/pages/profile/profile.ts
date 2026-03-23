@@ -1,6 +1,5 @@
 import { Component, ChangeDetectionStrategy, signal, inject, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ProgressService } from '../../services/progress.service';
 import { GamificationService, LeaderboardEntry } from '../../services/gamification.service';
@@ -8,7 +7,7 @@ import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-profile',
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
@@ -49,18 +48,6 @@ import { LanguageService } from '../../services/language.service';
                 <div class="info-row">
                   <span class="info-label">{{ t.t('profile.email') }}</span>
                   <span class="info-value">{{ user.email }}</span>
-                </div>
-                <div class="info-row">
-                  <span class="info-label">{{ t.t('profile.subscription') }}</span>
-                  <span class="badge" [class.badge-accent]="user.subscriptionStatus === 'trial'" [class.badge-secondary]="user.subscriptionStatus === 'active'">
-                    @if (user.subscriptionStatus === 'trial') {
-                      <iconify-icon icon="mdi:gift-outline" style="vertical-align: -0.125em; margin-right: 0.2rem"></iconify-icon>{{ t.t('profile.freeTrial') }}
-                    } @else if (user.subscriptionStatus === 'active') {
-                      <iconify-icon icon="mdi:check-decagram" style="vertical-align: -0.125em; margin-right: 0.2rem"></iconify-icon>{{ t.t('profile.active') }}
-                    } @else {
-                      <iconify-icon icon="mdi:alert-circle-outline" style="vertical-align: -0.125em; margin-right: 0.2rem"></iconify-icon>{{ t.t('profile.expired') }}
-                    }
-                  </span>
                 </div>
                 <button class="btn btn-outline" style="margin-top: 1rem" (click)="startEditing()"><iconify-icon icon="mdi:pencil-outline" style="vertical-align: -0.125em; margin-right: 0.35rem"></iconify-icon>{{ t.t('profile.editProfile') }}</button>
               } @else {
@@ -110,10 +97,6 @@ import { LanguageService } from '../../services/language.service';
             }
           </section>
 
-          <!-- Subscription -->
-          <section class="sub-card card">
-            <h2>{{ t.t('profile.subscriptionSection') }}</h2>
-
           <!-- Leaderboard -->
           <section class="leaderboard-card card">
             <h2><iconify-icon icon="mdi:trophy-outline" style="vertical-align: -0.125em; margin-right: 0.3rem"></iconify-icon>Leaderboard</h2>
@@ -143,35 +126,6 @@ import { LanguageService } from '../../services/language.service';
               </div>
             } @else {
               <p class="text-muted">No leaderboard data yet.</p>
-            }
-          </section>
-            @if (authService.currentUser(); as user) {
-              @if (user.subscriptionStatus === 'trial') {
-                <div class="sub-info">
-                  <div class="trial-countdown">
-                    <iconify-icon icon="mdi:clock-outline" width="20" height="20" style="vertical-align: -0.15em"></iconify-icon>
-                    <strong>{{ authService.trialDaysLeft() }}</strong> {{ t.t('profile.daysLeft') }}
-                  </div>
-                  <p [innerHTML]="t.t('profile.trialText')"></p>
-                  <p class="text-muted">{{ t.t('profile.trialSubText') }}</p>
-                  <a routerLink="/subscribe" class="btn btn-accent" style="margin-top: 1rem">
-                    <iconify-icon icon="mdi:crown-outline" style="vertical-align: -0.125em; margin-right: 0.35rem"></iconify-icon>
-                    {{ t.t('profile.subscribeCta') }}
-                  </a>
-                </div>
-              } @else if (user.subscriptionStatus === 'active') {
-                <div class="sub-info">
-                  <p [innerHTML]="t.t('profile.activeText')"></p>
-                </div>
-              } @else {
-                <div class="sub-info">
-                  <p [innerHTML]="t.t('profile.expiredText')"></p>
-                  <a routerLink="/subscribe" class="btn btn-accent" style="margin-top: 1rem">
-                    <iconify-icon icon="mdi:credit-card-refresh-outline" style="vertical-align: -0.125em; margin-right: 0.35rem"></iconify-icon>
-                    {{ t.t('profile.renewSubscription') }}
-                  </a>
-                </div>
-              }
             }
           </section>
         </div>
