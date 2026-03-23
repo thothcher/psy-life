@@ -15,6 +15,7 @@ export interface User {
   createdAt?: string;
   lastLogin?: string;
   emailVerified?: boolean;
+  avatar?: string | null;
 }
 
 interface AuthResponse {
@@ -140,6 +141,19 @@ export class AuthService {
 
   updateProfile(data: { displayName?: string; email?: string }) {
     return this.http.put(`${API_URL}/me`, data);
+  }
+
+  uploadAvatar(avatar: string) {
+    return this.http.put<{ message: string; avatar: string }>(`${API_URL}/me/avatar`, { avatar }).pipe(
+      tap(res => {
+        const user = this.currentUser();
+        if (user) {
+          const updated = { ...user, avatar: res.avatar };
+          this.currentUser.set(updated);
+          localStorage.setItem('psy_user', JSON.stringify(updated));
+        }
+      })
+    );
   }
 
   private handleAuth(res: AuthResponse) {

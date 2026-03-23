@@ -16,6 +16,15 @@ const transporter = nodemailer.createTransport({
   }
 });
 
+// Verify SMTP connection on startup
+if (ADMIN_EMAIL && process.env.GMAIL_APP_PASSWORD) {
+  transporter.verify()
+    .then(() => console.log('[MAILER] SMTP connection verified successfully'))
+    .catch(err => console.error('[MAILER] SMTP connection FAILED:', err.message));
+} else {
+  console.warn('[MAILER] Email credentials missing — ADMIN_EMAIL:', !!ADMIN_EMAIL, 'GMAIL_APP_PASSWORD:', !!process.env.GMAIL_APP_PASSWORD);
+}
+
 function generateOTP() {
   return Math.floor(100000 + Math.random() * 900000).toString();
 }

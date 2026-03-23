@@ -602,6 +602,21 @@ export const QUIZZES: Quiz[] = [
       { id: 'q15-9', question: 'Eclectic approach:', options: ['One method', 'Integrating various techniques', 'Rejecting evidence', 'Only medication'], correctIndex: 1, explanation: 'Combining different techniques.' },
       { id: 'q15-10', question: 'Therapy works best when:', options: ['One session', 'Strong therapeutic alliance', 'Client passive', 'No diagnosis'], correctIndex: 1, explanation: 'The relationship is the strongest predictor.' }
     ]
+  },
+  {
+    id: 'ch16-quiz', chapterId: 16, title: 'Applied Psychology — Quiz',
+    questions: [
+      { id: 'q16-1', question: 'I/O psychology applies principles to:', options: ['Hospitals', 'The workplace', 'Animals', 'Children only'], correctIndex: 1, explanation: 'Industrial-Organizational psychology focuses on the workplace.' },
+      { id: 'q16-2', question: 'Growth mindset was proposed by:', options: ['Seligman', 'Csikszentmihalyi', 'Carol Dweck', 'Duckworth'], correctIndex: 2, explanation: 'Dweck showed believing intelligence is malleable improves performance.' },
+      { id: 'q16-3', question: 'Positive psychology focuses on:', options: ['Mental illness', 'Strengths and optimal functioning', 'Diagnosis', 'Medication'], correctIndex: 1, explanation: 'Studying what makes life worth living.' },
+      { id: 'q16-4', question: 'Flow state was described by:', options: ['Seligman', 'Csikszentmihalyi', 'Dweck', 'Duckworth'], correctIndex: 1, explanation: 'Csikszentmihalyi described the state of complete absorption.' },
+      { id: 'q16-5', question: 'Forensic psychology intersects psychology and:', options: ['Education', 'Law', 'Business', 'Medicine'], correctIndex: 1, explanation: 'Forensic psychology applies psychology to legal contexts.' },
+      { id: 'q16-6', question: 'Structured interviews are preferred because they:', options: ['Are shorter', 'Reduce bias and improve prediction', 'Cost less', 'Are informal'], correctIndex: 1, explanation: 'Structured interviews are more valid and reduce interviewer bias.' },
+      { id: 'q16-7', question: 'Grit research was done by:', options: ['Seligman', 'Csikszentmihalyi', 'Dweck', 'Angela Duckworth'], correctIndex: 3, explanation: 'Duckworth studied perseverance and passion for long-term goals.' },
+      { id: 'q16-8', question: 'Collectivistic cultures emphasize:', options: ['Individual achievement', 'Group harmony', 'Competition', 'Personal freedom'], correctIndex: 1, explanation: 'Collectivistic cultures value group goals over individual ones.' },
+      { id: 'q16-9', question: 'The IKEA effect shows people:', options: ['Prefer cheap furniture', 'Value self-built items more', 'Dislike assembly', 'Buy impulsively'], correctIndex: 1, explanation: 'People overvalue things they helped create.' },
+      { id: 'q16-10', question: 'Health psychology promotes:', options: ['Only medication', 'Healthy behaviors and illness prevention', 'Surgery', 'Hospitalization'], correctIndex: 1, explanation: 'Promoting behavior change and preventing illness.' }
+    ]
   }
 ];
 

@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, inject, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal, OnDestroy, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LanguageService } from '../../services/language.service';
 
@@ -155,14 +155,28 @@ import { LanguageService } from '../../services/language.service';
       </div>
     </section>
 
-    <!-- Quote -->
+    <!-- Quotes carousel -->
     <section class="quote-section">
       <div class="container">
-        <blockquote class="quote-block">
-          <iconify-icon icon="mdi:format-quote-open" width="36" height="36" class="quote-icon" aria-hidden="true"></iconify-icon>
-          <p class="quote-text">{{ t.t('home.quote') }}</p>
-          <cite class="quote-author">— Philip Zimbardo</cite>
-        </blockquote>
+        <div class="quotes-carousel">
+          <blockquote class="quote-block">
+            <iconify-icon icon="mdi:format-quote-open" width="36" height="36" class="quote-icon" aria-hidden="true"></iconify-icon>
+            <p class="quote-text">{{ quotes[activeQuote()].text }}</p>
+            <cite class="quote-author">— {{ quotes[activeQuote()].author }}</cite>
+          </blockquote>
+          <div class="quote-dots" role="tablist" aria-label="Quote navigation">
+            @for (q of quotes; track $index) {
+              <button
+                class="quote-dot"
+                [class.active]="$index === activeQuote()"
+                (click)="goToQuote($index)"
+                role="tab"
+                [attr.aria-selected]="$index === activeQuote()"
+                [attr.aria-label]="'Quote ' + ($index + 1)">
+              </button>
+            }
+          </div>
+        </div>
       </div>
     </section>
 
@@ -460,12 +474,19 @@ import { LanguageService } from '../../services/language.service';
       padding-top: 1.2rem;
     }
 
-    /* Quote */
+    /* Quote carousel */
     .quote-section { padding: 4rem 0; }
-    .quote-block {
+    .quotes-carousel {
       max-width: 680px;
       margin: 0 auto;
       text-align: center;
+    }
+    .quote-block {
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
     .quote-icon { color: var(--color-highlight); opacity: 0.5; }
     .quote-text {
@@ -475,12 +496,36 @@ import { LanguageService } from '../../services/language.service';
       line-height: 1.6;
       font-style: italic;
       margin: 0.75rem 0;
+      transition: opacity 0.4s ease;
     }
     .quote-author {
       font-size: 0.9rem;
       color: var(--color-text-muted);
       font-style: normal;
       font-weight: 600;
+    }
+    .quote-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+    .quote-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid var(--color-border);
+      background: none;
+      cursor: pointer;
+      padding: 0;
+      transition: all var(--transition-normal);
+    }
+    .quote-dot:hover {
+      border-color: var(--color-accent);
+    }
+    .quote-dot.active {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
     }
 
     /* CTA */
@@ -556,6 +601,37 @@ import { LanguageService } from '../../services/language.service';
     }
   `
 })
-export class HomePage {
+export class HomePage implements OnDestroy {
   protected readonly t = inject(LanguageService);
+
+  protected readonly quotes = [
+    { text: 'Psychology is the science of mental life, both of its phenomena and their conditions.', author: 'William James' },
+    { text: 'The good life is one inspired by love and guided by knowledge.', author: 'Bertrand Russell' },
+    { text: 'Knowing yourself is the beginning of all wisdom.', author: 'Aristotle' },
+    { text: 'The mind is everything. What you think you become.', author: 'Buddha' },
+    { text: 'Between stimulus and response there is a space. In that space is our power to choose our response.', author: 'Viktor Frankl' },
+    { text: 'We are what we repeatedly do. Excellence, then, is not an act, but a habit.', author: 'Aristotle' },
+  ];
+
+  protected readonly activeQuote = signal(0);
+  private timer: ReturnType<typeof setInterval> | null = null;
+
+  constructor() {
+    this.timer = setInterval(() => {
+      this.activeQuote.update(i => (i + 1) % this.quotes.length);
+    }, 6000);
+  }
+
+  ngOnDestroy() {
+    if (this.timer) clearInterval(this.timer);
+  }
+
+  goToQuote(index: number) {
+    this.activeQuote.set(index);
+    // Reset timer on manual navigation
+    if (this.timer) clearInterval(this.timer);
+    this.timer = setInterval(() => {
+      this.activeQuote.update(i => (i + 1) % this.quotes.length);
+    }, 6000);
+  }
 }

@@ -39,14 +39,14 @@ router.post('/register', async (req, res) => {
     await sendVerificationEmail(email, code, displayName);
     console.log('[AUTH] Verification email sent to', email);
   } catch (err) {
-    console.error('[AUTH] Failed to send verification email:', err.message, err.code);
+    console.error('[AUTH] Failed to send verification email:', err.message, err.code, err.responseCode);
   }
 
   const token = jwt.sign({ id: userId, username, role: 'user' }, JWT_SECRET, { expiresIn: '7d' });
 
   res.status(201).json({
     token,
-    user: { id: userId, email, username, displayName, role: 'user', subscriptionStatus: 'trial', trialStartDate: new Date().toISOString(), emailVerified: false },
+    user: { id: userId, email, username, displayName, role: 'user', subscriptionStatus: 'trial', trialStartDate: new Date().toISOString(), emailVerified: false, avatar: null },
     requiresVerification: true,
   });
 });
@@ -69,7 +69,7 @@ router.post('/verify-email', authenticate, async (req, res) => {
 
   res.json({
     message: 'Email verified successfully.',
-    user: { id: user.id, email: user.email, username: user.username, displayName: user.display_name, role: user.role, subscriptionStatus: user.subscription_status, emailVerified: true },
+    user: { id: user.id, email: user.email, username: user.username, displayName: user.display_name, role: user.role, subscriptionStatus: user.subscription_status, trialStartDate: user.trial_start_date, emailVerified: true, avatar: user.avatar || null },
   });
 });
 
@@ -121,7 +121,7 @@ router.post('/login', async (req, res) => {
 
   res.json({
     token,
-    user: { id: user.id, email: user.email, username: user.username, displayName: user.display_name, role: user.role, subscriptionStatus, trialStartDate: user.trial_start_date, emailVerified },
+    user: { id: user.id, email: user.email, username: user.username, displayName: user.display_name, role: user.role, subscriptionStatus, trialStartDate: user.trial_start_date, emailVerified, avatar: user.avatar || null },
     requiresVerification: !emailVerified,
   });
 });
@@ -191,7 +191,21 @@ router.get('/me', authenticate, async (req, res) => {
     id: user.id, email: user.email, username: user.username, displayName: user.display_name,
     role: user.role, subscriptionStatus, trialStartDate: user.trial_start_date,
     createdAt: user.created_at, lastLogin: user.last_login, emailVerified: !!user.email_verified,
+    avatar: user.avatar || null,
   });
+});
+
+// Upload avatar
+router.put('/me/avatar', authenticate, async (req, res) => {
+  const { avatar } = req.body;
+  if (!avatar || typeof avatar !== 'string') return res.status(400).json({ error: 'Avatar data is required.' });
+  // Limit to ~500KB base64
+  if (avatar.length > 700000) return res.status(400).json({ error: 'Image too large. Max 500KB.' });
+  // Validate it's a data URI for images
+  if (!avatar.startsWith('data:image/')) return res.status(400).json({ error: 'Invalid image format.' });
+
+  await req.db.execute({ sql: 'UPDATE users SET avatar = ? WHERE id = ?', args: [avatar, req.user.id] });
+  res.json({ message: 'Avatar updated.', avatar });
 });
 
 // Update profile

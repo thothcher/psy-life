@@ -30,6 +30,7 @@ async function initDatabase() {
       email_verified INTEGER DEFAULT 0,
       subscription_status TEXT DEFAULT 'trial' CHECK(subscription_status IN ('trial', 'active', 'expired')),
       trial_start_date TEXT DEFAULT (datetime('now')),
+      avatar TEXT,
       created_at TEXT DEFAULT (datetime('now')),
       last_login TEXT
     );
@@ -264,6 +265,11 @@ async function initDatabase() {
   } else {
     await db.execute({ sql: 'UPDATE users SET email_verified = 1 WHERE role = ?', args: ['admin'] });
   }
+
+  // Migrations for existing databases
+  try {
+    await db.execute('ALTER TABLE users ADD COLUMN avatar TEXT');
+  } catch (_) { /* column already exists */ }
 
   return db;
 }

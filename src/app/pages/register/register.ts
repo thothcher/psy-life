@@ -136,6 +136,11 @@ import { LanguageService } from '../../services/language.service';
       color: #2e7d32;
       font-weight: 500;
     }
+
+    @media (max-width: 640px) {
+      .auth-page { padding: 1rem 0.75rem; }
+      .auth-card { padding: 1.75rem 1.25rem; }
+    }
   `
 })
 export class RegisterPage {

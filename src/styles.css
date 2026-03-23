@@ -6,28 +6,28 @@
 
 :root {
   /* Primary palette */
-  --color-bg: #f7f7f5;
+  --color-bg: #f5f5f3;
   --color-surface: #ffffff;
-  --color-primary: #1a1a2e;
-  --color-primary-light: #2d2d44;
-  --color-accent: #c0392b;
-  --color-accent-light: #e74c3c;
-  --color-secondary: #2c6e49;
-  --color-secondary-light: #4c956c;
-  --color-highlight: #d4a574;
+  --color-primary: #16162a;
+  --color-primary-light: #292942;
+  --color-accent: #b33426;
+  --color-accent-light: #d44233;
+  --color-secondary: #266240;
+  --color-secondary-light: #448a62;
+  --color-highlight: #c49664;
 
   /* Text */
-  --color-text: #1a1a2e;
-  --color-text-light: #555566;
-  --color-text-muted: #888899;
-  --color-text-on-primary: #f7f7f5;
+  --color-text: #16162a;
+  --color-text-light: #4a4a5c;
+  --color-text-muted: #7e7e90;
+  --color-text-on-primary: #f5f5f3;
 
   /* Borders & shadows */
-  --color-border: #dcdcdc;
-  --color-border-light: #ebebeb;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.02);
-  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.03);
-  --shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.04);
+  --color-border: #d0d0d0;
+  --color-border-light: #e4e4e4;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 10px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 6px 24px rgba(0, 0, 0, 0.08);
 
   /* Radius — tight, professional */
   --radius-sm: 4px;

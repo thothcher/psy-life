@@ -18,6 +18,7 @@ export class App {
   protected readonly langService = inject(LanguageService);
   protected readonly gam = inject(GamificationService);
   protected readonly mobileMenuOpen = signal(false);
+  protected readonly langDropdownOpen = signal(false);
   private readonly doc = inject(DOCUMENT);
 
   constructor() {

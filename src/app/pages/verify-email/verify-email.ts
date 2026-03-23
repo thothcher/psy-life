@@ -144,6 +144,11 @@ import { LanguageService } from '../../services/language.service';
     }
 
     .link-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    @media (max-width: 640px) {
+      .auth-page { padding: 1rem 0.75rem; }
+      .auth-card { padding: 1.75rem 1.25rem; }
+    }
   `
 })
 export class VerifyEmailPage {

@@ -152,8 +152,8 @@ interface GameCard {
       max-width: 700px;
       margin: 0 auto;
     }
-    .game-board.medium { grid-template-columns: repeat(4, 1fr); max-width: 750px; }
-    .game-board.hard { grid-template-columns: repeat(6, 1fr); max-width: 960px; gap: 0.6rem; }
+    .game-board.medium { grid-template-columns: repeat(6, 1fr); max-width: 900px; }
+    .game-board.hard { grid-template-columns: repeat(8, 1fr); max-width: 1100px; gap: 0.6rem; }
 
     .game-card {
       aspect-ratio: 1;
@@ -243,7 +243,8 @@ interface GameCard {
 
     @media (max-width: 640px) {
       .game-board { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
-      .game-board.hard { grid-template-columns: repeat(4, 1fr); gap: 0.4rem; }
+      .game-board.medium { grid-template-columns: repeat(4, 1fr); }
+      .game-board.hard { grid-template-columns: repeat(6, 1fr); gap: 0.4rem; }
       .game-board.hard .game-card { aspect-ratio: 1; }
       .game-stats { flex-wrap: wrap; gap: 1rem; }
     }

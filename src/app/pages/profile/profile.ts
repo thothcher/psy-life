@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ProgressService } from '../../services/progress.service';
+import { GamificationService, LeaderboardEntry } from '../../services/gamification.service';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
@@ -20,6 +21,20 @@ import { LanguageService } from '../../services/language.service';
         <div class="profile-grid">
           <!-- User info -->
           <section class="profile-card card">
+            <div class="avatar-section">
+              <button class="avatar-wrapper" (click)="avatarInput.click()" aria-label="Change profile picture">
+                @if (authService.currentUser()?.avatar) {
+                  <img [src]="authService.currentUser()?.avatar" alt="Profile picture" class="avatar-img" />
+                } @else {
+                  <iconify-icon icon="mdi:account-circle" width="80" height="80" class="avatar-placeholder"></iconify-icon>
+                }
+                <span class="avatar-overlay"><iconify-icon icon="mdi:camera" width="20" height="20"></iconify-icon></span>
+              </button>
+              <input #avatarInput type="file" accept="image/*" hidden (change)="onAvatarSelect($event)" />
+              @if (avatarUploading()) {
+                <span class="avatar-status">Uploading...</span>
+              }
+            </div>
             <h2>{{ t.t('profile.accountInfo') }}</h2>
             @if (authService.currentUser(); as user) {
               @if (!editing()) {
@@ -98,6 +113,38 @@ import { LanguageService } from '../../services/language.service';
           <!-- Subscription -->
           <section class="sub-card card">
             <h2>{{ t.t('profile.subscriptionSection') }}</h2>
+
+          <!-- Leaderboard -->
+          <section class="leaderboard-card card">
+            <h2><iconify-icon icon="mdi:trophy-outline" style="vertical-align: -0.125em; margin-right: 0.3rem"></iconify-icon>Leaderboard</h2>
+            @if (leaderboard().length > 0) {
+              <div class="leaderboard-list">
+                @for (entry of leaderboard(); track entry.rank) {
+                  <div class="lb-row" [class.lb-me]="entry.username === authService.currentUser()?.username">
+                    <span class="lb-rank">
+                      @if (entry.rank === 1) {
+                        <iconify-icon icon="mdi:trophy" width="18" height="18" style="color: #f5a623"></iconify-icon>
+                      } @else if (entry.rank === 2) {
+                        <iconify-icon icon="mdi:trophy" width="18" height="18" style="color: #aab2bd"></iconify-icon>
+                      } @else if (entry.rank === 3) {
+                        <iconify-icon icon="mdi:trophy" width="18" height="18" style="color: #cd7f32"></iconify-icon>
+                      } @else {
+                        #{{ entry.rank }}
+                      }
+                    </span>
+                    <span class="lb-name">{{ entry.displayName || entry.username }}</span>
+                    <span class="lb-xp">{{ entry.totalXp }} XP</span>
+                    <span class="lb-streak" title="Streak">
+                      <iconify-icon icon="mdi:fire" width="14" height="14" style="color: #e74c3c; vertical-align: -0.15em"></iconify-icon>
+                      {{ entry.currentStreak }}
+                    </span>
+                  </div>
+                }
+              </div>
+            } @else {
+              <p class="text-muted">No leaderboard data yet.</p>
+            }
+          </section>
             @if (authService.currentUser(); as user) {
               @if (user.subscriptionStatus === 'trial') {
                 <div class="sub-info">
@@ -141,8 +188,104 @@ import { LanguageService } from '../../services/language.service';
     .profile-card, .progress-card, .sub-card {
       padding: 1.5rem;
     }
+
+    .avatar-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+    .avatar-wrapper {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      cursor: pointer;
+      border: 3px solid var(--color-border);
+      background: var(--color-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      transition: border-color var(--transition-normal);
+    }
+    .avatar-wrapper:hover { border-color: var(--color-accent); }
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .avatar-placeholder { color: var(--color-text-muted); }
+    .avatar-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+    }
+    .avatar-wrapper:hover .avatar-overlay { opacity: 1; }
+    .avatar-status {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      margin-top: 0.5rem;
+    }
     .sub-card {
       grid-column: 1 / -1;
+    }
+
+    .leaderboard-card {
+      grid-column: 1 / -1;
+    }
+    .leaderboard-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .lb-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.55rem 0.75rem;
+      border-radius: var(--radius-md);
+      font-size: 0.88rem;
+      transition: background var(--transition-fast);
+    }
+    .lb-row:hover { background: var(--color-bg); }
+    .lb-me {
+      background: rgba(192, 57, 43, 0.06);
+      font-weight: 600;
+    }
+    .lb-rank {
+      width: 32px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: var(--color-text-muted);
+      flex-shrink: 0;
+    }
+    .lb-name {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--color-text);
+    }
+    .lb-xp {
+      font-weight: 700;
+      color: var(--color-accent);
+      font-size: 0.82rem;
+      flex-shrink: 0;
+    }
+    .lb-streak {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      flex-shrink: 0;
     }
 
     h2 {
@@ -224,10 +367,13 @@ import { LanguageService } from '../../services/language.service';
 export class ProfilePage implements OnInit {
   protected readonly authService = inject(AuthService);
   private readonly progressService = inject(ProgressService);
+  private readonly gamService = inject(GamificationService);
   protected readonly t = inject(LanguageService);
 
   protected readonly editing = signal(false);
   protected readonly saveError = signal('');
+  protected readonly avatarUploading = signal(false);
+  protected readonly leaderboard = signal<LeaderboardEntry[]>([]);
   protected readonly progressData = signal<{
     chaptersCompleted: number;
     quizzesTaken: number;
@@ -240,6 +386,7 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     this.loadProgress();
+    this.loadLeaderboard();
   }
 
   startEditing() {
@@ -250,6 +397,27 @@ export class ProfilePage implements OnInit {
       this.editing.set(true);
       this.saveError.set('');
     }
+  }
+
+  onAvatarSelect(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (!file) return;
+    if (file.size > 500 * 1024) {
+      alert('Image too large. Max 500KB.');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64 = reader.result as string;
+      this.avatarUploading.set(true);
+      this.authService.uploadAvatar(base64).subscribe({
+        next: () => this.avatarUploading.set(false),
+        error: () => this.avatarUploading.set(false),
+      });
+    };
+    reader.readAsDataURL(file);
+    input.value = '';
   }
 
   saveProfile() {
@@ -285,6 +453,13 @@ export class ProfilePage implements OnInit {
       error: () => {
         this.progressData.set({ chaptersCompleted: 0, quizzesTaken: 0, avgScore: 0, notesCount: 0 });
       }
+    });
+  }
+
+  private loadLeaderboard() {
+    this.gamService.getLeaderboard().subscribe({
+      next: (data) => this.leaderboard.set(data.slice(0, 10)),
+      error: () => {},
     });
   }
 }
