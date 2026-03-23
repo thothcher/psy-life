@@ -1,8 +1,9 @@
-import { Component, ChangeDetectionStrategy, inject, signal, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal, OnInit, OnDestroy, CUSTOM_ELEMENTS_SCHEMA, ElementRef } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CHAPTERS, QUIZZES } from '../../data/book-data';
 import { AuthService } from '../../services/auth.service';
 import { ProgressService } from '../../services/progress.service';
+import { NotesService } from '../../services/notes.service';
 import { LanguageService } from '../../services/language.service';
 import { Chapter, Quiz } from '../../data/book-data';
 
@@ -11,6 +12,10 @@ import { Chapter, Quiz } from '../../data/book-data';
   imports: [RouterLink],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '(document:mouseup)': 'onMouseUp($event)',
+    '(document:mousedown)': 'onMouseDown($event)',
+  },
   template: `
     @if (chapter(); as ch) {
       <div class="page">
@@ -35,7 +40,7 @@ import { Chapter, Quiz } from '../../data/book-data';
           }
 
           <div class="detail-grid">
-            <div class="main-content">
+            <div class="main-content readable-content">
               <div class="summary-card card">
                 <h2><iconify-icon icon="mdi:text-box-outline" style="vertical-align: -0.125em; margin-right: 0.4rem"></iconify-icon>{{ t.t('chapterDetail.summary') }}</h2>
                 <p>{{ ch.summary }}</p>
@@ -101,9 +106,49 @@ import { Chapter, Quiz } from '../../data/book-data';
           </div>
         </div>
       </div>
+
+      <!-- Floating save-to-notes tooltip -->
+      @if (showTooltip()) {
+        <div
+          class="save-tooltip"
+          [style.top.px]="tooltipY()"
+          [style.left.px]="tooltipX()"
+          role="tooltip"
+        >
+          <button class="save-tooltip-btn" (mousedown)="saveSelection($event)">
+            <iconify-icon icon="mdi:note-plus-outline" width="16" height="16" aria-hidden="true"></iconify-icon>
+            {{ t.t('chapterDetail.saveToNotes') }}
+          </button>
+        </div>
+      }
+
+      <!-- Saved confirmation -->
+      @if (savedToast()) {
+        <div class="save-toast" role="status" aria-live="polite">
+          <iconify-icon icon="mdi:check-circle" width="18" height="18" aria-hidden="true"></iconify-icon>
+          {{ t.t('chapterDetail.savedToNotes') }}
+        </div>
+      }
     }
   `,
   styles: `
+    /* ── Readable content typography ── */
+    .readable-content .card {
+      padding: 2rem 2.25rem;
+    }
+    .readable-content p {
+      font-size: 1.02rem;
+      line-height: 1.85;
+      color: #3a3a4a;
+      letter-spacing: 0.005em;
+    }
+    .readable-content h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1.15rem;
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
     .back-link {
       display: inline-block;
       color: var(--color-text-light);
@@ -157,18 +202,9 @@ import { Chapter, Quiz } from '../../data/book-data';
       gap: 1.5rem;
     }
 
-    .summary-card h2,
-    .key-points-card h2,
-    .real-world-card h2 {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      color: var(--color-primary);
-    }
-
     .summary-card p,
     .real-world-card p {
-      line-height: 1.8;
-      color: var(--color-text-light);
+      line-height: 1.85;
     }
 
     /* Key Points */
@@ -176,7 +212,7 @@ import { Chapter, Quiz } from '../../data/book-data';
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.85rem;
       counter-reset: none;
     }
 
@@ -202,8 +238,9 @@ import { Chapter, Quiz } from '../../data/book-data';
     }
 
     .point-text {
-      line-height: 1.65;
-      color: var(--color-text-light);
+      line-height: 1.75;
+      color: #3a3a4a;
+      font-size: 0.97rem;
     }
 
     /* Fun Fact */
@@ -305,25 +342,158 @@ import { Chapter, Quiz } from '../../data/book-data';
       font-size: 0.85rem;
     }
 
+    /* ── Floating save-to-notes tooltip ── */
+    .save-tooltip {
+      position: fixed;
+      z-index: 1000;
+      animation: tooltipIn 0.15s ease-out;
+    }
+    .save-tooltip-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--color-primary, #1a1a2e);
+      color: #fff;
+      border: none;
+      padding: 0.5rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+      white-space: nowrap;
+      transition: background 0.15s ease;
+    }
+    .save-tooltip-btn:hover {
+      background: var(--color-accent, #c0392b);
+    }
+
+    /* ── Saved toast ── */
+    .save-toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1001;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--color-secondary, #2c6e49);
+      color: #fff;
+      padding: 0.65rem 1.25rem;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      animation: toastIn 0.25s ease-out;
+    }
+
+    @keyframes tooltipIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+      to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+
     @media (max-width: 768px) {
       .detail-grid { grid-template-columns: 1fr; }
       .sidebar { order: -1; }
+      .readable-content .card { padding: 1.5rem; }
     }
   `
 })
-export class ChapterDetailPage implements OnInit {
+export class ChapterDetailPage implements OnInit, OnDestroy {
   private readonly route = inject(ActivatedRoute);
   protected readonly auth = inject(AuthService);
   private readonly progressService = inject(ProgressService);
+  private readonly notesService = inject(NotesService);
   protected readonly t = inject(LanguageService);
+  private readonly elRef = inject(ElementRef);
 
   protected readonly chapter = signal<Chapter | undefined>(undefined);
   protected readonly quiz = signal<Quiz | undefined>(undefined);
+
+  protected readonly showTooltip = signal(false);
+  protected readonly tooltipX = signal(0);
+  protected readonly tooltipY = signal(0);
+  protected readonly savedToast = signal(false);
+  private selectedText = '';
+  private toastTimer: ReturnType<typeof setTimeout> | null = null;
 
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.chapter.set(CHAPTERS.find(c => c.id === id));
     this.quiz.set(QUIZZES.find(q => q.chapterId === id));
+  }
+
+  ngOnDestroy() {
+    if (this.toastTimer) clearTimeout(this.toastTimer);
+  }
+
+  onMouseDown(event: MouseEvent) {
+    // If clicking outside tooltip, hide it
+    const target = event.target as HTMLElement;
+    if (!target.closest('.save-tooltip')) {
+      this.showTooltip.set(false);
+    }
+  }
+
+  onMouseUp(event: MouseEvent) {
+    // Small delay to let the selection finalize
+    setTimeout(() => this.checkSelection(), 10);
+  }
+
+  private checkSelection() {
+    const sel = document.getSelection();
+    const text = sel?.toString().trim() ?? '';
+    if (text.length < 3) {
+      return;
+    }
+
+    // Only show if selection is within our component
+    if (!sel?.anchorNode) return;
+    const host = this.elRef.nativeElement as HTMLElement;
+    if (!host.contains(sel.anchorNode)) return;
+
+    this.selectedText = text;
+    const range = sel.getRangeAt(0);
+    const rect = range.getBoundingClientRect();
+    this.tooltipX.set(rect.left + rect.width / 2 - 60);
+    this.tooltipY.set(rect.top - 44);
+    this.showTooltip.set(true);
+  }
+
+  saveSelection(event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    if (!this.selectedText || !this.chapter()) return;
+
+    if (!this.auth.isLoggedIn()) {
+      this.showTooltip.set(false);
+      return;
+    }
+
+    const ch = this.chapter()!;
+    this.notesService.create({
+      title: `Ch.${ch.id}: ${ch.title}`,
+      content: this.selectedText,
+      chapterId: ch.id,
+      color: '#6c8ebf',
+    }).subscribe({
+      next: () => {
+        this.showTooltip.set(false);
+        this.savedToast.set(true);
+        document.getSelection()?.removeAllRanges();
+        if (this.toastTimer) clearTimeout(this.toastTimer);
+        this.toastTimer = setTimeout(() => this.savedToast.set(false), 2200);
+      },
+      error: () => {
+        this.showTooltip.set(false);
+      }
+    });
   }
 
   markProgress(status: string) {

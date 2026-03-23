@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, inject, OnInit, signal, computed, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { GamificationService } from '../../services/gamification.service';
+import { GamificationService, Badge } from '../../services/gamification.service';
 import { LanguageService } from '../../services/language.service';
 import { ProgressService, UserProgress } from '../../services/progress.service';
 import { CHAPTERS } from '../../data/book-data';
@@ -117,9 +117,9 @@ import { CHAPTERS } from '../../data/book-data';
                 <iconify-icon icon="mdi:cards-outline" width="24" height="24"></iconify-icon>
                 <span>{{ t.t('nav.memoryGame') }}</span>
               </a>
-              <a routerLink="/achievements" class="action-card card">
-                <iconify-icon icon="mdi:trophy-outline" width="24" height="24"></iconify-icon>
-                <span>{{ t.t('nav.achievements') }}</span>
+              <a routerLink="/flashcards" class="action-card card">
+                <iconify-icon icon="mdi:cards-outline" width="24" height="24"></iconify-icon>
+                <span>{{ t.t('nav.flashcards') }}</span>
               </a>
               <a routerLink="/notes" class="action-card card">
                 <iconify-icon icon="mdi:notebook-outline" width="24" height="24"></iconify-icon>
@@ -128,25 +128,6 @@ import { CHAPTERS } from '../../data/book-data';
             </div>
           </section>
         </div>
-
-        <!-- Recent badges earned -->
-        @if (gam.earnedBadges().length > 0) {
-          <section class="dash-section">
-            <h2 class="section-title">
-              <iconify-icon icon="mdi:trophy-outline" width="20" height="20"></iconify-icon>
-              {{ t.t('dashboard.recentBadges') }}
-            </h2>
-            <div class="recent-badges">
-              @for (badge of gam.earnedBadges().slice(0, 5); track badge.id) {
-                <div class="recent-badge">
-                  <iconify-icon [icon]="badge.icon" width="24" height="24"></iconify-icon>
-                  <span>{{ t.lang() === 'ka' ? badge.nameKa : badge.nameEn }}</span>
-                </div>
-              }
-              <a routerLink="/achievements" class="view-all-link">{{ t.t('dashboard.viewAll') }} →</a>
-            </div>
-          </section>
-        }
 
         <!-- Chapter progress overview -->
         <section class="dash-section">
@@ -165,6 +146,64 @@ import { CHAPTERS } from '../../data/book-data';
               </a>
             }
           </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section class="dash-section achievements-section">
+          <h2 class="section-title">
+            <iconify-icon icon="mdi:trophy-outline" width="20" height="20"></iconify-icon>
+            {{ t.t('achievements.title') }}
+          </h2>
+          <p class="achievements-subtitle">{{ t.t('achievements.subtitle') }}</p>
+
+          <!-- Level progress card -->
+          <div class="level-card-full card">
+            <div class="level-header-full">
+              <span class="level-title-full">{{ t.t('achievements.level') }} {{ gam.level().level }}</span>
+              <span class="level-name-full">{{ t.lang() === 'ka' ? gam.level().titleKa : gam.level().titleEn }}</span>
+            </div>
+            @if (gam.level().nextLevelXp) {
+              <div class="level-progress-full">
+                <div class="progress-bar-full">
+                  <div class="progress-fill-full" [style.width.%]="xpPercent()"></div>
+                </div>
+                <span class="progress-text-full">{{ gam.totalXp() }} / {{ gam.level().nextLevelXp }} XP</span>
+              </div>
+            } @else {
+              <p class="max-level">{{ t.t('achievements.maxLevel') }}</p>
+            }
+          </div>
+
+          <!-- Badge categories -->
+          @for (cat of categories; track cat.key) {
+            <div class="badge-category">
+              <h3 class="category-heading">
+                <iconify-icon [icon]="cat.icon" width="18" height="18"></iconify-icon>
+                {{ t.lang() === 'ka' ? cat.nameKa : cat.nameEn }}
+              </h3>
+              <div class="badges-grid">
+                @for (badge of getBadgesByCategory(cat.key); track badge.id) {
+                  <div class="badge-card" [class.earned]="isEarned(badge.id)" [attr.title]="t.lang() === 'ka' ? badge.descriptionKa : badge.descriptionEn">
+                    <div class="badge-icon" [class.locked]="!isEarned(badge.id)">
+                      <iconify-icon [icon]="badge.icon" width="32" height="32"></iconify-icon>
+                    </div>
+                    <span class="badge-name">{{ t.lang() === 'ka' ? badge.nameKa : badge.nameEn }}</span>
+                    <span class="badge-desc">{{ t.lang() === 'ka' ? badge.descriptionKa : badge.descriptionEn }}</span>
+                    @if (isEarned(badge.id)) {
+                      <span class="badge-earned-tag">
+                        <iconify-icon icon="mdi:check-circle" width="14" height="14"></iconify-icon>
+                        {{ t.t('achievements.earned') }}
+                      </span>
+                    } @else {
+                      <span class="badge-locked-tag">
+                        <iconify-icon icon="mdi:lock-outline" width="14" height="14"></iconify-icon>
+                      </span>
+                    }
+                  </div>
+                }
+              </div>
+            </div>
+          }
         </section>
       </div>
     </div>
@@ -378,10 +417,88 @@ import { CHAPTERS } from '../../data/book-data';
       .dashboard-grid { grid-template-columns: 1fr; }
       .chapter-grid { grid-template-columns: repeat(2, 1fr); }
       .greeting { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+      .badges-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 480px) {
       .stats-grid { grid-template-columns: 1fr; }
     }
+
+    /* Achievements section */
+    .achievements-section { margin-top: 1rem; }
+    .achievements-subtitle { color: var(--color-text-muted); margin: -0.5rem 0 1.5rem; font-size: 0.9rem; }
+
+    .level-card-full {
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, #667eea22 0%, #764ba222 100%);
+    }
+    .level-header-full { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+    .level-title-full { font-size: 1.1rem; font-weight: 700; color: var(--color-primary); }
+    .level-name-full { font-size: 1rem; font-weight: 600; color: #764ba2; }
+    .progress-bar-full {
+      width: 100%;
+      height: 12px;
+      background: var(--color-border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .progress-fill-full {
+      height: 100%;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      border-radius: 6px;
+      transition: width 0.5s ease;
+    }
+    .progress-text-full { font-size: 0.8rem; color: var(--color-text-muted); margin-top: 0.4rem; display: block; }
+    .max-level { color: #764ba2; font-weight: 600; margin: 0; }
+
+    .badge-category { margin-bottom: 1.5rem; }
+    .category-heading {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .badges-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+    .badge-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.3rem;
+      position: relative;
+      transition: all 0.2s;
+    }
+    .badge-card.earned {
+      border-color: #667eea;
+      box-shadow: 0 0 0 1px #667eea33;
+    }
+    .badge-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .badge-icon { font-size: 2rem; margin-bottom: 0.25rem; }
+    .badge-icon.locked { opacity: 0.35; filter: grayscale(1) contrast(0.5); }
+    .badge-name { font-size: 0.9rem; font-weight: 700; color: var(--color-primary); }
+    .badge-desc { font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.3; }
+    .badge-earned-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #4caf50;
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      margin-top: 0.25rem;
+    }
+    .badge-locked-tag { color: var(--color-text-muted); opacity: 0.5; margin-top: 0.25rem; }
   `
 })
 export class DashboardPage implements OnInit {
@@ -393,6 +510,16 @@ export class DashboardPage implements OnInit {
   readonly chapters = CHAPTERS;
   readonly progress = signal<UserProgress | null>(null);
 
+  readonly categories = [
+    { key: 'quiz', nameEn: 'Quiz Achievements', nameKa: 'ვიქტორინის მიღწევები', icon: 'mdi:help-circle-outline' },
+    { key: 'learning', nameEn: 'Learning Achievements', nameKa: 'სწავლის მიღწევები', icon: 'mdi:book-open-page-variant' },
+    { key: 'streak', nameEn: 'Streak Achievements', nameKa: 'სტრიკის მიღწევები', icon: 'mdi:fire' },
+    { key: 'milestone', nameEn: 'XP Milestones', nameKa: 'XP მაილსტოუნები', icon: 'mdi:star-shooting' },
+    { key: 'game', nameEn: 'Game Achievements', nameKa: 'თამაშის მიღწევები', icon: 'mdi:puzzle' },
+  ];
+
+  private earnedSet = new Set<string>();
+
   readonly nextChapter = computed(() => {
     const p = this.progress();
     if (!p) return CHAPTERS[0];
@@ -403,8 +530,18 @@ export class DashboardPage implements OnInit {
   });
 
   ngOnInit() {
-    this.gam.loadStats().subscribe();
+    this.gam.loadStats().subscribe(() => {
+      this.earnedSet = new Set(this.gam.earnedBadges().map(b => b.id));
+    });
     this.progressService.getProgress().subscribe(p => this.progress.set(p));
+  }
+
+  getBadgesByCategory(category: string): Badge[] {
+    return this.gam.allBadges().filter(b => b.category === category);
+  }
+
+  isEarned(badgeId: string): boolean {
+    return this.earnedSet.has(badgeId) || this.gam.earnedBadges().some(b => b.id === badgeId);
   }
 
   chapterStatus(chapterId: number): string {

@@ -45,4 +45,9 @@ Thumbs.db
 
 # Environment files
 .env
+
+# Database files
 *.db
+*.db-shm
+*.db-wal
+*.db-journal

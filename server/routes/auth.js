@@ -54,7 +54,7 @@ router.post('/register', async (req, res) => {
 
   res.status(201).json({
     token,
-    user: { id: userId, email, username, displayName, role: 'user', subscriptionStatus: 'trial', emailVerified: false },
+    user: { id: userId, email, username, displayName, role: 'user', subscriptionStatus: 'trial', trialStartDate: new Date().toISOString(), emailVerified: false },
     requiresVerification: true
   });
 });

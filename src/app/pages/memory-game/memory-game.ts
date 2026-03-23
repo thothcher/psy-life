@@ -232,12 +232,14 @@ interface GameCard {
     .win-card {
       text-align: center;
       padding: 2.5rem;
-      max-width: 400px;
+      max-width: 480px;
+      width: 100%;
+      box-sizing: border-box;
     }
     .win-icon { font-size: 3rem; display: block; margin-bottom: 1rem; }
     .win-card h2 { color: var(--color-primary); margin-bottom: 0.5rem; }
     .win-card p { color: var(--color-text-light); margin-bottom: 1.5rem; }
-    .win-actions { display: flex; gap: 1rem; justify-content: center; }
+    .win-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
     @media (max-width: 640px) {
       .game-board { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
