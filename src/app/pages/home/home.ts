@@ -211,6 +211,37 @@ import { LanguageService } from '../../services/language.service';
       </div>
     </section>
 
+    <!-- Survey section -->
+    <section class="survey-section">
+      <div class="container">
+        <div class="survey-card">
+          <iconify-icon icon="mdi:comment-question-outline" width="32" height="32" class="survey-icon" aria-hidden="true"></iconify-icon>
+          <h3>{{ t.t('home.surveyTitle') }}</h3>
+          <p class="survey-desc">{{ t.t('home.surveyDesc') }}</p>
+          @if (!surveyVoted()) {
+            <div class="survey-form">
+              <textarea
+                class="survey-input"
+                [placeholder]="t.t('home.surveyPlaceholder')"
+                rows="3"
+                [value]="surveyText()"
+                (input)="surveyText.set($any($event.target).value)"
+                maxlength="500"></textarea>
+              <button class="survey-send" [disabled]="!surveyText().trim()" (click)="vote(surveyText())">
+                <iconify-icon icon="mdi:send" width="18" height="18" aria-hidden="true"></iconify-icon>
+                {{ t.t('home.surveySend') }}
+              </button>
+            </div>
+          } @else {
+            <div class="survey-thanks">
+              <iconify-icon icon="mdi:check-circle-outline" width="24" height="24" aria-hidden="true"></iconify-icon>
+              <span>{{ t.t('home.surveyThanks') }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+
     <!-- CTA section -->
     <section class="cta">
       <div class="container">
@@ -640,6 +671,94 @@ import { LanguageService } from '../../services/language.service';
       flex-shrink: 0;
     }
 
+    /* Survey */
+    .survey-section { padding: 3rem 0; }
+    .survey-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .survey-icon {
+      color: var(--color-accent);
+      margin-bottom: 0.75rem;
+    }
+    .survey-card h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      margin-bottom: 0.4rem;
+    }
+    .survey-desc {
+      color: var(--color-text-light);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    .survey-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: stretch;
+    }
+    .survey-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      background: var(--color-bg);
+      color: var(--color-primary);
+      font-size: 0.9rem;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 70px;
+      transition: border-color var(--transition-normal);
+    }
+    .survey-input:focus {
+      outline: none;
+      border-color: var(--color-accent);
+    }
+    .survey-input::placeholder {
+      color: var(--color-text-muted);
+    }
+    .survey-send {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      align-self: flex-end;
+      padding: 0.6rem 1.5rem;
+      border-radius: var(--radius-full);
+      border: none;
+      background: var(--color-accent);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-normal);
+    }
+    .survey-send:hover:not(:disabled) {
+      background: var(--color-accent-light);
+      transform: translateY(-1px);
+    }
+    .survey-send:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .survey-thanks {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(39,174,96,0.08);
+      color: #27ae60;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
     /* CTA */
     .cta { padding: 3rem 0 5rem; }
     .cta-card {
@@ -705,6 +824,8 @@ import { LanguageService } from '../../services/language.service';
       .donation-icon-wrap { display: none; }
       .iban { margin-left: 0; }
       .donation-account { flex-direction: column; align-items: stretch; text-align: center; }
+      .survey-card { padding: 2rem 1.5rem; }
+      .survey-options { gap: 0.5rem; }
     }
     @media (max-width: 640px) {
       .hero { min-height: 480px; }
@@ -719,6 +840,14 @@ import { LanguageService } from '../../services/language.service';
 })
 export class HomePage implements OnDestroy {
   protected readonly t = inject(LanguageService);
+
+  protected readonly surveyVoted = signal(!!localStorage.getItem('psy_survey_vote'));
+  protected readonly surveyText = signal('');
+
+  vote(text: string) {
+    localStorage.setItem('psy_survey_vote', text.trim());
+    this.surveyVoted.set(true);
+  }
 
   protected readonly quotes = [
     { text: 'Psychology is the science of mental life, both of its phenomena and their conditions.', author: 'William James' },

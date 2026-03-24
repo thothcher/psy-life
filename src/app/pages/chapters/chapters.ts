@@ -40,7 +40,6 @@ import { LanguageService } from '../../services/language.service';
                   }
                 </div>
                 <h2 class="chapter-title">{{ chapter.title }}</h2>
-                <p class="chapter-title-ka">{{ chapter.titleKa }}</p>
                 <p class="chapter-desc">{{ chapter.description }}</p>
                 <div class="chapter-topics">
                   @for (topic of chapter.keyTopics; track topic) {

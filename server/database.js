@@ -266,6 +266,16 @@ async function initDatabase() {
     await db.execute({ sql: 'UPDATE users SET email_verified = 1 WHERE role = ?', args: ['admin'] });
   }
 
+  // Create default test user for local development
+  const testExists = await db.execute({ sql: "SELECT id FROM users WHERE username = ?", args: ['test'] });
+  if (testExists.rows.length === 0) {
+    const testHash = bcrypt.hashSync('test123', 10);
+    await db.execute({
+      sql: "INSERT INTO users (email, username, password_hash, display_name, role, subscription_status, email_verified) VALUES (?, ?, ?, ?, 'user', 'active', 1)",
+      args: ['test@psylearn.ge', 'test', testHash, 'Test User'],
+    });
+  }
+
   // Migrations for existing databases
   try {
     await db.execute('ALTER TABLE users ADD COLUMN avatar TEXT');

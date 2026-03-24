@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, inject, signal, computed, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { QUIZZES, CHAPTERS, QuizQuestion } from '../../data/book-data';
+import { QUIZZES, CHAPTERS, QuizQuestion, Chapter } from '../../data/book-data';
 import { ProgressService } from '../../services/progress.service';
 import { LanguageService } from '../../services/language.service';
 
@@ -32,10 +32,10 @@ import { LanguageService } from '../../services/language.service';
           </div>
 
           <div class="question-card card">
-            <h2 class="question-text">{{ currentQuestion()?.question }}</h2>
+            <h2 class="question-text">{{ localizedQuestion() }}</h2>
 
             <div class="options">
-              @for (option of currentQuestion()?.options; track $index) {
+              @for (option of localizedOptions(); track $index) {
                 <button
                   class="option-btn"
                   [class.selected]="selectedIndex() === $index"
@@ -52,7 +52,7 @@ import { LanguageService } from '../../services/language.service';
             @if (answered()) {
               <div class="explanation" [class.correct]="isCorrect()" [class.wrong]="!isCorrect()">
                 <strong>{{ isCorrect() ? t.t('quiz.correct') : t.t('quiz.incorrect') }} <iconify-icon [attr.icon]="isCorrect() ? 'mdi:check-circle' : 'mdi:close-circle'" style="vertical-align: -0.125em; margin-left: 0.25rem"></iconify-icon></strong>
-                <p>{{ currentQuestion()?.explanation }}</p>
+                <p>{{ localizedExplanation() }}</p>
               </div>
               <button class="btn btn-accent next-btn" (click)="nextQuestion()">
                 {{ currentIndex() < questions().length - 1 ? t.t('quiz.nextQuestion') : t.t('quiz.seeResults') }}
@@ -82,7 +82,7 @@ import { LanguageService } from '../../services/language.service';
               <a routerLink="/chapters" class="btn btn-outline"><iconify-icon icon="mdi:arrow-left" style="vertical-align: -0.125em; margin-right: 0.25rem"></iconify-icon>{{ t.t('quiz.backToChapters') }}</a>
             </div>
             @if (submitError()) {
-              <p class="submit-error" role="alert"><iconify-icon icon="mdi:alert-circle-outline" style="vertical-align: -0.125em"></iconify-icon> Score could not be saved. Please try again later.</p>
+              <p class="submit-error" role="alert"><iconify-icon icon="mdi:alert-circle-outline" style="vertical-align: -0.125em"></iconify-icon> {{ t.t('quiz.submitError') }}</p>
             }
           </div>
         }
@@ -229,7 +229,12 @@ export class QuizPage implements OnInit {
   protected readonly t = inject(LanguageService);
 
   protected readonly chapterId = signal(0);
-  protected readonly chapterTitle = signal('');
+  private readonly chapter = signal<Chapter | undefined>(undefined);
+  protected readonly chapterTitle = computed(() => {
+    const ch = this.chapter();
+    if (!ch) return 'Quiz';
+    return this.t.lang() === 'ka' && ch.titleKa ? ch.titleKa : ch.title;
+  });
   protected readonly questions = signal<QuizQuestion[]>([]);
   protected readonly currentIndex = signal(0);
   protected readonly selectedIndex = signal(-1);
@@ -241,6 +246,21 @@ export class QuizPage implements OnInit {
 
   protected readonly currentQuestion = computed(() => this.questions()[this.currentIndex()]);
   protected readonly isCorrect = computed(() => this.selectedIndex() === this.currentQuestion()?.correctIndex);
+  protected readonly localizedQuestion = computed(() => {
+    const q = this.currentQuestion();
+    if (!q) return '';
+    return this.t.lang() === 'ka' && q.questionKa ? q.questionKa : q.question;
+  });
+  protected readonly localizedOptions = computed(() => {
+    const q = this.currentQuestion();
+    if (!q) return [];
+    return this.t.lang() === 'ka' && q.optionsKa ? q.optionsKa : q.options;
+  });
+  protected readonly localizedExplanation = computed(() => {
+    const q = this.currentQuestion();
+    if (!q) return '';
+    return this.t.lang() === 'ka' && q.explanationKa ? q.explanationKa : q.explanation;
+  });
   protected readonly progressPercent = computed(() =>
     ((this.currentIndex() + (this.answered() ? 1 : 0)) / this.questions().length * 100) + '%'
   );
@@ -253,7 +273,7 @@ export class QuizPage implements OnInit {
     this.chapterId.set(id);
 
     const chapter = CHAPTERS.find(c => c.id === id);
-    this.chapterTitle.set(chapter?.title || 'Quiz');
+    this.chapter.set(chapter);
 
     const quiz = QUIZZES.find(q => q.chapterId === id);
     if (quiz) {

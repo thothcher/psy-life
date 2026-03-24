@@ -15,7 +15,6 @@ import { LanguageService } from '../../services/language.service';
         <div class="auth-header">
           <span class="auth-icon"><iconify-icon icon="mdi:school-outline" width="34" height="34"></iconify-icon></span>
           <h1>{{ t.t('register.createAccount') }}</h1>
-          <p>{{ t.t('register.subtitle') }}</p>
         </div>
 
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
