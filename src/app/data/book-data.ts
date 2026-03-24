@@ -7,8 +7,10 @@ export interface Chapter {
   title: string;
   titleKa: string;
   description: string;
+  descriptionKa: string;
   icon: string;
   keyTopics: string[];
+  keyTopicsKa: string[];
   summary: string;
   keyPoints: string[];
   funFact: string;
@@ -77,8 +79,10 @@ export const CHAPTERS: Chapter[] = [
   {
     id: 1, title: 'What is Psychology?', titleKa: '\u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10D0 \u10E0\u10D0 \u10D0\u10E0\u10D8\u10E1?',
     description: 'Introduction to the science of psychology, its history, and modern approaches.',
+    descriptionKa: '\u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10D8\u10E1 \u10DB\u10D4\u10EA\u10DC\u10D8\u10D4\u10E0\u10D4\u10D1\u10D8\u10E1, \u10DB\u10D8\u10E1\u10D8 \u10D8\u10E1\u10E2\u10DD\u10E0\u10D8\u10D8\u10E1\u10D0 \u10D3\u10D0 \u10D7\u10D0\u10DC\u10D0\u10DB\u10D4\u10D3\u10E0\u10DD\u10D5\u10D4 \u10DB\u10D8\u10D3\u10D2\u10DD\u10DB\u10D4\u10D1\u10D8\u10E1 \u10E8\u10D4\u10E1\u10D0\u10D5\u10D0\u10DA\u10D8.',
     icon: 'mdi:head-cog-outline',
     keyTopics: ['Definition of Psychology', 'History of Psychology', 'Modern Perspectives', 'Research Methods'],
+    keyTopicsKa: ['\u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10D8\u10E1 \u10D2\u10D0\u10DC\u10DB\u10D0\u10E0\u10E2\u10D4\u10D1\u10D0', '\u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10D8\u10E1 \u10D8\u10E1\u10E2\u10DD\u10E0\u10D8\u10D0', '\u10D7\u10D0\u10DC\u10D0\u10DB\u10D4\u10D3\u10E0\u10DD\u10D5\u10D4 \u10DE\u10D4\u10E0\u10E1\u10DE\u10D4\u10E5\u10E2\u10D8\u10D5\u10D4\u10D1\u10D8', '\u10D9\u10D5\u10DA\u10D4\u10D5\u10D8\u10E1 \u10DB\u10D4\u10D7\u10DD\u10D3\u10D4\u10D1\u10D8'],
     summary: 'Psychology is the scientific study of behavior and mental processes. It explores how we think, feel, act, and interact. From Wundt\'s first laboratory to modern neuroscience, this chapter traces the evolution of psychology and introduces major theoretical perspectives: biological, psychodynamic, behavioral, cognitive, humanistic, and sociocultural.',
     keyPoints: [
       'Psychology literally means "study of the soul" (Greek: psyche + logos) but today is defined as the scientific study of behavior and mental processes.',
@@ -95,8 +99,10 @@ export const CHAPTERS: Chapter[] = [
   {
     id: 2, title: 'Research Methods in Psychology', titleKa: '\u10D9\u10D5\u10DA\u10D4\u10D5\u10D8\u10E1 \u10DB\u10D4\u10D7\u10DD\u10D3\u10D4\u10D1\u10D8',
     description: 'How psychologists conduct research: experiments, observations, surveys, and ethics.',
+    descriptionKa: '\u10E0\u10DD\u10D2\u10DD\u10E0 \u10D0\u10E2\u10D0\u10E0\u10D4\u10D1\u10D4\u10DC \u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D4\u10D1\u10D8 \u10D9\u10D5\u10DA\u10D4\u10D5\u10D0\u10E1: \u10D4\u10E5\u10E1\u10DE\u10D4\u10E0\u10D8\u10DB\u10D4\u10DC\u10E2\u10D4\u10D1\u10D8, \u10D3\u10D0\u10D9\u10D5\u10D8\u10E0\u10D5\u10D4\u10D1\u10D0, \u10D2\u10D0\u10DB\u10DD\u10D9\u10D8\u10D7\u10EE\u10D5\u10D4\u10D1\u10D8 \u10D3\u10D0 \u10D4\u10D7\u10D8\u10D9\u10D0.',
     icon: 'mdi:flask-outline',
     keyTopics: ['Scientific Method', 'Experimental Design', 'Correlation vs. Causation', 'Ethics in Research'],
+    keyTopicsKa: ['\u10E1\u10D0\u10DB\u10D4\u10EA\u10DC\u10D8\u10D4\u10E0\u10DD \u10DB\u10D4\u10D7\u10DD\u10D3\u10D8', '\u10D4\u10E5\u10E1\u10DE\u10D4\u10E0\u10D8\u10DB\u10D4\u10DC\u10E2\u10E3\u10DA\u10D8 \u10D3\u10D8\u10D6\u10D0\u10D8\u10DC\u10D8', '\u10D9\u10DD\u10E0\u10D4\u10DA\u10D0\u10EA\u10D8\u10D0 vs. \u10DB\u10D8\u10D6\u10D4\u10D6\u10DD\u10D1\u10E0\u10D8\u10D5\u10DD\u10D1\u10D0', '\u10D4\u10D7\u10D8\u10D9\u10D0 \u10D9\u10D5\u10DA\u10D4\u10D5\u10D0\u10E8\u10D8'],
     summary: 'This chapter covers the tools psychologists use to study behavior scientifically. Learn about variables, control groups, double-blind studies, and the critical distinction between correlation and causation.',
     keyPoints: [
       'The scientific method: Observation \u2192 Hypothesis \u2192 Experiment \u2192 Data Analysis \u2192 Conclusion \u2192 Replication.',
@@ -114,8 +120,10 @@ export const CHAPTERS: Chapter[] = [
   {
     id: 3, title: 'Biological Bases of Behavior', titleKa: '\u10E5\u10EA\u10D4\u10D5\u10D8\u10E1 \u10D1\u10D8\u10DD\u10DA\u10DD\u10D2\u10D8\u10E3\u10E0\u10D8 \u10E1\u10D0\u10E4\u10E3\u10EB\u10D5\u10DA\u10D4\u10D1\u10D8',
     description: 'The brain, nervous system, neurons, and how biology shapes our behavior.',
+    descriptionKa: '\u10E2\u10D5\u10D8\u10DC\u10D8, \u10DC\u10D4\u10E0\u10D5\u10E3\u10DA\u10D8 \u10E1\u10D8\u10E1\u10E2\u10D4\u10DB\u10D0, \u10DC\u10D4\u10D8\u10E0\u10DD\u10DC\u10D4\u10D1\u10D8 \u10D3\u10D0 \u10E0\u10DD\u10D2\u10DD\u10E0 \u10D0\u10E7\u10D0\u10DA\u10D8\u10D1\u10D4\u10D1\u10E1 \u10D1\u10D8\u10DD\u10DA\u10DD\u10D2\u10D8\u10D0 \u10E9\u10D5\u10D4\u10DC\u10E1 \u10E5\u10EA\u10D4\u10D5\u10D0\u10E1.',
     icon: 'mdi:dna',
     keyTopics: ['Neurons & Synapses', 'Brain Structure', 'Nervous System', 'Neurotransmitters', 'Genetics & Behavior'],
+    keyTopicsKa: ['\u10DC\u10D4\u10D8\u10E0\u10DD\u10DC\u10D4\u10D1\u10D8 \u10D3\u10D0 \u10E1\u10D8\u10DC\u10D0\u10E4\u10E1\u10D4\u10D1\u10D8', '\u10E2\u10D5\u10D8\u10DC\u10D8\u10E1 \u10E1\u10E2\u10E0\u10E3\u10E5\u10E2\u10E3\u10E0\u10D0', '\u10DC\u10D4\u10E0\u10D5\u10E3\u10DA\u10D8 \u10E1\u10D8\u10E1\u10E2\u10D4\u10DB\u10D0', '\u10DC\u10D4\u10D8\u10E0\u10DD\u10E2\u10E0\u10D0\u10DC\u10E1\u10DB\u10D8\u10E2\u10D4\u10E0\u10D4\u10D1\u10D8', '\u10D2\u10D4\u10DC\u10D4\u10E2\u10D8\u10D9\u10D0 \u10D3\u10D0 \u10E5\u10EA\u10D4\u10D5\u10D0'],
     summary: 'Every thought, emotion, and action has a biological basis. This chapter explores how neurons communicate, the structure of the brain, and how genetics influence behavior.',
     keyPoints: [
       'Neurons are the basic units of the nervous system. They communicate via electrochemical signals: electrical impulses travel down the axon, then release neurotransmitters across the synapse.',
@@ -133,8 +141,10 @@ export const CHAPTERS: Chapter[] = [
   {
     id: 4, title: 'Sensation and Perception', titleKa: '\u10E8\u10D4\u10D2\u10E0\u10EB\u10DC\u10D4\u10D1\u10D0 \u10D3\u10D0 \u10D0\u10E6\u10E5\u10DB\u10D0',
     description: 'How our senses detect stimuli and our brain interprets them.',
+    descriptionKa: '\u10E0\u10DD\u10D2\u10DD\u10E0 \u10D0\u10D2\u10E0\u10DD\u10D5\u10D4\u10D1\u10E1 \u10E9\u10D5\u10D4\u10DC\u10D8 \u10D2\u10E0\u10EB\u10DC\u10DD\u10D1\u10D4\u10D1\u10D8 \u10E1\u10E2\u10D8\u10DB\u10E3\u10DA\u10D4\u10D1\u10E1 \u10D3\u10D0 \u10E0\u10DD\u10D2\u10DD\u10E0 \u10D8\u10DC\u10E2\u10D4\u10E0\u10DE\u10E0\u10D4\u10E2\u10D8\u10E0\u10D4\u10D1\u10E1 \u10DB\u10D0\u10D7 \u10E2\u10D5\u10D8\u10DC\u10D8.',
     icon: 'mdi:eye-outline',
     keyTopics: ['Vision', 'Hearing', 'Other Senses', 'Perceptual Organization', 'Illusions'],
+    keyTopicsKa: ['\u10DB\u10EE\u10D4\u10D3\u10D5\u10D4\u10DA\u10DD\u10D1\u10D0', '\u10E1\u10DB\u10D4\u10DC\u10D0', '\u10E1\u10EE\u10D5\u10D0 \u10D2\u10E0\u10EB\u10DC\u10DD\u10D1\u10D4\u10D1\u10D8', '\u10DE\u10D4\u10E0\u10EA\u10D4\u10E4\u10EA\u10D8\u10E3\u10DA\u10D8 \u10DD\u10E0\u10D2\u10D0\u10DC\u10D8\u10D6\u10D0\u10EA\u10D8\u10D0', '\u10D8\u10DA\u10E3\u10D6\u10D8\u10D4\u10D1\u10D8'],
     summary: 'Sensation is the process by which our sensory receptors detect stimuli; perception is how the brain interprets this. Covers visual processing, Gestalt principles, and perceptual illusions.',
     keyPoints: [
       'Sensation = detecting physical energy (light, sound, pressure); Perception = organizing and interpreting that sensory information into something meaningful.',
@@ -152,8 +162,10 @@ export const CHAPTERS: Chapter[] = [
   {
     id: 5, title: 'States of Consciousness', titleKa: '\u10EA\u10DC\u10DD\u10D1\u10D8\u10D4\u10E0\u10D4\u10D1\u10D8\u10E1 \u10DB\u10D3\u10D2\u10DD\u10DB\u10D0\u10E0\u10D4\u10DD\u10D1\u10D4\u10D1\u10D8',
     description: 'Sleep, dreams, hypnosis, and altered states of consciousness.',
+    descriptionKa: '\u10EB\u10D8\u10DA\u10D8, \u10E1\u10D8\u10D6\u10DB\u10E0\u10D4\u10D1\u10D8, \u10F0\u10D8\u10DE\u10DC\u10DD\u10D6\u10D8 \u10D3\u10D0 \u10EA\u10DC\u10DD\u10D1\u10D8\u10D4\u10E0\u10D4\u10D1\u10D8\u10E1 \u10E8\u10D4\u10EA\u10D5\u10DA\u10D8\u10DA\u10D8 \u10DB\u10D3\u10D2\u10DD\u10DB\u10D0\u10E0\u10D4\u10DD\u10D1\u10D4\u10D1\u10D8.',
     icon: 'mdi:sleep',
     keyTopics: ['Sleep Stages', 'Dreams', 'Hypnosis', 'Meditation', 'Psychoactive Substances'],
+    keyTopicsKa: ['\u10EB\u10D8\u10DA\u10D8\u10E1 \u10E1\u10E2\u10D0\u10D3\u10D8\u10D4\u10D1\u10D8', '\u10E1\u10D8\u10D6\u10DB\u10E0\u10D4\u10D1\u10D8', '\u10F0\u10D8\u10DE\u10DC\u10DD\u10D6\u10D8', '\u10DB\u10D4\u10D3\u10D8\u10E2\u10D0\u10EA\u10D8\u10D0', '\u10E4\u10E1\u10D8\u10E5\u10DD\u10D0\u10E5\u10E2\u10D8\u10E3\u10E0\u10D8 \u10E1\u10E3\u10D1\u10E1\u10E2\u10D0\u10DC\u10EA\u10D8\u10D4\u10D1\u10D8'],
     summary: 'Consciousness is our awareness of ourselves and environment. This chapter explores sleep cycles, theories of dreams, hypnosis, meditation, and how substances alter conscious experience.',
     keyPoints: [
       'Consciousness exists on a continuum: from fully alert to deeply asleep, with many states in between (daydreaming, meditation, hypnosis).',
@@ -171,8 +183,10 @@ export const CHAPTERS: Chapter[] = [
   {
     id: 6, title: 'Learning', titleKa: '\u10E1\u10EC\u10D0\u10D5\u10DA\u10D0',
     description: 'Classical conditioning, operant conditioning, and observational learning.',
+    descriptionKa: '\u10D9\u10DA\u10D0\u10E1\u10D8\u10D9\u10E3\u10E0\u10D8 \u10D2\u10D0\u10DC\u10DE\u10D8\u10E0\u10DD\u10D1\u10D4\u10D1\u10D0, \u10DD\u10DE\u10D4\u10E0\u10D0\u10DC\u10E2\u10E3\u10DA\u10D8 \u10D2\u10D0\u10DC\u10DE\u10D8\u10E0\u10DD\u10D1\u10D4\u10D1\u10D0 \u10D3\u10D0 \u10D3\u10D0\u10D9\u10D5\u10D8\u10E0\u10D5\u10D4\u10D1\u10D8\u10D7\u10D8 \u10E1\u10EC\u10D0\u10D5\u10DA\u10D0.',
     icon: 'mdi:book-open-variant',
     keyTopics: ['Classical Conditioning', 'Operant Conditioning', 'Reinforcement & Punishment', 'Observational Learning'],
+    keyTopicsKa: ['\u10D9\u10DA\u10D0\u10E1\u10D8\u10D9\u10E3\u10E0\u10D8 \u10D2\u10D0\u10DC\u10DE\u10D8\u10E0\u10DD\u10D1\u10D4\u10D1\u10D0', '\u10DD\u10DE\u10D4\u10E0\u10D0\u10DC\u10E2\u10E3\u10DA\u10D8 \u10D2\u10D0\u10DC\u10DE\u10D8\u10E0\u10DD\u10D1\u10D4\u10D1\u10D0', '\u10D2\u10D0\u10DC\u10DB\u10E2\u10D9\u10D8\u10EA\u10D4\u10D1\u10D0 \u10D3\u10D0 \u10D3\u10D0\u10E1\u10EF\u10D0', '\u10D3\u10D0\u10D9\u10D5\u10D8\u10E0\u10D5\u10D4\u10D1\u10D8\u10D7\u10D8 \u10E1\u10EC\u10D0\u10D5\u10DA\u10D0'],
     summary: 'Learning is a relatively permanent change in behavior due to experience. Pavlov\'s classical conditioning, Skinner\'s operant conditioning, and Bandura\'s social learning theory are covered.',
     keyPoints: [
       'Classical conditioning (Pavlov): Learning by association. A neutral stimulus (bell) paired with an unconditioned stimulus (food) eventually produces a conditioned response (salivation to bell alone). Key terms: UCS, UCR, CS, CR.',
@@ -190,8 +204,10 @@ export const CHAPTERS: Chapter[] = [
   {
     id: 7, title: 'Memory', titleKa: '\u10DB\u10D4\u10EE\u10E1\u10D8\u10D4\u10E0\u10D4\u10D1\u10D0',
     description: 'How we encode, store, and retrieve information.',
+    descriptionKa: '\u10E0\u10DD\u10D2\u10DD\u10E0 \u10D5\u10D0\u10D9\u10DD\u10D3\u10D8\u10E0\u10D4\u10D1\u10D7, \u10D5\u10D8\u10DC\u10D0\u10EE\u10D0\u10D5\u10D7 \u10D3\u10D0 \u10D5\u10D8\u10EE\u10E1\u10D4\u10DC\u10D4\u10D1\u10D7 \u10D8\u10DC\u10E4\u10DD\u10E0\u10DB\u10D0\u10EA\u10D8\u10D0\u10E1.',
     icon: 'mdi:database-outline',
     keyTopics: ['Encoding', 'Storage', 'Retrieval', 'Forgetting', 'Memory Improvement'],
+    keyTopicsKa: ['\u10D9\u10DD\u10D3\u10D8\u10E0\u10D4\u10D1\u10D0', '\u10E8\u10D4\u10DC\u10D0\u10EE\u10D5\u10D0', '\u10D0\u10E6\u10D3\u10D2\u10D4\u10DC\u10D0', '\u10D3\u10D0\u10D5\u10D8\u10EC\u10E7\u10D4\u10D1\u10D0', '\u10DB\u10D4\u10EE\u10E1\u10D8\u10D4\u10E0\u10D4\u10D1\u10D8\u10E1 \u10D2\u10D0\u10E3\u10DB\u10EF\u10DD\u10D1\u10D4\u10E1\u10D4\u10D1\u10D0'],
     summary: 'Memory involves encoding, storage, and retrieval. The multi-store model describes sensory, short-term, and long-term memory. Also covers forgetting curves, false memories, and improvement strategies.',
     keyPoints: [
       'Three stages of memory: Encoding (converting information), Storage (maintaining it), Retrieval (accessing it later).',
@@ -209,8 +225,10 @@ export const CHAPTERS: Chapter[] = [
   {
     id: 8, title: 'Cognition and Intelligence', titleKa: '\u10E8\u10D4\u10DB\u10D4\u10EA\u10DC\u10D4\u10D1\u10D0 \u10D3\u10D0 \u10D8\u10DC\u10E2\u10D4\u10DA\u10D4\u10E5\u10E2\u10D8',
     description: 'Thinking, problem-solving, language, and measuring intelligence.',
+    descriptionKa: '\u10D0\u10D6\u10E0\u10DD\u10D5\u10DC\u10D4\u10D1\u10D0, \u10DE\u10E0\u10DD\u10D1\u10DA\u10D4\u10DB\u10D4\u10D1\u10D8\u10E1 \u10D2\u10D0\u10D3\u10D0\u10ED\u10E0\u10D0, \u10D4\u10DC\u10D0 \u10D3\u10D0 \u10D8\u10DC\u10E2\u10D4\u10DA\u10D4\u10E5\u10E2\u10D8\u10E1 \u10D2\u10D0\u10D6\u10DD\u10DB\u10D5\u10D0.',
     icon: 'mdi:lightbulb-outline',
     keyTopics: ['Problem Solving', 'Decision Making', 'Language', 'Intelligence Testing', 'Creativity'],
+    keyTopicsKa: ['\u10DE\u10E0\u10DD\u10D1\u10DA\u10D4\u10DB\u10D4\u10D1\u10D8\u10E1 \u10D2\u10D0\u10D3\u10D0\u10ED\u10E0\u10D0', '\u10D2\u10D0\u10D3\u10D0\u10EC\u10E7\u10D5\u10D4\u10E2\u10D8\u10DA\u10D4\u10D1\u10D8\u10E1 \u10DB\u10D8\u10E6\u10D4\u10D1\u10D0', '\u10D4\u10DC\u10D0', '\u10D8\u10DC\u10E2\u10D4\u10DA\u10D4\u10E5\u10E2\u10D8\u10E1 \u10E2\u10D4\u10E1\u10E2\u10D8\u10E0\u10D4\u10D1\u10D0', '\u10E8\u10D4\u10DB\u10DD\u10E5\u10DB\u10D4\u10D3\u10D4\u10D1\u10D8\u10D7\u10DD\u10D1\u10D0'],
     summary: 'Cognition encompasses thinking, reasoning, problem-solving, and language. Examines heuristics and biases, theories of intelligence, IQ testing, and the nature vs. nurture debate.',
     keyPoints: [
       'Cognition includes all mental activities: perceiving, thinking, remembering, and communicating.',
@@ -228,8 +246,10 @@ export const CHAPTERS: Chapter[] = [
   {
     id: 9, title: 'Human Development', titleKa: '\u10D0\u10D3\u10D0\u10DB\u10D8\u10D0\u10DC\u10D8\u10E1 \u10D2\u10D0\u10DC\u10D5\u10D8\u10D7\u10D0\u10E0\u10D4\u10D1\u10D0',
     description: 'Physical, cognitive, and social development across the lifespan.',
+    descriptionKa: '\u10E4\u10D8\u10D6\u10D8\u10D9\u10E3\u10E0\u10D8, \u10D9\u10DD\u10D2\u10DC\u10D8\u10E2\u10E3\u10E0\u10D8 \u10D3\u10D0 \u10E1\u10DD\u10EA\u10D8\u10D0\u10DA\u10E3\u10E0\u10D8 \u10D2\u10D0\u10DC\u10D5\u10D8\u10D7\u10D0\u10E0\u10D4\u10D1\u10D0 \u10DB\u10D7\u10D4\u10DA\u10D8 \u10EA\u10EE\u10DD\u10D5\u10E0\u10D4\u10D1\u10D8\u10E1 \u10DB\u10D0\u10DC\u10EB\u10D8\u10DA\u10D6\u10D4.',
     icon: 'mdi:baby-face-outline',
     keyTopics: ['Piaget\'s Stages', 'Attachment', 'Erikson\'s Stages', 'Moral Development', 'Aging'],
+    keyTopicsKa: ['\u10DE\u10D8\u10D0\u10DF\u10D4\u10E1 \u10E1\u10E2\u10D0\u10D3\u10D8\u10D4\u10D1\u10D8', '\u10DB\u10D8\u10D1\u10DB\u10E3\u10DA\u10DD\u10D1\u10D0', '\u10D4\u10E0\u10D8\u10E5\u10E1\u10DD\u10DC\u10D8\u10E1 \u10E1\u10E2\u10D0\u10D3\u10D8\u10D4\u10D1\u10D8', '\u10DB\u10DD\u10E0\u10D0\u10DA\u10E3\u10E0\u10D8 \u10D2\u10D0\u10DC\u10D5\u10D8\u10D7\u10D0\u10E0\u10D4\u10D1\u10D0', '\u10D3\u10D0\u10D1\u10D4\u10E0\u10D4\u10D1\u10D0'],
     summary: 'Development is a lifelong process. Piaget described cognitive stages. Erikson outlined psychosocial crises. Bowlby and Ainsworth studied attachment. Traces changes from conception through aging.',
     keyPoints: [
       'Nature vs. nurture is a false dichotomy: genes and environment interact continuously. Epigenetics shows that experiences can turn genes on or off.',
@@ -247,8 +267,10 @@ export const CHAPTERS: Chapter[] = [
   {
     id: 10, title: 'Motivation and Emotion', titleKa: '\u10DB\u10DD\u10E2\u10D8\u10D5\u10D0\u10EA\u10D8\u10D0 \u10D3\u10D0 \u10D4\u10DB\u10DD\u10EA\u10D8\u10D0',
     description: 'What drives human behavior and the science of emotions.',
+    descriptionKa: '\u10E0\u10D0 \u10D0\u10DB\u10DD\u10EB\u10E0\u10D0\u10D5\u10D4\u10D1\u10E1 \u10D0\u10D3\u10D0\u10DB\u10D8\u10D0\u10DC\u10D8\u10E1 \u10E5\u10EA\u10D4\u10D5\u10D0\u10E1 \u10D3\u10D0 \u10D4\u10DB\u10DD\u10EA\u10D8\u10D4\u10D1\u10D8\u10E1 \u10DB\u10D4\u10EA\u10DC\u10D8\u10D4\u10E0\u10D4\u10D1\u10D0.',
     icon: 'mdi:fire',
     keyTopics: ['Maslow\'s Hierarchy', 'Hunger & Eating', 'Achievement Motivation', 'Basic Emotions', 'Emotional Intelligence'],
+    keyTopicsKa: ['\u10DB\u10D0\u10E1\u10DA\u10DD\u10E3\u10E1 \u10D8\u10D4\u10E0\u10D0\u10E0\u10E5\u10D8\u10D0', '\u10E8\u10D8\u10DB\u10E8\u10D8\u10DA\u10D8 \u10D3\u10D0 \u10D9\u10D5\u10D4\u10D1\u10D0', '\u10DB\u10D8\u10E6\u10EC\u10D4\u10D5\u10D8\u10E1 \u10DB\u10DD\u10E2\u10D8\u10D5\u10D0\u10EA\u10D8\u10D0', '\u10EB\u10D8\u10E0\u10D8\u10D7\u10D0\u10D3\u10D8 \u10D4\u10DB\u10DD\u10EA\u10D8\u10D4\u10D1\u10D8', '\u10D4\u10DB\u10DD\u10EA\u10D8\u10E3\u10E0\u10D8 \u10D8\u10DC\u10E2\u10D4\u10DA\u10D4\u10E5\u10E2\u10D8'],
     summary: 'Motivation energizes and directs behavior. Covers Maslow\'s hierarchy, James-Lange theory, Cannon-Bard theory, and Schachter-Singer theory of emotions.',
     keyPoints: [
       'Motivation has three components: activation (initiating), persistence (continuing effort), and intensity (how hard you try).',
@@ -266,8 +288,10 @@ export const CHAPTERS: Chapter[] = [
   {
     id: 11, title: 'Personality', titleKa: '\u10DE\u10D8\u10E0\u10DD\u10D5\u10DC\u10D4\u10D1\u10D0',
     description: 'Theories of personality: from Freud to the Big Five.',
+    descriptionKa: '\u10DE\u10D8\u10E0\u10DD\u10D5\u10DC\u10D4\u10D1\u10D8\u10E1 \u10D7\u10D4\u10DD\u10E0\u10D8\u10D4\u10D1\u10D8: \u10E4\u10E0\u10DD\u10D8\u10D3\u10D8\u10D3\u10D0\u10DC \u10D3\u10D8\u10D3\u10D8 \u10EE\u10E3\u10D7\u10D8\u10E1 \u10DB\u10DD\u10D3\u10D4\u10DA\u10D0\u10DB\u10D3\u10D4.',
     icon: 'mdi:drama-masks',
     keyTopics: ['Psychoanalytic Theory', 'Humanistic Theory', 'Trait Theory', 'Big Five', 'Personality Assessment'],
+    keyTopicsKa: ['\u10E4\u10E1\u10D8\u10E5\u10DD\u10D0\u10DC\u10D0\u10DA\u10D8\u10E2\u10D8\u10D9\u10E3\u10E0\u10D8 \u10D7\u10D4\u10DD\u10E0\u10D8\u10D0', '\u10F0\u10E3\u10DB\u10D0\u10DC\u10D8\u10E1\u10E2\u10E3\u10E0\u10D8 \u10D7\u10D4\u10DD\u10E0\u10D8\u10D0', '\u10D7\u10D5\u10D8\u10E1\u10D4\u10D1\u10D0\u10D7\u10D0 \u10D7\u10D4\u10DD\u10E0\u10D8\u10D0', '\u10D3\u10D8\u10D3\u10D8 \u10EE\u10E3\u10D7\u10D8', '\u10DE\u10D8\u10E0\u10DD\u10D5\u10DC\u10D4\u10D1\u10D8\u10E1 \u10E8\u10D4\u10E4\u10D0\u10E1\u10D4\u10D1\u10D0'],
     summary: 'Personality is our unique pattern of thinking, feeling, and behaving. From Freud\'s id/ego/superego to the Big Five traits (OCEAN), covers all major personality theories.',
     keyPoints: [
       'Freud\'s psychoanalytic theory: Personality is shaped by unconscious conflicts between the Id (primal desires), Ego (rational mediator), and Superego (moral conscience). Defense mechanisms (repression, projection, denial) protect the ego.',
@@ -285,8 +309,10 @@ export const CHAPTERS: Chapter[] = [
   {
     id: 12, title: 'Social Psychology', titleKa: '\u10E1\u10DD\u10EA\u10D8\u10D0\u10DA\u10E3\u10E0\u10D8 \u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10D0',
     description: 'How others influence our thoughts, feelings, and behavior.',
+    descriptionKa: '\u10E0\u10DD\u10D2\u10DD\u10E0 \u10D2\u10D5\u10D0\u10D5\u10DA\u10D4\u10DC\u10D4\u10DC \u10E1\u10EE\u10D5\u10D4\u10D1\u10D8 \u10E9\u10D5\u10D4\u10DC\u10E1 \u10D0\u10D6\u10E0\u10D4\u10D1\u10E1, \u10D2\u10E0\u10EB\u10DC\u10DD\u10D1\u10D4\u10D1\u10E1 \u10D3\u10D0 \u10E5\u10EA\u10D4\u10D5\u10D0\u10E1.',
     icon: 'mdi:account-group-outline',
     keyTopics: ['Conformity', 'Obedience', 'Attitudes', 'Group Behavior', 'Prejudice'],
+    keyTopicsKa: ['\u10D9\u10DD\u10DC\u10E4\u10DD\u10E0\u10DB\u10D8\u10D6\u10DB\u10D8', '\u10DB\u10DD\u10E0\u10E9\u10D8\u10DA\u10D4\u10D1\u10D0', '\u10D3\u10D0\u10DB\u10DD\u10D9\u10D8\u10D3\u10D4\u10D1\u10E3\u10DA\u10D4\u10D1\u10D4\u10D1\u10D8', '\u10EF\u10D2\u10E3\u10E4\u10E3\u10E0\u10D8 \u10E5\u10EA\u10D4\u10D5\u10D0', '\u10EA\u10E0\u10E3\u10E0\u10EA\u10EE\u10D5\u10D0'],
     summary: 'Social psychology studies how people think about, influence, and relate to each other. Covers conformity, obedience, cognitive dissonance, group behavior, and prejudice.',
     keyPoints: [
       'Attribution theory: We explain others\' behavior using dispositional (personality) or situational (environment) attributions. The fundamental attribution error: we overestimate personality and underestimate situations when judging others.',
@@ -304,8 +330,10 @@ export const CHAPTERS: Chapter[] = [
   {
     id: 13, title: 'Stress, Health, and Coping', titleKa: '\u10E1\u10E2\u10E0\u10D4\u10E1\u10D8, \u10EF\u10D0\u10DC\u10DB\u10E0\u10D7\u10D4\u10DA\u10DD\u10D1\u10D0 \u10D3\u10D0 \u10D2\u10D0\u10DB\u10D9\u10DA\u10D0\u10D5\u10D4\u10D1\u10D0',
     description: 'How stress affects us and strategies to cope with it.',
+    descriptionKa: '\u10E0\u10DD\u10D2\u10DD\u10E0 \u10DB\u10DD\u10E5\u10DB\u10D4\u10D3\u10D4\u10D1\u10E1 \u10E1\u10E2\u10E0\u10D4\u10E1\u10D8 \u10E9\u10D5\u10D4\u10DC\u10D6\u10D4 \u10D3\u10D0 \u10DB\u10D8\u10E1\u10D8 \u10D2\u10D0\u10DB\u10D9\u10DA\u10D0\u10D5\u10D4\u10D1\u10D8\u10E1 \u10E1\u10E2\u10E0\u10D0\u10E2\u10D4\u10D2\u10D8\u10D4\u10D1\u10D8.',
     icon: 'mdi:meditation',
     keyTopics: ['Stress Response', 'Stressors', 'Coping Strategies', 'Health Psychology', 'Resilience'],
+    keyTopicsKa: ['\u10E1\u10E2\u10E0\u10D4\u10E1\u10E3\u10DA\u10D8 \u10E0\u10D4\u10D0\u10E5\u10EA\u10D8\u10D0', '\u10E1\u10E2\u10E0\u10D4\u10E1\u10DD\u10E0\u10D4\u10D1\u10D8', '\u10D2\u10D0\u10DB\u10D9\u10DA\u10D0\u10D5\u10D4\u10D1\u10D8\u10E1 \u10E1\u10E2\u10E0\u10D0\u10E2\u10D4\u10D2\u10D8\u10D4\u10D1\u10D8', '\u10EF\u10D0\u10DC\u10DB\u10E0\u10D7\u10D4\u10DA\u10DD\u10D1\u10D8\u10E1 \u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10D0', '\u10D2\u10D0\u10DB\u10EB\u10DA\u10D4\u10DD\u10D1\u10D0'],
     summary: 'Stress is the body\'s response to demanding situations. Covers alarm/resistance/exhaustion stages, coping strategies, social support, and resilience.',
     keyPoints: [
       'Stress is the body\'s response to any perceived threat or demand. Eustress (positive) helps performance; distress (negative) harms health.',
@@ -323,8 +351,10 @@ export const CHAPTERS: Chapter[] = [
   {
     id: 14, title: 'Psychological Disorders', titleKa: '\u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10E3\u10E0\u10D8 \u10D0\u10E8\u10DA\u10D8\u10DA\u10DD\u10D1\u10D4\u10D1\u10D8',
     description: 'Understanding mental disorders: symptoms, causes, and classification.',
+    descriptionKa: '\u10E4\u10E1\u10D8\u10E5\u10D8\u10D9\u10E3\u10E0\u10D8 \u10D0\u10E8\u10DA\u10D8\u10DA\u10DD\u10D1\u10D4\u10D1\u10D8\u10E1 \u10D2\u10D0\u10D2\u10D4\u10D1\u10D0: \u10E1\u10D8\u10DB\u10DE\u10E2\u10DD\u10DB\u10D4\u10D1\u10D8, \u10DB\u10D8\u10D6\u10D4\u10D6\u10D4\u10D1\u10D8 \u10D3\u10D0 \u10D9\u10DA\u10D0\u10E1\u10D8\u10E4\u10D8\u10D9\u10D0\u10EA\u10D8\u10D0.',
     icon: 'mdi:stethoscope',
     keyTopics: ['DSM Classification', 'Anxiety Disorders', 'Mood Disorders', 'Schizophrenia', 'Personality Disorders'],
+    keyTopicsKa: ['DSM \u10D9\u10DA\u10D0\u10E1\u10D8\u10E4\u10D8\u10D9\u10D0\u10EA\u10D8\u10D0', '\u10E8\u10E4\u10DD\u10D7\u10D5\u10D8\u10D7\u10D8 \u10D0\u10E8\u10DA\u10D8\u10DA\u10DD\u10D1\u10D4\u10D1\u10D8', '\u10D2\u10E3\u10DC\u10D4\u10D1\u10D8\u10E1 \u10D0\u10E8\u10DA\u10D8\u10DA\u10DD\u10D1\u10D4\u10D1\u10D8', '\u10E8\u10D8\u10D6\u10DD\u10E4\u10E0\u10D4\u10DC\u10D8\u10D0', '\u10DE\u10D8\u10E0\u10DD\u10D5\u10DC\u10D4\u10D1\u10D8\u10E1 \u10D0\u10E8\u10DA\u10D8\u10DA\u10DD\u10D1\u10D4\u10D1\u10D8'],
     summary: 'Psychological disorders cause significant distress or impairment. Covers anxiety, mood disorders, schizophrenia, and personality disorders with biological and social causes.',
     keyPoints: [
       'A psychological disorder is a pattern of thoughts, feelings, or behaviors that is deviant, distressful, and dysfunctional (the "3 D\'s"). Context and culture matter in defining "abnormal."',
@@ -342,8 +372,10 @@ export const CHAPTERS: Chapter[] = [
   {
     id: 15, title: 'Therapies', titleKa: '\u10D7\u10D4\u10E0\u10D0\u10DE\u10D8\u10D4\u10D1\u10D8',
     description: 'Approaches to treating psychological disorders.',
+    descriptionKa: '\u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10E3\u10E0\u10D8 \u10D0\u10E8\u10DA\u10D8\u10DA\u10DD\u10D1\u10D4\u10D1\u10D8\u10E1 \u10DB\u10D9\u10E3\u10E0\u10DC\u10D0\u10DA\u10DD\u10D1\u10D8\u10E1 \u10DB\u10D8\u10D3\u10D2\u10DD\u10DB\u10D4\u10D1\u10D8.',
     icon: 'mdi:pill',
     keyTopics: ['Psychotherapy', 'CBT', 'Humanistic Therapy', 'Biomedical Therapies', 'Group Therapy'],
+    keyTopicsKa: ['\u10E4\u10E1\u10D8\u10E5\u10DD\u10D7\u10D4\u10E0\u10D0\u10DE\u10D8\u10D0', '\u10D9\u10DD\u10D2\u10DC\u10D8\u10E2\u10E3\u10E0-\u10D1\u10D8\u10F0\u10D4\u10D5\u10D8\u10DD\u10E0\u10E3\u10DA\u10D8 \u10D7\u10D4\u10E0\u10D0\u10DE\u10D8\u10D0', '\u10F0\u10E3\u10DB\u10D0\u10DC\u10D8\u10E1\u10E2\u10E3\u10E0\u10D8 \u10D7\u10D4\u10E0\u10D0\u10DE\u10D8\u10D0', '\u10D1\u10D8\u10DD\u10E1\u10D0\u10DB\u10D4\u10D3\u10D8\u10EA\u10D8\u10DC\u10DD \u10D7\u10D4\u10E0\u10D0\u10DE\u10D8\u10D4\u10D1\u10D8', '\u10EF\u10D2\u10E3\u10E4\u10E3\u10E0\u10D8 \u10D7\u10D4\u10E0\u10D0\u10DE\u10D8\u10D0'],
     summary: 'Therapy comes in many forms: psychoanalytic, CBT, humanistic, and biomedical. Compares therapeutic approaches and their effectiveness.',
     keyPoints: [
       'Psychoanalytic/Psychodynamic therapy: explores unconscious conflicts through free association, dream analysis, and transference. Long-term, insight-oriented. Less empirically supported than CBT.',
@@ -361,8 +393,10 @@ export const CHAPTERS: Chapter[] = [
   {
     id: 16, title: 'Applied Psychology', titleKa: '\u10D2\u10D0\u10DB\u10DD\u10E7\u10D4\u10DC\u10D4\u10D1\u10D8\u10D7\u10D8 \u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10D0',
     description: 'Psychology in the real world: work, education, law, and everyday life.',
+    descriptionKa: '\u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10D0 \u10E0\u10D4\u10D0\u10DA\u10E3\u10E0 \u10E1\u10D0\u10DB\u10E7\u10D0\u10E0\u10DD\u10E8\u10D8: \u10E1\u10D0\u10DB\u10E1\u10D0\u10EE\u10E3\u10E0\u10D8, \u10D2\u10D0\u10DC\u10D0\u10D7\u10DA\u10D4\u10D1\u10D0, \u10E1\u10D0\u10DB\u10D0\u10E0\u10D7\u10D0\u10DA\u10D8 \u10D3\u10D0 \u10E7\u10DD\u10D5\u10D4\u10DA\u10D3\u10E6\u10D8\u10E3\u10E0\u10D8 \u10EA\u10EE\u10DD\u10D5\u10E0\u10D4\u10D1\u10D0.',
     icon: 'mdi:earth',
     keyTopics: ['Industrial-Organizational Psychology', 'Educational Psychology', 'Forensic Psychology', 'Positive Psychology'],
+    keyTopicsKa: ['\u10D8\u10DC\u10D3\u10E3\u10E1\u10E2\u10E0\u10D8\u10E3\u10DA-\u10DD\u10E0\u10D2\u10D0\u10DC\u10D8\u10D6\u10D0\u10EA\u10D8\u10E3\u10DA\u10D8 \u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10D0', '\u10D2\u10D0\u10DC\u10D0\u10D7\u10DA\u10D4\u10D1\u10D8\u10E1 \u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10D0', '\u10E1\u10D0\u10E1\u10D0\u10DB\u10D0\u10E0\u10D7\u10DA\u10DD \u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10D0', '\u10DE\u10DD\u10D6\u10D8\u10E2\u10D8\u10E3\u10E0\u10D8 \u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10D0'],
     summary: 'Psychology applies to virtually every area of life. I/O psychology, educational psychology, forensic psychology, and positive psychology all make real-world impact.',
     keyPoints: [
       'Industrial-Organizational (I/O) Psychology: applies psychological principles to the workplace. Covers hiring (structured interviews beat unstructured), training design, motivation, leadership, job satisfaction, and reducing turnover.',

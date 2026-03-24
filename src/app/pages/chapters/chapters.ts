@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, inject, signal, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CHAPTERS } from '../../data/book-data';
+import { chapterText } from '../../data/chapter-i18n';
 import { AuthService } from '../../services/auth.service';
 import { ProgressService, ChapterProgress } from '../../services/progress.service';
 import { LanguageService } from '../../services/language.service';
@@ -39,10 +40,10 @@ import { LanguageService } from '../../services/language.service';
                     <span class="badge badge-warning"><iconify-icon icon="mdi:progress-clock" style="vertical-align: -0.125em; margin-right: 0.25rem"></iconify-icon>{{ t.t('chapters.inProgress') }}</span>
                   }
                 </div>
-                <h2 class="chapter-title">{{ chapter.title }}</h2>
-                <p class="chapter-desc">{{ chapter.description }}</p>
+                <h2 class="chapter-title">{{ ct(chapter.id, 'title') }}</h2>
+                <p class="chapter-desc">{{ ct(chapter.id, 'description') }}</p>
                 <div class="chapter-topics">
-                  @for (topic of chapter.keyTopics; track topic) {
+                  @for (topic of ctArr(chapter.id, 'keyTopics'); track $index) {
                     <span class="topic-tag">{{ topic }}</span>
                   }
                 </div>
@@ -195,5 +196,13 @@ export class ChaptersPage implements OnInit {
 
   getStatus(chapterId: number): string {
     return this.chapterProgress().find(c => c.chapterId === chapterId)?.status || 'not_started';
+  }
+
+  ct(id: number, field: 'title' | 'description' | 'summary' | 'funFact' | 'realWorld'): string {
+    return chapterText(id, field, this.t.lang()) as string;
+  }
+
+  ctArr(id: number, field: 'keyTopics' | 'keyPoints'): string[] {
+    return chapterText(id, field, this.t.lang()) as string[];
   }
 }

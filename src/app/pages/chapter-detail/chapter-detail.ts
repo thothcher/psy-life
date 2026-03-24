@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, inject, signal, OnInit, OnDestroy, CUSTOM_ELEMENTS_SCHEMA, ElementRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal, computed, OnInit, OnDestroy, CUSTOM_ELEMENTS_SCHEMA, ElementRef } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CHAPTERS, QUIZZES } from '../../data/book-data';
 import { AuthService } from '../../services/auth.service';
@@ -6,6 +6,7 @@ import { ProgressService } from '../../services/progress.service';
 import { NotesService } from '../../services/notes.service';
 import { LanguageService } from '../../services/language.service';
 import { Chapter, Quiz } from '../../data/book-data';
+import { chapterText } from '../../data/chapter-i18n';
 
 @Component({
   selector: 'app-chapter-detail',
@@ -26,8 +27,10 @@ import { Chapter, Quiz } from '../../data/book-data';
             <span class="ch-icon"><iconify-icon [attr.icon]="ch.icon" width="40" height="40"></iconify-icon></span>
             <div>
               <span class="ch-num">{{ t.t('chapters.chapter') }} {{ ch.id }}</span>
-              <h1 class="page-title">{{ ch.title }}</h1>
-              <p class="ch-ka">{{ ch.titleKa }}</p>
+              <h1 class="page-title">{{ i18nTitle() }}</h1>
+              @if (t.lang() !== 'en') {
+                <p class="ch-ka">{{ ch.title }}</p>
+              }
             </div>
           </div>
 
@@ -43,13 +46,13 @@ import { Chapter, Quiz } from '../../data/book-data';
             <div class="main-content readable-content">
               <div class="summary-card card">
                 <h2><iconify-icon icon="mdi:text-box-outline" style="vertical-align: -0.125em; margin-right: 0.4rem"></iconify-icon>{{ t.t('chapterDetail.summary') }}</h2>
-                <p>{{ ch.summary }}</p>
+                <p>{{ i18nSummary() }}</p>
               </div>
 
               <div class="key-points-card card">
-                <h2><iconify-icon icon="mdi:lightbulb-on-outline" style="vertical-align: -0.125em; margin-right: 0.4rem"></iconify-icon>Key Points</h2>
+                <h2><iconify-icon icon="mdi:lightbulb-on-outline" style="vertical-align: -0.125em; margin-right: 0.4rem"></iconify-icon>{{ t.t('chapterDetail.keyPoints') }}</h2>
                 <ol class="key-points-list">
-                  @for (point of ch.keyPoints; track point; let i = $index) {
+                  @for (point of i18nKeyPoints(); track $index; let i = $index) {
                     <li>
                       <span class="point-number">{{ i + 1 }}</span>
                       <span class="point-text">{{ point }}</span>
@@ -61,14 +64,14 @@ import { Chapter, Quiz } from '../../data/book-data';
               <div class="fun-fact-card card">
                 <div class="fun-fact-badge">
                   <iconify-icon icon="mdi:star-four-points" width="20" height="20"></iconify-icon>
-                  Fun Fact
+                  {{ t.t('chapterDetail.funFact') }}
                 </div>
-                <p>{{ ch.funFact }}</p>
+                <p>{{ i18nFunFact() }}</p>
               </div>
 
               <div class="real-world-card card">
-                <h2><iconify-icon icon="mdi:earth" style="vertical-align: -0.125em; margin-right: 0.4rem"></iconify-icon>Real-World Application</h2>
-                <p>{{ ch.realWorld }}</p>
+                <h2><iconify-icon icon="mdi:earth" style="vertical-align: -0.125em; margin-right: 0.4rem"></iconify-icon>{{ t.t('chapterDetail.realWorld') }}</h2>
+                <p>{{ i18nRealWorld() }}</p>
               </div>
             </div>
 
@@ -76,7 +79,7 @@ import { Chapter, Quiz } from '../../data/book-data';
               <div class="card topics-card">
                 <h3><iconify-icon icon="mdi:tag-multiple-outline" style="vertical-align: -0.125em; margin-right: 0.3rem"></iconify-icon>{{ t.t('chapterDetail.keyTopics') }}</h3>
                 <ul class="topics-list">
-                  @for (topic of ch.keyTopics; track topic) {
+                  @for (topic of i18nKeyTopics(); track $index) {
                     <li>{{ topic }}</li>
                   }
                 </ul>
@@ -84,7 +87,7 @@ import { Chapter, Quiz } from '../../data/book-data';
 
               @if (ch.keyFigures && ch.keyFigures.length) {
                 <div class="card figures-card">
-                  <h3><iconify-icon icon="mdi:account-group-outline" style="vertical-align: -0.125em; margin-right: 0.3rem"></iconify-icon>Key Figures</h3>
+                  <h3><iconify-icon icon="mdi:account-group-outline" style="vertical-align: -0.125em; margin-right: 0.3rem"></iconify-icon>{{ t.t('chapterDetail.keyFigures') }}</h3>
                   <ul class="figures-list">
                     @for (figure of ch.keyFigures; track figure) {
                       <li><iconify-icon icon="mdi:account-circle-outline" style="vertical-align: -0.125em; margin-right: 0.3rem; color: var(--color-accent)"></iconify-icon>{{ figure }}</li>
@@ -415,6 +418,37 @@ export class ChapterDetailPage implements OnInit, OnDestroy {
 
   protected readonly chapter = signal<Chapter | undefined>(undefined);
   protected readonly quiz = signal<Quiz | undefined>(undefined);
+
+  protected readonly i18nTitle = computed(() => {
+    const ch = this.chapter();
+    if (!ch) return '';
+    return chapterText(ch.id, 'title', this.t.lang()) as string;
+  });
+  protected readonly i18nSummary = computed(() => {
+    const ch = this.chapter();
+    if (!ch) return '';
+    return chapterText(ch.id, 'summary', this.t.lang()) as string;
+  });
+  protected readonly i18nKeyPoints = computed(() => {
+    const ch = this.chapter();
+    if (!ch) return [];
+    return chapterText(ch.id, 'keyPoints', this.t.lang()) as string[];
+  });
+  protected readonly i18nFunFact = computed(() => {
+    const ch = this.chapter();
+    if (!ch) return '';
+    return chapterText(ch.id, 'funFact', this.t.lang()) as string;
+  });
+  protected readonly i18nRealWorld = computed(() => {
+    const ch = this.chapter();
+    if (!ch) return '';
+    return chapterText(ch.id, 'realWorld', this.t.lang()) as string;
+  });
+  protected readonly i18nKeyTopics = computed(() => {
+    const ch = this.chapter();
+    if (!ch) return [];
+    return chapterText(ch.id, 'keyTopics', this.t.lang()) as string[];
+  });
 
   protected readonly showTooltip = signal(false);
   protected readonly tooltipX = signal(0);

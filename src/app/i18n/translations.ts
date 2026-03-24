@@ -21,9 +21,9 @@
   'footer.brand': { en: 'Your interactive companion for mastering psychology concepts, one chapter at a time.', ka: 'თქვენი ინტერაქტიული თანამგზავრი ფსიქოლოგიის შესასწავლად.', ru: 'Ваш интерактивный помощник для изучения психологии.', hy: 'Ձեր ինტerts ուdelays hogebanuthyan hamar.' },
   'footer.learn': { en: 'Learn', ka: 'სწავლა', ru: 'Обучение', hy: 'Ուdelays' },
   'footer.discover': { en: 'Discover', ka: 'აღმოჩენა', ru: 'Обзор', hy: 'Հaytnaberer' },
-  'footer.connect': { en: 'Connect', ka: 'კონტაქტი', ru: 'Связаться', hy: 'Կdelays' },
+  'footer.connect': { en: 'Connect', ka: 'დაგვიკავშირდი', ru: 'Связаться', hy: 'Կdelays' },
   'footer.madeWith': { en: 'Made with', ka: 'შექმნილია', ru: 'Сделано с', hy: 'Պdelays e' },
-  'footer.forStudents': { en: 'for students everywhere', ka: 'სტუდენტებისთვის ყველგან', ru: 'для студентов повсюду', hy: 'ուdelays hamar amenayteh' },
+  'footer.forStudents': { en: 'for students', ka: 'სტუდენტებისთვის', ru: 'для студентов повсюду', hy: 'ուdelays hamar amenayteh' },
 
   // ── Home ──
   'home.badge': { en: 'Interactive Learning Platform', ka: 'ინტერაქტიული სასწავლო პლატფორმა', ru: 'Интерактивная обучающая платформа', hy: 'Ինտերակտիվ ուսումնական հարթակ' },
@@ -130,6 +130,10 @@
   'chapterDetail.questions': { en: 'questions', ka: 'კითხვა', ru: 'вопросов', hy: 'հարց' },
   'chapterDetail.saveToNotes': { en: 'Save to Notes', ka: 'შეინახე ჩანაწერებში', ru: 'Сохранить в заметки', hy: 'Պահել նշումներում' },
   'chapterDetail.savedToNotes': { en: 'Saved to Notes!', ka: 'შეინახა ჩანაწერებში!', ru: 'Сохранено в заметках!', hy: 'Պահված է նշումներում!' },
+  'chapterDetail.keyPoints': { en: 'Key Points', ka: 'მთავარი პუნქტები', ru: 'Ключевые моменты', hy: 'Հիմնական կետեր' },
+  'chapterDetail.funFact': { en: 'Fun Fact', ka: 'საინტერესო ფაქტი', ru: 'Интересный факт', hy: 'Հետաքրքիր փաստ' },
+  'chapterDetail.realWorld': { en: 'Real-World Application', ka: 'რეალური გამოყენება', ru: 'Применение в жизни', hy: 'Կիրառումը կյանքում' },
+  'chapterDetail.keyFigures': { en: 'Key Figures', ka: 'მნიშვნელოვანი ფიგურები', ru: 'Ключевые фигуры', hy: 'Կարևոր անձինք' },
 
   // ── Quiz ──
   'quiz.questionsToTest': { en: 'questions to test your knowledge', ka: 'კითხვა თქვენი ცოდნის შესამოწმებლად', ru: 'вопросов для проверки ваших знаний', hy: 'հարց ձեր գիտելիքները ստուգելու համար' },

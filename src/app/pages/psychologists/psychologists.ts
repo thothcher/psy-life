@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, signal, inject, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PSYCHOLOGISTS } from '../../data/book-data';
 import { LanguageService } from '../../services/language.service';
+import { getPsychologistText } from '../../data/psychologist-i18n';
 
 @Component({
   selector: 'app-psychologists',
@@ -17,23 +18,24 @@ import { LanguageService } from '../../services/language.service';
 
         <div class="psychologists-grid">
           @for (person of PSYCHOLOGISTS; track person.name; let i = $index) {
+            @let localized = getPsychologistText(person, t.lang());
             <article class="psychologist-card card" (click)="toggle(i)">
               <div class="card-top">
                 <div class="avatar-wrapper">
-                  <img class="avatar" [src]="person.photo" [alt]="person.name" loading="lazy" referrerpolicy="no-referrer" (error)="onImgError($event)">
+                  <img class="avatar" [src]="person.photo" [alt]="localized.name" loading="lazy" referrerpolicy="no-referrer" (error)="onImgError($event)">
                   <span class="avatar-fallback"><iconify-icon icon="mdi:account" width="28" height="28"></iconify-icon></span>
                 </div>
                 <div>
-                  <h3>{{ person.name }}</h3>
+                  <h3>{{ localized.name }}</h3>
                   <span class="years">{{ person.years }}</span>
                 </div>
               </div>
               <span class="badge badge-accent">{{ person.field }}</span>
-              <p class="known-for"><strong>{{ t.t('psychologists.knownFor') }}</strong> {{ person.contribution }}</p>
+              <p class="known-for"><strong>{{ t.t('psychologists.knownFor') }}</strong> {{ localized.contribution }}</p>
 
               @if (expandedId() === i) {
                 <div class="expanded-details">
-                  <p>{{ person.details }}</p>
+                  <p>{{ localized.details }}</p>
                 </div>
               }
 
@@ -149,6 +151,7 @@ import { LanguageService } from '../../services/language.service';
 })
 export class PsychologistsPage {
   protected readonly t = inject(LanguageService);
+  protected readonly getPsychologistText = getPsychologistText;
   protected readonly PSYCHOLOGISTS = PSYCHOLOGISTS;
   protected readonly expandedId = signal<number | null>(null);
 

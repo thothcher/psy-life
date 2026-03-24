@@ -71,7 +71,7 @@ import { LanguageService } from '../../services/language.service';
 
         <div class="features-grid">
           <a routerLink="/chapters" class="feature-card feature-wide">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=340&fit=crop&auto=format" alt="" class="feature-img" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1498637841888-108c6b723fcb?q=80&w=1333&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" class="feature-img" loading="lazy">
             <div class="feature-body">
               <span class="feature-tag">{{ t.t('home.core') }}</span>
               <h3>{{ t.t('home.chapterRoadmap') }}</h3>
