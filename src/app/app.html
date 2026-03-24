@@ -78,16 +78,16 @@
         <iconify-icon icon="mdi:chevron-down" width="14" height="14"></iconify-icon>
       </button>
       <div class="lang-menu" role="menu">
-        <button class="lang-option" [class.active]="langService.lang() === 'en'" (click)="langService.lang.set('en'); langDropdownOpen.set(false)" role="menuitem">
+        <button class="lang-option" [class.active]="langService.lang() === 'en'" (click)="langService.lang.set('en'); closeMenu()" role="menuitem">
           <iconify-icon icon="circle-flags:gb" width="18" height="18"></iconify-icon> English
         </button>
-        <button class="lang-option" [class.active]="langService.lang() === 'ka'" (click)="langService.lang.set('ka'); langDropdownOpen.set(false)" role="menuitem">
+        <button class="lang-option" [class.active]="langService.lang() === 'ka'" (click)="langService.lang.set('ka'); closeMenu()" role="menuitem">
           <iconify-icon icon="circle-flags:ge" width="18" height="18"></iconify-icon> ქართული
         </button>
-        <button class="lang-option" [class.active]="langService.lang() === 'ru'" (click)="langService.lang.set('ru'); langDropdownOpen.set(false)" role="menuitem">
+        <button class="lang-option" [class.active]="langService.lang() === 'ru'" (click)="langService.lang.set('ru'); closeMenu()" role="menuitem">
           <iconify-icon icon="circle-flags:ru" width="18" height="18"></iconify-icon> Русский
         </button>
-        <button class="lang-option" [class.active]="langService.lang() === 'hy'" (click)="langService.lang.set('hy'); langDropdownOpen.set(false)" role="menuitem">
+        <button class="lang-option" [class.active]="langService.lang() === 'hy'" (click)="langService.lang.set('hy'); closeMenu()" role="menuitem">
           <iconify-icon icon="circle-flags:am" width="18" height="18"></iconify-icon> Հայերեն
         </button>
       </div>

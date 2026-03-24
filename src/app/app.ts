@@ -48,5 +48,7 @@ export class App {
 
   closeMenu() {
     this.mobileMenuOpen.set(false);
+    this.langDropdownOpen.set(false);
+    (this.doc.activeElement as HTMLElement)?.blur();
   }
 }
