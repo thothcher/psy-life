@@ -7,22 +7,33 @@ const fs = require('fs');
 const path = require('path');
 
 // We need to parse the TS file to extract chapter data
-// Since it's basically JS-compatible, let's eval it carefully
-let src = fs.readFileSync(path.join(__dirname, 'src/app/data/book-data.ts'), 'utf8');
+// Since it's basically JS-compatible, let's extract the CHAPTERS array directly
+let tsContent = fs.readFileSync(path.join(__dirname, 'src/app/data/book-data.ts'), 'utf8');
 
-// Remove TS-specific syntax for eval
-src = src.replace(/export\s+interface\s+\w+\s*\{[^}]*\}/gs, '');
-src = src.replace(/export\s+const/g, 'const');
-src = src.replace(/:\s*(Chapter|Quiz|QuizQuestion|Psychologist|Fact|Story|MemoryCard|FlashcardSet|Flashcard|GlossaryTerm)\[\]/g, '');
+// Use regex to find the CHAPTERS array content
+const chaptersMatch = tsContent.match(/export const CHAPTERS: Chapter\[\] = (\[[\s\S]*?\]);/);
+if (!chaptersMatch) {
+  console.error('Could not find CHAPTERS array in book-data.ts');
+  process.exit(1);
+}
 
-// Execute to get CHAPTERS
 let CHAPTERS;
 try {
-  const fn = new Function(src + '\nreturn CHAPTERS;');
-  CHAPTERS = fn();
+  // We use eval on the array literal string. To handle potential TS types or other issues,
+  // we can try to make it more JSON-like if needed, but usually eval() on a JS array literal works.
+  CHAPTERS = eval(chaptersMatch[1]);
 } catch(e) {
-  console.error('Failed to parse:', e.message);
-  process.exit(1);
+  console.error('Failed to parse CHAPTERS array:', e.message);
+  // Fallback: simple manual cleanup of common TS hurdles if eval fails
+  try {
+    let cleanArray = chaptersMatch[1]
+      .replace(/:\s*\w+,/g, ',') // remove type annotations if any
+      .replace(/<.*?>/g, '');    // remove generics
+    CHAPTERS = eval(cleanArray);
+  } catch(e2) {
+    console.error('Failed to parse CHAPTERS array even after cleanup:', e2.message);
+    process.exit(1);
+  }
 }
 
 console.log(`Found ${CHAPTERS.length} chapters`);
@@ -44,27 +55,29 @@ lines.push(``);
 lines.push(`export const CHAPTER_I18N: Record<number, ChapterI18n> = {`);
 
 for (const ch of CHAPTERS) {
-  const esc = (s) => s.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
-  const escArr = (arr) => arr.map(s => `'${esc(s)}'`).join(', ');
+  const esc = (s) => (s || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+  const escArr = (arr) => (arr || []).map(s => `'${esc(s)}'`).join(', ');
 
   lines.push(`  ${ch.id}: {`);
-  lines.push(`    title: { en: '${esc(ch.title)}', ka: '${esc(ch.titleKa)}', ru: '${esc(ch.title)}', hy: '${esc(ch.title)}' },`);
-  lines.push(`    description: { en: '${esc(ch.description)}', ka: '${esc(ch.descriptionKa)}', ru: '${esc(ch.description)}', hy: '${esc(ch.description)}' },`);
+  lines.push(`    title: { en: '${esc(ch.title)}', ka: '${esc(ch.titleKa)}', ru: '${esc(ch.titleRu)}', hy: '${esc(ch.titleHy)}', az: '${esc(ch.titleAz)}' },`);
+  lines.push(`    description: { en: '${esc(ch.description)}', ka: '${esc(ch.descriptionKa)}', ru: '${esc(ch.descriptionRu)}', hy: '${esc(ch.descriptionHy)}', az: '${esc(ch.descriptionAz)}' },`);
   lines.push(`    keyTopics: {`);
   lines.push(`      en: [${escArr(ch.keyTopics)}],`);
   lines.push(`      ka: [${escArr(ch.keyTopicsKa)}],`);
-  lines.push(`      ru: [${escArr(ch.keyTopics)}],`);
-  lines.push(`      hy: [${escArr(ch.keyTopics)}],`);
+  lines.push(`      ru: [${escArr(ch.keyTopicsRu)}],`);
+  lines.push(`      hy: [${escArr(ch.keyTopicsHy)}],`);
+  lines.push(`      az: [${escArr(ch.keyTopicsAz)}],`);
   lines.push(`    },`);
-  lines.push(`    summary: { en: '${esc(ch.summary)}', ka: '${esc(ch.summary)}', ru: '${esc(ch.summary)}', hy: '${esc(ch.summary)}' },`);
+  lines.push(`    summary: { en: '${esc(ch.summary)}', ka: '${esc(ch.summaryKa)}', ru: '${esc(ch.summaryRu)}', hy: '${esc(ch.summaryHy)}', az: '${esc(ch.summaryAz)}' },`);
   lines.push(`    keyPoints: {`);
   lines.push(`      en: [${escArr(ch.keyPoints)}],`);
-  lines.push(`      ka: [${escArr(ch.keyPoints)}],`);
-  lines.push(`      ru: [${escArr(ch.keyPoints)}],`);
-  lines.push(`      hy: [${escArr(ch.keyPoints)}],`);
+  lines.push(`      ka: [${escArr(ch.keyPointsKa)}],`);
+  lines.push(`      ru: [${escArr(ch.keyPointsRu)}],`);
+  lines.push(`      hy: [${escArr(ch.keyPointsHy)}],`);
+  lines.push(`      az: [${escArr(ch.keyPointsAz)}],`);
   lines.push(`    },`);
-  lines.push(`    funFact: { en: '${esc(ch.funFact)}', ka: '${esc(ch.funFact)}', ru: '${esc(ch.funFact)}', hy: '${esc(ch.funFact)}' },`);
-  lines.push(`    realWorld: { en: '${esc(ch.realWorld)}', ka: '${esc(ch.realWorld)}', ru: '${esc(ch.realWorld)}', hy: '${esc(ch.realWorld)}' },`);
+  lines.push(`    funFact: { en: '${esc(ch.funFact)}', ka: '${esc(ch.funFactKa)}', ru: '${esc(ch.funFactRu)}', hy: '${esc(ch.funFactHy)}', az: '${esc(ch.funFactAz)}' },`);
+  lines.push(`    realWorld: { en: '${esc(ch.realWorld)}', ka: '${esc(ch.realWorldKa)}', ru: '${esc(ch.realWorldRu)}', hy: '${esc(ch.realWorldHy)}', az: '${esc(ch.realWorldAz)}' },`);
   lines.push(`  },`);
 }
 

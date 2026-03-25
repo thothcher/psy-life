@@ -1,7 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { TRANSLATIONS } from '../i18n/translations';
 
-export type Lang = 'en' | 'ka' | 'ru' | 'hy';
+export type Lang = 'en' | 'ka' | 'ru' | 'hy' | 'az';
 
 @Injectable({ providedIn: 'root' })
 export class LanguageService {
