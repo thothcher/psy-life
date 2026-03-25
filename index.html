@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" data-beasties-container>
+<head>
+  <meta charset="utf-8">
+  <title>PsyLearn – Psychology & Life</title>
+  <base href="/psy-life/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- SEO -->
+  <meta name="description" content="PsyLearn – Interactive psychology learning platform based on Zimbardo's Psychology and Life. Chapters, quizzes, flashcards, and more.">
+  <meta name="keywords" content="psychology, learning, Zimbardo, Psychology and Life, quizzes, flashcards, mental health, education, PsyLearn">
+  <meta name="author" content="PsyLearn">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#1a1a2e">
+  <link rel="canonical" href="https://psylearn.netlify.app/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://psylearn.netlify.app/">
+  <meta property="og:title" content="PsyLearn – Psychology &amp; Life">
+  <meta property="og:description" content="Interactive psychology learning platform with chapters, quizzes, memory games, and achievements.">
+  <meta property="og:image" content="https://psylearn.netlify.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PsyLearn – Interactive psychology learning platform">
+  <meta property="og:site_name" content="PsyLearn">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PsyLearn – Psychology &amp; Life">
+  <meta name="twitter:description" content="Interactive psychology learning platform with chapters, quizzes, memory games, and achievements.">
+  <meta name="twitter:image" content="https://psylearn.netlify.app/og-image.png">
+  <meta name="twitter:image:alt" content="PsyLearn – Interactive psychology learning platform">
+
+  <!-- Icons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>@font-face{font-family:'Outfit';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJuktqQ4E.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}@font-face{font-family:'Outfit';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}@font-face{font-family:'Outfit';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJuktqQ4E.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}@font-face{font-family:'Outfit';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}@font-face{font-family:'Outfit';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJuktqQ4E.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}@font-face{font-family:'Outfit';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}@font-face{font-family:'Outfit';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJuktqQ4E.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}@font-face{font-family:'Outfit';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}@font-face{font-family:'Outfit';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJuktqQ4E.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}@font-face{font-family:'Outfit';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}@font-face{font-family:'Outfit';font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJuktqQ4E.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}@font-face{font-family:'Outfit';font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}</style>
+  <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" defer></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "PsyLearn",
+    "alternateName": "PsyLearn – Psychology & Life",
+    "url": "https://psylearn.netlify.app/",
+    "description": "Interactive psychology learning platform based on Zimbardo's Psychology and Life. Chapters, quizzes, flashcards, and more.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://psylearn.netlify.app/chapters?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HGYT875WW4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HGYT875WW4');
+  </script>
+<style>:root{--color-bg:#f5f5f3;--color-surface:#ffffff;--color-primary:#16162a;--color-primary-light:#292942;--color-accent:#b33426;--color-accent-light:#d44233;--color-secondary:#266240;--color-secondary-light:#448a62;--color-highlight:#c49664;--color-text:#16162a;--color-text-light:#4a4a5c;--color-text-muted:#7e7e90;--color-text-on-primary:#f5f5f3;--color-border:#d0d0d0;--color-border-light:#e4e4e4;--shadow-sm:0 1px 3px rgba(0, 0, 0, .04);--shadow-md:0 2px 10px rgba(0, 0, 0, .06);--shadow-lg:0 6px 24px rgba(0, 0, 0, .08);--radius-sm:4px;--radius-md:6px;--radius-lg:8px;--radius-xl:10px;--radius-full:50px;--transition-fast:.12s ease;--transition-normal:.2s ease}*,*:before,*:after{box-sizing:border-box;margin:0;padding:0}html{font-size:16px;scroll-behavior:smooth;overflow-x:clip}body{font-family:Outfit,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;background-color:var(--color-bg);color:var(--color-text);line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;min-height:100vh;overflow-x:hidden}</style><link rel="stylesheet" href="styles-JGV3NLJY.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-JGV3NLJY.css"></noscript></head>
+<body>
+  <app-root></app-root>
+<link rel="modulepreload" href="chunk-3CEZ7VFD.js"><link rel="modulepreload" href="chunk-GDK4NDIC.js"><link rel="modulepreload" href="chunk-4T5DNX5W.js"><link rel="modulepreload" href="chunk-SHZAEFZL.js"><link rel="modulepreload" href="chunk-U2BNHRNF.js"><link rel="modulepreload" href="chunk-VO5W4P4Y.js"><link rel="modulepreload" href="chunk-UNVP2US6.js"><script src="main-N6QHQHPG.js" type="module"></script></body>
+</html>
