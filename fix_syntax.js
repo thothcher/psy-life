@@ -1,31 +1,23 @@
-const fs = require('fs');
-let content = fs.readFileSync('src/app/data/book-data.ts', 'utf8');
+﻿const fs = require('fs');
+const path = require('path');
 
-const badFactsIndex = content.indexOf('export const FACTS: Fact[] = [', 3000);
-if (badFactsIndex > -1 && badFactsIndex < 4000) {
-    const fix1 = '      }\n    ]\n  }\n];\n\n';
-    content = content.substring(0, badFactsIndex) + fix1 + content.substring(badFactsIndex);
-}
+const filePath = path.join(__dirname, 'src/app/data/book-data.ts');
+let content = fs.readFileSync(filePath, 'utf8');
 
-const badStoriesIndex = content.indexOf('export const STORIES: Story[] = [', 3800);
-if (badStoriesIndex > -1 && badStoriesIndex < 4500) {
-    const fix2 = '\"\n  }\n];\n\n';
-    content = content.substring(0, badStoriesIndex) + fix2 + content.substring(badStoriesIndex);
-}
+content = content.replace('export const CHAPTERS: Chapter[\\n  {', 'export const CHAPTERS: Chapter[] = [\n  {');
+content = content.replace('export const CHAPTERS: Chapter[\\\\n  {', 'export const CHAPTERS: Chapter[] = [\n  {');
+content = content.replace('export const CHAPTERS: Chapter[\\n', 'export const CHAPTERS: Chapter[] = [\n');
 
-const badCardsIndex = content.indexOf('export const MEMORY_CARDS: MemoryCard[] = [', 3900);
-if (badCardsIndex > -1 && badCardsIndex < 5000) {
-    const fix3 = '\"\n    }\n  ]\n];\n\n';
-    content = content.substring(0, badCardsIndex) + fix3 + content.substring(badCardsIndex);
-}
-
-const badArmenianStart = content.indexOf(']բ դուռը', 4200);
-if (badArmenianStart > -1) {
-    const endFix = content.indexOf('export const FACTS', badArmenianStart);
-    if (endFix > -1) {
-        content = content.substring(0, badArmenianStart + 1) + ';\n\n/* ' + content.substring(badArmenianStart + 1, endFix) + ' */\n' + content.substring(endFix);
+if (content.includes('Ð')) {
+    console.log('Detected latin1 mangled UTF-8 text, attempting to fix...');
+    try {
+        content = Buffer.from(content, 'latin1').toString('utf8');
+    } catch(e) {
+        console.error('Failed to fix encoding', e);
     }
+} else {
+    console.log('No mangled UTF-8 text detected, characters look ok.');
 }
 
-fs.writeFileSync('src/app/data/book-data.ts', content, 'utf8');
-console.log('Fixed syntax boundaries.');
+fs.writeFileSync(filePath, content, 'utf8');
+console.log('Fixed syntax in book-data.ts');

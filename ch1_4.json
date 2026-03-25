@@ -1,0 +1,88 @@
+[
+{
+    id: 1, title: 'What is Psychology?', titleKa: 'ფსიქოლოგია რა არის?',
+    description: 'Introduction to the science of psychology, its history, and modern approaches.',
+    descriptionKa: 'ფსიქოლოგიის მეცნიერების, მისი ისტორიისა და თანამედროვე მიდგომების შესავალი.',
+    icon: 'mdi:head-cog-outline',
+    keyTopics: ['Definition of Psychology', 'History of Psychology', 'Modern Perspectives', 'Research Methods'],
+    keyTopicsKa: ['ფსიქოლოგიის განმარტება', 'ფსიქოლოგიის ისტორია', 'თანამედროვე პერსპექტივები', 'კვლევის მეთოდები'],
+    summary: 'Psychology is the scientific study of behavior and mental processes. It explores how we think, feel, act, and interact. From Wundt\'s first laboratory to modern neuroscience, this chapter traces the evolution of psychology and introduces major theoretical perspectives: biological, psychodynamic, behavioral, cognitive, humanistic, and sociocultural.',
+    keyPoints: [
+        'Psychology literally means "study of the soul" (Greek: psyche + logos) but today is defined as the scientific study of behavior and mental processes.',
+        'Wilhelm Wundt opened the first psychology lab in Leipzig, Germany (1879), marking psychology\'s birth as a science.',
+        'Structuralism (Titchener) broke consciousness into basic elements using introspection; Functionalism (James) asked what purpose mental processes serve.',
+        'The six major perspectives: Biological (brain & genes), Psychodynamic (unconscious forces), Behavioral (observable actions), Cognitive (thinking & reasoning), Humanistic (free will & growth), Sociocultural (social & cultural influences).',
+        'The biopsychosocial model integrates biological, psychological, and social factors to understand behavior holistically.',
+        'Psychology\'s four goals: Describe, Explain, Predict, and Influence behavior.'
+    ],
+    funFact: 'Wundt\'s first lab experiment measured the time it took people to press a button after hearing a sound — about 0.1 seconds. This "reaction time" research is still used in psychology and neuroscience today.',
+    realWorld: 'When a marketing team designs an ad that triggers an emotional response, they\'re using principles from cognitive and behavioral psychology. Understanding how people perceive and process information is at the heart of advertising, UX design, and even political campaigns.',
+    keyFigures: ['Wilhelm Wundt', 'William James', 'Sigmund Freud', 'John Watson', 'Carl Rogers']
+},
+
+{
+    id: 2, title: 'Research Methods in Psychology', titleKa: 'კვლევის მეთოდები',
+    description: 'How psychologists conduct research: experiments, observations, surveys, and ethics.',
+    descriptionKa: 'როგორ ატარებენ ფსიქოლოგები კვლევას: ექსპერიმენტები, დაკვირვება, გამოკითხვები და ეთიკა.',
+    icon: 'mdi:flask-outline',
+    keyTopics: ['Scientific Method', 'Experimental Design', 'Correlation vs. Causation', 'Ethics in Research'],
+    keyTopicsKa: ['სამეცნიერო მეთოდი', 'ექსპერიმენტული დიზაინი', 'კორელაცია vs. მიზეზობრივობა', 'ეთიკა კვლევაში'],
+    summary: 'This chapter covers the tools psychologists use to study behavior scientifically. Learn about variables, control groups, double-blind studies, and the critical distinction between correlation and causation.',
+    keyPoints: [
+        'The scientific method: Observation → Hypothesis → Experiment → Data Analysis → Conclusion → Replication.',
+        'Independent variable (IV) is what the researcher manipulates; Dependent variable (DV) is what is measured.',
+        'Random assignment eliminates pre-existing differences between groups, making experiments internally valid.',
+        'Double-blind studies prevent both experimenter and participant biases from affecting results.',
+        'Correlation does NOT equal causation. Two variables may move together without one causing the other (third-variable problem).',
+        'Ethical guidelines: informed consent, right to withdraw, debriefing, confidentiality, and minimal harm. The APA code was established after controversial studies like Milgram\'s obedience experiment.',
+        'Common methods: experiments (cause-effect), surveys (self-report), naturalistic observation (real-world), case studies (in-depth single cases), and longitudinal studies (over time).'
+    ],
+    funFact: 'The placebo effect is so powerful that in some studies, sugar pills reduced pain by up to 30%. This is why control groups are essential in psychological research.',
+    realWorld: 'Before any new therapy or medication is approved, it must go through rigorous double-blind, placebo-controlled trials. The same research methods from this chapter protect patients from ineffective or harmful treatments.',
+    keyFigures: ['Francis Bacon', 'Karl Popper', 'Stanley Milgram']
+},
+
+{
+    id: 3, title: 'Biological Bases of Behavior', titleKa: 'ქცევის ბიოლოგიური საფუძვლები',
+    description: 'The brain, nervous system, neurons, and how biology shapes our behavior.',
+    descriptionKa: 'ტვინი, ნერვული სისტემა, ნეირონები და როგორ აყალიბებს ბიოლოგია ჩვენს ქცევას.',
+    icon: 'mdi:dna',
+    keyTopics: ['Neurons & Synapses', 'Brain Structure', 'Nervous System', 'Neurotransmitters', 'Genetics & Behavior'],
+    keyTopicsKa: ['ნეირონები და სინაფსები', 'ტვინის სტრუქტურა', 'ნერვული სისტემა', 'ნეიროტრანსმიტერები', 'გენეტიკა და ქცევა'],
+    summary: 'Every thought, emotion, and action has a biological basis. This chapter explores how neurons communicate, the structure of the brain, and how genetics influence behavior.',
+    keyPoints: [
+        'Neurons are the basic units of the nervous system. They communicate via electrochemical signals: electrical impulses travel down the axon, then release neurotransmitters across the synapse.',
+        'Key neurotransmitters: Dopamine (reward, pleasure), Serotonin (mood, sleep), GABA (inhibition, calm), Acetylcholine (memory, muscle movement), Norepinephrine (alertness), Endorphins (pain relief).',
+        'The brain has three major regions: Hindbrain (medulla, pons, cerebellum — basic survival), Midbrain (sensory relay), Forebrain (cerebral cortex — higher thinking).',
+        'The cerebral cortex has four lobes: Frontal (decision-making, personality), Parietal (touch, spatial), Temporal (hearing, language), Occipital (vision).',
+        'The limbic system includes the amygdala (fear, emotion), hippocampus (memory formation), and hypothalamus (hunger, thirst, temperature).',
+        'Neuroplasticity: the brain can reorganize itself by forming new neural connections throughout life, especially after injury or learning.',
+        'The split-brain experiments by Sperry showed that the left hemisphere specializes in language and logic, while the right hemisphere handles spatial tasks and creativity.'
+    ],
+    funFact: 'Your brain uses about 20% of your body\'s energy despite being only 2% of your body weight. It generates about 20 watts of electrical power — enough to power a dim light bulb.',
+    realWorld: 'Understanding neurotransmitters revolutionized psychiatry. SSRIs (like Prozac) treat depression by increasing serotonin levels in the brain. Parkinson\'s disease treatments target dopamine pathways.',
+    keyFigures: ['Roger Sperry', 'Paul Broca', 'Carl Wernicke', 'Santiago Ramón y Cajal']
+},
+
+{
+    id: 4, title: 'Sensation and Perception', titleKa: 'შეგრძნება და აღქმა',
+    description: 'How our senses detect stimuli and our brain interprets them.',
+    descriptionKa: 'როგორ აგროვებს ჩვენი გრძნობები სტიმულებს და როგორ ინტერპრეტირებს მათ ტვინი.',
+    icon: 'mdi:eye-outline',
+    keyTopics: ['Vision', 'Hearing', 'Other Senses', 'Perceptual Organization', 'Illusions'],
+    keyTopicsKa: ['მხედველობა', 'სმენა', 'სხვა გრძნობები', 'პერცეფციული ორგანიზაცია', 'ილუზიები'],
+    summary: 'Sensation is the process by which our sensory receptors detect stimuli; perception is how the brain interprets this. Covers visual processing, Gestalt principles, and perceptual illusions.',
+    keyPoints: [
+        'Sensation = detecting physical energy (light, sound, pressure); Perception = organizing and interpreting that sensory information into something meaningful.',
+        'Absolute threshold: the minimum stimulation needed to detect a stimulus 50% of the time. Difference threshold (JND): the smallest detectable difference between two stimuli.',
+        'Vision: Light enters through the cornea → pupil → lens → retina. Rods detect dim light; cones detect color. Information travels via the optic nerve to the visual cortex.',
+        'Gestalt principles of perception: proximity, similarity, closure, continuity, and figure-ground. The brain fills in gaps to create coherent images.',
+        'Color vision: Trichromatic theory (3 types of cones for red, green, blue) explains color mixing; Opponent-process theory (red-green, blue-yellow, black-white pairs) explains afterimages.',
+        'Hearing: Sound waves → eardrum → ossicles → cochlea → hair cells → auditory nerve. Pitch is encoded by place theory (high frequencies) and frequency theory (low frequencies).',
+        'Sensory adaptation: when constant stimulation leads to reduced sensitivity (e.g., you stop noticing a smell after a while).'
+    ],
+    funFact: 'Your eyes can distinguish about 10 million different colors, yet dogs see the world mainly in blues and yellows. The mantis shrimp, however, has 16 types of color receptors compared to our 3!',
+    realWorld: 'Optical illusions are not just fun tricks — they reveal how the brain constructs reality. UX designers use Gestalt principles daily: grouping related buttons, using whitespace, and creating visual hierarchies on websites.',
+    keyFigures: ['Gustav Fechner', 'Ernst Weber', 'Max Wertheimer', 'Hermann von Helmholtz']
+}
+]
