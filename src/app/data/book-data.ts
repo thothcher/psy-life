@@ -8,32 +8,44 @@ export interface Chapter {
   titleKa: string;
   titleRu?: string;
   titleHy?: string;
+  titleAm?: string;
   description: string;
   descriptionKa: string;
   descriptionRu?: string;
   descriptionHy?: string;
+  descriptionAm?: string;
   icon: string;
   keyTopics: string[];
   keyTopicsKa: string[];
   keyTopicsRu?: string[];
   keyTopicsHy?: string[];
+  keyTopicsAm?: string[];
   summary: string;
   summaryKa?: string;
   summaryRu?: string;
   summaryHy?: string;
+  summaryAm?: string;
   keyPoints: string[];
   keyPointsKa?: string[];
   keyPointsRu?: string[];
   keyPointsHy?: string[];
+  keyPointsAm?: string[];
   funFact: string;
   funFactKa?: string;
   funFactRu?: string;
   funFactHy?: string;
+  funFactAm?: string;
   realWorld: string;
   realWorldKa?: string;
   realWorldRu?: string;
   realWorldHy?: string;
+  realWorldAm?: string;
   keyFigures?: string[];
+  keyFiguresKa?: string[];
+  keyFiguresRu?: string[];
+  keyFiguresHy?: string[];
+  keyFiguresAm?: string[];
+
 }
 
 export interface QuizQuestion {
@@ -45,6 +57,7 @@ export interface QuizQuestion {
   correctIndex: number;
   explanation: string;
   explanationKa?: string;
+  explanationAm?: string;
 }
 
 export interface Quiz {
@@ -261,472 +274,848 @@ export const CHAPTERS: Chapter[] = [
     realWorld: 'Cognitive biases affect everyone: doctors, judges, investors. Daniel Kahneman won a Nobel Prize showing how systematic biases in thinking lead to predictable errors in decision-making \u2014 his work reshaped economics and public policy.',
     keyFigures: ['Alfred Binet', 'Charles Spearman', 'Howard Gardner', 'Robert Sternberg', 'Noam Chomsky', 'Daniel Kahneman']
   },
-    {
+  {
     id: 9,
-    title: 'Human Development',
-    titleKa: 'ადამიანის განვითარება',
-    titleRu: 'Развитие человека',
-    titleHy: 'Մարդու զարգացումը',
-    description: 'Physical, cognitive, and social development across the lifespan.',
-    descriptionKa: 'როგორ ვიცვლებით ფიზიკურად, გონებრივად და სოციალურად მთელი ცხოვრების განმავლობაში.',
-    descriptionRu: 'Как мы меняемся физически, умственно и социально на протяжении всей жизни.',
-    descriptionHy: 'Ինչպես ենք մենք փոխվում ֆիզիկապես, մտավոր և սոցիալապես ողջ կյանքի ընթացքում:',
-    icon: 'mdi:baby-face-outline',
+    title: "Human Development",
+    titleKa: "ადამიანის განვითარება",
+    titleRu: "Развитие человека",
+    titleHy: "Մարդու զարգացումը",
+    description: "Physical, cognitive, and social development across the lifespan.",
+    descriptionKa: "ფიზიკური, გონებრივი და სოციალური განვითარება მთელი ცხოვრების განმავლობაში.",
+    descriptionRu: "Как мы развиваемся физически, умственно и социально в течение всей жизни.",
+    descriptionHy: "Մեր ֆիզիկական, մտավոր և սոցիալական զարգացումը ողջ կյանքի ընթացքում։",
+    icon: "mdi:baby-face-outline",
     keyTopics: [
-      'Piaget\'s Stages',
-      'Attachment',
-      'Erikson\'s Stages',
-      'Moral Development',
-      'Aging'
+      "Piaget's Stages",
+      "Attachment",
+      "Erikson's Stages",
+      "Moral Development",
+      "Aging"
     ],
     keyTopicsKa: [
-      'პიაჟეს სტადიები',
-      'მიჯაჭვულობა',
-      'ერიქსონის სტადიები',
-      'მორალური განვითარება',
-      'დაბერების პროცესი'
+      "პიაჟეს სტადიები",
+      "მიჯაჭვულობა",
+      "ერიქსონის სტადიები",
+      "მორალური განვითარება",
+      "დაბერება"
     ],
     keyTopicsRu: [
-      'Стадии Пиаже',
-      'Привязанность',
-      'Стадии Эриксона',
-      'Моральное развитие',
-      'Процесс старения'
+      "Стадии Пиаже",
+      "Привязанность",
+      "Стадии Эриксона",
+      "Моральное развитие",
+      "Кризисы старения"
     ],
     keyTopicsHy: [
-      'Պիաժեի փուլերը',
-      'Կապվածություն',
-      'Էրիքսոնի փուլերը',
-      'Բարոյական զարգացում',
-      'Ծերացում'
+      "Պիաժեի փուլերը",
+      "Կապվածություն",
+      "Էրիքսոնի փուլերը",
+      "Բարոյական զարգացում",
+      "Ծերացում"
     ],
-    summary: 'Development is a lifelong process. Piaget described cognitive stages. Erikson outlined psychosocial crises. Bowlby and Ainsworth studied attachment. Traces changes from conception through aging.',
-    summaryKa: 'განვითარება უწყვეტი პროცესია დაბადებიდან სიბერემდე. პიაჟემ გონებრივი განვითარების ეტაპები აღწერა, ერიქსონმა კრიზისები, ბოულბიმ და ეინსვორთმა კი — მიჯაჭვულობა.',
-    summaryRu: 'Развитие — это непрерывный процесс от рождения до старости. Пиаже описал когнитивные этапы, Эриксон — психосоциальные кризисы, а Боулби и Эйнсворт изучали привязанность.',
-    summaryHy: 'Զարգացումը շարունակական գործընթաց է ծննդից մինչև ծերություն: Պիաժեն նկարագրել է ճանաչողական փուլերը, Էրիքսոնը՝ հոգեսոցիալական ճգնաժամերը, իսկ Բոուլբին ու Էյնսվորթը ուսումնասիրել են կապվածությունը:',
+    summary: "Development is a lifelong process. Piaget described cognitive stages. Erikson outlined psychosocial crises. Bowlby and Ainsworth studied attachment. Traces changes from conception through aging.",
+    summaryKa: "განვითარება უწყვეტი პროცესია, რომელიც მთელ ჩვენს პირად ისტორიას მიყვება. პიაჟემ გონებრივი ზრდა აღწერა, ერიქსონმა — ასაკობრივი კრიზისები, ბოულბიმ კი — ადამიანებისადმი მიჯაჭვულობა.",
+    summaryRu: "Наше развитие — это непрерывный процесс. Пиаже описал когнитивные этапы, Эриксон — взросление и кризисы, а Боулби и Эйнсворт изучали механизмы привязанности.",
+    summaryHy: "Զարգացումը անընդհատ գործընթաց է, որն ընդգրկում է ամբողջ կյանքը։ Պիաժեն նկարագրել է մտավոր փուլերը, Էրիքսոնը՝ հոգեսոցիալական ճգնաժամերը։",
     keyPoints: [
-      'Nature vs. nurture is a false dichotomy: genes and environment interact continuously. Epigenetics shows that experiences can turn genes on or off.',
-      'Piaget\'s 4 cognitive stages: Sensorimotor (0–2, object permanence), Preoperational (2–7, symbolic thinking but egocentric), Concrete operational (7–11, logical thinking), Formal operational (12+, abstract reasoning).',
-      'Attachment theory (Bowlby/Ainsworth): Secure attachment (caregiver responsive) leads to healthy social development. Insecure types: avoidant, anxious-ambivalent, disorganized. Measured by the Strange Situation test.',
-      'Erikson\'s 8 psychosocial stages span the entire lifespan: Trust vs. Mistrust (infancy), Autonomy vs. Shame (toddler), Initiative vs. Guilt (preschool), Industry vs. Inferiority (school age), Identity vs. Role Confusion (adolescence), Intimacy vs. Isolation (young adult), Generativity vs. Stagnation (middle adult), Integrity vs. Despair (late adult).',
-      'Kohlberg\'s moral development: Preconventional (self-interest), Conventional (social norms), Postconventional (universal ethical principles). Most adults operate at the conventional level.',
-      'Adolescence brings identity exploration (Erikson\'s "identity crisis"), prefrontal cortex development (not complete until ~25), and heightened emotional volatility due to hormonal changes.',
-      'Aging: Fluid intelligence (processing speed) declines with age, but crystallized intelligence (accumulated knowledge) remains stable or even increases. Neuroplasticity continues throughout life.'
+      "Nature vs. nurture is a false dichotomy: genes and environment interact continuously. Epigenetics shows that experiences can turn genes on or off.",
+      "Piaget's 4 cognitive stages: Sensorimotor (0–2, object permanence), Preoperational (2–7, symbolic thinking but egocentric), Concrete operational (7–11, logical thinking), Formal operational (12+, abstract reasoning).",
+      "Attachment theory (Bowlby/Ainsworth): Secure attachment (caregiver responsive) leads to healthy social development. Insecure types: avoidant, anxious-ambivalent, disorganized. Measured by the Strange Situation test.",
+      "Erikson's 8 psychosocial stages span the entire lifespan: Trust vs. Mistrust (infancy), Autonomy vs. Shame (toddler), Initiative vs. Guilt (preschool), Industry vs. Inferiority (school age), Identity vs. Role Confusion (adolescence), Intimacy vs. Isolation (young adult), Generativity vs. Stagnation (middle adult), Integrity vs. Despair (late adult).",
+      "Kohlberg's moral development: Preconventional (self-interest), Conventional (social norms), Postconventional (universal ethical principles). Most adults operate at the conventional level.",
+      "Adolescence brings identity exploration (Erikson's \"identity crisis\"), prefrontal cortex development (not complete until ~25), and heightened emotional volatility due to hormonal changes.",
+      "Aging: Fluid intelligence (processing speed) declines with age, but crystallized intelligence (accumulated knowledge) remains stable or even increases. Neuroplasticity continues throughout life."
     ],
     keyPointsKa: [
-      'ვიბადებით თუ ვიზრდებით? ეს მცდარი დილემაა — გენები და გარემო ერთმანეთზე მუდმივად ზემოქმედებენ. ეპიგენეტიკა გვაჩვენებს, რომ ჩვენმა გამოცდილებამ შეიძლება გენებიც კი ჩართოს ან გამორთოს.',
-      'პიაჟეს 4 სტადია: სენსომოტორული (0–2 წელი), პრეოპერაციული (2–7 წელი, ეგოცენტრული აზროვნება), კონკრეტული ოპერაციები (7–11 წელი, ლოგიკა) და ფორმალური ოპერაციები (12+ წელი, აბსტრაქტული აზროვნება).',
-      'მიჯაჭვულობის თეორია: უსაფრთხო მიჯაჭვულობა (როცა მშობელი ყურადღებიანია) ჯანსაღ სოციალურ განვითარებას იწვევს. არსებობს არაჯანსაღი ტიპებიც: განრიდებული, შფოთვითი და დეზორგანიზებული.',
-      'ერიქსონის 8 სტადია მთელ ცხოვრებას მოიცავს: ნდობა-უნდობლობა დაბადებისას, დამოუკიდებლობა-სირცხვილი (ჩვილობაში), ინიციატივა-დანაშაულის გრძნობა და ასე შემდეგ, სიბერეში მთლიანობისა და სასოწარკვეთის ჭიდილამდე.',
-      'კოლბერგის მორალური განვითარება: წინაკონვენციური (საკუთარი ინტერესი), კონვენციური (სოციალური ნორმები) და პოსტკონვენციური (უნივერსალური პრინციპები). უმეტესობა მეორე დონეზე ვრჩებით.',
-      'მოზარდობისას ადამიანები საკუთარ იდენტობას ეძებენ (ერიქსონის "იდენტობის კრიზისი"). ამ დროს ტვინის შუბლის წილი ჯერ კიდევ ყალიბდება, რის გამოც მოზარდები ასეთი ემოციურები არიან.',
-      'ასაკში შესვლა: სისწრაფე და ანალიზის უნარი იკლებს, მაგრამ დაგროვილი ცოდნა და გამოცდილება (კრისტალიზებული ინტელექტი) ნარჩუნდება ან იზრდება კიდეც.'
+      "გენები თუ აღზრდა? — ეს მცდარი დილემაა. სინამდვილეში ისინი დაუსრულებლად ურთიერთქმედებენ ჩვენს ცხოვრებაში და გამოცდილებამ შეიძლება გარკვეული გენებიც კი გააქტიუროს.",
+      "პიაჟეს აზროვნების 4 ეტაპი: სენსომოტორული (0-2 წ.), პრეოპერაციული (2-7 წ., ეგოცენტრიზმით სავსე), კონკრეტული (7-11 წ.) და ფორმალური, როცა მზად ვართ აბსტრაქტული აზროვნებისთვის.",
+      "მიჯაჭვულობის თეორია გვეუბნება, რომ ბავშვობაში დაცულობისა და სითბოს განცდა ჯანსაღ დამოუკიდებელ ცხოვრებას აყალიბებს.",
+      "ერიქსონის ადამიანური განვითარების 8 ეტაპი პირდაპირ პასუხობს კითხვებს, თუ რა შინაგანი კრიზისი გვაქვს თითოეულ ასაკში — მაგალითად, მოზარდობისას საკუთარი იდენტობის ძიება.",
+      "კოლბერგის მიხედვით, მორალი ვითარდება ეგოცენტრული ინტერესებიდან საყოველთაო ეთიკური პრინციპების აღიარებამდე.",
+      "რატომ აქვთ მოზარდებს ემოციური „ფოიერვერკები“? — ტვინის შუბლის წილი 25 წლამდე ჯერ კიდევ ფორმირების პროცესშია.",
+      "ასაკთან ერთად ინფორმაციის გადამუშავების სისწრაფე იკლებს, თუმცა წლების განმავლობაში დაგროვილი სიბრძნე და ცოდნა (ეგრეთ წოდებული, კრისტალიზებული ინტელექტი) გვინარჩუნდება."
     ],
     keyPointsRu: [
-      'Природа или воспитание? Это ложная дихотомия. Гены и среда постоянно взаимодействуют. Эпигенетика показывает, что наш опыт может включать и выключать гены.',
-      '4 когнитивные стадии Пиаже: сенсомоторная (0-2 года), дооперациональная (2-7 лет), стадия конкретных операций (7-11 лет) и формальных операций (12+, абстрактное мышление).',
-      'Теория привязанности: безопасная привязанность (когда родитель отзывчив) ведет к здоровому социальному развитию. Существуют и небезопасные типы: избегающий, тревожный и дезорганизованный.',
-      '8 стадий Эриксона охватывают всю жизнь: от базового доверия или недоверия в младенчестве до поиска идентичности в подростковом возрасте и подведения итогов в старости.',
-      'Моральное развитие по Колбергу: доконвенциональное (личная выгода), конвенциональное (социальные нормы) и постконвенциональное (универсальные принципы). Большинство людей остаются на конвенциональном уровне.',
-      'Подростковый возраст приносит поиск идентичности ("кризис идентичности"). Префронтальная кора мозга еще формируется (до ~25 лет), поэтому гормональные изменения вызывают высокую эмоциональность.',
-      'Старение: скорость обработки информации падает, но накопленные знания (кристаллизованный интеллект) остаются стабильными или растут. Нейропластичность мозга сохраняется всю жизнь.'
+      "Гены или среда? На самом деле они взаимодействуют. Наш жизненный опыт может буквально \"включать\" или \"выключать\" гены (эпигенетика).",
+      "Взросление ума по Пиаже (4 стадии): от манипуляций предметами до абстрактного, сложного логического мышления.",
+      "Теория привязанности: надежная эмоциональная связь со взрослым в раннем детстве — залог здорового развития и крепких отношений в будущем.",
+      "8 стадий развития личности по Эриксону: на каждом этапе (от младенца до старости) мы сталкиваемся с новым психосоциальным кризисом, например, поиском своей идентичности.",
+      "Развитие морали по Колбергу: от личной выгоды до глубоко личных универсальных этических принципов.",
+      "Подростковый возраст полон противоречий и поиска себя не просто так — префронтальная кора мозга все еще формируется и завершает развитие только к 25 годам.",
+      "Что происходит при старении: реакция и скорость усвоения нового падают, но весь накопленный опыт и мудрость (кристаллизованный интеллект) остаются с вами!"
     ],
     keyPointsHy: [
-      'Բնույթը թե՞ դաստիարակությունը. սա սխալ երկընտրանք է: Գեներն ու միջավայրը մշտապես փոխազդում են իրար հետ:',
-      'Պիաժեի 4 փուլերը՝ սենսոմոտորային, նախաօպերացիոն, կոնկրետ գործողությունների և ֆորմալ գործողությունների (12+ տարեկան, աբստրակտ մտածողություն):',
-      'Կապվածության տեսություն. անվտանգ կապվածությունը (երբ ծնողն արձագանքող է) հանգեցնում է առողջ սոցիալական զարգացման:',
-      'Էրիքսոնի 8 հոգեսոցիալական փուլերը ընդգրկում են ողջ կյանքը՝ մանկության վստահությունից մինչև ծերության իմաստության որոնում:',
-      'Կոլբերգի բարոյական զարգացումը. նախակոնվենցիոնալ, կոնվենցիոնալ և պոստկոնվենցիոնալ (համընդհանուր սկզբունքներ) մակարդակներ:',
-      'Դեռահասությունը բերում է ինքնության որոնում: Ուղեղի ճակատային բլթակը դեռ չի ավարտել զարգացումը (մինչև ~25 տարեկան), ինչի պատճառով էմոցիոնալ տատանումները շատ են:',
-      'Ծերացում. տեղեկատվության մշակման արագությունը նվազում է, բայց կուտակված գիտելիքները պահպանվում են դրական կամ նույնիսկ աճում են:'
+      "Բնություն, թե դաստիարակություն. դա կեղծ ընտրություն է. գեներն ու միջավայրը մշտապես փոխազդում են իրար հետ։",
+      "Պիաժեի ճանաչողական զարգացման 4 փուլերը՝ զգայաշարժողական (0-2), նախագործառնական (2-7), կոնկրետ գործառնական (7-11) և ձևական տրամաբանական (12+):",
+      "Կապվածության տեսություն. առողջ կապվածությունը ծնողների հետ հանգեցնում է երեխայի հստակ և ճիշտ զարգացմանը։",
+      "Էրիքսոնի 8 հոգեսոցիալական փուլերը. յուրաքանչյուր տարիք ունի իր կարևոր ճգնաժամը, ինչպես օրինակ՝ դեռահասության շրջանում ինքնության որոնումը։",
+      "Բարոյական զարգացումն ըստ Քոլբերգի՝ սկսվում է անձնական շահից և հասնում ընդհանուր համամարդկային արժեքների։",
+      "Դեռահասների էմոցիոնալ տատանումները պայմանավորված են նրանով, որ ուղեղի ճակատային բլթակը շարունակում է ձևավորվել մինչև մոտ 25 տարեկան:",
+      "Տարիքի հետ տեղեկատվության մշակման արագությունը դանդաղում է, բայց կուտակված գիտելիքները պահպանվում են:"
     ],
-    funFact: 'Babies can distinguish all speech sounds from all languages until about 10 months of age. After that, their brains "prune" unused neural pathways and specialize in their native language sounds — which is why learning a second language gets harder with age.',
-    funFactKa: '10 თვემდე ბავშვებს შეუძლიათ გაარჩიონ მსოფლიოს ნებისმიერი ენის ბგერა. ამის მერე მათი ტვინი "ასუფთავებს" გამოუყენებელ კავშირებს და მხოლოდ მშობლიურ ენაზე ფოკუსირდება — ამიტომაა რთული უცხო ენის მოგვიანებით სწავლა.',
-    funFactRu: 'До 10 месяцев младенцы могут различать звуки абсолютно всех языков мира. Затем их мозг "отсекает" неиспользуемые нейронные связи, концентрируясь на родном языке — вот почему так трудно учить языки позже.',
-    funFactHy: 'Մինչև 10 ամսական երեխաները կարող են տարբերել աշխարհի բոլոր լեզուների հնչյունները: Դրանից հետո ուղեղը հրաժարվում է չօգտագործվող նեյրոնային կապերից՝ կենտրոնանալով մայրենի լեզվի վրա:',
-    realWorld: 'Ainsworth\'s attachment research directly influenced childcare policies worldwide. Secure attachment in infancy predicts better relationships, higher self-esteem, and more resilience in adulthood.',
-    realWorldKa: 'ეინსვორთის დაკვირვებებმა პირდაპირ შეცვალა ბავშვთა აღზრდის წესები მთელ მსოფლიოში. ჯანსაღი მიჯაჭვულობა ბავშვობაში პირდაპირ კავშირშია უკეთეს ურთიერთობებთან და თავდაჯერებულობასთან ზრდასრულობისას.',
-    realWorldRu: 'Исследования привязанности изменили подход к воспитанию детей во всем мире. Надежная привязанность в детстве напрямую ведет к лучшим отношениям и самооценке во взрослой жизни.',
-    realWorldHy: 'Կապվածության հետազոտություններն ուղղակիորեն փոխեցին երեխաների խնամքի մոտեցումներն ամբողջ աշխարհում: Անվտանգ կապվածությունը վաղ տարիքում հանգեցնում է ավելի առողջ հարաբերությունների հասուն տարիքում:',
+    funFact: "Babies can distinguish all speech sounds from all languages until about 10 months of age. After that, their brains \"prune\" unused neural pathways and specialize in their native language sounds — which is why learning a second language gets harder with age.",
+    funFactKa: "ბავშვებს 10 თვემდე მსოფლიოს ნებისმიერი ენის ბგერების გარჩევა შეუძლიათ. შემდეგ კი ტვინი ზედმეტ კავშირებს \"ჭრის\" და მხოლოდ მშობლიურ ენაზე ფოკუსირდება. სწორედ ამიტომ გვიჭირს მეორე ენის სწავლა ზრდასრულ ასაკში.",
+    funFactRu: "Младенцы легко различают звуки любого языка мира — но только до 10 месяцев! Затем мозг \"обрезает\" неиспользуемые связи и фокусируется только на родной речи.",
+    funFactHy: "Մինչև 10 ամսական երեխաները լսում և տարբերակում են աշխարհի բոլոր լեզուների հնչյունները, մինչև նրանց ուղեղը սկսում է մասնագիտանալ միայն մայրենի լեզվի մեջ:",
+    realWorld: "Ainsworth's attachment research directly influenced childcare policies worldwide. Secure attachment in infancy predicts better relationships, higher self-esteem, and more resilience in adulthood.",
+    realWorldKa: "მიჯაჭვულობის კვლევებმა ბავშვთა მოვლის მიდგომები მთელ მსოფლიოში შეცვალა, რადგან დადასტურდა — უსაფრთხო მიჯაჭვულობა მომავალში უკეთეს ურთიერთობებს და დიდ გამძლეობას ნიშნავს.",
+    realWorldRu: "Исследования Мэри Эйнсворт доказали всем: надежная база и тепло в детстве напрямую влияют на будущую самооценку и крепкие отношения.",
+    realWorldHy: "Էյնսվորթի հետազոտությունները փոխեցին երեխաների խնամքի չափանիշներն ամբողջ աշխարհում, ցույց տալով ապահով կապվածության անհրաժեշտությունը պայծառ ապագայի համար:",
     keyFigures: [
-      'Jean Piaget',
-      'Erik Erikson',
-      'John Bowlby',
-      'Mary Ainsworth',
-      'Lawrence Kohlberg',
-      'Lev Vygotsky'
+      "Jean Piaget",
+      "Erik Erikson",
+      "John Bowlby",
+      "Mary Ainsworth",
+      "Lawrence Kohlberg",
+      "Lev Vygotsky"
     ]
   },
-    {
+  {
     id: 10,
-    title: 'Motivation and Emotion',
-    titleKa: 'მოტივაცია და ემოციები',
-    titleRu: 'Мотивация и эмоции',
-    titleHy: 'Մոտիվացիա և էմոցիաներ',
-    description: 'What drives human behavior and the science of emotions.',
-    descriptionKa: 'რა აღგვაგზნებს და განაპირობებს ჩვენს ქცევას, და როგორ მუშაობს ემოციები.',
-    descriptionRu: 'Что движет нашим поведением и как работают наши эмоции.',
-    descriptionHy: 'Ինչն է ուղղորդում մեր վարքագիծը և փոխում մեր զգացմունքները:',
-    icon: 'mdi:fire',
+    title: "Motivation and Emotion",
+    titleKa: "მოტივაცია და ემოცია",
+    titleRu: "Мотивация и эмоции",
+    titleHy: "Մոտիվացիա և հույզեր",
+    description: "What drives human behavior and the science of emotions.",
+    descriptionKa: "რა ამოძრავებს ადამიანთა ქცევას და როგორ მუშაობს ჩვენი ემოციები.",
+    descriptionRu: "Что нами движет, и наука о природе наших эмоций.",
+    descriptionHy: "Ինչն է մղում մեզ գործելու և ինչպես են աշխատում մեր հույզերը։",
+    icon: "mdi:fire",
     keyTopics: [
-      'Maslow\'s Hierarchy',
-      'Hunger & Eating',
-      'Achievement Motivation',
-      'Basic Emotions',
-      'Emotional Intelligence'
+      "Maslow's Hierarchy",
+      "Hunger & Eating",
+      "Achievement Motivation",
+      "Basic Emotions",
+      "Emotional Intelligence"
     ],
     keyTopicsKa: [
-      'მასლოუს პირამიდა',
-      'შიმშილი და კვება',
-      'მიღწევის მოტივაცია',
-      'ძირითადი ემოციები',
-      'ემოციური ინტელექტი'
+      "მასლოუს იერარქია",
+      "შიმშილი და კვება",
+      "მიღწევის მოტივაცია",
+      "ძირითადი ემოციები",
+      "ემოციური ინტელექტი"
     ],
     keyTopicsRu: [
-      'Пирамида Маслоу',
-      'Голод и питание',
-      'Мотивация достижения',
-      'Базовые эмоции',
-      'Эмоциональный интеллект'
+      "Пирамида Маслоу",
+      "Голод и пищевое поведение",
+      "Мотивация достижений",
+      "Базовые эмоции",
+      "Эмоциональный интеллект"
     ],
     keyTopicsHy: [
-      'Մասլոուի բուրգը',
-      'Քաղց և սնուցում',
-      'Նվաճումների մոտիվացիա',
-      'Հիմնական էմոցիաներ',
-      'Էմոցիոնալ ինտելեկտ'
+      "Մասլոուի բուրգը",
+      "Քաղց և սնուցում",
+      "Նվաճումների մոտիվացիա",
+      "Հիմնական հույզեր",
+      "Հուզական ինտելեկտ"
     ],
-    summary: 'Motivation energizes and directs behavior. Covers Maslow\'s hierarchy, James-Lange theory, Cannon-Bard theory, and Schachter-Singer theory of emotions.',
-    summaryKa: 'მოტივაცია გვაძლევს ენერგიას და მიმართულებას ზუსტი მიზნებისკენ. გაეცნობით მასლოუს საჭიროებათა პირამიდას და ემოციების მთავარ თეორიებს.',
-    summaryRu: 'Мотивация дает нам энергию и направляет поведение. В этой главе разбираются пирамида Маслоу и главные научные теории эмоций.',
-    summaryHy: 'Մոտիվացիան էներգիա է տալիս և ուղղորդում վարքագիծը: Այստեղ քննարկվում են Մասլոուի պահանջմունքների բուրգը և էմոցիաների հիմնական տեսությունները:',
+    summary: "Motivation energizes and directs behavior. Covers Maslow's hierarchy, James-Lange theory, Cannon-Bard theory, and Schachter-Singer theory of emotions.",
+    summaryKa: "მოტივაცია არის ის, რაც ენერგიას გვაძლევს. აქ განვიხილავთ მასლოუს თეორიას, ჯეიმს-ლანგეს და ემოციების სხვა მოდელებსაც.",
+    summaryRu: "Раздел о том, откуда мы берем энергию для действий. Включает иерархию Маслоу и основные классические теории эмоций (Джеймс-Ланге, Кэннон-Бард и др).",
+    summaryHy: "Մոտիվացիան էներգիա է տալիս և ուղղորդում վարքագիծը: Ներառում է Մասլոուի բուրգը և հույզերի հայտնի տեսությունները։",
     keyPoints: [
-      'Motivation has three components: activation (initiating), persistence (continuing effort), and intensity (how hard you try).',
-      'Drive-reduction theory: physiological needs create drives (hunger, thirst) that motivate behavior to restore homeostasis. But it can\'t explain curiosity or thrill-seeking.',
-      'Maslow\'s hierarchy of needs (bottom to top): Physiological → Safety → Love/Belonging → Esteem → Self-actualization. Lower needs must be met before higher ones become motivating.',
-      'Intrinsic motivation (doing something for its own sake) is more sustainable than extrinsic motivation (rewards/punishments). The overjustification effect: rewarding an already enjoyed activity can decrease intrinsic motivation.',
-      'Theories of emotion: James-Lange (body reacts first, then we feel emotion), Cannon-Bard (body reaction and emotion occur simultaneously), Schachter-Singer / Two-factor (physiological arousal + cognitive label = emotion).',
-      'Paul Ekman identified 6 universal facial expressions: happiness, sadness, anger, fear, surprise, and disgust. These are recognized across all cultures.',
-      'Emotional intelligence (Goleman): the ability to perceive, understand, manage, and use emotions effectively. High EQ predicts better relationships, leadership, and mental health.'
+      "Motivation has three components: activation (initiating), persistence (continuing effort), and intensity (how hard you try).",
+      "Drive-reduction theory: physiological needs create drives (hunger, thirst) that motivate behavior to restore homeostasis. But it can't explain curiosity or thrill-seeking.",
+      "Maslow's hierarchy of needs (bottom to top): Physiological → Safety → Love/Belonging → Esteem → Self-actualization. Lower needs must be met before higher ones become motivating.",
+      "Intrinsic motivation (doing something for its own sake) is more sustainable than extrinsic motivation (rewards/punishments). The overjustification effect: rewarding an already enjoyed activity can decrease intrinsic motivation.",
+      "Theories of emotion: James-Lange (body reacts first, then we feel emotion), Cannon-Bard (body reaction and emotion occur simultaneously), Schachter-Singer / Two-factor (physiological arousal + cognitive label = emotion).",
+      "Paul Ekman identified 6 universal facial expressions: happiness, sadness, anger, fear, surprise, and disgust. These are recognized across all cultures.",
+      "Emotional intelligence (Goleman): the ability to perceive, understand, manage, and use emotions effectively. High EQ predicts better relationships, leadership, and mental health."
     ],
     keyPointsKa: [
-      'მოტივაციას სამი ნაწილი აქვს: დაწყება (აქტივაცია), გაგრძელება (შეუპოვრობა) და ინტენსივობა (რამდენად ბევრს ვცდილობთ).',
-      'ლტოლვის შემცირების თეორია: ფიზიოლოგიური მოთხოვნილება ქმნის ლტოლვას (მაგ. შიმშილი), რაც გვიბიძგებს ბალანსის აღდგენისკენ. მაგრამ ეს არ ხსნის რატომ გვიყვარს რისკი ან რატომ ვართ ცნობისმოყვარენი.',
-      'მასლოუს პირამიდა (ქვემოდან ზემოთ): ფიზიოლოგიური მოთხოვნები → უსაფრთხოება → სიყვარული/მიკუთვნებულობა → აღიარება → თვითრეალიზაცია. ქვედა საფეხური უნდა დაკმაყოფილდეს, რომ ზედამ მოტივაცია მოგვცეს.',
-      'შინაგანი მოტივაცია (როცა რაღაცას ხალისით აკეთებ) უფრო მყარია ვიდრე გარეგანი (ჯილდო/სასჯელი). თუ ადამიანს დააჯილდოებ იმაში, რაც უკვე უყვარს, მისი შინაგანი ინტერესი შეიძლება შემცირდეს.',
-      'ემოციის თეორიები: ჯეიმს-ლანგე (ჯერ სხეული რეაგირებს, მერე ვგრძნობთ), ქენონ-ბარდი (სხეული და ემოცია ერთდროულად ირთვება), შახტერ-სინგერი (ფიზიოლოგიური რეაქცია + გონებრივი შეფასება = ემოცია).',
-      'კვლევებმა აჩვენა 6 უნივერსალური ემოცია, რომლებსაც მთელ მსოფლიოში ერთნაირად გამოხატავენ: ბედნიერება, უკმაყოფილება, ბრაზი, შიში, გაკვირვება და ზიზღი.',
-      'ემოციური ინტელექტი (EQ): საკუთარი და სხვების ემოციების შემჩნევა, გაგება და მართვა. მაღალი EQ გვეხმარება ურთიერთობებში და ამცირებს სტრესს.'
+      "მოტივაციას სამი მთავარი ეტაპი აქვს: დაწყება (აქტივაცია), სიჯიუტე უშედეგობისას და ინტენსივობა ანუ უშუალოდ, რამდენ ძალას დებ.",
+      "მოთხოვნილებების შემცირების თეორია — ფიზიოლოგიური მოთხოვნილება, მაგალითად შიმშილი, გვაიძულებს ენერგია დავხარჯოთ, რათა სხეულის ბალანსი აღვადგინოთ.",
+      "ცნობილი მასლოუს იერარქია: ფიზიკური მოთხოვნილებებიდან უსაფრთხოებასა და თვითრეალიზაციამდე მივდივართ.",
+      "შინაგანი მოტივაცია ბევრად უფრო ძლიერია. თუ ადამიანს საყვარელ საქმეში ფულს გადაუხდი (გარე მოტივაცია), მან შეიძლება ინტერესი საერთოდ დაკარგოს.",
+      "ემოციის თეორიების მიხედვით ჩვენი ტვინი და სხეული სინქრონში მოქმედებს. მაგალითად, ჯერ სხეული რეაგირებს და მხოლოდ მერე ვგრძნობთ ემოციას.",
+      "პოლ ეკმანმა აღმოაჩინა, რომ მსოფლიოს ნებისმიერ კუთხეში 6 უნივერსალური ემოცია გვაქვს: ხალისი, სევდა, ბრაზი, შიში, გაკვირვება და ზიზღი.",
+      "ემოციური ინტელექტი — საუკეთესო ინდიკატორი უკეთესი ურთიერთობებისა და ჯანსაღი ლიდერობისთვის (EQ)."
     ],
     keyPointsRu: [
-      'У мотивации три компонента: активация (начало), настойчивость (продолжение) и интенсивность (сколько усилий мы прилагаем).',
-      'Теория снижения влечения: потребности тела (например, голод) создают импульс для восстановления баланса. Но это не объясняет наше любопытство или тягу к экстриму.',
-      'Пирамида Маслоу: физиология → безопасность → любовь/принадлежность → уважение → самоактуализация. Базовые потребности должны быть закрыты первыми.',
-      'Внутренняя мотивация (делать то, что искренне нравится) сильнее внешней (награды/штрафы). Эффект сверхоправдания: если вознаграждать за то, что человек и так любит делать, его естественный интерес может упасть.',
-      'Теории эмоций: Джеймс-Ланге (сначала реакция тела, потом эмоция), Кеннон-Бард (всё происходит одновременно) и Шехтер-Сингер (реакция тела + наша мысленная оценка = эмоция).',
-      'Пол Экман выделил 6 универсальных мимических реакций, понятных в любой культуре: радость, грусть, гнев, страх, удивление и отвращение.',
-      'Эмоциональный интеллект (EQ) — способность понимать и управлять эмоциями. Высокий EQ делает нас лучше в общении и лидерстве.'
+      "Мотивация состоит из трех частей: запуск действия (активация), настойчивость и интенсивность в достижении цели.",
+      "Теория снижения влечения: мы, подобно термостату, стремимся сохранять внутренний баланс. Голод или жажда заставляют нас действовать. Но как тогда объяснить тягу к экстриму?",
+      "Пирамида потребностей Маслоу: от базы к самой вершине. Пока не удовлетворен \"низ\" (еда, сон, безопасность), о высоком думать трудно.",
+      "Внутренняя мотивация во много раз устойчивее внешней. Знаете ли вы, что если начать платить человеку за его любимое хобби, он быстро потеряет к нему всякий интерес?",
+      "Теории эмоций разные: например, Теория Джеймса-Ланге, которая утверждает, что мы грустим, потому что плачем (сначала тело, потом чувство).",
+      "Всего 6 универсальных мимических реакций! И их понимают одинаково в любой точке Земли.",
+      "Высокий EQ (эмоциональный интеллект) — куда более надежный предиктор успеха в жизни и карьере, чем обычный IQ."
     ],
     keyPointsHy: [
-      'Մոտիվացիան ունի երեք բաղադրիչ՝ ակտիվացում, համառություն և ինտենսիվություն:',
-      'Մղումների նվազեցման տեսություն. ֆիզիոլոգիական պահանջները (քաղց, ծարավ) դրդում են մեզ վերականգնել բալանսը:',
-      'Մասլոուի բուրգը (ներքևից վերև)՝ Ֆիզիոլոգիական, անվտանգություն, սեր/պատկանելիություն, հարգանք, ինքնաիրացում:',
-      'Ներքին մոտիվացիան (անել մի բան հանուն հաճույքի) ավելի կայուն է, քան արտաքինը (պարգևատրումներ): Արդեն սիրելի զբաղմունքի համար վճարելը կարող է ոչնչացնել նախնական հետաքրքրությունը:',
-      'Էմոցիաների տեսություններ. Ջեյմս-Լանգե (նախ արձագանքում է մարմինը, ապա՝ զգացմունքը), Քենոն-Բարդ (միաժամանակյա արձագանք), և Շախտեր-Սինգեր (մարմնի արձագանք + միտք = էմոցիա):',
-      'Փոլ Էկմանը առանձնացրել է 6 ունիվերսալ դեմքի արտահայտություններ՝ ուրախություն, տխրություն, բարկություն, վախ, զարմանք և զզվանք:',
-      'Էմոցիոնալ ինտելեկտ (EQ). սեփական և ուրիշների զգացմունքները հասկանալու ու կառավարելու ունակություն:'
+      "Մոտիվացիան ունի երեք հիմնական բաղադրիչ՝ ակտիվացում, համառություն և ջանքերի ինտենսիվություն:",
+      "Մենք գործում ենք մեր ֆիզիոլոգիական կարիքները (քաղց, ծարավ) բավարարելու համար, որպեսզի ներքին հավասարակշռությունը վերականգնվի:",
+      "Մասլոուի կարիքների բուրգ. ամենաստորին մակարդակից՝ սնունդ, անվտանգություն, մինչև սեր, հարգանք և ինքնաիրացում:",
+      "Ներքին մոտիվացիան ավելի կայուն է արտաքին պարգևներից: Սիրելի հոբբիի համար վճարելը կարող է ժամանակի ընթացքում սպանել հետաքրքրությունը:",
+      "Հույզերի տեսություններ. մենք նախ զգում ենք ֆիզիոլոգիական ռեակցիա, և դա վերափոխվում է մեր զգացմունքի (Ջեյմս-Լանգե):",
+      "Գոյություն ունեն 6 հիմնական դեմքի արտահայտություններ, որոնք հասկանալի են բոլոր մշակույթներում:",
+      "Հուզական ինտելեկտը (EQ)՝ սեփական և ուրիշների հույզերը կառավարելու և հասկանալու ունակությունն է:"
     ],
-    funFact: 'The "misattribution of arousal" study showed that men who crossed a scary suspension bridge rated a female interviewer as more attractive than men who crossed a safe bridge — they mistook their fear-based arousal for romantic attraction!',
-    funFactKa: 'ერთ ექსპერიმენტში, საშიშ ხიდზე გავლელმა კაცებმა უფრო მიმზიდველად შეაფასეს გამომკითხველი ქალი, ვიდრე უსაფრთხო ხიდზე გავლელებმა — მათ შიშით გამოწვეული ადრენალინი რომანტიკულ მიზიდულობაში აერიათ!',
-    funFactRu: 'Эксперимент на подвесном мосту показал: мужчины, перешедшие страшный мост, находили девушку-интервьюера более привлекательной, перепутав адреналин от страха с романтическим волнением!',
-    funFactHy: 'Մի փորձարկում ցույց է տվել, որ վտանգավոր կախովի կամրջով անցնող տղամարդիկ հարցազրույց վարող կնոջը ավելի գրավիչ են համարել՝ շփոթելով վախի առաջացրած ադրենալինը ռոմանտիկ ձգողականության հետ:',
-    realWorld: 'Companies like Google use Maslow\'s hierarchy to design workplaces: free food (physiological), job security (safety), team activities (belonging), recognition programs (esteem), and "20% time" for passion projects (self-actualization).',
-    realWorldKa: 'ისეთი კომპანიები, როგორიცაა Google, მასლოუს პირამიდას იყენებენ სამუშაო გარემოს შესაქმნელად: უფასო საჭმელი (ფიზიოლოგიური), სტაბილურობა (უსაფრთხოება), გუნდური თამაშები (მიკუთვნებულობა) და "20% დრო" საკუთარი იდეებისთვის (თვითრეალიზაცია).',
-    realWorldRu: 'Компании вроде Google строят офисы по пирамиде Маслоу: бесплатная еда (физиология), стабильность (безопасность), командные игры (принадлежность) и 20% времени на свои проекты (самоактуализация).',
-    realWorldHy: 'Google-ի նման ընկերություններն օգտագործում են Մասլոուի բուրգը աշխատավայր ստեղծելիս՝ անվճար սնունդ (ֆիզիոլոգիական), կայունություն (անվտանգություն) և 20% ժամանակ սեփական առաջադրանքների համար (ինքնաիրացում):',
+    funFact: "The \"misattribution of arousal\" study showed that men who crossed a scary suspension bridge rated a female interviewer as more attractive than men who crossed a safe bridge — they mistook their fear-based arousal for romantic attraction!",
+    funFactKa: "გაგიკვირდებათ, მაგრამ შიშისგან გამოწვეული ადრენალინი ადამიანებს ხშირად რომანტიკულ სიმპათიაში ეშლებათ ხოლმე. ერთ ექსპერიმენტში კაცებს, რომლებმაც საშიშ დაკიდულ ხიდზე გაიარეს, იქ შეხვედრილი ქალი უფრო მიმზიდველი ეგონათ!",
+    funFactRu: "Оказывается, страх легко спутать с влюбленностью! В знаменитом эксперименте мужчины, пересекавшие опасный мост, находили девушку-интервьюера невероятно привлекательной, приписав свой всплеск адреналина к романтике.",
+    funFactHy: "Վախից առաջացած ադրենալինը մարդիկ շատ հաճախ շփոթում են ռոմանտիկ համակրանքի հետ։",
+    realWorld: "Companies like Google use Maslow's hierarchy to design workplaces: free food (physiological), job security (safety), team activities (belonging), recognition programs (esteem), and \"20% time\" for passion projects (self-actualization).",
+    realWorldKa: "Google-ის მსგავსი კომპანიები მასლოუს პირამიდას სამუშაო გარემოს შესაქმნელად იყენებენ: უფასო კვება, დაცულობის შეგრძნება და სამუშაო დროის 20% თანამშრომლების პირად პროექტებს ეთმობა.",
+    realWorldRu: "Знаете, почему в Google так здорово работать? Они буквально построили офис по пирамиде Маслоу: от бесплатной еды и чувства безопасности, до 20% времени, отведенного на любые личные креативные идеи!",
+    realWorldHy: "Google-ի նման ընկերություններն օգտագործում են Մասլոուի բուրգը աշխատանքային միջավայր ստեղծելու համար՝ լիարժեք հարմարավետությունից մինչև սեփական գաղափարների իրականացում:",
     keyFigures: [
-      'Abraham Maslow',
-      'William James',
-      'Walter Cannon',
-      'Stanley Schachter',
-      'Paul Ekman',
-      'Daniel Goleman'
+      "Abraham Maslow",
+      "William James",
+      "Walter Cannon",
+      "Stanley Schachter",
+      "Paul Ekman",
+      "Daniel Goleman"
     ]
   },
-    {
+  {
     id: 11,
-    title: 'Personality',
-    titleKa: 'პიროვნების ფსიქოლოგია',
-    titleRu: 'Психология личности',
-    titleHy: 'Անձի հոգեբանություն',
-    description: 'Theories of personality: from Freud to the Big Five.',
-    descriptionKa: 'თეორიები პიროვნების შესახებ: ფროიდიდან დიდი ხუთეულის მოდელამდე.',
-    descriptionRu: 'Теории личности: от Фрейда до модели Большой пятерки.',
-    descriptionHy: 'Անձի տեսություններ՝ Ֆրեյդից մինչև Մեծ հնգյակի մոդել:',
-    icon: 'mdi:drama-masks',
+    title: "Personality",
+    titleKa: "პიროვნება",
+    titleRu: "Личность",
+    titleHy: "Անձ",
+    description: "Theories of personality: from Freud to the Big Five.",
+    descriptionKa: "პიროვნების თეორიები: ფროიდიდან დაწყებული — \"დიდი ხუთეულის\" მოდელით დამთავრებული.",
+    descriptionRu: "Теории личности: от психоанализа Фрейда до \"Большой пятерки\".",
+    descriptionHy: "Անձի տեսություններ՝ Ֆրոյդից մինչև «Մեծ հնգյակ»:",
+    icon: "mdi:drama-masks",
     keyTopics: [
-      'Psychoanalytic Theory',
-      'Humanistic Theory',
-      'Trait Theory',
-      'Big Five',
-      'Personality Assessment'
+      "Psychoanalytic Theory",
+      "Humanistic Theory",
+      "Trait Theory",
+      "Big Five",
+      "Personality Assessment"
     ],
     keyTopicsKa: [
-      'ფსიქოანალიზი',
-      'ჰუმანისტური თეორია',
-      'თვისებათა თეორია',
-      'დიდი ხუთეული',
-      'პიროვნების შეფასება'
+      "ფსიქოანალიზი",
+      "ჰუმანისტური თეორია",
+      "თვისებათა თეორია",
+      "დიდი ხუთეული",
+      "პიროვნების შეფასება"
     ],
     keyTopicsRu: [
-      'Психоанализ',
-      'Гуманистическая теория',
-      'Теория черт',
-      'Большая пятерка',
-      'Оценка личности'
+      "Психоанализ",
+      "Гуманизм",
+      "Теория черт",
+      "Большая пятерка",
+      "Оценка личности"
     ],
     keyTopicsHy: [
-      'Հոգեվերլուծություն',
-      'Հումանիստական տեսություն',
-      'Գծերի տեսություն',
-      'Մեծ հնգյակ',
-      'Անձի գնահատում'
+      "Հոգեվերլուծություն",
+      "Հումանիստական տեսություն",
+      "Գծերի տեսություն",
+      "Մեծ հնգյակ",
+      "Անձի գնահատում"
     ],
-    summary: 'Personality is our unique pattern of thinking, feeling, and behaving. From Freud\'s id/ego/superego to the Big Five traits (OCEAN), covers all major personality theories.',
-    summaryKa: 'პიროვნება ჩვენი ფიქრების, გრძნობების და ქცევების უნიკალური ნაზავია. თავი მიმოიხილავს ძირითად თეორიებს: ფროიდის ქვეცნობიერიდან დაწყებული თანამედროვე "დიდი ხუთეულის" მოდელით დამთავრებული.',
-    summaryRu: 'Личность — это наш уникальный узор мыслей, чувств и поведения. Глава охватывает всё от бессознательного Фрейда до современных стандартов Большой пятерки.',
-    summaryHy: 'Անձը մեր մտքերի, զգացմունքների և վարքագծի եզակի միավորումն է: Այստեղ քննարկվում են անձի ուղղությունները՝ Ֆրեյդի տեսությունից մինչև ներկայիս Մեծ հնգյակը:',
+    summary: "Personality is our unique pattern of thinking, feeling, and behaving. From Freud's id/ego/superego to the Big Five traits (OCEAN), covers all major personality theories.",
+    summaryKa: "ეს არის ჩვენი ფიქრის, გრძნობებისა და ქცევის უნიკალური სტილი. ეს თავი ფროიდის სკანდალური თეორიებიდან OCEAN-მდე ყველა მოდელს აერთიანებს.",
+    summaryRu: "Наша уникальная модель мышления и поведения. Глава охватывает все: и фрейдистские Ид с Эго, и современные черты \"Большой пятерки\" (OCEAN).",
+    summaryHy: "Անձը մեր մտածելակերպի և վարքագծի յուրահատուկ ձևն է։ Ներառում է հիմնական դասական տեսությունները, որոնք բացատրում են մարդու էությունը։",
     keyPoints: [
-      'Freud\'s psychoanalytic theory: Personality is shaped by unconscious conflicts between the Id (primal desires), Ego (rational mediator), and Superego (moral conscience). Defense mechanisms (repression, projection, denial) protect the ego.',
-      'Freud\'s psychosexual stages: Oral, Anal, Phallic (Oedipus complex), Latency, Genital. Fixation at any stage can affect adult personality.',
-      'Neo-Freudians (Adler, Jung, Horney) kept the unconscious but de-emphasized sexuality. Jung introduced collective unconscious and archetypes. Adler focused on inferiority complex.',
-      'Humanistic approaches: Rogers emphasized unconditional positive regard and self-concept. Maslow focused on self-actualization — becoming the best version of yourself.',
-      'Trait theories describe personality using stable dimensions. The Big Five (OCEAN): Openness (curiosity), Conscientiousness (organization), Extraversion (sociability), Agreeableness (cooperativeness), Neuroticism (emotional instability).',
-      'The Big Five are partially heritable (~40–60%), relatively stable after age 30, and predict job performance, relationship satisfaction, and health outcomes.',
-      'Personality assessment: Self-report inventories (MMPI, NEO-PI-R) have good reliability but are subject to social desirability bias. Projective tests (Rorschach, TAT) have weaker validity.'
+      "Freud's psychoanalytic theory: Personality is shaped by unconscious conflicts between the Id (primal desires), Ego (rational mediator), and Superego (moral conscience). Defense mechanisms (repression, projection, denial) protect the ego.",
+      "Freud's psychosexual stages: Oral, Anal, Phallic (Oedipus complex), Latency, Genital. Fixation at any stage can affect adult personality.",
+      "Neo-Freudians (Adler, Jung, Horney) kept the unconscious but de-emphasized sexuality. Jung introduced collective unconscious and archetypes. Adler focused on inferiority complex.",
+      "Humanistic approaches: Rogers emphasized unconditional positive regard and self-concept. Maslow focused on self-actualization — becoming the best version of yourself.",
+      "Trait theories describe personality using stable dimensions. The Big Five (OCEAN): Openness (curiosity), Conscientiousness (organization), Extraversion (sociability), Agreeableness (cooperativeness), Neuroticism (emotional instability).",
+      "The Big Five are partially heritable (~40–60%), relatively stable after age 30, and predict job performance, relationship satisfaction, and health outcomes.",
+      "Personality assessment: Self-report inventories (MMPI, NEO-PI-R) have good reliability but are subject to social desirability bias. Projective tests (Rorschach, TAT) have weaker validity."
     ],
     keyPointsKa: [
-      'ფროიდის ფსიქოანალიზი: პიროვნებას აყალიბებს ქვეცნობიერი კონფლიქტი ჩვენს ცხოველურ სურვილებს (Id), რაციონალურობას (Ego) და მორალს (Superego) შორის. ფსიქიკურ მექანიზმებს კი ეგოს დასაცავად ვიყენებთ.',
-      'ფროიდის ფსიქოსექსუალური სტადიები (ორალური, ანალური, ფალიკური და ა.შ.) ამტკიცებდა, რომ ნებისმიერ ეტაპზე შეფერხება ზრდასრული ადამიანის ხასიათზე აისახება.',
-      'ნეო-ფროიდისტებმა (იუნგი, ადლერი) შეინარჩუნეს ქვეცნობიერის იდეა, მაგრამ სექსუალობის როლი შეამცირეს. იუნგმა შემოიტანა არქეტიპების ცნება, ადლერმა კი — არასრულფასოვნების კომპლექსი.',
-      'ჰუმანისტური მიდგომა: კარლ როჯერსი ხაზს უსვამდა უპირობო სიყვარულის მნიშვნელობას, მასლოუ კი — თვითრეალიზაციას, ანუ იმაზე ზრუნვას, რომ საკუთარი პოტენციალის მაქსიმუმს მივაღწიოთ.',
-      'თვისებათა თეორიები ხასიათს სტაბილური განზომილებებით ხსნიან. საუკეთესოა "დიდი ხუთეული" (OCEAN): ღიაობა გამოცდილების მიმართ, კეთილსინდისიერება, ექსტრავერსია, დამთმობლობა და ნევროტიზმი.',
-      'ეს ხუთი თვისება ნაწილობრივ გენეტიკურია, 30 წლის მერე ნაკლებად იცვლება, და საკმაოდ კარგად წინასწარმეტყველებს ადამიანის წარმატებასა და ურთიერთობების გამძლეობას.',
-      'პიროვნების ტესტები და კითხვარები საკმაოდ სანდოა (მაგ. MMPI), თუმცა ადამიანებს ზოგჯერ ტყუილის თქმა და თავის უკეთ წარმოჩენა უყვართ.'
+      "ფროიდის ფსიქოანალიზი: ის თვლიდა, რომ პიროვნებას იდს (შინაგან ინსტინქტებს), ეგოსა (რეალობას) და სუპერეგოს (მორალს) შორის მუდმივი კონფლიქტი აყალიბებს.",
+      "ფსიქოსექსუალური სტადიები: ექიმის აზრით, ჩვენი ბავშვობის რომელიმე სტადიაზე ჩარჩენა (ფიქსაცია), პირდაპირ ახდენს გავლენას ზრდასრულების ქცევასა და კომპლექსებზე.",
+      "ნეო-ფროიდისტებმა ქვეცნობიერის იდეა დაიტოვეს, მაგრამ სექსუალურობის როლი შეამცირეს. იუნგმა «კოლექტიური არაცნობიერი» და არქეტიპები შემოიტანა მოდელში.",
+      "ჰუმანისტური თეორიები: კარლ როჯერსმა ადამიანის უპირობო პოზიტიურ მიღებას გაუსვა ხაზი, მასლოუმ — საკუთარი პოტენციალის სრულფასოვან რეალიზებას.",
+      "\"დიდი ხუთეული\" (OCEAN): დღეს ყველაზე სანდოდ მიჩნეული ტესტი, რომელიც ზომავს ღიაობას, კეთილსინდისიერებას, ექსტრავერსიას, თანხმობასა და ნევროტიზმს.",
+      "საინტერესოა, რომ ზუსტად ეს ხუთი თვისება ნაწილობრივ გენეტიკურია და 30 წლის ასაკის მერე ადამიანებში თითქმის აღარ იცვლება.",
+      "როგორ ზომავენ პიროვნებას? — კითხვარები კარგია, მაგრამ ხშირად ხალხი იტყუება და უკეთესად წარმოაჩენს თავს. ხოლო ფსიქოლოგიური სურათების (რორშახი) ტესტს მეცნიერული დასაბუთება საერთოდ არ აქვს."
     ],
     keyPointsRu: [
-      'Психоанализ Фрейда: личность формируется конфликтом между животными импульсами (Ид), рациональным Эго и моральным Суперэго. Защитные механизмы спасают Эго от тревоги.',
-      'Фрейдовские стадии развития (психосексуальные): фиксация на любой из них может повлиять на характер взрослого.',
-      'Неофрейдисты (Юнг, Адлер) сохранили идею бессознательного, но убрали акцент с сексуальности. Юнг ввел понятие архетипов, а Адлер — комплекс неполноценности.',
-      'Гуманистический подход: Роджерс подчеркивал важность безусловной любви, а Маслоу фокусировался на самоактуализации — раскрытии своего полного потенциала.',
-      'Теории черт описывают характер стабильными шкалами. Главная из них — "Большая пятерка" (OCEAN): открытость опыту, добросовестность, экстраверсия, покладистость (дружелюбие) и невротизм.',
-      'Большая пятерка частично передается по наследству, стабилизируется после 30 лет и отлично предсказывает успехи в карьере и браке.',
-      'Оценка личности: опросники (такие как MMPI) довольно надежны, хотя люди и склонны давать социально ожидаемые ответы. Проективные тесты вроде пятен Роршаха менее валидны.'
+      "Психоанализ Фрейда: личность выковывается в огне бессознательного конфликта между Ид (первичные желания), Эго (внутренний арбитр) и Суперэго (наша мораль).",
+      "Детские фиксации: Фрейд считал, что застревание на определенных этапах детства навсегда закладывает фундамент взрослых привычек и неврозов.",
+      "Новые последователи Фрейда (Адлер, Юнг) сохранили идею бессознательного, но убрали акцент с сексуальности. Юнг подарил миру архетипы, а Адлер — «комплекс неполноценности».",
+      "Гуманистическая школа: здесь главное — вера в человека. Маслоу и Роджерс доказали, что каждый стремится к лучшему, если ему дать принятие и поддержку.",
+      "Знаменитая «Большая пятерка» черт характера (OCEAN): Открытость новому, Добросовестность, Экстраверсия, Доброжелательность и Нейротизм (эмоциональность).",
+      "Упомянутые пять черт характера на 40-60% передаются по наследству и становятся абсолютно стабильными после 30 лет!",
+      "Тестирование: опросники вроде MMPI точны, но люди склонны их приукрашивать. А проективные тесты (пятна Роршаха) — это больше искусство, чем точная наука."
     ],
     keyPointsHy: [
-      'Ֆրեյդի հոգեվերլուծություն. անձը ձևավորվում է անգիտակից կոնֆլիկտների միջոցով՝ ցանկությունների (Id), ռացիոնալության (Ego) և բարոյականության (Superego) միջև:',
-      'Ֆրեյդի հոգեսեքսուալ փուլերը (օրալ, անալ, և այլն) ցույց են տալիս, որ նախնական շրջանի խնդիրները կարող են ազդել հասուն բնավորության վրա:',
-      'Նեո-ֆրեյդիստներ (Յունգ, Ադլեր). նրանք պահպանեցին անգիտակցականի գաղափարը՝ նվազեցնելով սեքսուալության դերը: Յունգը ներդրեց արխետիպերը, իսկ Ադլերը՝ թերարժեքության բարդույթը:',
-      'Հումանիստական մոտեցում. Ռոջերսը շեշտում էր անվերապահ դրական վերաբերմունքը, իսկ Մասլոուն՝ ինքնաիրացումը:',
-      'Գծերի տեսությունը անձին նկարագրում է կայուն հատկանիշներով: «Մեծ հնգյակը» (OCEAN) ներառում է՝ բաց լինելը, բարեխղճություն, էքստրավերսիա, զիջողականություն և նևրոտիզմ:',
-      'Այս հինգ գծերը մասամբ ժառանգական են և բավականին լավ կանխատեսում են մարդու հաջողությունները:',
-      'Անձի գնահատում. թեստերը հուսալի են, չնայած մարդիկ երբեմն ցանկանում են տալ հասարակության կողմից սպասելի պատասխաններ:'
+      "Ֆրոյդի հոգեվերլուծություն. անձը ձևավորվում է Իդի (ցանկությունների), Էգոյի (իրականության) և Սուպերէգոյի (բարոյականության) միջև անգիտակցական բախումներից:",
+      "Ֆրոյդի հոգեսեռական փուլերը. զարգացման որևէ փուլում ֆիքսացիան կարող է ուղղակի ազդել հասուն տարիքի անձի վրա:",
+      "Նեոֆրոյդիստներ (Յունգ, Ադլեր) պահպանեցին անգիտակցականը, բայց նվազեցրեցին սեռականության դերը, ներմուծելով արքետիպերի և թերարժեքության բարդույթի գաղափարները:",
+      "Հումանիստական մոտեցումներ. կարևորվում է մարդու ներուժի զարգացումը և անշահախնդիր դրական ընդունումը:",
+      "«Մեծ հնգյակը» (OCEAN)՝ գնահատում է բացությունը, բարեխղճությունը, էքստրավերսիան, համաձայնողականությունը և նևրոտիզմը:",
+      "Այս հինգ հատկանիշները մեծամասամբ գենետիկ են և համարյա չեն փոխվում 30 տարեկանից հետո:",
+      "Անձի գնահատման թեստեր. հարցարանները լավն են, բայց մարդիկ երբեմն կեղծում են՝ լավը ներկայանալու համար:"
     ],
-    funFact: 'The Myers-Briggs Type Indicator (MBTI) is used by 88% of Fortune 500 companies, yet most personality psychologists consider it scientifically unreliable — about 50% of people get a different result when retested. The Big Five is the gold standard in research.',
-    funFactKa: 'ბევრი დიდი კომპანია ჯერ კიდევ იყენებს მაიერს-ბრიგსის (MBTI) ტესტს, თუმცა ის მეცნიერულად არასანდოა — ადამიანების 50% განმეორებით ტესტში სრულიად განსხვავებულ შედეგს იღებს. დღეს "დიდი ხუთეული" საუკეთესო ალტერნატივაა.',
-    funFactRu: 'Тест Майерс-Бриггс (MBTI) используют многие корпорации, хотя он считается научно ненадежным: при повторном тесте половина людей получает другой результат. "Большая пятерка" — вот настоящий золотой стандарт.',
-    funFactHy: 'Շատ ընկերություններ օգտագործում են Մայերս-Բրիգս (MBTI) թեստը, բայց այն գիտականորեն հուսալի չէ. մարդկանց 50%-ը կրկնակի թեստավորման ժամանակ այլ արդյունք է ստանում: «Մեծ հնգյակն» այժմ լավագույնն է:',
-    realWorld: 'Recruiters use Big Five assessments because Conscientiousness is the strongest personality predictor of job performance across all occupations. Agreeableness predicts teamwork, and Openness predicts creativity.',
-    realWorldKa: 'დამსაქმებლები "დიდი ხუთეულის" მოდელს იყენებენ, რადგან კომპონენტი "კეთილსინდისიერება აჩვენებს, თუ რამდენად კარგი თანამშრომელი იქნება ადამიანი. "დამთმობლობა" გუნდურობაზე მეტყველებს, "ღიაობა" კი კრეატიულობაზე.',
-    realWorldRu: 'HR-специалисты уважают Большую пятерку: черта "добросовестность" является лучшим мировым предиктором успешности сотрудника, "открытость" указывает на креативность, а "покладистость" важна для командной работы.',
-    realWorldHy: 'Գործատուները նախընտրում են Մեծ հնգյակը, քանի որ «բարեխղճությունը» աշխատանքային հաջողության ամենաուժեղ կանխատեսիչն է:',
+    funFact: "The Myers-Briggs Type Indicator (MBTI) is used by 88% of Fortune 500 companies, yet most personality psychologists consider it scientifically unreliable — about 50% of people get a different result when retested. The Big Five is the gold standard in research.",
+    funFactKa: "გაგიკვირდებათ და მსოფლიოში პოპულარულ MBTI ტესტს მეცნიერული საფუძველი თითქმის არ გააჩნია — თუ მას ორჯერ გააკეთებთ 50%-ით განსხვავებულ პასუხს მიიღებთ, მაგრამ დიდ კორპორაციებში მაინც ძალიან უყვართ.",
+    funFactRu: "MBTI — невероятно популярный тест в бизнесе (им пользуются 88% крупных компаний). Но вот парадокс: наука считает его псевдонаучным, ведь при повторном прохождении половина людей получает совершенно другой результат!",
+    funFactHy: "MBTI թեստը շատ տարածված է խոշոր ընկերություններում, սակայն այն չունի բավարար գիտական ապացույցներ, իսկ արդյունքները հաճախ տատանվում են կրկնակի թեստավորման ժամանակ:",
+    realWorld: "Recruiters use Big Five assessments because Conscientiousness is the strongest personality predictor of job performance across all occupations. Agreeableness predicts teamwork, and Openness predicts creativity.",
+    realWorldKa: "HR-ები ხშირად იყენებენ \"დიდი ხუთეულის\" ტესტებს, რადგან კომპანიებისთვის კეთილსინდისიერების მაჩვენებელი სამსახურში წარმატების საუკეთესო და ყველაზე უტყუარი ინდიკატორია!.",
+    realWorldRu: "Серьезные рекрутеры применяют \"Большую пятерку\" не просто так. Оказывается, метрика \"Добросовестности\" — лучший предсказатель карьерного успеха в совершенно любой профессии.",
+    realWorldHy: "Գործատուներն օգտագործում են «Մեծ հնգյակը», քանի որ բարեխղճության ցուցանիշը աշխատանքային հաջողության ամենահստակ ապացույցն է ողջ աշխարհում:",
     keyFigures: [
-      'Sigmund Freud',
-      'Carl Jung',
-      'Alfred Adler',
-      'Carl Rogers',
-      'Gordon Allport',
-      'Hans Eysenck'
+      "Sigmund Freud",
+      "Carl Jung",
+      "Alfred Adler",
+      "Carl Rogers",
+      "Gordon Allport",
+      "Hans Eysenck"
     ]
   },
-    {
+  {
     id: 12,
-    title: 'Social Psychology',
-    titleKa: 'სოციალური ფსიქოლოგია',
-    titleRu: 'Социальная психология',
-    titleHy: 'Սոցիալական հոգեբանություն',
-    description: 'How others influence our thoughts, feelings, and behavior.',
-    descriptionKa: 'როგორ ცვლიან სხვები ჩვენს ფიქრებს, ემოციებს და ქცევას.',
-    descriptionRu: 'Как другие люди влияют на наши мысли, чувства и поступки.',
-    descriptionHy: 'Ինչպես են մարդիկ ազդում մեր մտքերի, զգացմունքների և վարքի վրա:',
-    icon: 'mdi:account-group-outline',
+    title: "Social Psychology",
+    titleKa: "სოციალური ფსიქოლოგია",
+    titleRu: "Социальная психология",
+    titleHy: "Սոցիալական հոգեբանություն",
+    description: "How others influence our thoughts, feelings, and behavior.",
+    descriptionKa: "როგორ ახდენენ სხვები გავლენას ჩვენს აზრებზე, ემოციებსა და ქცევაზე.",
+    descriptionRu: "Как окружающие влияют на наши мысли, эмоции и образ действий.",
+    descriptionHy: "Ինչպես են շրջապատող մարդիկ ազդում մեր մտքերի, զգացմունքների և վարքագծի վրա։",
+    icon: "mdi:account-group-outline",
     keyTopics: [
-      'Conformity',
-      'Obedience',
-      'Attitudes',
-      'Group Behavior',
-      'Prejudice'
+      "Conformity",
+      "Obedience",
+      "Attitudes",
+      "Group Behavior",
+      "Prejudice"
     ],
     keyTopicsKa: [
-      'კონფორმიზმი',
-      'მორჩილება',
-      'დამოკიდებულებები',
-      'ჯგუფური ქცევა',
-      'წინასწარგანწყობა'
+      "კონფორმიზმი",
+      "მორჩილება",
+      "განწყობები",
+      "ჯგუფური ქცევა",
+      "დისკრიმინაცია"
     ],
     keyTopicsRu: [
-      'Конформизм',
-      'Повиновение',
-      'Установки',
-      'Поведение в группе',
-      'Предрассудки'
+      "Конформизм",
+      "Подчинение",
+      "Установки",
+      "Групповое поведение",
+      "Предрассудки"
     ],
     keyTopicsHy: [
-      'Կոնֆորմիզմ',
-      'Հնազանդություն',
-      'Վերաբերմունքներ',
-      'Խմբային վարքագիծ',
-      'Նախապաշարմունքներ'
+      "Կոնֆորմիզմ",
+      "Հնազանդություն",
+      "Վերաբերմունք",
+      "Խմբային վարքագիծ",
+      "Նախապաշարմունքներ"
     ],
-    summary: 'Social psychology studies how people think about, influence, and relate to each other. Covers conformity, obedience, cognitive dissonance, group behavior, and prejudice.',
-    summaryKa: 'სოციალური ფსიქოლოგია სწავლობს, თუ როგორ მივმართავთ ერთმანეთს და როგორ ვახდენთ გავლენას. აქ განიხილება კონფორმიზმის, მორჩილებისა და ჯგუფური დინამიკის საკითხები.',
-    summaryRu: 'Социальная психология изучает, как мы взаимодействуем и влияем друг на друга. Глава покрывает темы подчинения авторитетам, конформизма, когнитивного диссонанса и группового поведения.',
-    summaryHy: 'Սոցիալական հոգեբանությունն ուսումնասիրում է, թե ինչպես ենք մենք ներգործում միմյանց վրա․ կոնֆորմիզմից ու հնազանդությունից մինչև կոգնիտիվ դիսոնանս և խմբային վարքագիծ:',
+    summary: "Social psychology studies how people think about, influence, and relate to each other. Covers conformity, obedience, cognitive dissonance, group behavior, and prejudice.",
+    summaryKa: "ეს ის დარგია, რომელიც იკვლევს ჯგუფურ გავლენებს. ამ თავში ვნახავთ, რატომ ვემორჩილებით ავტორიტეტებს და რა არის კოგნიტური დისონანსი ჩვენს ყოველდღიურობაში.",
+    summaryRu: "Изучает, как мы понимаем других людей и взаимодействуем с группами. Включает парадоксы конформизма, власти авторитетов и когнитивный диссонанс.",
+    summaryHy: "Սոցիալական հոգեբանությունը ուսումնասիրում է, թե մարդիկ ինչպես են ընկալում միմյանց և ազդում միմյանց վրա:",
     keyPoints: [
-      'Attribution theory: We explain others\' behavior using dispositional (personality) or situational (environment) attributions. The fundamental attribution error: we overestimate personality and underestimate situations when judging others.',
-      'Conformity (Asch): People agree with an obviously wrong answer to match the group about 37% of the time. Increases with group size (up to ~5) and unanimity.',
-      'Obedience (Milgram): 65% of participants delivered what they believed were lethal electric shocks when instructed by an authority figure. Authority, proximity, and legitimacy increased obedience.',
-      'Cognitive dissonance (Festinger): When our actions contradict our beliefs, we feel discomfort and change our attitudes to match our behavior. Explains why hazing rituals increase group loyalty.',
-      'Group phenomena: Social facilitation (performing better on easy tasks when watched), Social loafing (working less in groups), Groupthink (cohesive groups suppress dissent), Deindividuation (anonymity reduces self-awareness).',
-      'Prejudice involves stereotypes (beliefs), prejudice (attitudes), and discrimination (behaviors). Reduced through intergroup contact when groups have equal status and share common goals.',
-      'Bystander effect (Darley & Latané): The more people present, the less likely anyone is to help. Caused by diffusion of responsibility and pluralistic ignorance.'
+      "Attribution theory: We explain others' behavior using dispositional (personality) or situational (environment) attributions. The fundamental attribution error: we overestimate personality and underestimate situations when judging others.",
+      "Conformity (Asch): People agree with an obviously wrong answer to match the group about 37% of the time. Increases with group size (up to ~5) and unanimity.",
+      "Obedience (Milgram): 65% of participants delivered what they believed were lethal electric shocks when instructed by an authority figure. Authority, proximity, and legitimacy increased obedience.",
+      "Cognitive dissonance (Festinger): When our actions contradict our beliefs, we feel discomfort and change our attitudes to match our behavior. Explains why hazing rituals increase group loyalty.",
+      "Group phenomena: Social facilitation (performing better on easy tasks when watched), Social loafing (working less in groups), Groupthink (cohesive groups suppress dissent), Deindividuation (anonymity reduces self-awareness).",
+      "Prejudice involves stereotypes (beliefs), prejudice (attitudes), and discrimination (behaviors). Reduced through intergroup contact when groups have equal status and share common goals.",
+      "Bystander effect (Darley & Latané): The more people present, the less likely anyone is to help. Caused by diffusion of responsibility and pluralistic ignorance."
     ],
     keyPointsKa: [
-      'მიწერის (ატრიბუციის) თეორია: სხვის საქციელს ხშირად მათ ხასიათს ვაბრალებთ და გარემოებებს უგულებელვყოფთ — ამას "ატრიბუციის ფუნდამენტური შეცდომა" ჰქვია.',
-      'კონფორმიზმი (აშის ექსპერიმენტი): ადამიანები შემთხვევათა 37%-ში ჯგუფის გავლენით აშკარად მცდარ პასუხს ირჩევენ. ემორჩილებიან ჯგუფის აზრს, განსაკუთრებით მაშინ, როცა ჯგუფი დიდია და აზრი — ერთსულოვანი.',
-      'მორჩილება (მილგრამის ექსპერიმენტი): მონაწილეთა 65% მზად იყო უცხო ადამიანისთვის სასიკვდილო ელექტროშოკი დაერტყა, თუ ამას ავტორიტეტი (მეცნიერი) ავალებდა.',
-      'კოგნიტური დისონანსი (ფესტინგერი): როცა ჩვენი ქცევა და რწმენა ერთმანეთს არ ემთხვევა, დისკომფორტს ვგრძნობთ და ვცდილობთ დამოკიდებულება შევცვალოთ. ამიტომ გვიყვარს ჯგუფი უფრო მეტად, თუ მასში გაწევრიანება რთული იყო.',
-      'ჯგუფური მოვლენები: სხვების თანდასწრებით მარტივ საქმეს უკეთ ვაკეთებთ; ჯგუფში უფრო ვზარმაცობთ; შეკრულ გუნდში განსხვავებულ აზრს ვმალავთ; ხოლო ანონიმურობისას კონტროლს ვკარგავთ.',
-      'წინასწარგანწყობა (სტერეოტიპები, მტრობა, დისკრიმინაცია) შეიძლება შემცირდეს, თუ განსხვავებულ ჯგუფებს თანაბარი სტატუსი ექნებათ და საერთო მიზნისთვის იშრომებენ.',
-      'გამვლელის ეფექტი: რაც უფრო მეტი ხალხია გარშემო, მით უფრო ნაკლებია შანსი, რომ ვინმემ გაჭირვებულს დაეხმაროს — რადგან პასუხისმგებლობა ყველაზე ნაწილდება.'
+      "ატრიბუციის თეორია — სხვის შეცდომებს ხშირად მათ ხასიათს ვაბრალებთ და არა სიტუაციას (ამას ფუნდამენტური შეცდომა ჰქვია). თუმცა საკუთარი შეცდომების შემთხვევაში პირიქით ვიქცევით ხოლმე!",
+      "კონფორმიზმი ასჩის ექსპერიმენტში: თუ ირგვლივ ყველა არასწორ პასუხს ამბობს, ხალხის 37% მათ უერთდება, რათა ზეწოლის ქვეშ არ აღმოჩნდეს.",
+      "მორჩილება მილგრამის ექსპერიმენტში: ადამიანების 65% მზად იყო უცხო ადამიანისთვის სასიკვდილო ელექტროშოკი დაერტყა, უბრალოდ იმიტომ რომ მკვლევარმა, რომელსაც ხალათი ეცვა, ასე უბრძანა.",
+      "კოგნიტური დისონანსი: ეს ის უხერხული შეგრძნებაა, როცა ჩვენი ქცევა რეალურად არ ემთხვევა ჩვენს მრწამსს — ასეთ დროს ხშირად ვიმართლებთ თავს, რომ დისკომფორტი გავიქარწყლოთ.",
+      "ჯგუფური ქცევა: ჯგუფში მუშაობისას ადამიანები ხშირად ზარმაცობენ. ხოლო ძალზედ შეკრულ ჯგუფში შეიძლება განსხვავებული აზრი საერთოდ დაიკარგოს.",
+      "სტერეოტიპები და დისკრიმინაცია მხოლოდ მაშინ მცირდება, როდესაც სხვადასხვა ჯგუფი თანაბარ პირობებში ურთიერთობს და საერთო მიზანი აქვს.",
+      "შემსწრის ეფექტი: რაც უფრო მეტი ადამიანია ქუჩაში ცუდი ამბის მომსწრე, მით უფრო ნაკლებია შანსი, რომ ვინმე დაეხმაროს — რადგან ყველა სხვას ელოდება (პასუხისმგებლობის გადანაწილება)."
     ],
     keyPointsRu: [
-      'Теория атрибуции: мы часто объясняем чужие поступки их характером, упуская из виду обстоятельства. Это называется "фундаментальной ошибкой атрибуции".',
-      'Конформизм (эксперимент Аша): люди часто (в 37% случаев) соглашаются с явно неверным мнением большинства, просто чтобы не выделяться.',
-      'Подчинение авторитету (эксперимент Милгрэма): 65% участников готовы были ударить человека смертельным разрядом тока только потому, что ученый в халате приказывал им продолжать.',
-      'Когнитивный диссонанс (Фестингер): когда наши поступки расходятся с нашими убеждениями, мы чувствуем дискомфорт и часто меняем свои взгляды, чтобы оправдать свои действия.',
-      'Групповая динамика: в толпе мы скрываем инакомыслие (групповое мышление), часто ленимся (социальная леность) и теряем самоконтроль при анонимности.',
-      'Предрассудки (стереотипы и дискриминацию) можно уменьшить, если разные группы людей будут работать над общей целью на равных.',
-      'Эффект свидетеля: чем больше людей вокруг, тем меньше шансов, что кто-то поможет в беде — так как ответственность "размывается".'
+      "Фундаментальная ошибка атрибуции: мы часто грубо переоцениваем плохой характер человека и недооцениваем влияние ситуации на его поступки.",
+      "Сила конформизма: эксперимент Аша показал, что люди готовы согласиться с очевидно ложным ответом, лишь бы не идти против группы большинства.",
+      "Подчинение авторитету: 65% испытуемых довели силу \"электрического удара\" до летального исхода, просто потому что человек в лабораторном халате продолжал отдавать им приказы!",
+      "Когнитивный диссонанс: психологический конфликт, который мы испытываем, когда наши слова расходятся с делом. Именно он заставляет нас придумывать оправдания плохим поступкам.",
+      "Эффекты толпы: социальная лень (человек меньше напрягается в команде) и деиндивидуализация (в огромной толпе мы теряем свое \"Я\" и готовы на большее зло).",
+      "Предрассудки: бороться с глубинными стереотипами можно только через тесный, равноправный контакт с другими группами.",
+      "Эффект свидетеля (эффект Дженовезе): поразительно, но чем больше людей вокруг видят кризисную ситуацию, тем меньше вероятность, что хоть кто-нибудь придет на помощь!"
     ],
     keyPointsHy: [
-      'Ատրիբուցիայի տեսություն. մենք նկարագրում ենք ուրիշների վարքը՝ շեշտելով նրանց բնավորությունը և անտեսելով իրավիճակը (հիմնարար ատրիբուցիոն սխալ):',
-      'Կոնֆորմիզմ (Աշի փորձարկում)․ մարդիկ դեպքերի 37%-ում համաձայնում են մեծամասնության ակնհայտ սխալ կարծիքի հետ, որպեսզի չառանձնանան:',
-      'Հնազանդություն (Միլգրեմի փորձարկում). մասնակիցների 65%-ը պատրաստ էր մահացու հոսանքահարել մարդուն, այն պատճառով, որ հեղինակավոր գիտնականը հրամայում էր դա:',
-      'Կոգնիտիվ դիսոնանս (Ֆեստինգեր). երբ մեր գործողությունները հակասում են մեր համոզմունքներին, մենք հաճախ փոխում ենք համոզմունքները՝ արդարացնելով այն:',
-      'Խմբային դինամիկա՝ մարդիկ հաճախ դառնում են ավելի ծույլ (սոցիալական ծուլություն) կամ կորցնում են ինքնակառավարումը անանունության ժամանակ:',
-      'Նախապաշարմունքները կարող են նվազել, երբ տարբեր խմբեր աշխատում են ընդհանուր նպատակի ուղղությամբ՝ հավասար պայմաններում:',
-      'Ականատեսի էֆեկտ. որքան շատ մարդիկ են ներկա, այնքան ավելի քիչ է հավանականությունը, որ ինչ-որ մեկը կօգնի տուժածին (պատասխանատվության ցրում):'
+      "Ատրիբուցիայի տեսություն. մենք հաճախ գերագնահատում ենք անձի բնավորությունը և թերագնահատում իրավիճակը կոնֆլիկտների ժամանակ:",
+      "Կոնֆորմիզմ. մարդկանց մոտ 37%-ը համաձայնում է ակնհայտ սխալ պատասխանի հետ՝ պարզապես խմբին չտարբերվելու համար:",
+      "Հնազանդություն. Միլգրեմի փորձում գրեթե 65%-ը ենթարկվում էին լաբորատոր հեղինակությանը՝ անգամ մահացու ուժ գործադրելով իրենց նման մարդկանց նկատմամբ:",
+      "Կոգնիտիվ դիսոնանս. ներքին անհարմարավետության զգացում, երբ մեր արարքները հակասում են համոզմունքներին:",
+      "Խմբային երևույթներ. խմբում մենք հաճախ թուլանում ենք (սոցիալական ծուլություն) և լրիվ կորցնում ենք մեր անհատականությունը:",
+      "Նախապաշարմունքներ. կարծրատիպերը նվազեցնելու լավագույն միջոցը այլ խմբերի հետ հավասար շփումն է:",
+      "Ականատեսի էֆեկտ. որքան շատ մարդ է ներկա ճգնաժամային իրավիճակում, այնքան ավելի քիչ է հավանականությունը, որ ինչ-որ մեկը կմիջամտի (պատասխանատվության ցրում):"
     ],
-    funFact: 'Zimbardo\'s Stanford Prison Experiment (1971) was meant to last 2 weeks but was stopped after just 6 days because "guards" became sadistic and "prisoners" showed signs of psychological breakdown — demonstrating the power of situational forces on behavior.',
-    funFactKa: 'ზიმბარდოს სტენფორდის ციხის ექსპერიმენტი (1971 წ.) 2 კვირა უნდა გაგრძელებულიყო, მაგრამ 6 დღეში შეწყვიტეს. "ზედამხედველები" სადისტები გახდნენ, ხოლო "პატიმრებს" ნერვული აშლილობა დაეწყოთ — ასე ძლიერად მოქმედებს ადამიანზე როლი და გარემო.',
-    funFactRu: 'Знаменитый Стэнфордский тюремный эксперимент Зимбардо пришлось прервать всего через 6 дней. Люди, игравшие "охранников", стали садистами, а "заключенные" получили нервные срывы. Сила ролей и ситуации просто потрясает!',
-    funFactHy: 'Զիմբարդոյի Սթենֆորդի բանտային փորձարկումն ընդհատվեց ընդամենը 6 օր անց, որովհետև «բանտարկյալների» մոտ նյարդային խանգարումներ սկսվեցին, իսկ «պահակները» դարձան դաժան: Իրավիճակի ու խմբային դերերի ազդեցությունը զարմանալի է:',
-    realWorld: 'Understanding conformity and obedience explains everything from workplace culture ("nobody questions the boss") to historical atrocities. Modern organizations use these insights to create psychological safety — environments where people feel safe to speak up.',
-    realWorldKa: 'მორჩილებისა და კონფორმიზმის გაგება გვეხმარება ავხსნათ როგორც ტოქსიკური სამუშაო გარემო ("ბოსს არავინ ეწინააღმდეგება"), ისე ისტორიული სისასტიკეები. თანამედროვე ორგანიზაციები ცდილობენ შექმნან გარემო, სადაც თანამშრომლებს ხმის ამოღების არ შეეშინდებათ.',
-    realWorldRu: 'Понимание этих явлений объясняет всё: от токсичных корпоративных культур до исторических трагедий. Сегодня компании стараются создавать психологически безопасную среду, где не страшно высказать свое мнение.',
-    realWorldHy: 'Հնազանդության հասկանալը բացատրում է և՛ աշխատավայրի տոքսիկ մշակույթը («ոչ ոք չի հակաճառում ղեկավարին»), և՛ պատմական դաժանությունները: Ժամանակակից կազմակերպությունները փորձում են ստեղծել այնպիսի միջավայր, որտեղ անվտանգ է տարբերվող կարծիք հայտնելը:',
+    funFact: "Zimbardo's Stanford Prison Experiment (1971) was meant to last 2 weeks but was stopped after just 6 days because \"guards\" became sadistic and \"prisoners\" showed signs of psychological breakdown — demonstrating the power of situational forces on behavior.",
+    funFactKa: "ცნობილი სტენფორდის ციხის ექსპერიმენტი მე-6 დღესვე სასწრაფოდ შეწყვიტეს. სტუდენტები, რომლებსაც \"ბადრაგის\" როლი ერგოთ, იმდენად შევიდნენ როლში, რომ ნამდვილ სადისტებად იქცნენ.",
+    funFactRu: "Стэнфордский тюремный эксперимент отменили через 6 дней вместо двух недель: обычные студенты, ставшие \"надзирателями\", начали проявлять жуткий садизм. Вот так ситуация ломает характер!",
+    funFactHy: "Սթենֆորդի բանտային էքսպերիմենտը չեղարկվեց ընդամենը 6 օր անց, երբ «պահակների» և «բանտարկյալների» միջև սկսվեցին իրական պատերազմական և դաժան դրսևորումներ:",
+    realWorld: "Understanding conformity and obedience explains everything from workplace culture (\"nobody questions the boss\") to historical atrocities. Modern organizations use these insights to create psychological safety — environments where people feel safe to speak up.",
+    realWorldKa: "კონფორმიზმისა და მორჩილების მექანიზმების გააზრება გვეხმარება გავიგოთ, თუ რატომ დუმან ადამიანები უსამართლობის დროს სამსახურში და როგორ ხდება მასობრივი ისტორიული ტრაგედიები უბრალო მორჩილების გამო.",
+    realWorldRu: "Понимание того, как работают послушание и конформизм, проясняет и культуру молчания на работе (\"никто не спорит с боссом\"), и причины массовых исторических трагедий.",
+    realWorldHy: "Կոնֆորմիզմի և հնազանդության ըմբռնումը բացատրում է և՛ աշխատանքային կուլտուրան («ոչ ոք չի վիճում շեֆի հետ»), և՛ պատմական ողբերգությունների պատճառները:",
     keyFigures: [
-      'Solomon Asch',
-      'Stanley Milgram',
-      'Philip Zimbardo',
-      'Leon Festinger',
-      'Muzafer Sherif'
+      "Solomon Asch",
+      "Stanley Milgram",
+      "Philip Zimbardo",
+      "Leon Festinger",
+      "Muzafer Sherif"
     ]
   },
   {
-    id: 13, title: 'Stress, Health, and Coping', titleKa: '\u10E1\u10E2\u10E0\u10D4\u10E1\u10D8, \u10EF\u10D0\u10DC\u10DB\u10E0\u10D7\u10D4\u10DA\u10DD\u10D1\u10D0 \u10D3\u10D0 \u10D2\u10D0\u10DB\u10D9\u10DA\u10D0\u10D5\u10D4\u10D1\u10D0',
-    description: 'How stress affects us and strategies to cope with it.',
-    descriptionKa: '\u10E0\u10DD\u10D2\u10DD\u10E0 \u10DB\u10DD\u10E5\u10DB\u10D4\u10D3\u10D4\u10D1\u10E1 \u10E1\u10E2\u10E0\u10D4\u10E1\u10D8 \u10E9\u10D5\u10D4\u10DC\u10D6\u10D4 \u10D3\u10D0 \u10DB\u10D8\u10E1\u10D8 \u10D2\u10D0\u10DB\u10D9\u10DA\u10D0\u10D5\u10D4\u10D1\u10D8\u10E1 \u10E1\u10E2\u10E0\u10D0\u10E2\u10D4\u10D2\u10D8\u10D4\u10D1\u10D8.',
-    icon: 'mdi:meditation',
-    keyTopics: ['Stress Response', 'Stressors', 'Coping Strategies', 'Health Psychology', 'Resilience'],
-    keyTopicsKa: ['\u10E1\u10E2\u10E0\u10D4\u10E1\u10E3\u10DA\u10D8 \u10E0\u10D4\u10D0\u10E5\u10EA\u10D8\u10D0', '\u10E1\u10E2\u10E0\u10D4\u10E1\u10DD\u10E0\u10D4\u10D1\u10D8', '\u10D2\u10D0\u10DB\u10D9\u10DA\u10D0\u10D5\u10D4\u10D1\u10D8\u10E1 \u10E1\u10E2\u10E0\u10D0\u10E2\u10D4\u10D2\u10D8\u10D4\u10D1\u10D8', '\u10EF\u10D0\u10DC\u10DB\u10E0\u10D7\u10D4\u10DA\u10DD\u10D1\u10D8\u10E1 \u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10D0', '\u10D2\u10D0\u10DB\u10EB\u10DA\u10D4\u10DD\u10D1\u10D0'],
-    summary: 'Stress is the body\'s response to demanding situations. Covers alarm/resistance/exhaustion stages, coping strategies, social support, and resilience.',
-    keyPoints: [
-      'Stress is the body\'s response to any perceived threat or demand. Eustress (positive) helps performance; distress (negative) harms health.',
-      'Selye\'s General Adaptation Syndrome (GAS): Alarm (fight-or-flight activated) \u2192 Resistance (body adapts to ongoing stress) \u2192 Exhaustion (resources depleted, vulnerability to illness).',
-      'The fight-or-flight response: the sympathetic nervous system releases adrenaline and cortisol, increasing heart rate, blood pressure, and blood sugar. Useful for short-term threats, harmful when chronic.',
-      'Major stressors: catastrophes, significant life changes (Holmes-Rahe scale), and daily hassles. Research shows daily hassles (traffic, deadlines) may affect health more than major events.',
-      'Chronic stress suppresses the immune system (psychoneuroimmunology), increases risk of cardiovascular disease, contributes to depression and anxiety, and accelerates cellular aging.',
-      'Coping strategies: Problem-focused coping (taking action to solve the problem) works best for controllable situations. Emotion-focused coping (managing feelings) is better for uncontrollable situations.',
-      'Protective factors: Social support (the #1 buffer against stress), exercise (reduces cortisol), mindfulness and meditation (reduces amygdala reactivity), perceived control (believing you can influence outcomes), and optimism.'
+    id: 13,
+    title: "Stress, Health, and Coping",
+    titleKa: "სტრესი, ჯანმრთელობა და მასთან გამკლავება",
+    titleRu: "Стресс, здоровье и преодоление трудностей",
+    titleAm: "Սթրես, առողջություն և հաղթահարում",
+    description: "How stress affects us and strategies to cope with it.",
+    descriptionKa: "როგორ მოქმედებს სტრესი ჩვენზე და როგორ ვებრძოლოთ მას.",
+    descriptionRu: "Как стресс влияет на нас и стратегии борьбы с ним.",
+    descriptionAm: "Ինչպես է սթրեսը ազդում մեզ վրա և դրա դեմ պայքարելու ռազմավարությունները։",
+    icon: "mdi:meditation",
+    keyTopics: [
+      "Stress Response",
+      "Stressors",
+      "Coping Strategies",
+      "Health Psychology",
+      "Resilience"
     ],
-    funFact: 'Laughing reduces cortisol by 39% and increases endorphins by 27%. Studies show that even anticipating a funny experience can reduce stress hormones. Hospitals now use "laughter therapy" with positive results.',
-    realWorld: 'Burnout (emotional exhaustion, depersonalization, reduced accomplishment) affects 67% of workers at some point. Companies that implement stress management programs see 25% reductions in sick days and higher productivity.',
-    keyFigures: ['Hans Selye', 'Richard Lazarus', 'Walter Cannon', 'Martin Seligman', 'Sheldon Cohen']
+    keyTopicsKa: [
+      "სტრესული რეაქცია",
+      "სტრესორები",
+      "გამკლავების გზები",
+      "ჯანმრთელობის ფსიქოლოგია",
+      "გამძლეობა"
+    ],
+    keyTopicsRu: [
+      "Реакция на стресс",
+      "Стрессоры",
+      "Стратегии совладания",
+      "Психология здоровья",
+      "Устойчивость"
+    ],
+    keyTopicsAm: [
+      "Սթրեսային ռեակցիա",
+      "Սթրեսորներ",
+      "Հաղթահարման ռազմավարություններ",
+      "Առողջության հոգեբանություն",
+      "Տոկունություն"
+    ],
+    summary: "Stress is the body's response to demanding situations. Covers alarm/resistance/exhaustion stages, coping strategies, social support, and resilience.",
+    summaryKa: "სტრესი ორგანიზმის პასუხია რთულ სიტუაციებზე. აქ განვიხილავთ განგაშის, წინააღმდეგობისა და გამოფიტვის ფაზებს, ასევე სტრესთან გამკლავების მეთოდებს, სოციალურ მხარდაჭერასა და შინაგან სიძლიერეს.",
+    summaryRu: "Стресс — это реакция организма на сложные ситуации. Рассматриваются стадии тревоги/сопротивления/истощения, стратегии совладания, социальная поддержка и жизнестойкость.",
+    summaryAm: "Սթրեսը օրգանիզմի արձագանքն է բարդ իրավիճակներին։ Ներառում է տագնապի/դիմադրության/հյուծման փուլերը, հաղթահարման ռազմավարությունները, սոցիալական աջակցությունը և տոկունությունը։",
+    keyPoints: [
+      "Stress is the body's response to any perceived threat or demand. Eustress (positive) helps performance; distress (negative) harms health.",
+      "Selye's General Adaptation Syndrome (GAS): Alarm (fight-or-flight activated) -> Resistance (body adapts to ongoing stress) -> Exhaustion (resources depleted, vulnerability to illness).",
+      "The fight-or-flight response: the sympathetic nervous system releases adrenaline and cortisol, increasing heart rate, blood pressure, and blood sugar. Useful for short-term threats, harmful when chronic.",
+      "Major stressors: catastrophes, significant life changes (Holmes-Rahe scale), and daily hassles. Research shows daily hassles (traffic, deadlines) may affect health more than major events.",
+      "Chronic stress suppresses the immune system (psychoneuroimmunology), increases risk of cardiovascular disease, contributes to depression and anxiety, and accelerates cellular aging.",
+      "Coping strategies: Problem-focused coping (taking action to solve the problem) works best for controllable situations. Emotion-focused coping (managing feelings) is better for uncontrollable situations.",
+      "Protective factors: Social support (the #1 buffer against stress), exercise (reduces cortisol), mindfulness and meditation (reduces amygdala reactivity), perceived control (believing you can influence outcomes), and optimism."
+    ],
+    keyPointsKa: [
+      "სტრესი ორგანიზმის ბუნებრივი რეაქციაა საფრთხეზე ან გამოწვევაზე. ევსტრესი (პოზიტიური სტრესი) მოქმედებაში გვეხმარება; დისტრესი (ნეგატიური) კი ორგანიზმს ანგრევს.",
+      "სელიეს ზოგადი ადაპტაციის სინდრომი (GAS): განგაში (აქტიურდება მექანიზმი \"იბრძოლე ან გაიქეცი\") -> წინააღმდეგობა (სხეული ეგუება სტრესს) -> გამოფიტვა (რესურსები ილევა და ავადმყოფობის რისკი იზრდება).",
+      "\"იბრძოლე ან გაიქეცი\" რეაქცია: სიმპათიკური ნერვული სისტემა გამოყოფს ადრენალინსა და კორტიზოლს, რაც ზრდის გულისცემას, წნევას და სისხლში შაქარს. მოკლევადიან საფრთხეებთან კარგია, მაგრამ ქრონიკულად საზიანოა.",
+      "მთავარი სტრესორები: კატასტროფები, ცხოვრებისეული ცვლილებები და ყოველდღიური პრობლემები. კვლევები აჩვენებს, რომ ყოველდღიურმა ნერვიულობამ (მაგ. საცობი, დედლაინები) შეიძლება უფრო ცუდად იმოქმედოს ჯანმრთელობაზე, ვიდრე დიდმა მოვლენებმა.",
+      "ქრონიკული სტრესი თრგუნავს იმუნიტეტს, ზრდის გულ-სისხლძარღვთა დაავადებების რისკს, იწვევს დეპრესიასა და შფოთვას, და აჩქარებს უჯრედების დაბერებას.",
+      "როგორ გავუმკლავდეთ: პრობლემაზე ფოკუსირებული მიდგომა (მოქმედება პრობლემის მოსაგვარებლად) ჯობს კონტროლირებად სიტუაციებში. ემოციებზე ფოკუსირებული (გრძნობების მართვა) კი უკეთესია მაშინ, როცა სიტუაციას ვერ ვცვლით.",
+      "დამცავი ფაქტორები: მეგობრებისა და ოჯახის მხარდაჭერა (საუკეთესო დაცვა სტრესისგან), ვარჯიში, მედიტაცია (ამცირებს ამიგდალას რეაქტიულობას), კონტროლის განცდა (იმის რწმენა, რომ შეგიძლია შედეგზე გავლენის მოხდენა) და ოპტიმიზმი."
+    ],
+    keyPointsRu: [
+      "Стресс — это реакция организма на любую воспринимаемую угрозу или требование. Эустресс (позитивный) помогает действовать; дистресс (негативный) вредит здоровью.",
+      "Общий адаптационный синдром Селье (GAS): Тревога (включается реакция \"бей или беги\") -> Сопротивление (организм адаптируется к стрессу) -> Истощение (ресурсы истощены, уязвимость к болезням).",
+      "Реакция \"бей или беги\": симпатическая нервная система выделяет адреналин и кортизол, повышая частоту сердечных сокращений, давление и уровень сахара в крови. Полезна для краткосрочных угроз, но губительна при хроническом стрессе.",
+      "Основные стрессоры: катастрофы, серьезные жизненные изменения (шкала Холмса-Раге) и повседневные неприятности. Исследования показывают, что повседневные хлопоты (пробки, дедлайны) могут влиять на здоровье сильнее крупных событий.",
+      "Хронический стресс подавляет иммунную систему, повышает риск сердечно-сосудистых заболеваний, способствует депрессии и тревоге, а также ускоряет клеточное старение.",
+      "Стратегии совладания: Проблемно-ориентированное совладание (действия для решения проблемы) лучше всего работает в контролируемых ситуациях. Эмоционально-ориентированное (управление чувствами) лучше подходит для неконтролируемых ситуаций.",
+      "Защитные факторы: Социальная поддержка (лучший буфер против стресса), физические упражнения, медитация (снижает реактивность миндалевидного тела), чувство контроля (вера в то, что вы можете влиять на результат) и оптимизм."
+    ],
+    keyPointsAm: [
+      "Սթրեսը օրգանիզմի արձագանքն է ցանկացած ընկալվող սպառնալիքի կամ պահանջի։ Էուսթրեսը (դրական) օգնում է գործել, դիսթրեսը (բացասական) վնասում է առողջությանը։",
+      "Սելիեի Ընդհանուր ադապտացիոն համախտանիշ (GAS)՝ Տագնապ (ակտիվանում է «խփիր կամ փախիր» ռեակցիան) -> Դիմադրություն (օրգանիզմը հարմարվում է շարունակվող սթրեսին) -> Հյուծում (ռեսուրսները սպառվում են, հիվանդությունների նկատմամբ խոցելիություն)։",
+      "«Խփիր կամ փախիր» ռեակցիան. սիմպաթիկ նյարդային համակարգը արտադրում է ադրենալին և կորտիզոլ՝ բարձրացնելով սրտի աշխատանքը, արյան ճնշումը և շաքարի մակարդակը։ Օգտակար է կարճաժամկետ սպառնալիքների դեպքում, բայց վտանգավոր՝ խրոնիկականի ժամանակ։",
+      "Հիմնական սթրեսորները՝ աղետները, կյանքի զգալի փոփոխությունները և առօրյա հոգսերը։ Հետազոտությունները ցույց են տալիս, որ առօրյա անհանգստությունները (խցանումներ, վերջնաժամկետներ) կարող են ավելի շատ ազդել առողջության վրա, քան մեծ իրադարձությունները։",
+      "Խրոնիկ սթրեսը ճնշում է իմունային համակարգը, մեծացնում սրտանոթային հիվանդությունների ռիսկը, նպաստում դեպրեսիային և տագնապին և արագացնում բջջային ծերացումը։",
+      "Հաղթահարման ռազմավարություններ. Խնդրի վրա կենտրոնացած մոտեցումը գործում է կառավարելի իրավիճակներում, իսկ հույզերի վրա կենտրոնացածը (զգացմունքների կառավարում)՝ անվերահսկելի իրավիճակների դեպքում։",
+      "Պաշտպանիչ գործոններ. սոցիալական աջակցություն (ամենալավ վահանը սթրեսի դեմ), վարժություններ, մեդիտացիա, վերահսկողության զգացում (հավատ, որ կարող եք ազդել արդյունքների վրա) և օպտիմիզմ։"
+    ],
+    funFact: "Laughing reduces cortisol by 39% and increases endorphins by 27%. Studies show that even anticipating a funny experience can reduce stress hormones. Hospitals now use \"laughter therapy\" with positive results.",
+    funFactKa: "სიცილი 39%-ით ამცირებს კორტიზოლს და 27%-ით ზრდის ენდორფინებს. კვლევების თანახმად, სახალისო გამოცდილების უბრალო მოლოდინიც კი ამცირებს სტრესის ჰორმონებს. საავადმყოფოებში ახლა უკვე წარმატებით იყენებენ \"სიცილის თერაპიას\".",
+    funFactRu: "Смех снижает уровень кортизола на 39% и повышает эндорфины на 27%. Исследования показывают, что даже простое ожидание веселого события может снизить уровень гормонов стресса. Сейчас в больницах с успехом применяют \"смехотерапию\".",
+    funFactAm: "Ծիծաղը նվազեցնում է կորտիզոլը 39%-ով և ավելացնում էնդորֆինները 27%-ով։ Հետազոտությունները ցույց են տալիս, որ նույնիսկ զվարճալի իրադարձության պարզ սպասումը կարող է նվազեցնել սթրեսի հորմոնները։ Հիվանդանոցներն այժմ հաջողությամբ կիրառում են «ծիծաղի թերապիա»:",
+    realWorld: "Burnout (emotional exhaustion, depersonalization, reduced accomplishment) affects 67% of workers at some point. Companies that implement stress management programs see 25% reductions in sick days and higher productivity.",
+    realWorldKa: "ემოციური გამოფიტვა (ბერნაუტი - გადაწვა თავისი უემოციობითა და მოტივაციის დაქვეითებით) დასაქმებულთა 67%-ს ემართება. კომპანიები, რომლებიც სტრესის მართვის პროგრამებს ნერგავენ, 25%-ით ამცირებენ გაცდენილ დღეებს და ზრდიან პროდუქტიულობას.",
+    realWorldRu: "Эмоциональное выгорание (снижение эмоций, деперсонализация, снижение достижений) затрагивает 67% работников в какой-то момент времени. Компании, внедряющие программы управления стрессом, фиксируют снижение количества больничных дней на 25% и повышение производительности.",
+    realWorldAm: "Հուզական այրումը ինչ-որ պահի տուժում է աշխատողների 67%-ին։ Ընկերությունները, որոնք ներդնում են սթրեսի կառավարման ծրագրեր, տեսնում են հիվանդության օրերի 25% կրճատում և ավելի բարձր արտադրողականություն:",
+    keyFigures: [
+      "Hans Selye",
+      "Richard Lazarus",
+      "Walter Cannon",
+      "Martin Seligman",
+      "Sheldon Cohen"
+    ],
+    keyFiguresKa: [
+      "ჰანს სელიე",
+      "რიჩარდ ლაზარუსი",
+      "უოლტერ ქენონი",
+      "მარტინ სელიგმანი",
+      "შელდონ კოენი"
+    ],
+    keyFiguresRu: [
+      "Ганс Селье",
+      "Ричард Лазарус",
+      "Уолтер Кеннон",
+      "Мартин Селигман",
+      "Шелдон Коэн"
+    ],
+    keyFiguresAm: [
+      "Հանս Սելիե",
+      "Ռիչարդ Լազարուս",
+      "Ուոլտեր Քենոն",
+      "Մարտին Սելիգման",
+      "Շելդոն Քոեն"
+    ]
   },
   {
-    id: 14, title: 'Psychological Disorders', titleKa: '\u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10E3\u10E0\u10D8 \u10D0\u10E8\u10DA\u10D8\u10DA\u10DD\u10D1\u10D4\u10D1\u10D8',
-    description: 'Understanding mental disorders: symptoms, causes, and classification.',
-    descriptionKa: '\u10E4\u10E1\u10D8\u10E5\u10D8\u10D9\u10E3\u10E0\u10D8 \u10D0\u10E8\u10DA\u10D8\u10DA\u10DD\u10D1\u10D4\u10D1\u10D8\u10E1 \u10D2\u10D0\u10D2\u10D4\u10D1\u10D0: \u10E1\u10D8\u10DB\u10DE\u10E2\u10DD\u10DB\u10D4\u10D1\u10D8, \u10DB\u10D8\u10D6\u10D4\u10D6\u10D4\u10D1\u10D8 \u10D3\u10D0 \u10D9\u10DA\u10D0\u10E1\u10D8\u10E4\u10D8\u10D9\u10D0\u10EA\u10D8\u10D0.',
-    icon: 'mdi:stethoscope',
-    keyTopics: ['DSM Classification', 'Anxiety Disorders', 'Mood Disorders', 'Schizophrenia', 'Personality Disorders'],
-    keyTopicsKa: ['DSM \u10D9\u10DA\u10D0\u10E1\u10D8\u10E4\u10D8\u10D9\u10D0\u10EA\u10D8\u10D0', '\u10E8\u10E4\u10DD\u10D7\u10D5\u10D8\u10D7\u10D8 \u10D0\u10E8\u10DA\u10D8\u10DA\u10DD\u10D1\u10D4\u10D1\u10D8', '\u10D2\u10E3\u10DC\u10D4\u10D1\u10D8\u10E1 \u10D0\u10E8\u10DA\u10D8\u10DA\u10DD\u10D1\u10D4\u10D1\u10D8', '\u10E8\u10D8\u10D6\u10DD\u10E4\u10E0\u10D4\u10DC\u10D8\u10D0', '\u10DE\u10D8\u10E0\u10DD\u10D5\u10DC\u10D4\u10D1\u10D8\u10E1 \u10D0\u10E8\u10DA\u10D8\u10DA\u10DD\u10D1\u10D4\u10D1\u10D8'],
-    summary: 'Psychological disorders cause significant distress or impairment. Covers anxiety, mood disorders, schizophrenia, and personality disorders with biological and social causes.',
-    keyPoints: [
-      'A psychological disorder is a pattern of thoughts, feelings, or behaviors that is deviant, distressful, and dysfunctional (the "3 D\'s"). Context and culture matter in defining "abnormal."',
-      'The DSM-5 (Diagnostic and Statistical Manual) is the standard classification system. It categorizes disorders by symptoms, not causes, and is used for diagnosis and insurance.',
-      'Anxiety disorders (most common): Generalized Anxiety Disorder (persistent worry), Panic Disorder (sudden intense fear attacks), Phobias (irrational fear of specific things), OCD (obsessive thoughts + compulsive rituals), PTSD (after trauma).',
-      'Mood disorders: Major Depressive Disorder (persistent sadness, loss of interest, lasting 2+ weeks) and Bipolar Disorder (alternating episodes of mania and depression). Depression is the leading cause of disability worldwide.',
-      'Schizophrenia: a severe disorder involving positive symptoms (hallucinations, delusions, disorganized speech) and negative symptoms (flat affect, social withdrawal). Dopamine hypothesis: excess dopamine activity in certain brain pathways.',
-      'Personality disorders: enduring, inflexible patterns. Antisocial PD (disregard for others\' rights, lack of empathy), Borderline PD (unstable relationships and emotions), Narcissistic PD (grandiosity, need for admiration).',
-      'The diathesis-stress model: disorders result from a genetic/biological predisposition (diathesis) + environmental triggers (stress). Neither alone is usually sufficient.'
+    id: 14,
+    title: "Psychological Disorders",
+    titleKa: "ფსიქოლოგიური აშლილობები",
+    titleRu: "Психологические расстройства",
+    titleAm: "Հոգեբանական խանգարումներ",
+    description: "Understanding mental disorders: symptoms, causes, and classification.",
+    descriptionKa: "რა უნდა ვიცოდეთ ფსიქიკურ აშლილობებზე: სიმპტომები, გამომწვევი მიზეზები და კლასიფიკაცია.",
+    descriptionRu: "Понимание психических расстройств: симптомы, причины и классификация.",
+    descriptionAm: "Հոգեկան խանգարումների ընկալում՝ ախտանիշներ, պատճառներ և դասակարգում։",
+    icon: "mdi:stethoscope",
+    keyTopics: [
+      "DSM Classification",
+      "Anxiety Disorders",
+      "Mood Disorders",
+      "Schizophrenia",
+      "Personality Disorders"
     ],
-    funFact: 'About 1 in 5 adults experiences a mental health condition in any given year. Depression and anxiety cost the global economy $1 trillion annually in lost productivity \u2014 yet most disorders are highly treatable with proper intervention.',
-    realWorld: 'The shift from institutionalization to community-based mental health care (deinstitutionalization) transformed treatment. Today, early intervention programs for psychosis can reduce symptoms by 50% and dramatically improve long-term outcomes.',
-    keyFigures: ['Emil Kraepelin', 'Aaron Beck', 'David Rosenhan', 'Thomas Szasz', 'Kay Redfield Jamison']
+    keyTopicsKa: [
+      "DSM კლასიფიკაცია",
+      "შფოთვითი აშლილობები",
+      "გუნება-განწყობის აშლილობები",
+      "შიზოფრენია",
+      "პიროვნული აშლილობები"
+    ],
+    keyTopicsRu: [
+      "Классификация DSM",
+      "Тревожные расстройства",
+      "Расстройства настроения",
+      "Шизофрения",
+      "Расстройства личности"
+    ],
+    keyTopicsAm: [
+      "DSM դասակարգում",
+      "Տագնապային խանգարումներ",
+      "Տրամադրության խանգարումներ",
+      "Շիզոֆրենիա",
+      "Անձնային խանգարումներ"
+    ],
+    summary: "Psychological disorders cause significant distress or impairment. Covers anxiety, mood disorders, schizophrenia, and personality disorders with biological and social causes.",
+    summaryKa: "ფსიქოლოგიური აშლილობები იწვევენ დიდ სტრესსა და დისკომფორტს. აქ გაეცნობით შფოთვით, გუნება-განწყობის, შიზოფრენიულ და პიროვნულ აშლილობებს ბიოლოგიური და სოციალური მიზეზებით.",
+    summaryRu: "Психологические расстройства вызывают сильный дистресс или нарушения. Рассматриваются тревожные расстройства, расстройства настроения, шизофрения и расстройства личности, а также их биологические и социальные причины.",
+    summaryAm: "Հոգեբանական խանգարումներն առաջացնում են էական սթրես և անհանգստություն։ Ընդգրկում է տագնապային, տրամադրության, շիզոֆրենիկ և անձնային խանգարումները և դրանց պատճառները։",
+    keyPoints: [
+      "A psychological disorder is a pattern of thoughts, feelings, or behaviors that is deviant, distressful, and dysfunctional (the \"3 D's\"). Context and culture matter in defining \"abnormal.\"",
+      "The DSM-5 (Diagnostic and Statistical Manual) is the standard classification system. It categorizes disorders by symptoms, not causes, and is used for diagnosis and insurance.",
+      "Anxiety disorders (most common): Generalized Anxiety Disorder (persistent worry), Panic Disorder (sudden intense fear attacks), Phobias (irrational fear of specific things), OCD (obsessive thoughts + compulsive rituals), PTSD (after trauma).",
+      "Mood disorders: Major Depressive Disorder (persistent sadness, loss of interest, lasting 2+ weeks) and Bipolar Disorder (alternating episodes of mania and depression). Depression is the leading cause of disability worldwide.",
+      "Schizophrenia: a severe disorder involving positive symptoms (hallucinations, delusions, disorganized speech) and negative symptoms (flat affect, social withdrawal). Dopamine hypothesis: excess dopamine activity in certain brain pathways.",
+      "Personality disorders: enduring, inflexible patterns. Antisocial PD (disregard for others' rights, lack of empathy), Borderline PD (unstable relationships and emotions), Narcissistic PD (grandiosity, need for admiration).",
+      "The diathesis-stress model: disorders result from a genetic/biological predisposition (diathesis) + environmental triggers (stress). Neither alone is usually sufficient."
+    ],
+    keyPointsKa: [
+      "ფსიქოლოგიური აშლილობა არის ქცევის, ფიქრების ან გრძნობების მოდელი, რომელიც არის დევიანტური, დისტრესული და დისფუნქციური (ე.წ. \"3 D\"). ნორმის განსაზღვრაში კონტექსტს და კულტურას დიდი მნიშვნელობა აქვს.",
+      "DSM-5 არის ძირითადი კლასიფიკაციის სისტემა. ის აშლილობებს ყოფს სიმპტომების მიხედვით (და არა მიზეზებით) და გამოიყენება დიაგნოზირებისთვის.",
+      "შფოთვითი აშლილობები (ყველაზე გავრცელებული): გენერალიზებული შფოთვითი აშლილობა (მუდმივი ფიქრი და ღელვა), პანიკური აშლილობა (მოულოდნელი, ძლიერი შიშის შეტევები), ფობიები (კონკრეტული რამის ირაციონალური შიში), OCD (ობსესიურ-კომპულსიური აშლილობა), PTSD (პოსტტრავმული შფოთვა).",
+      "გუნება-განწყობის აშლილობები: ძლიერი დეპრესია (სევდა და ინტერესის დაკარგვა მინიმუმ 2 კვირით) და ბიპოლარული აშლილობა (მანიისა და დეპრესიის ეპიზოდების მონაცვლეობა). დეპრესია მსოფლიოში შრომისუუნარობის მიზეზებში პირველ ადგილზეა.",
+      "შიზოფრენია: მძიმე აშლილობა, რომელსაც აქვს პოზიტიური სიმპტომები (ჰალუცინაციები, ბოდვები) და ნეგატიური სიმპტომები (ემოციების სიბლაგვე, იზოლაცია). დოფამინის ჰიპოთეზა: ტვინის ზოგ ნაწილში დოფამინის ზედმეტი აქტივობა.",
+      "პიროვნული აშლილობები: ხისტი, მოუქნელი ქცევითი პატერნები. ანტისოციალური პიროვნული აშლილობა (სხვების უფლებების უგულებელყოფა, ემპათიის ნაკლებობა), მოსაზღვრე აშლილობა (არასტაბილური ურთიერთობები და ემოციები), ნარცისული აშლილობა (გრანდიოზულობა, აღტაცების მოთხოვნილება).",
+      "დიათეზ-სტრესის მოდელი: აშლილობები წარმოიქმნება გენეტიკური/ბიოლოგიური მიდრეკილების (დიათეზი) და გარემო ფაქტორების (სტრესი) კომბინაციით. როგორც წესი, მხოლოდ ერთი ფაქტორი საკმარისი არ არის."
+    ],
+    keyPointsRu: [
+      "Психологическое расстройство — это паттерн мышления, чувств или поведения, который является девиантным, дистрессовым и дисфункциональным. Контекст и культура имеют значение при определении \"ненормального\".",
+      "DSM-5 — это стандартная система классификации. Она классифицирует расстройства по симптомам, а не по причинам, и используется для диагностики.",
+      "Тревожные расстройства (наиболее частые): Генерализованное тревожное расстройство (постоянное беспокойство), Паническое расстройство (внезапные приступы страха), Фобии (иррациональный страх), ОКР (навязчивые мысли + ритуалы), ПТСР (после травмы).",
+      "Расстройства настроения: Большое депрессивное расстройство (постоянная грусть, потеря интереса более 2 недель) и Биполярное расстройство (чередование мании и депрессии). Депрессия — ведущая причина инвалидности в мире.",
+      "Шизофрения: тяжелое расстройство, включающее позитивные симптомы (галлюцинации, бред) и негативные симптомы (плоский аффект, социальная изоляция). Дофаминовая гипотеза: избыток дофамина в мозге.",
+      "Расстройства личности: устоявшиеся, негибкие паттерны. Антисоциальное (игнорирование прав других, отсутствие эмпатии), Пограничное (нестабильные отношения и эмоции), Нарциссическое (грандиозность).",
+      "Модель диатез-стресс: расстройства возникают из-за биологической предрасположенности (диатез) + факторов окружающей среды (стресс). Ни того, ни другого по отдельности обычно недостаточно."
+    ],
+    keyPointsAm: [
+      "Հոգեբանական խանգարումը մտքերի, զգացմունքների կամ վարքի մոդել է, որը շեղված է, սթրեսային և դիսֆունկցիոնալ: «Աննորմալ» հասկացությունը սահմանելիս մշակույթը մեծ դեր ունի:",
+      "DSM-5-ը դասակարգման հիմնական համակարգն է: Այն դասակարգում է խանգարումները ըստ ախտանիշների, այլ ոչ թե պատճառների, և օգտագործվում է ախտորոշման համար:",
+      "Տագնապային խանգարումներ (ամենատարածված). գեներալիզացված տագնապային խանգարում, պանիկ խանգարում, ֆոբիաներ, օբսեսիվ-կոմպուլսիվ խանգարում (ՕԿԽ), Հետտրավմատիկ սթրեսային խանգարում (ՀՏՍԽ):",
+      "Տրամադրության խանգարումներ. խորը դեպրեսիա (տխրություն և հետաքրքրության կորուստ 2+ շաբաթ) և երկբևեռ խանգարում (մանիայի և դեպրեսիայի հերթագայություն)։",
+      "Շիզոֆրենիա. ծանր խանգարում, որն ունի դրական ախտանիշներ (հալյուցինացիաներ, զառանցանքներ) և բացասական ախտանիշներ (էմոցիաների բացակայություն): Դոֆամինային վարկած՝ ուղեղում դոֆամինի ավելցուկային ակտիվություն:",
+      "Անձնային խանգարումներ. կոշտ, ոչ ճկուն վարքային մոդելներ: Հակասոցիալական, Սահմանային (անկայուն հարաբերություններ և էմոցիաներ) և Նարցիսիստական խանգարումներ:",
+      "Դիաթեզ-սթրես մոդել. խանգարումները առաջանում են գենետիկ հակվածության (դիաթեզ) և արտաքին միջավայրի գործոնների (սթրես) համակցությունից:"
+    ],
+    funFact: "About 1 in 5 adults experiences a mental health condition in any given year. Depression and anxiety cost the global economy $1 trillion annually in lost productivity — yet most disorders are highly treatable with proper intervention.",
+    funFactKa: "დაახლოებით 5-დან 1 ზრდასრულს უვლინდება რაიმე სახის მენტალური პრობლემა წლის განმავლობაში. დეპრესია და შფოთვა გლობალურ ეკონომიკას წელიწადში 1 ტრილიონი დოლარი უჯდება - არადა, ამ პრობლემების უმეტესობა სათანადო მკურნალობით ადვილად გვარდება.",
+    funFactRu: "Примерно 1 из 5 взрослых сталкивается с психическим заболеванием в течение года. Депрессия и тревога стоят мировой экономике 1 триллион долларов ежегодно, хотя большинство расстройств прекрасно поддаются лечению.",
+    funFactAm: "Մոտ 5 մեծահասակից 1-ը տարվա ընթացքում ունենում է որևէ հոգեկան խնդիր: Դեպրեսիան և տագնապը համաշխարհային տնտեսությանն արժենում են տարեկան 1 տրիլիոն դոլար, չնայած խանգարումների մեծամասնությունը հեշտությամբ բուժվում է:",
+    realWorld: "The shift from institutionalization to community-based mental health care (deinstitutionalization) transformed treatment. Today, early intervention programs for psychosis can reduce symptoms by 50% and dramatically improve long-term outcomes.",
+    realWorldKa: "ფსიქიატრიული ინსტიტუტებიდან თემზე დაფუძნებულ ზრუნვაზე გადასვლამ მკურნალობის ფორმატი შეცვალა. დღეს ადრეული ჩარევის პროგრამები ფსიქოზის სიმპტომებს 50%-ით ამცირებს და გრძელვადიან შედეგებს საგრძნობლად აუმჯობესებს.",
+    realWorldRu: "Переход от изоляции в учреждениях к психиатрической помощи по месту жительства (деинституционализация) преобразил лечение. Сегодня программы раннего вмешательства могут снизить симптомы психоза на 50% и улучшить долгосрочные прогнозы.",
+    realWorldAm: "Հոգեբուժարաններից և հաստատություններից համայնքային խնամքի անցումը (ապաինստիտուցիոնալացում) շրջադարձային եղավ: Այսօր վաղ միջամտության ծրագրերը կարող են 50%-ով նվազեցնել փսիխոզի ախտանիշները և բարելավել արդյունքները:",
+    keyFigures: [
+      "Emil Kraepelin",
+      "Aaron Beck",
+      "David Rosenhan",
+      "Thomas Szasz",
+      "Kay Redfield Jamison"
+    ],
+    keyFiguresKa: [
+      "ემილ კრეპელინი",
+      "აარონ ბეკი",
+      "დევიდ როზენჰანი",
+      "თომას სასი",
+      "ქეი რედფილდ ჯემისონი"
+    ],
+    keyFiguresRu: [
+      "Эмиль Крепелин",
+      "Аарон Бек",
+      "Дэвид Розенхан",
+      "Томас Сас",
+      "Кэй Рэдфилд Джеймисон"
+    ],
+    keyFiguresAm: [
+      "Էմիլ Կրեպելին",
+      "Աարոն Բեկ",
+      "Դեվիդ Ռոզենհան",
+      "Թոմաս Սաս",
+      "Քեյ Ռեդֆիլդ Ջեյմիսոն"
+    ]
   },
   {
-    id: 15, title: 'Therapies', titleKa: '\u10D7\u10D4\u10E0\u10D0\u10DE\u10D8\u10D4\u10D1\u10D8',
-    description: 'Approaches to treating psychological disorders.',
-    descriptionKa: '\u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10E3\u10E0\u10D8 \u10D0\u10E8\u10DA\u10D8\u10DA\u10DD\u10D1\u10D4\u10D1\u10D8\u10E1 \u10DB\u10D9\u10E3\u10E0\u10DC\u10D0\u10DA\u10DD\u10D1\u10D8\u10E1 \u10DB\u10D8\u10D3\u10D2\u10DD\u10DB\u10D4\u10D1\u10D8.',
-    icon: 'mdi:pill',
-    keyTopics: ['Psychotherapy', 'CBT', 'Humanistic Therapy', 'Biomedical Therapies', 'Group Therapy'],
-    keyTopicsKa: ['\u10E4\u10E1\u10D8\u10E5\u10DD\u10D7\u10D4\u10E0\u10D0\u10DE\u10D8\u10D0', '\u10D9\u10DD\u10D2\u10DC\u10D8\u10E2\u10E3\u10E0-\u10D1\u10D8\u10F0\u10D4\u10D5\u10D8\u10DD\u10E0\u10E3\u10DA\u10D8 \u10D7\u10D4\u10E0\u10D0\u10DE\u10D8\u10D0', '\u10F0\u10E3\u10DB\u10D0\u10DC\u10D8\u10E1\u10E2\u10E3\u10E0\u10D8 \u10D7\u10D4\u10E0\u10D0\u10DE\u10D8\u10D0', '\u10D1\u10D8\u10DD\u10E1\u10D0\u10DB\u10D4\u10D3\u10D8\u10EA\u10D8\u10DC\u10DD \u10D7\u10D4\u10E0\u10D0\u10DE\u10D8\u10D4\u10D1\u10D8', '\u10EF\u10D2\u10E3\u10E4\u10E3\u10E0\u10D8 \u10D7\u10D4\u10E0\u10D0\u10DE\u10D8\u10D0'],
-    summary: 'Therapy comes in many forms: psychoanalytic, CBT, humanistic, and biomedical. Compares therapeutic approaches and their effectiveness.',
-    keyPoints: [
-      'Psychoanalytic/Psychodynamic therapy: explores unconscious conflicts through free association, dream analysis, and transference. Long-term, insight-oriented. Less empirically supported than CBT.',
-      'Cognitive-Behavioral Therapy (CBT): identifies and changes distorted thinking patterns and maladaptive behaviors. The gold standard for anxiety and depression with strong evidence. Short-term (12\u201320 sessions).',
-      'Beck\'s cognitive therapy targets cognitive distortions: all-or-nothing thinking, catastrophizing, overgeneralization, mind reading, and personalization.',
-      'Humanistic therapy (Rogers\'s client-centered): provides unconditional positive regard, empathy, and genuineness. The therapist creates a supportive environment for self-exploration.',
-      'Biomedical therapies: Antidepressants (SSRIs increase serotonin), Anti-anxiety meds (benzodiazepines), Antipsychotics (block dopamine), Mood stabilizers (lithium for bipolar). ECT (electroconvulsive therapy) remains effective for severe, treatment-resistant depression.',
-      'Group therapy and family therapy leverage social support and address relationship dynamics. More cost-effective and can reduce isolation. Self-help groups (AA model) provide peer support.',
-      'Evidence-based practice: combining the best research evidence, clinical expertise, and patient preferences. Not all therapies are equally effective for all disorders \u2014 matching treatment to diagnosis matters.'
+    id: 15,
+    title: "Therapies",
+    titleKa: "თერაპიები",
+    titleRu: "Виды терапии",
+    titleAm: "Թերապիաներ",
+    description: "Approaches to treating psychological disorders.",
+    descriptionKa: "როგორ ვმკურნალობთ ფსიქოლოგიურ აშლილობებს - საუკეთესო მიდგომები.",
+    descriptionRu: "Подходы к лечению психологических расстройств.",
+    descriptionAm: "Հոգեբանական խանգարումների բուժման մոտեցումները:",
+    icon: "mdi:pill",
+    keyTopics: [
+      "Psychotherapy",
+      "CBT",
+      "Humanistic Therapy",
+      "Biomedical Therapies",
+      "Group Therapy"
     ],
-    funFact: 'Talking to a therapist actually changes your brain. Brain scans show that CBT produces measurable changes in activity in the prefrontal cortex and amygdala \u2014 the same regions affected by antidepressant medication.',
-    realWorld: 'Teletherapy (online therapy) exploded during COVID-19 and research shows it\'s nearly as effective as in-person therapy for most conditions. This massively expanded access to mental health care, especially in rural areas.',
-    keyFigures: ['Aaron Beck', 'Carl Rogers', 'Albert Ellis', 'Joseph Wolpe', 'Sigmund Freud']
+    keyTopicsKa: [
+      "ფსიქოთერაპია",
+      "CBT / კოგნიტურ-ბიჰევიორალური",
+      "ჰუმანისტური თერაპია",
+      "ბიომედიცინა",
+      "ჯგუფური თერაპია"
+    ],
+    keyTopicsRu: [
+      "Психотерапия",
+      "КБТ (CBT)",
+      "Гуманистическая терапия",
+      "Биомедицинская терапия",
+      "Групповая терапия"
+    ],
+    keyTopicsAm: [
+      "Հոգեթերապիա",
+      "ԿՎԹ (CBT)",
+      "Հումանիստական թերապիա",
+      "Կենսաբժշկական թերապիա",
+      "Խմբային թերապիա"
+    ],
+    summary: "Therapy comes in many forms: psychoanalytic, CBT, humanistic, and biomedical. Compares therapeutic approaches and their effectiveness.",
+    summaryKa: "თერაპია ბევრნაირია: ფსიქოანალიზი, CBT, ჰუმანისტური და ბიომედიკამენტური. აქ შევადარებთ მათ და გავიგებთ რამდენად ეფექტურია თითოეული.",
+    summaryRu: "Терапия бывает разных видов: психоаналитическая, когнитивно-поведенческая, гуманистическая и биомедицинская. Рассматриваются терапевтические подходы и их эффективность.",
+    summaryAm: "Թերապիան լինում է տարբեր տեսակի՝ հոգեվերլուծական, կոգնիտիվ-վարքային, հումանիստական և կենսաբժշկական։ Համեմատվում են թերապևտիկ մոտեցումները և դրանց արդյունավետությունը:",
+    keyPoints: [
+      "Psychoanalytic/Psychodynamic therapy: explores unconscious conflicts through free association, dream analysis, and transference. Long-term, insight-oriented. Less empirically supported than CBT.",
+      "Cognitive-Behavioral Therapy (CBT): identifies and changes distorted thinking patterns and maladaptive behaviors. The gold standard for anxiety and depression with strong evidence. Short-term (12–20 sessions).",
+      "Beck's cognitive therapy targets cognitive distortions: all-or-nothing thinking, catastrophizing, overgeneralization, mind reading, and personalization.",
+      "Humanistic therapy (Rogers's client-centered): provides unconditional positive regard, empathy, and genuineness. The therapist creates a supportive environment for self-exploration.",
+      "Biomedical therapies: Antidepressants (SSRIs increase serotonin), Anti-anxiety meds (benzodiazepines), Antipsychotics (block dopamine), Mood stabilizers (lithium for bipolar). ECT (electroconvulsive therapy) remains effective for severe, treatment-resistant depression.",
+      "Group therapy and family therapy leverage social support and address relationship dynamics. More cost-effective and can reduce isolation. Self-help groups (AA model) provide peer support.",
+      "Evidence-based practice: combining the best research evidence, clinical expertise, and patient preferences. Not all therapies are equally effective for all disorders — matching treatment to diagnosis matters."
+    ],
+    keyPointsKa: [
+      "ფსიქოანალიზი / ფსიქოდინამიკური თერაპია: იკვლევს არაცნობიერ კონფლიქტებს თავისუფალი ასოციაციებით, სიზმრების ანალიზითა და ტრანსფერით. ხანგრძლივი და ინსაიტზე ორიენტირებულია, მაგრამ CBT-სთან შედარებით ნაკლები მტკიცებულება აქვს.",
+      "კოგნიტურ-ბიჰევიორალური თერაპია (CBT): პოულობს და ცვლის დამახინჯებულ ფიქრებსა და მავნე ქცევებს. ეს არის \"ოქროს სტანდარტი\" შფოთვისა და დეპრესიის სამკურნალოდ, არის მოკლევადიანი (12-20 სესია).",
+      "ბეკის კოგნიტური თერაპია ებრძვის აზროვნების შეცდომებს: შავ-თეთრი აზროვნება, კატასტროფიზაცია, განზოგადება, სხვისი აზრების კითხვა და პერსონალიზაცია.",
+      "ჰუმანისტური თერაპია (როჯერსის კლიენტზე ორიენტირებული): უზრუნველყოფს უპირობო პოზიტიურ მიღებას, ემპათიასა და გულწრფელობას. თერაპევტი ქმნის უსაფრთხო გარემოს თვითშემეცნებისთვის.",
+      "ბიომედიცინა: ანტიდეპრესანტები (SSRI ზრდის სეროტონინს), შფოთვის საწინააღმდეგო წამლები, ანტიფსიქოტიკები (თრგუნავს დოფამინს) და განწყობის სტაბილიზატორები. ელექტროკონვულსიური თერაპია (ECT) ისევ ეფექტურია ძლიერი რეზისტენტული დეპრესიისას.",
+      "ჯგუფური და ოჯახური თერაპია: იყენებს სოციალურ მხარდაჭერას, ეფექტურია ფინანსურად და ამცირებს მარტოობას. თვითდახმარების ჯგუფები შესანიშნავი ადგილია გამოცდილების გასაზიარებლად.",
+      "მტკიცებულებებზე დაფუძნებული პრაქტიკა: კვლევების, კლინიკური გამოცდილებისა და პაციენტის სურვილების გაერთიანება. ყველა თერაპია ყველა პრობლემაზე თანაბრად არ მუშაობს."
+    ],
+    keyPointsRu: [
+      "Психоанализ / Психодинамическая терапия: исследует бессознательные конфликты через свободные ассоциации и анализ сновидений. Долгосрочная, направлена на инсайты.",
+      "Когнитивно-поведенческая терапия (КБТ / CBT): выявляет и меняет искаженные модели мышления и поведения. Золотой стандарт для тревоги и депрессии. Краткосрочная (12-20 сессий).",
+      "Когнитивная терапия Бека борется с когнитивными искажениями: черно-белое мышление, катастрофизация, обобщение, чтение мыслей и персонализация.",
+      "Гуманистическая терапия (по Карлу Роджерсу): обеспечивает безусловное позитивное принятие, эмпатию и искренность, создавая среду для самопознания.",
+      "Биомедицинская терапия: Антидепрессанты (СИОЗС повышают серотонин), успокоительные, антипсихотики (блокируют дофамин), стабилизаторы настроения. Краткосрочная ЭСТ (электросудорожная терапия) эффективна при тяжелой депрессии.",
+      "Групповая и семейная терапия используют социальную поддержку. Самопомощь и поддержка сверстников помогают справиться с изоляцией.",
+      "Доказательная медицина: объединяет лучшие научные данные, клинический опыт и предпочтения пациента. Подбор лечения под диагноз имеет ключевое значение."
+    ],
+    keyPointsAm: [
+      "Հոգեվերլուծական/Հոգեդինամիկ թերապիա. ուսումնասիրում է անգիտակցական հակամարտությունները ազատ ասոցիացիաների և երազների վերլուծության միջոցով: Երկարաժամկետ է:",
+      "Կոգնիտիվ-վարքային թերապիա (CBT). բացահայտում և փոխում է աղավաղված մտածողության ձևերը և վարքագիծը: «Ոսկե ստանդարտ» է տագնապի և դեպրեսիայի համար, կարճաժամկետ է (12-20 սեսիա):",
+      "Բեկի կոգնիտիվ թերապիան թիրախավորում է ճանաչողական աղավաղումները՝ ամեն ինչ կամ ոչինչ մտածելակերպ, աղետականացում, ընդհանրացում և այլն:",
+      "Հումանիստական թերապիա. ապահովում է անվերապահ դրական ընդունում, էմպաթիա և անկեղծություն, ստեղծում է ապահով միջավայր:",
+      "Կենսաբժշկական թերապիաներ՝ հակադեպրեսանտներ, անհանգստության դեմ դեղամիջոցներ, հակափսիխոտիկներ, տրամադրության կայունացուցիչներ։ Էլեկտրաշոկային թերապիան արդյունավետ է ծանր դեպրեսիայի դեպքում:",
+      "Խմբային և ընտանեկան թերապիա. օգտագործում է սոցիալական աջակցությունը և անդրադառնում հարաբերությունների դինամիկային:",
+      "Ապացուցահեն պրակտիկա. համատեղում է լավագույն հետազոտական ապացույցները, կլինիկական փորձը և հիվանդի նախասիրությունները։"
+    ],
+    funFact: "Talking to a therapist actually changes your brain. Brain scans show that CBT produces measurable changes in activity in the prefrontal cortex and amygdala — the same regions affected by antidepressant medication.",
+    funFactKa: "თერაპევტთან საუბარი რეალურად ცვლის თქვენს ტვინს. სკანირება აჩვენებს, რომ CBT ცვლის აქტივობას პრეფრონტალურ ქერქსა და ამიგდალაში - ზუსტად იმ უბნებში, რაზეც ანტიდეპრესანტები მოქმედებს.",
+    funFactRu: "Разговоры с терапевтом реально меняют ваш мозг. Сканирование показывает, что КБТ производит измеримые изменения активности в префронтальной коре и миндалевидном теле — тех же областях, на которые влияют антидепрессанты.",
+    funFactAm: "Թերապևտի հետ խոսելն իսկապես փոխում է ձեր ուղեղը: Սքանավորումը ցույց է տալիս, որ CBT-ն փոփոխություններ է առաջացնում ուղեղի այն հատվածներում, որոնց վրա ազդում են նաև հակադեպրեսանտները:",
+    realWorld: "Teletherapy (online therapy) exploded during COVID-19 and research shows it's nearly as effective as in-person therapy for most conditions. This massively expanded access to mental health care, especially in rural areas.",
+    realWorldKa: "ტელეთერაპიამ (ონლაინ თერაპიამ) კოვიდის დროს დიდი პოპულარობა მოიპოვა და კვლევებით დასტურდება, რომ თითქმის ისეთივე ეფექტურია, როგორც პირისპირ შეხვედრები. ამან კი ფსიქიკურ ჯანმრთელობაზე ზრუნვა ბევრად უფრო ხელმისაწვდომი გახადა.",
+    realWorldRu: "Телетерапия (онлайн-терапия) резко выросла во время COVID-19 и оказалась почти такой же эффективной, как очная терапия, расширив доступ к психологической помощи.",
+    realWorldAm: "Հեռաթերապիան (օնլայն թերապիան) վերելք ապրեց COVID-19 ժամանակ, և այն գրեթե նույնքան արդյունավետ է, որքան անձնական հանդիպումները՝ բարելավելով հասանելիությունը:",
+    keyFigures: [
+      "Aaron Beck",
+      "Carl Rogers",
+      "Albert Ellis",
+      "Joseph Wolpe",
+      "Sigmund Freud"
+    ],
+    keyFiguresKa: [
+      "აარონ ბეკი",
+      "კარლ როჯერსი",
+      "ალბერტ ელისი",
+      "ჯოზეფ ვოლპე",
+      "ზიგმუნდ ფროიდი"
+    ],
+    keyFiguresRu: [
+      "Аарон Бек",
+      "Карл Роджерс",
+      "Альберт Эллис",
+      "Джозеф Вольпе",
+      "Зигмунд Фрейд"
+    ],
+    keyFiguresAm: [
+      "Աարոն Բեկ",
+      "Կառլ Ռոջերս",
+      "Ալբերտ Էլիս",
+      "Ջոզեֆ Վոլպե",
+      "Զիգմունդ Ֆրոյդ"
+    ]
   },
   {
-    id: 16, title: 'Applied Psychology', titleKa: '\u10D2\u10D0\u10DB\u10DD\u10E7\u10D4\u10DC\u10D4\u10D1\u10D8\u10D7\u10D8 \u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10D0',
-    description: 'Psychology in the real world: work, education, law, and everyday life.',
-    descriptionKa: '\u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10D0 \u10E0\u10D4\u10D0\u10DA\u10E3\u10E0 \u10E1\u10D0\u10DB\u10E7\u10D0\u10E0\u10DD\u10E8\u10D8: \u10E1\u10D0\u10DB\u10E1\u10D0\u10EE\u10E3\u10E0\u10D8, \u10D2\u10D0\u10DC\u10D0\u10D7\u10DA\u10D4\u10D1\u10D0, \u10E1\u10D0\u10DB\u10D0\u10E0\u10D7\u10D0\u10DA\u10D8 \u10D3\u10D0 \u10E7\u10DD\u10D5\u10D4\u10DA\u10D3\u10E6\u10D8\u10E3\u10E0\u10D8 \u10EA\u10EE\u10DD\u10D5\u10E0\u10D4\u10D1\u10D0.',
-    icon: 'mdi:earth',
-    keyTopics: ['Industrial-Organizational Psychology', 'Educational Psychology', 'Forensic Psychology', 'Positive Psychology'],
-    keyTopicsKa: ['\u10D8\u10DC\u10D3\u10E3\u10E1\u10E2\u10E0\u10D8\u10E3\u10DA-\u10DD\u10E0\u10D2\u10D0\u10DC\u10D8\u10D6\u10D0\u10EA\u10D8\u10E3\u10DA\u10D8 \u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10D0', '\u10D2\u10D0\u10DC\u10D0\u10D7\u10DA\u10D4\u10D1\u10D8\u10E1 \u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10D0', '\u10E1\u10D0\u10E1\u10D0\u10DB\u10D0\u10E0\u10D7\u10DA\u10DD \u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10D0', '\u10DE\u10DD\u10D6\u10D8\u10E2\u10D8\u10E3\u10E0\u10D8 \u10E4\u10E1\u10D8\u10E5\u10DD\u10DA\u10DD\u10D2\u10D8\u10D0'],
-    summary: 'Psychology applies to virtually every area of life. I/O psychology, educational psychology, forensic psychology, and positive psychology all make real-world impact.',
-    keyPoints: [
-      'Industrial-Organizational (I/O) Psychology: applies psychological principles to the workplace. Covers hiring (structured interviews beat unstructured), training design, motivation, leadership, job satisfaction, and reducing turnover.',
-      'Educational Psychology: studies how people learn in educational settings. Applies Piaget, Vygotsky (zone of proximal development), and learning styles research. Growth mindset (Dweck): believing intelligence is malleable improves academic performance.',
-      'Forensic Psychology: intersection of psychology and law. Includes criminal profiling, eyewitness testimony research, jury selection, competency evaluations, and risk assessment for reoffending.',
-      'Health Psychology: promotes healthy behaviors and prevents illness. Covers behavior change models (stages of change), adherence to medical treatment, chronic pain management, and the mind-body connection.',
-      'Positive Psychology (Seligman): the scientific study of what makes life worth living. Focuses on strengths, virtues, and optimal functioning rather than pathology. Key concepts: flow (Csikszentmihalyi), grit (Duckworth), gratitude, and character strengths.',
-      'Environmental Psychology: how physical environments affect behavior and well-being. Includes workspace design, urban planning, crowding effects, and noise pollution impacts.',
-      'Cross-cultural psychology: understanding how culture shapes behavior, cognition, and emotion. Individualistic cultures (US, Western Europe) emphasize personal achievement; collectivistic cultures (East Asia, Latin America) emphasize group harmony.'
+    id: 16,
+    title: "Applied Psychology",
+    titleKa: "გამოყენებითი ფსიქოლოგია",
+    titleRu: "Прикладная психология",
+    titleAm: "Կիրառական հոգեբանություն",
+    description: "Psychology in the real world: work, education, law, and everyday life.",
+    descriptionKa: "ფსიქოლოგია რეალურ სამყაროში: სამსახური, განათლება, სამართალი და ყოველდღიური ცხოვრება.",
+    descriptionRu: "Психология в реальном мире: работа, образование, право и повседневная жизнь.",
+    descriptionAm: "Հոգեբանությունը իրական աշխարհում. աշխատանք, կրթություն, իրավունք և առօրյա կյանք:",
+    icon: "mdi:earth",
+    keyTopics: [
+      "Industrial-Organizational Psychology",
+      "Educational Psychology",
+      "Forensic Psychology",
+      "Positive Psychology"
     ],
-    funFact: 'The "IKEA effect" (discovered by behavioral economists using psychological research) shows that people value things they built themselves 63% more than identical pre-built items \u2014 even when their creation is objectively worse!',
-    realWorld: 'Seligman\'s positive psychology research is used by the U.S. Army\'s Comprehensive Soldier Fitness program, training 1.1 million soldiers in resilience skills. Schools worldwide now teach "character strengths" and "growth mindset" as part of their curriculum.',
-    keyFigures: ['Martin Seligman', 'Mihaly Csikszentmihalyi', 'Carol Dweck', 'Angela Duckworth', 'Hugo M\u00fcnsterberg']
+    keyTopicsKa: [
+      "შრომისა და ორგანიზაციის (I/O) ფსიქოლოგია",
+      "განათლების ფსიქოლოგია",
+      "სასამართლო ფსიქოლოგია",
+      "პოზიტიური ფსიქოლოგია"
+    ],
+    keyTopicsRu: [
+      "Индустриально-организационная психология",
+      "Педагогическая психология",
+      "Судебная психология",
+      "Позитивная психология"
+    ],
+    keyTopicsAm: [
+      "Աշխատանքային և կազմակերպչական հոգեբանություն",
+      "Կրթական հոգեբանություն",
+      "Դատական հոգեբանություն",
+      "Դրական հոգեբանություն"
+    ],
+    summary: "Psychology applies to virtually every area of life. I/O psychology, educational psychology, forensic psychology, and positive psychology all make real-world impact.",
+    summaryKa: "ფსიქოლოგია ცხოვრების თითქმის ყველა სფეროში გამოიყენება. ორგანიზაციული, განათლების, სასამართლო და პოზიტიური ფსიქოლოგია რეალურ, პრაქტიკულ შედეგებს გვაძლევს.",
+    summaryRu: "Психология применима практически к любой сфере жизни. Организационная, педагогическая, юридическая и позитивная психология оказывают реальное влияние на общество.",
+    summaryAm: "Հոգեբանությունը կիրառելի է կյանքի գրեթե բոլոր ոլորտներում: Կազմակերպչական, կրթական, դատական և դրական հոգեբանությունը իրական ազդեցություն ունեն:",
+    keyPoints: [
+      "Industrial-Organizational (I/O) Psychology: applies psychological principles to the workplace. Covers hiring (structured interviews beat unstructured), training design, motivation, leadership, job satisfaction, and reducing turnover.",
+      "Educational Psychology: studies how people learn in educational settings. Applies Piaget, Vygotsky (zone of proximal development), and learning styles research. Growth mindset (Dweck): believing intelligence is malleable improves academic performance.",
+      "Forensic Psychology: intersection of psychology and law. Includes criminal profiling, eyewitness testimony research, jury selection, competency evaluations, and risk assessment for reoffending.",
+      "Health Psychology: promotes healthy behaviors and prevents illness. Covers behavior change models (stages of change), adherence to medical treatment, chronic pain management, and the mind-body connection.",
+      "Positive Psychology (Seligman): the scientific study of what makes life worth living. Focuses on strengths, virtues, and optimal functioning rather than pathology. Key concepts: flow (Csikszentmihalyi), grit (Duckworth), gratitude, and character strengths.",
+      "Environmental Psychology: how physical environments affect behavior and well-being. Includes workspace design, urban planning, crowding effects, and noise pollution impacts.",
+      "Cross-cultural psychology: understanding how culture shapes behavior, cognition, and emotion. Individualistic cultures (US, Western Europe) emphasize personal achievement; collectivistic cultures (East Asia, Latin America) emphasize group harmony."
+    ],
+    keyPointsKa: [
+      "ინდუსტრიულ-ორგანიზაციული (I/O) ფსიქოლოგია: ფსიქოლოგიური პრინციპების გამოყენება სამუშაო სივრცეში. მოიცავს კადრების შერჩევას, ტრენინგებს, მოტივაციასა და ლიდერობას.",
+      "განათლების ფსიქოლოგია: იკვლევს თუ როგორ სწავლობს ადამიანი. ეყრდნობა პიაჟესა და ვიგოტსკის თეორიებს. აზროვნების ზრდის მოდელი (Dweck): რწმენა, რომ ინტელექტის განვითარება შესაძლებელია, აუმჯობესებს აკადემიურ მოსწრებას.",
+      "სასამართლო ფსიქოლოგია: ფსიქოლოგიისა და სამართლის კვეთა. მოიცავს კრიმინალურ პროფაილინგს, მოწმეთა ჩვენებების კვლევას, ნაფიცი მსაჯულების შერჩევას და რისკების შეფასებას.",
+      "ჯანმრთელობის ფსიქოლოგია: ხელს უწყობს ჯანსაღ ქცევებს. მოიცავს ქცევის ცვლილების მოდელებს და გონება-სხეულის კავშირის მართვას.",
+      "პოზიტიური ფსიქოლოგია (Seligman): მეცნიერული კვლევა იმისა, თუ რა ხდის ცხოვრებას ღირებულს. ფოკუსირდება ძლიერ მხარეებზე: ნაკადი (flow), ჟინი (grit), მადლიერება და ხასიათის სიძლიერე.",
+      "გარემოს ფსიქოლოგია: როგორ მოქმედებს ფიზიკური გარემო ჩვენზე (მაგ. ოფისის დიზაინი, ურბანული დაგეგმარება).",
+      "კროს-კულტურული ფსიქოლოგია: როგორ აყალიბებს კულტურა ქცევას და აზროვნებას. ინდივიდუალისტური კულტურები (აშშ, ევროპა) VS კოლექტივისტური კულტურები (აზია, ლათინური ამერიკა)."
+    ],
+    keyPointsRu: [
+      "Индустриально-организационная (I/O) психология: применяет психологические принципы на рабочем месте. Охватывает найм, мотивацию, лидерство и удовлетворенность работой.",
+      "Педагогическая психология: изучает, как люди учатся. Применяет исследования Пиаже и Выготского. Мышление роста (Dweck): вера в то, что интеллект можно развить, улучшает успеваемость.",
+      "Судебная (юридическая) психология: пересечение психологии и права. Включает криминальное профилирование, исследования свидетельских показаний и оценку риска рецидивов.",
+      "Психология здоровья: продвигает здоровое поведение. Охватывает модели изменения поведения и связь разума и тела.",
+      "Позитивная психология (Селигман): научное изучение того, что делает жизнь ценной. Фокусируется на сильных сторонах: потоке (Чиксентмихайи), твердости характера (Дакворт), благодарности.",
+      "Экологическая психология: как физическая среда (дизайн рабочих мест, городское планирование) влияет на поведение.",
+      "Кросс-культурная психология: как культура формирует поведение. Индивидуалистические культуры (США) против коллективистских (Восточная Азия)."
+    ],
+    keyPointsAm: [
+      "Աշխատանքային-կազմակերպչական (I/O) հոգեբանություն. հոգեբանական սկզբունքները կիրառում է աշխատավայրում (աշխատանքի ընդունում, մոտիվացիա, առաջնորդություն):",
+      "Կրթական հոգեբանություն. ուսումնասիրում է, թե ինչպես են մարդիկ սովորում: Աճի մտածելակերպ (Dweck)՝ հավատալը, որ ինտելեկտը զարգացնել հնարավոր է, բարելավում է առաջադիմությունը:",
+      "Դատական հոգեբանություն. հոգեբանության և իրավունքի խաչմերուկ: Ներառում է հանցագործների պրոֆիլավորում, ականատեսների ցուցմունքների հետազոտություն:",
+      "Առողջության հոգեբանություն. խթանում է առողջ վարքագիծը և հիվանդությունների կանխարգելումը:",
+      "Դրական հոգեբանություն (Seligman). ուսումնասիրում է այն, ինչը կյանքն արժեքավոր է դարձնում՝ կենտրոնանալով ուժեղ կողմերի վրա:",
+      "Բնապահպանական հոգեբանություն. ինչպես է ֆիզիկական միջավայրը (քաղաքաշինություն, աղմուկ) ազդում վարքագծի վրա:",
+      "Միջմշակութային հոգեբանություն. ինչպես է մշակույթը ձևավորում մտածողությունը: Անհատապաշտական մշակույթներ ընդդեմ կոլեկտիվիստական:"
+    ],
+    funFact: "The \"IKEA effect\" (discovered by behavioral economists using psychological research) shows that people value things they built themselves 63% more than identical pre-built items — even when their creation is objectively worse!",
+    funFactKa: "\"IKEA-ს ეფექტი\" (რომელიც ქცევითმა ეკონომისტებმა აღმოაჩინეს) აჩვენებს, რომ ადამიანები 63%-ით უფრო მეტად აფასებენ იმ ნივთს, რომელიც თავად ააწყვეს, თუნდაც ის ობიექტურად უარესი ხარისხის იყოს!",
+    funFactRu: "\"Эффект ИКЕА\" показывает, что люди ценят вещи, которые они собрали сами, на 63% больше, чем идентичные готовые предметы, даже если их творение объективно хуже!",
+    funFactAm: "«IKEA-ի էֆեկտը» ցույց է տալիս, որ մարդիկ 63%-ով ավելի են գնահատում իրենց ձեռքով հավաքած իրերը, քան պատրաստի գնած նույնական առարկաները:",
+    realWorld: "Seligman's positive psychology research is used by the U.S. Army's Comprehensive Soldier Fitness program, training 1.1 million soldiers in resilience skills. Schools worldwide now teach \"character strengths\" and \"growth mindset\" as part of their curriculum.",
+    realWorldKa: "სელიგმანის პოზიტიურ ფსიქოლოგიას იყენებს აშშ-ის არმია - \"ჯარისკაცის კომპლექსური ფიტნესის\" პროგრამით 1.1 მილიონმა ჯარისკაცმა ისწავლა გამძლეობის უნარები. სკოლებიც მსოფლიოს მასშტაბით აქტიურად ასწავლიან \"ხასიათის სიძლიერეს\".",
+    realWorldRu: "Исследования позитивной психологии Селигмана используются армией США — 1,1 миллиона солдат обучены навыкам жизнестойкости. Школы по всему миру теперь внедряют развитие \"мышления роста\".",
+    realWorldAm: "Սելիգմանի դրական հոգեբանությունն օգտագործվում է ԱՄՆ բանակի կողմից՝ 1,1 մլն զինվորի սովորեցնելով տոկունության և դիմադրողականության հմտություններ:",
+    keyFigures: [
+      "Martin Seligman",
+      "Mihaly Csikszentmihalyi",
+      "Carol Dweck",
+      "Angela Duckworth",
+      "Hugo Münsterberg"
+    ],
+    keyFiguresKa: [
+      "მარტინ სელიგმანი",
+      "მიჰაი ჩიქსენთმიჰაი",
+      "კეროლ დვეკი",
+      "ანჯელა დაკვორთი",
+      "ჰიუგო მიუნსტერბერგი"
+    ],
+    keyFiguresRu: [
+      "Мартин Селигман",
+      "Михай Чиксентмихайи",
+      "Кэрол Дуэк",
+      "Анджела Дакворт",
+      "Гуго Мюнстерберг"
+    ],
+    keyFiguresAm: [
+      "Մարտին Սելիգման",
+      "Միհայ Չիկսենթմիհայի",
+      "Քերոլ Դվեկ",
+      "Անջելա Դակուորթ",
+      "Հյուգո Մյունստերբերգ"
+    ]
   }
 ];
 

@@ -35,20 +35,19 @@ router.post('/register', async (req, res) => {
   await req.db.execute({ sql: 'DELETE FROM email_verification_codes WHERE user_id = ?', args: [userId] });
   await req.db.execute({ sql: 'INSERT INTO email_verification_codes (user_id, code, expires_at) VALUES (?, ?, ?)', args: [userId, code, expiresAt] });
 
-  try {
-    await sendVerificationEmail(email, code, displayName);
-    console.log('[AUTH] Verification email sent to', email);
-  } catch (err) {
-    console.error('[AUTH] Failed to send verification email:', err.message, err.code, err.responseCode);
-  }
-
   const token = jwt.sign({ id: userId, username, role: 'user' }, JWT_SECRET, { expiresIn: '7d' });
 
+  // Send response immediately — don't wait for email
   res.status(201).json({
     token,
     user: { id: userId, email, username, displayName, role: 'user', emailVerified: false, avatar: null },
     requiresVerification: true,
   });
+
+  // Fire-and-forget: send verification email in background
+  sendVerificationEmail(email, code, displayName)
+    .then(() => console.log('[AUTH] Verification email sent to', email))
+    .catch(err => console.error('[AUTH] Failed to send verification email:', err.message, err.code, err.responseCode));
 });
 
 // Verify email
@@ -85,13 +84,13 @@ router.post('/resend-verification', authenticate, async (req, res) => {
   await req.db.execute({ sql: 'DELETE FROM email_verification_codes WHERE user_id = ?', args: [user.id] });
   await req.db.execute({ sql: 'INSERT INTO email_verification_codes (user_id, code, expires_at) VALUES (?, ?, ?)', args: [user.id, code, expiresAt] });
 
-  try {
-    await sendVerificationEmail(user.email, code, user.display_name);
-    res.json({ message: 'Verification code sent.' });
-  } catch (err) {
-    console.error('Failed to resend verification email:', err.message);
-    res.status(500).json({ error: 'Failed to send email. Please try again.' });
-  }
+  // Send response immediately — don't wait for email
+  res.json({ message: 'Verification code sent.' });
+
+  // Fire-and-forget: send verification email in background
+  sendVerificationEmail(user.email, code, user.display_name)
+    .then(() => console.log('[AUTH] Resend verification email sent to', user.email))
+    .catch(err => console.error('[AUTH] Failed to resend verification email:', err.message));
 });
 
 // Login
@@ -130,13 +129,13 @@ router.post('/forgot-password', async (req, res) => {
   await req.db.execute({ sql: 'DELETE FROM password_reset_codes WHERE user_id = ?', args: [user.id] });
   await req.db.execute({ sql: 'INSERT INTO password_reset_codes (user_id, code, expires_at) VALUES (?, ?, ?)', args: [user.id, code, expiresAt] });
 
-  try {
-    await sendPasswordResetEmail(user.email, code, user.display_name);
-  } catch (err) {
-    console.error('Failed to send password reset email:', err.message);
-  }
-
+  // Send response immediately — don't wait for email
   res.json({ message: 'If an account exists with this email, a reset code has been sent.' });
+
+  // Fire-and-forget: send reset email in background
+  sendPasswordResetEmail(user.email, code, user.display_name)
+    .then(() => console.log('[AUTH] Password reset email sent to', user.email))
+    .catch(err => console.error('[AUTH] Failed to send password reset email:', err.message));
 });
 
 // Reset password

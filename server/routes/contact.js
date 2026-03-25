@@ -16,15 +16,13 @@ router.post('/', async (req, res) => {
       args: [username.trim(), email.trim(), message.trim()],
     });
 
-    let emailSent = false;
-    try {
-      await sendContactNotification({ username: username.trim(), email: email.trim(), message: message.trim() });
-      emailSent = true;
-    } catch (mailErr) {
-      console.error('[CONTACT] Failed to send email:', mailErr.message);
-    }
+    // Send response immediately — don't wait for email
+    res.status(201).json({ message: 'Message sent successfully! We will get back to you soon.' });
 
-    res.status(201).json({ message: 'Message sent successfully! We will get back to you soon.', emailSent });
+    // Fire-and-forget: send notification email in background
+    sendContactNotification({ username: username.trim(), email: email.trim(), message: message.trim() })
+      .then(() => console.log('[CONTACT] Notification email sent'))
+      .catch(mailErr => console.error('[CONTACT] Failed to send email:', mailErr.message));
   } catch (err) {
     console.error('Contact submission error:', err);
     res.status(500).json({ error: 'Failed to send message' });
