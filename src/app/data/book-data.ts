@@ -8,43 +8,43 @@ export interface Chapter {
   titleKa: string;
   titleRu?: string;
   titleHy?: string;
-  titleAm?: string;
+  titleAz?: string;
   description: string;
   descriptionKa: string;
   descriptionRu?: string;
   descriptionHy?: string;
-  descriptionAm?: string;
+  descriptionAz?: string;
   icon: string;
   keyTopics: string[];
   keyTopicsKa: string[];
   keyTopicsRu?: string[];
   keyTopicsHy?: string[];
-  keyTopicsAm?: string[];
+  keyTopicsAz?: string[];
   summary: string;
   summaryKa?: string;
   summaryRu?: string;
   summaryHy?: string;
-  summaryAm?: string;
+  summaryAz?: string;
   keyPoints: string[];
   keyPointsKa?: string[];
   keyPointsRu?: string[];
   keyPointsHy?: string[];
-  keyPointsAm?: string[];
+  keyPointsAz?: string[];
   funFact: string;
   funFactKa?: string;
   funFactRu?: string;
   funFactHy?: string;
-  funFactAm?: string;
+  funFactAz?: string;
   realWorld: string;
   realWorldKa?: string;
   realWorldRu?: string;
   realWorldHy?: string;
-  realWorldAm?: string;
+  realWorldAz?: string;
   keyFigures?: string[];
   keyFiguresKa?: string[];
   keyFiguresRu?: string[];
   keyFiguresHy?: string[];
-  keyFiguresAm?: string[];
+  keyFiguresAz?: string[];
 }
 
 export interface QuizQuestion {
@@ -91,6 +91,9 @@ export interface Psychologist {
   fieldKa?: string;
   fieldRu?: string;
   fieldHy?: string;
+  fieldAz?: string;
+  contributionAz?: string;
+  detailsAz?: string;
 }
 
 export interface Fact {
@@ -236,6 +239,455 @@ export const CHAPTERS: Chapter[] = [
     realWorldHy: 'Կրկնակի կույր փորձարկումները պաշտպանում են պացիենտներին ոչ արդյունավետ բուժումից:',
     keyFigures: ['Francis Bacon', 'Karl Popper', 'Stanley Milgram']
   }
+,
+  {
+    id: 3,
+    title: "Biological Bases of Behavior",
+    titleKa: "ქცევის ბიოლოგიური საფუძვლები",
+    titleRu: "Биологические основы поведения",
+    titleHy: "Վարքագծի կենսաբանական հիմքերը",
+    titleAz: "Davranışın Bioloji Əsasları",
+    description: "The brain, nervous system, neurons, and how biology shapes our behavior.",
+    descriptionKa: "ტვინი, ნერვული სისტემა, ნეირონები და როგორ აყალიბებს ბიოლოგია ჩვენს ქცევას.",
+    descriptionRu: "Мозг, нервная система, нейроны и то, как биология формирует наше поведение.",
+    descriptionHy: "Ուղեղը, նյարդային համակարգը, նեյրոնները և ինչպես է կենսաբանությունը ձևավորում մեր վարքագիծը:",
+    descriptionAz: "Beyin, sinir sistemi, neyronlar və biologiya davranışımızı necə formalaşdırır.",
+    icon: "mdi:dna",
+    keyTopics: ["Neurons & Synapses","Brain Structure","Nervous System","Neurotransmitters","Genetics & Behavior"],
+    keyTopicsKa: ["ნეირონები და სინაფსები","ტვინის სტრუქტურა","ნერვული სისტემა","ნეიროტრანსმიტერები","გენეტიკა და ქცევა"],
+    keyTopicsRu: ["Нейроны и синапсы","Структура мозга","Нервная система","Нейромедиаторы","Генетика и поведение"],
+    keyTopicsHy: ["Նեյրոններ և սինապսներ","Ուղեղի կառուցվածքը","Նյարդային համակարգ","Նեյրոհաղորդիչներ","Գենետիկա և վարքագիծ"],
+    keyTopicsAz: ["Neyronlar və Sinapslar","Beyin strukturu","Sinir sistemi","Nörotransmitterlər","Genetika və Davranış"],
+    summary: "Every thought, emotion, and action has a biological basis. This chapter explores how neurons communicate, the structure of the brain, and how genetics influence behavior.",
+    keyPoints: [
+      "Neurons are the basic units of the nervous system. They communicate via electrochemical signals: electrical impulses travel down the axon, then release neurotransmitters across the synapse.",
+      "Key neurotransmitters: Dopamine (reward, pleasure), Serotonin (mood, sleep), GABA (inhibition, calm), Acetylcholine (memory, muscle movement), Norepinephrine (alertness), Endorphins (pain relief).",
+      "The brain has three major regions: Hindbrain (medulla, pons, cerebellum — basic survival), Midbrain (sensory relay), Forebrain (cerebral cortex — higher thinking).",
+      "The cerebral cortex has four lobes: Frontal (decision-making, personality), Parietal (touch, spatial), Temporal (hearing, language), Occipital (vision).",
+      "The limbic system includes the amygdala (fear, emotion), hippocampus (memory formation), and hypothalamus (hunger, thirst, temperature).",
+      "Neuroplasticity: the brain can reorganize itself by forming new neural connections throughout life, especially after injury or learning.",
+      "The split-brain experiments by Sperry showed that the left hemisphere specializes in language and logic, while the right hemisphere handles spatial tasks and creativity."
+    ],
+    funFact: "Your brain uses about 20% of your body's energy despite being only 2% of your body weight. It generates about 20 watts of electrical power — enough to power a dim light bulb.",
+    realWorld: "Understanding neurotransmitters revolutionized psychiatry. SSRIs (like Prozac) treat depression by increasing serotonin levels in the brain. Parkinson's disease treatments target dopamine pathways.",
+    keyFigures: ["Roger Sperry","Paul Broca","Carl Wernicke","Santiago Ramón y Cajal"]
+  },
+  {
+    id: 4,
+    title: "Sensation and Perception",
+    titleKa: "შეგრძნება და აღქმა",
+    titleRu: "Ощущение и восприятие",
+    titleHy: "Սենսացիա և ընկալում",
+    titleAz: "Hiss və qavrayış",
+    description: "How our senses detect stimuli and our brain interprets them.",
+    descriptionKa: "როგორ ამოიცნობს ჩვენი გრძნობები სტიმულს და ჩვენი ტვინი განმარტავს მათ.",
+    descriptionRu: "Как наши органы чувств обнаруживают стимулы, а мозг их интерпретирует.",
+    descriptionHy: "Ինչպես է մեր զգայարանները հայտնաբերում գրգռիչները և մեր ուղեղը մեկնաբանում դրանք:",
+    descriptionAz: "Hisslərimiz stimulları necə qəbul edir və beynimiz onları necə şərh edir.",
+    icon: "mdi:eye-outline",
+    keyTopics: ["Vision","Hearing","Other Senses","Perceptual Organization","Illusions"],
+    keyTopicsKa: ["ხედვა","სმენა","სხვა გრძნობები","აღქმის ორგანიზაცია","ილუზიები"],
+    keyTopicsRu: ["Зрение","Слух","Другие чувства","Перцептивная организация","Иллюзии"],
+    keyTopicsHy: ["Տեսիլք","Լսողություն","Այլ զգայարաններ","Ընկալման կազմակերպություն","Պատրանքներ"],
+    keyTopicsAz: ["Görmə","Eşitmə","Digər Hisslər","Qavrama təşkilatı","İllüziyalar"],
+    summary: "Sensation is the process by which our sensory receptors detect stimuli; perception is how the brain interprets this. Covers visual processing, Gestalt principles, and perceptual illusions.",
+    keyPoints: [
+      "Sensation = detecting physical energy (light, sound, pressure); Perception = organizing and interpreting that sensory information into something meaningful.",
+      "Absolute threshold: the minimum stimulation needed to detect a stimulus 50% of the time. Difference threshold (JND): the smallest detectable difference between two stimuli.",
+      "Vision: Light enters through the cornea → pupil → lens → retina. Rods detect dim light; cones detect color. Information travels via the optic nerve to the visual cortex.",
+      "Gestalt principles of perception: proximity, similarity, closure, continuity, and figure-ground. The brain fills in gaps to create coherent images.",
+      "Color vision: Trichromatic theory (3 types of cones for red, green, blue) explains color mixing; Opponent-process theory (red-green, blue-yellow, black-white pairs) explains afterimages.",
+      "Hearing: Sound waves → eardrum → ossicles → cochlea → hair cells → auditory nerve. Pitch is encoded by place theory (high frequencies) and frequency theory (low frequencies).",
+      "Sensory adaptation: when constant stimulation leads to reduced sensitivity (e.g., you stop noticing a smell after a while)."
+    ],
+    funFact: "Your eyes can distinguish about 10 million different colors, yet dogs see the world mainly in blues and yellows. The mantis shrimp, however, has 16 types of color receptors compared to our 3!",
+    realWorld: "Optical illusions are not just fun tricks — they reveal how the brain constructs reality. UX designers use Gestalt principles daily: grouping related buttons, using whitespace, and creating visual hierarchies on websites.",
+    keyFigures: ["Gustav Fechner","Ernst Weber","Max Wertheimer","Hermann von Helmholtz"]
+  },
+  {
+    id: 5,
+    title: "States of Consciousness",
+    titleKa: "ცნობიერების მდგომარეობა",
+    titleRu: "Состояния сознания",
+    titleHy: "Գիտակցության վիճակներ",
+    titleAz: "Şüur Dövlətləri",
+    description: "Sleep, dreams, hypnosis, and altered states of consciousness.",
+    descriptionKa: "ძილი, სიზმრები, ჰიპნოზი და ცნობიერების შეცვლილი მდგომარეობა.",
+    descriptionRu: "Сон, сновидения, гипноз и измененные состояния сознания.",
+    descriptionHy: "Քուն, երազներ, հիպնոս և գիտակցության փոփոխված վիճակ:",
+    descriptionAz: "Yuxu, yuxular, hipnoz və dəyişmiş şüur ​​halları.",
+    icon: "mdi:sleep",
+    keyTopics: ["Sleep Stages","Dreams","Hypnosis","Meditation","Psychoactive Substances"],
+    keyTopicsKa: ["ძილის ეტაპები","სიზმრები","ჰიპნოზი","მედიტაცია","ფსიქოაქტიური ნივთიერებები"],
+    keyTopicsRu: ["Стадии сна","Мечты","Гипноз","Медитация","Психоактивные вещества"],
+    keyTopicsHy: ["Քնի փուլեր","Երազներ","Հիպնոզ","Մեդիտացիա","Հոգեակտիվ նյութեր"],
+    keyTopicsAz: ["Yuxu Mərhələləri","Xəyallar","Hipnoz","Meditasiya","Psixoaktiv maddələr"],
+    summary: "Consciousness is our awareness of ourselves and environment. This chapter explores sleep cycles, theories of dreams, hypnosis, meditation, and how substances alter conscious experience.",
+    keyPoints: [
+      "Consciousness exists on a continuum: from fully alert to deeply asleep, with many states in between (daydreaming, meditation, hypnosis).",
+      "Sleep has two main types: NREM (stages 1–3, progressively deeper) and REM (rapid eye movement, where vivid dreaming occurs). A full cycle lasts about 90 minutes.",
+      "Stage 3 (slow-wave/deep sleep) is critical for physical restoration and growth hormone release. REM sleep is vital for memory consolidation and emotional processing.",
+      "Dream theories: Freud's wish fulfillment (dreams express unconscious desires), Activation-synthesis (dreams are the brain's interpretation of random neural firing), Information processing (dreams help sort daily memories).",
+      "Sleep deprivation impairs attention, memory, immune function, and emotional regulation. Chronic sleep loss is linked to obesity, depression, and heart disease.",
+      "Hypnosis is a state of heightened suggestibility and focused attention — it does NOT give the hypnotist control over you. It can help with pain management and some habits.",
+      "Psychoactive substances work by mimicking, blocking, or altering neurotransmitter activity: stimulants (caffeine, cocaine), depressants (alcohol, barbiturates), opioids (morphine), hallucinogens (LSD, psilocybin)."
+    ],
+    funFact: "During REM sleep, your brain paralyzes your voluntary muscles (atonia) so you don't physically act out your dreams. When this system fails, people develop REM Sleep Behavior Disorder and may punch, kick, or jump out of bed while dreaming.",
+    realWorld: "Understanding sleep stages has transformed shift work policies. Many hospitals and airlines now mandate minimum rest periods because research proved that sleep-deprived professionals make as many errors as intoxicated ones.",
+    keyFigures: ["Sigmund Freud","J. Allan Hobson","Ernest Hilgard","William Dement"]
+  },
+  {
+    id: 6,
+    title: "Learning",
+    titleKa: "სწავლა",
+    titleRu: "Обучение",
+    titleHy: "Ուսուցում",
+    titleAz: "Öyrənmək",
+    description: "Classical conditioning, operant conditioning, and observational learning.",
+    descriptionKa: "კლასიკური კონდიცირება, ოპერანტული კონდიცირება და დაკვირვებითი სწავლება.",
+    descriptionRu: "Классическое обусловливание, оперантное обусловливание и обучение через наблюдение.",
+    descriptionHy: "Դասական պայմանավորում, օպերանտ պայմանավորում և դիտողական ուսուցում:",
+    descriptionAz: "Klassik kondisioner, operant kondisioner və müşahidə öyrənmə.",
+    icon: "mdi:book-open-variant",
+    keyTopics: ["Classical Conditioning","Operant Conditioning","Reinforcement & Punishment","Observational Learning"],
+    keyTopicsKa: ["კლასიკური კონდიცირება","ოპერაციული კონდიცირება","განმტკიცება და დასჯა","დაკვირვებითი სწავლება"],
+    keyTopicsRu: ["Классическое кондиционирование","Оперантное обусловливание","Подкрепление и наказание","Наблюдательное обучение"],
+    keyTopicsHy: ["Դասական կոնդիցիոներ","Գործող օդափոխություն","Ամրապնդում և պատիժ","Դիտորդական ուսուցում"],
+    keyTopicsAz: ["Klassik kondisioner","Operant Kondisioner","Gücləndirmə və Cəza","Müşahidə yolu ilə öyrənmə"],
+    summary: "Learning is a relatively permanent change in behavior due to experience. Pavlov's classical conditioning, Skinner's operant conditioning, and Bandura's social learning theory are covered.",
+    keyPoints: [
+      "Classical conditioning (Pavlov): Learning by association. A neutral stimulus (bell) paired with an unconditioned stimulus (food) eventually produces a conditioned response (salivation to bell alone). Key terms: UCS, UCR, CS, CR.",
+      "Key phenomena in classical conditioning: acquisition, extinction (CR fades when CS presented alone), spontaneous recovery, generalization (responding to similar stimuli), and discrimination (distinguishing between stimuli).",
+      "Operant conditioning (Skinner): Learning through consequences. Behaviors followed by reinforcement increase; those followed by punishment decrease.",
+      "Reinforcement schedules: Fixed-ratio (every N responses), Variable-ratio (unpredictable, like slot machines — most resistant to extinction), Fixed-interval (first response after N time), Variable-interval (unpredictable time).",
+      "Positive = adding something; Negative = removing something. Positive reinforcement (reward), Negative reinforcement (removing discomfort), Positive punishment (adding pain), Negative punishment (taking away privileges).",
+      "Bandura's social learning theory: We learn by observing others (models). The Bobo doll experiment showed children imitate aggressive behavior they witness. Requires attention, retention, reproduction, and motivation.",
+      "Learned helplessness (Seligman): When organisms learn they cannot control outcomes, they stop trying — even when escape becomes possible. Linked to depression in humans."
+    ],
+    funFact: "Slot machines use a variable-ratio reinforcement schedule — the same principle Skinner discovered makes behavior hardest to extinguish. This is why gambling can be so addictive: you never know when the next reward will come.",
+    realWorld: "Dog trainers use operant conditioning (clicker training = positive reinforcement). Advertisers pair products with pleasant images (classical conditioning). Social media \"likes\" use variable-ratio reinforcement to keep you scrolling.",
+    keyFigures: ["Ivan Pavlov","B.F. Skinner","Albert Bandura","John Watson","Edward Thorndike"]
+  },
+  {
+    id: 7,
+    title: "Memory",
+    titleKa: "მეხსიერება",
+    titleRu: "Память",
+    titleHy: "Հիշողություն",
+    titleAz: "Yaddaş",
+    description: "How we encode, store, and retrieve information.",
+    descriptionKa: "როგორ ვაშიფრავთ, ვინახავთ და ვიღებთ ინფორმაციას.",
+    descriptionRu: "Как мы кодируем, храним и извлекаем информацию.",
+    descriptionHy: "Ինչպես ենք մենք կոդավորում, պահպանում և առբերում տեղեկատվությունը:",
+    descriptionAz: "Məlumatı necə kodlaşdırırıq, saxlayırıq və əldə edirik.",
+    icon: "mdi:database-outline",
+    keyTopics: ["Encoding","Storage","Retrieval","Forgetting","Memory Improvement"],
+    keyTopicsKa: ["კოდირება","შენახვა","მოძიება","დავიწყება","მეხსიერების გაუმჯობესება"],
+    keyTopicsRu: ["Кодирование","Хранилище","Поиск","Забывчивость","Улучшение памяти"],
+    keyTopicsHy: ["Կոդավորում","Պահպանում","Առբերում","Մոռանալով","Հիշողության բարելավում"],
+    keyTopicsAz: ["Kodlaşdırma","Saxlama","Axtarış","Unutmaq","Yaddaşın təkmilləşdirilməsi"],
+    summary: "Memory involves encoding, storage, and retrieval. The multi-store model describes sensory, short-term, and long-term memory. Also covers forgetting curves, false memories, and improvement strategies.",
+    keyPoints: [
+      "Three stages of memory: Encoding (converting information), Storage (maintaining it), Retrieval (accessing it later).",
+      "Atkinson-Shiffrin model: Sensory memory (brief, <1 sec for visual) → Short-term/Working memory (20–30 sec, capacity ~7±2 items) → Long-term memory (unlimited capacity and duration).",
+      "Encoding depth matters: Shallow processing (appearance, sound) produces weaker memories than deep/semantic processing (meaning). Elaborative rehearsal beats rote repetition.",
+      "Types of long-term memory: Explicit/Declarative (episodic = personal events, semantic = general knowledge) and Implicit/Nondeclarative (procedural = skills, classical conditioning).",
+      "Ebbinghaus's forgetting curve: we forget rapidly at first (50% within an hour), then the rate slows. Spaced repetition dramatically improves retention.",
+      "Retrieval cues, context-dependent memory (same place), and state-dependent memory (same mood) all improve recall. The testing effect: retrieving information strengthens memory more than re-reading.",
+      "Memory is reconstructive, not a perfect recording. Elizabeth Loftus showed that misleading questions can create false memories. Eyewitness testimony is surprisingly unreliable."
+    ],
+    funFact: "The \"Google effect\" (digital amnesia) is a real phenomenon: people are less likely to remember information they know they can easily look up online. Your brain outsources memory storage to your phone!",
+    realWorld: "Spaced repetition (reviewing at increasing intervals) is the single most effective study technique. Apps like Anki use it. Cramming the night before works for short-term recall but fades within days.",
+    keyFigures: ["Hermann Ebbinghaus","Elizabeth Loftus","George Miller","Endel Tulving","Alan Baddeley"]
+  },
+  {
+    id: 8,
+    title: "Cognition and Intelligence",
+    titleKa: "შემეცნება და ინტელექტი",
+    titleRu: "Познание и интеллект",
+    titleHy: "Ճանաչում և բանականություն",
+    titleAz: "İdrak və İntellekt",
+    description: "Thinking, problem-solving, language, and measuring intelligence.",
+    descriptionKa: "აზროვნება, პრობლემის გადაჭრა, ენა და ინტელექტის გაზომვა.",
+    descriptionRu: "Мышление, решение проблем, язык и измерение интеллекта.",
+    descriptionHy: "Մտածողություն, խնդիրների լուծում, լեզու և ինտելեկտի չափում:",
+    descriptionAz: "Düşünmə, problem həll etmə, dil və zəkanın ölçülməsi.",
+    icon: "mdi:lightbulb-outline",
+    keyTopics: ["Problem Solving","Decision Making","Language","Intelligence Testing","Creativity"],
+    keyTopicsKa: ["პრობლემის გადაჭრა","გადაწყვეტილების მიღება","ენა","დაზვერვის ტესტირება","კრეატიულობა"],
+    keyTopicsRu: ["Решение проблем","Принятие решений","Язык","Тестирование интеллекта","Креативность"],
+    keyTopicsHy: ["Խնդրի լուծում","Որոշումների կայացում","Լեզու","Հետախուզության թեստավորում","Ստեղծագործականություն"],
+    keyTopicsAz: ["Problemin həlli","Qərar vermə","Dil","Kəşfiyyat Testi","Yaradıcılıq"],
+    summary: "Cognition encompasses thinking, reasoning, problem-solving, and language. Examines heuristics and biases, theories of intelligence, IQ testing, and the nature vs. nurture debate.",
+    keyPoints: [
+      "Cognition includes all mental activities: perceiving, thinking, remembering, and communicating.",
+      "Problem-solving strategies: algorithms (step-by-step, guaranteed), heuristics (mental shortcuts, fast but error-prone), and insight (sudden \"aha!\" moments).",
+      "Cognitive biases: Confirmation bias (seeking info that confirms beliefs), Availability heuristic (judging frequency by ease of recall), Anchoring (over-relying on first information), Framing effect (decisions change based on how options are presented).",
+      "Language development: Babbling (6 mo) → One-word (12 mo) → Two-word (24 mo) → Full sentences (3–4 yrs). Chomsky argued humans have an innate Language Acquisition Device (LAD).",
+      "The Sapir-Whorf hypothesis suggests that language shapes thought. The strong version (language determines thought) is mostly rejected; the weak version (language influences thought) has support.",
+      "Intelligence theories: Spearman's g (general intelligence), Gardner's multiple intelligences (8 types), Sternberg's triarchic theory (analytical, creative, practical).",
+      "IQ tests (Stanford-Binet, WAIS) have mean = 100, SD = 15. IQ is 50–80% heritable, but environment matters enormously — the Flynn effect shows IQ scores have risen ~3 points per decade worldwide."
+    ],
+    funFact: "The \"Dunning-Kruger effect\" shows that people with the least competence in a skill tend to overestimate their ability the most, while experts tend to underestimate theirs. The less you know, the more confident you feel!",
+    realWorld: "Cognitive biases affect everyone: doctors, judges, investors. Daniel Kahneman won a Nobel Prize showing how systematic biases in thinking lead to predictable errors in decision-making — his work reshaped economics and public policy.",
+    keyFigures: ["Alfred Binet","Charles Spearman","Howard Gardner","Robert Sternberg","Noam Chomsky","Daniel Kahneman"]
+  },
+  {
+    id: 9,
+    title: "Human Development",
+    titleKa: "ადამიანის განვითარება",
+    titleRu: "Человеческое развитие",
+    titleHy: "Մարդկային զարգացում",
+    titleAz: "İnsan İnkişafı",
+    description: "Physical, cognitive, and social development across the lifespan.",
+    descriptionKa: "ფიზიკური, კოგნიტური და სოციალური განვითარება მთელი ცხოვრების მანძილზე.",
+    descriptionRu: "Физическое, когнитивное и социальное развитие на протяжении всей жизни.",
+    descriptionHy: "Ֆիզիկական, ճանաչողական և սոցիալական զարգացում ողջ կյանքի ընթացքում:",
+    descriptionAz: "Həyat boyu fiziki, koqnitiv və sosial inkişaf.",
+    icon: "mdi:baby-face-outline",
+    keyTopics: ["Piaget's Stages","Attachment","Erikson's Stages","Moral Development","Aging"],
+    keyTopicsKa: ["პიაჟეს ეტაპები","დანართი","ერიქსონის სცენები","მორალური განვითარება","დაბერება"],
+    keyTopicsRu: ["Этапы Пиаже","Вложение","Этапы Эриксона","Моральное развитие","Старение"],
+    keyTopicsHy: ["Պիաժեի փուլերը","Հավելված","Էրիկսոնի փուլերը","Բարոյական զարգացում","Ծերացում"],
+    keyTopicsAz: ["Piagetin mərhələləri","Qoşma","Eriksonun mərhələləri","Mənəvi İnkişaf","Yaşlanma"],
+    summary: "Development is a lifelong process. Piaget described cognitive stages. Erikson outlined psychosocial crises. Bowlby and Ainsworth studied attachment. Traces changes from conception through aging.",
+    keyPoints: [
+      "Nature vs. nurture is a false dichotomy: genes and environment interact continuously. Epigenetics shows that experiences can turn genes on or off.",
+      "Piaget's 4 cognitive stages: Sensorimotor (0–2, object permanence), Preoperational (2–7, symbolic thinking but egocentric), Concrete operational (7–11, logical thinking), Formal operational (12+, abstract reasoning).",
+      "Attachment theory (Bowlby/Ainsworth): Secure attachment (caregiver responsive) leads to healthy social development. Insecure types: avoidant, anxious-ambivalent, disorganized. Measured by the Strange Situation test.",
+      "Erikson's 8 psychosocial stages span the entire lifespan: Trust vs. Mistrust (infancy), Autonomy vs. Shame (toddler), Initiative vs. Guilt (preschool), Industry vs. Inferiority (school age), Identity vs. Role Confusion (adolescence), Intimacy vs. Isolation (young adult), Generativity vs. Stagnation (middle adult), Integrity vs. Despair (late adult).",
+      "Kohlberg's moral development: Preconventional (self-interest), Conventional (social norms), Postconventional (universal ethical principles). Most adults operate at the conventional level.",
+      "Adolescence brings identity exploration (Erikson's \"identity crisis\"), prefrontal cortex development (not complete until ~25), and heightened emotional volatility due to hormonal changes.",
+      "Aging: Fluid intelligence (processing speed) declines with age, but crystallized intelligence (accumulated knowledge) remains stable or even increases. Neuroplasticity continues throughout life."
+    ],
+    funFact: "Babies can distinguish all speech sounds from all languages until about 10 months of age. After that, their brains \"prune\" unused neural pathways and specialize in their native language sounds — which is why learning a second language gets harder with age.",
+    realWorld: "Ainsworth's attachment research directly influenced childcare policies worldwide. Secure attachment in infancy predicts better relationships, higher self-esteem, and more resilience in adulthood.",
+    keyFigures: ["Jean Piaget","Erik Erikson","John Bowlby","Mary Ainsworth","Lawrence Kohlberg","Lev Vygotsky"]
+  },
+  {
+    id: 10,
+    title: "Motivation and Emotion",
+    titleKa: "მოტივაცია და ემოცია",
+    titleRu: "Мотивация и эмоции",
+    titleHy: "Մոտիվացիա և Զգացմունք",
+    titleAz: "Motivasiya və Emosiya",
+    description: "What drives human behavior and the science of emotions.",
+    descriptionKa: "რა ამოძრავებს ადამიანის ქცევას და ემოციების მეცნიერებას.",
+    descriptionRu: "Что движет человеческим поведением и наука об эмоциях.",
+    descriptionHy: "Ինչն է մղում մարդու վարքը և զգացմունքների գիտությունը:",
+    descriptionAz: "İnsan davranışını və duyğular elmini idarə edən nədir.",
+    icon: "mdi:fire",
+    keyTopics: ["Maslow's Hierarchy","Hunger & Eating","Achievement Motivation","Basic Emotions","Emotional Intelligence"],
+    keyTopicsKa: ["მასლოუს იერარქია","შიმშილი და ჭამა","მიღწევის მოტივაცია","ძირითადი ემოციები","ემოციური ინტელექტი"],
+    keyTopicsRu: ["Иерархия Маслоу","Голод и еда","Мотивация достижения","Основные эмоции","Эмоциональный интеллект"],
+    keyTopicsHy: ["Մասլոուի հիերարխիա","Սով և ուտել","Ձեռքբերման մոտիվացիա","Հիմնական հույզեր","Զգացմունքային ինտելեկտ"],
+    keyTopicsAz: ["Maslow iyerarxiyası","Aclıq və Yemək","Nailiyyət Motivasiyası","Əsas Emosiyalar","Emosional İntellekt"],
+    summary: "Motivation energizes and directs behavior. Covers Maslow's hierarchy, James-Lange theory, Cannon-Bard theory, and Schachter-Singer theory of emotions.",
+    keyPoints: [
+      "Motivation has three components: activation (initiating), persistence (continuing effort), and intensity (how hard you try).",
+      "Drive-reduction theory: physiological needs create drives (hunger, thirst) that motivate behavior to restore homeostasis. But it can't explain curiosity or thrill-seeking.",
+      "Maslow's hierarchy of needs (bottom to top): Physiological → Safety → Love/Belonging → Esteem → Self-actualization. Lower needs must be met before higher ones become motivating.",
+      "Intrinsic motivation (doing something for its own sake) is more sustainable than extrinsic motivation (rewards/punishments). The overjustification effect: rewarding an already enjoyed activity can decrease intrinsic motivation.",
+      "Theories of emotion: James-Lange (body reacts first, then we feel emotion), Cannon-Bard (body reaction and emotion occur simultaneously), Schachter-Singer / Two-factor (physiological arousal + cognitive label = emotion).",
+      "Paul Ekman identified 6 universal facial expressions: happiness, sadness, anger, fear, surprise, and disgust. These are recognized across all cultures.",
+      "Emotional intelligence (Goleman): the ability to perceive, understand, manage, and use emotions effectively. High EQ predicts better relationships, leadership, and mental health."
+    ],
+    funFact: "The \"misattribution of arousal\" study showed that men who crossed a scary suspension bridge rated a female interviewer as more attractive than men who crossed a safe bridge — they mistook their fear-based arousal for romantic attraction!",
+    realWorld: "Companies like Google use Maslow's hierarchy to design workplaces: free food (physiological), job security (safety), team activities (belonging), recognition programs (esteem), and \"20% time\" for passion projects (self-actualization).",
+    keyFigures: ["Abraham Maslow","William James","Walter Cannon","Stanley Schachter","Paul Ekman","Daniel Goleman"]
+  },
+  {
+    id: 11,
+    title: "Personality",
+    titleKa: "პიროვნება",
+    titleRu: "Личность",
+    titleHy: "Անհատականություն",
+    titleAz: "Şəxsiyyət",
+    description: "Theories of personality: from Freud to the Big Five.",
+    descriptionKa: "პიროვნების თეორიები: ფროიდიდან დიდ ხუთამდე.",
+    descriptionRu: "Теории личности: от Фрейда до «Большой пятерки».",
+    descriptionHy: "Անհատականության տեսություններ. Ֆրեյդից մինչև Մեծ հնգյակ.",
+    descriptionAz: "Şəxsiyyət nəzəriyyələri: Freyddən Böyük Beşliyə qədər.",
+    icon: "mdi:drama-masks",
+    keyTopics: ["Psychoanalytic Theory","Humanistic Theory","Trait Theory","Big Five","Personality Assessment"],
+    keyTopicsKa: ["ფსიქოანალიტიკური თეორია","ჰუმანისტური თეორია","თვისების თეორია","დიდი ხუთეული","პიროვნების შეფასება"],
+    keyTopicsRu: ["Психоаналитическая теория","Гуманистическая теория","Теория черт","Большая пятерка","Оценка личности"],
+    keyTopicsHy: ["Հոգեվերլուծական տեսություն","Հումանիստական ​​տեսություն","Հատկանիշների տեսություն","Մեծ հնգյակ","Անհատականության գնահատում"],
+    keyTopicsAz: ["Psixoanalitik nəzəriyyə","Humanist nəzəriyyə","Xüsusiyyətlər nəzəriyyəsi","Böyük beşlik","Şəxsiyyətin qiymətləndirilməsi"],
+    summary: "Personality is our unique pattern of thinking, feeling, and behaving. From Freud's id/ego/superego to the Big Five traits (OCEAN), covers all major personality theories.",
+    keyPoints: [
+      "Freud's psychoanalytic theory: Personality is shaped by unconscious conflicts between the Id (primal desires), Ego (rational mediator), and Superego (moral conscience). Defense mechanisms (repression, projection, denial) protect the ego.",
+      "Freud's psychosexual stages: Oral, Anal, Phallic (Oedipus complex), Latency, Genital. Fixation at any stage can affect adult personality.",
+      "Neo-Freudians (Adler, Jung, Horney) kept the unconscious but de-emphasized sexuality. Jung introduced collective unconscious and archetypes. Adler focused on inferiority complex.",
+      "Humanistic approaches: Rogers emphasized unconditional positive regard and self-concept. Maslow focused on self-actualization — becoming the best version of yourself.",
+      "Trait theories describe personality using stable dimensions. The Big Five (OCEAN): Openness (curiosity), Conscientiousness (organization), Extraversion (sociability), Agreeableness (cooperativeness), Neuroticism (emotional instability).",
+      "The Big Five are partially heritable (~40–60%), relatively stable after age 30, and predict job performance, relationship satisfaction, and health outcomes.",
+      "Personality assessment: Self-report inventories (MMPI, NEO-PI-R) have good reliability but are subject to social desirability bias. Projective tests (Rorschach, TAT) have weaker validity."
+    ],
+    funFact: "The Myers-Briggs Type Indicator (MBTI) is used by 88% of Fortune 500 companies, yet most personality psychologists consider it scientifically unreliable — about 50% of people get a different result when retested. The Big Five is the gold standard in research.",
+    realWorld: "Recruiters use Big Five assessments because Conscientiousness is the strongest personality predictor of job performance across all occupations. Agreeableness predicts teamwork, and Openness predicts creativity.",
+    keyFigures: ["Sigmund Freud","Carl Jung","Alfred Adler","Carl Rogers","Gordon Allport","Hans Eysenck"]
+  },
+  {
+    id: 12,
+    title: "Social Psychology",
+    titleKa: "სოციალური ფსიქოლოგია",
+    titleRu: "Социальная Психология",
+    titleHy: "Սոցիալական հոգեբանություն",
+    titleAz: "Sosial Psixologiya",
+    description: "How others influence our thoughts, feelings, and behavior.",
+    descriptionKa: "როგორ ახდენენ სხვები გავლენას ჩვენს აზრებზე, გრძნობებსა და ქცევაზე.",
+    descriptionRu: "Как другие влияют на наши мысли, чувства и поведение.",
+    descriptionHy: "Ինչպես են ուրիշներն ազդում մեր մտքերի, զգացմունքների և վարքի վրա:",
+    descriptionAz: "Başqalarının düşüncələrimizə, hisslərimizə və davranışlarımıza necə təsir etdiyi.",
+    icon: "mdi:account-group-outline",
+    keyTopics: ["Conformity","Obedience","Attitudes","Group Behavior","Prejudice"],
+    keyTopicsKa: ["კონფორმულობა","მორჩილება","დამოკიდებულებები","ჯგუფური ქცევა","ცრურწმენა"],
+    keyTopicsRu: ["Соответствие","Послушание","Отношения","Групповое поведение","Предрассудки"],
+    keyTopicsHy: ["Համապատասխանություն","Հնազանդություն","Վերաբերմունքներ","Խմբային վարքագիծ","Նախապաշարմունք"],
+    keyTopicsAz: ["Uyğunluq","İtaət","Münasibətlər","Qrup Davranışı","Qərəz"],
+    summary: "Social psychology studies how people think about, influence, and relate to each other. Covers conformity, obedience, cognitive dissonance, group behavior, and prejudice.",
+    keyPoints: [
+      "Attribution theory: We explain others' behavior using dispositional (personality) or situational (environment) attributions. The fundamental attribution error: we overestimate personality and underestimate situations when judging others.",
+      "Conformity (Asch): People agree with an obviously wrong answer to match the group about 37% of the time. Increases with group size (up to ~5) and unanimity.",
+      "Obedience (Milgram): 65% of participants delivered what they believed were lethal electric shocks when instructed by an authority figure. Authority, proximity, and legitimacy increased obedience.",
+      "Cognitive dissonance (Festinger): When our actions contradict our beliefs, we feel discomfort and change our attitudes to match our behavior. Explains why hazing rituals increase group loyalty.",
+      "Group phenomena: Social facilitation (performing better on easy tasks when watched), Social loafing (working less in groups), Groupthink (cohesive groups suppress dissent), Deindividuation (anonymity reduces self-awareness).",
+      "Prejudice involves stereotypes (beliefs), prejudice (attitudes), and discrimination (behaviors). Reduced through intergroup contact when groups have equal status and share common goals.",
+      "Bystander effect (Darley & Latané): The more people present, the less likely anyone is to help. Caused by diffusion of responsibility and pluralistic ignorance."
+    ],
+    funFact: "Zimbardo's Stanford Prison Experiment (1971) was meant to last 2 weeks but was stopped after just 6 days because \"guards\" became sadistic and \"prisoners\" showed signs of psychological breakdown — demonstrating the power of situational forces on behavior.",
+    realWorld: "Understanding conformity and obedience explains everything from workplace culture (\"nobody questions the boss\") to historical atrocities. Modern organizations use these insights to create psychological safety — environments where people feel safe to speak up.",
+    keyFigures: ["Solomon Asch","Stanley Milgram","Philip Zimbardo","Leon Festinger","Muzafer Sherif"]
+  },
+  {
+    id: 13,
+    title: "Stress, Health, and Coping",
+    titleKa: "სტრესი, ჯანმრთელობა და დაძლევა",
+    titleRu: "Стресс, здоровье и преодоление трудностей",
+    titleHy: "Սթրես, առողջություն և հաղթահարում",
+    titleAz: "Stress, Sağlamlıq və Mübarizə",
+    description: "How stress affects us and strategies to cope with it.",
+    descriptionKa: "როგორ მოქმედებს სტრესი ჩვენზე და მასთან გამკლავების სტრატეგიები.",
+    descriptionRu: "Как стресс влияет на нас и как с ним справиться.",
+    descriptionHy: "Ինչպես է սթրեսը ազդում մեզ վրա և դրա դեմ պայքարի ռազմավարություններ:",
+    descriptionAz: "Stress bizə necə təsir edir və bununla mübarizə strategiyaları.",
+    icon: "mdi:meditation",
+    keyTopics: ["Stress Response","Stressors","Coping Strategies","Health Psychology","Resilience"],
+    keyTopicsKa: ["სტრესის რეაქცია","სტრესორები","დაძლევის სტრატეგიები","ჯანმრთელობის ფსიქოლოგია","გამძლეობა"],
+    keyTopicsRu: ["Стрессовая реакция","Стрессоры","Стратегии преодоления трудностей","Психология здоровья","Устойчивость"],
+    keyTopicsHy: ["Սթրեսի արձագանք","Սթրեսներ","Հաղթահարման ռազմավարություններ","Առողջության հոգեբանություն","Ճկունություն"],
+    keyTopicsAz: ["Stress cavabı","Stressorlar","Mübarizə Strategiyaları","Sağlamlıq Psixologiyası","Dözümlülük"],
+    summary: "Stress is the body's response to demanding situations. Covers alarm/resistance/exhaustion stages, coping strategies, social support, and resilience.",
+    keyPoints: [
+      "Stress is the body's response to any perceived threat or demand. Eustress (positive) helps performance; distress (negative) harms health.",
+      "Selye's General Adaptation Syndrome (GAS): Alarm (fight-or-flight activated) → Resistance (body adapts to ongoing stress) → Exhaustion (resources depleted, vulnerability to illness).",
+      "The fight-or-flight response: the sympathetic nervous system releases adrenaline and cortisol, increasing heart rate, blood pressure, and blood sugar. Useful for short-term threats, harmful when chronic.",
+      "Major stressors: catastrophes, significant life changes (Holmes-Rahe scale), and daily hassles. Research shows daily hassles (traffic, deadlines) may affect health more than major events.",
+      "Chronic stress suppresses the immune system (psychoneuroimmunology), increases risk of cardiovascular disease, contributes to depression and anxiety, and accelerates cellular aging.",
+      "Coping strategies: Problem-focused coping (taking action to solve the problem) works best for controllable situations. Emotion-focused coping (managing feelings) is better for uncontrollable situations.",
+      "Protective factors: Social support (the #1 buffer against stress), exercise (reduces cortisol), mindfulness and meditation (reduces amygdala reactivity), perceived control (believing you can influence outcomes), and optimism."
+    ],
+    funFact: "Laughing reduces cortisol by 39% and increases endorphins by 27%. Studies show that even anticipating a funny experience can reduce stress hormones. Hospitals now use \"laughter therapy\" with positive results.",
+    realWorld: "Burnout (emotional exhaustion, depersonalization, reduced accomplishment) affects 67% of workers at some point. Companies that implement stress management programs see 25% reductions in sick days and higher productivity.",
+    keyFigures: ["Hans Selye","Richard Lazarus","Walter Cannon","Martin Seligman","Sheldon Cohen"]
+  },
+  {
+    id: 14,
+    title: "Psychological Disorders",
+    titleKa: "ფსიქოლოგიური დარღვევები",
+    titleRu: "Психологические расстройства",
+    titleHy: "Հոգեբանական խանգարումներ",
+    titleAz: "Psixoloji pozğunluqlar",
+    description: "Understanding mental disorders: symptoms, causes, and classification.",
+    descriptionKa: "ფსიქიკური აშლილობის გაგება: სიმპტომები, მიზეზები და კლასიფიკაცია.",
+    descriptionRu: "Понимание психических расстройств: симптомы, причины и классификация.",
+    descriptionHy: "Հասկանալով հոգեկան խանգարումները. ախտանիշները, պատճառները և դասակարգումը:",
+    descriptionAz: "Psixi pozğunluqları başa düşmək: simptomlar, səbəblər və təsnifat.",
+    icon: "mdi:stethoscope",
+    keyTopics: ["DSM Classification","Anxiety Disorders","Mood Disorders","Schizophrenia","Personality Disorders"],
+    keyTopicsKa: ["DSM კლასიფიკაცია","შფოთვითი დარღვევები","განწყობის დარღვევები","შიზოფრენია","პიროვნების დარღვევები"],
+    keyTopicsRu: ["Классификация ДСМ","Тревожные расстройства","Расстройства настроения","Шизофрения","Расстройства личности"],
+    keyTopicsHy: ["DSM դասակարգում","Անհանգստության խանգարումներ","Տրամադրության խանգարումներ","Շիզոֆրենիա","Անհատականության խանգարումներ"],
+    keyTopicsAz: ["DSM təsnifatı","Anksiyete pozğunluqları","Əhval pozğunluqları","Şizofreniya","Şəxsiyyət pozğunluqları"],
+    summary: "Psychological disorders cause significant distress or impairment. Covers anxiety, mood disorders, schizophrenia, and personality disorders with biological and social causes.",
+    keyPoints: [
+      "A psychological disorder is a pattern of thoughts, feelings, or behaviors that is deviant, distressful, and dysfunctional (the \"3 D's\"). Context and culture matter in defining \"abnormal.\"",
+      "The DSM-5 (Diagnostic and Statistical Manual) is the standard classification system. It categorizes disorders by symptoms, not causes, and is used for diagnosis and insurance.",
+      "Anxiety disorders (most common): Generalized Anxiety Disorder (persistent worry), Panic Disorder (sudden intense fear attacks), Phobias (irrational fear of specific things), OCD (obsessive thoughts + compulsive rituals), PTSD (after trauma).",
+      "Mood disorders: Major Depressive Disorder (persistent sadness, loss of interest, lasting 2+ weeks) and Bipolar Disorder (alternating episodes of mania and depression). Depression is the leading cause of disability worldwide.",
+      "Schizophrenia: a severe disorder involving positive symptoms (hallucinations, delusions, disorganized speech) and negative symptoms (flat affect, social withdrawal). Dopamine hypothesis: excess dopamine activity in certain brain pathways.",
+      "Personality disorders: enduring, inflexible patterns. Antisocial PD (disregard for others' rights, lack of empathy), Borderline PD (unstable relationships and emotions), Narcissistic PD (grandiosity, need for admiration).",
+      "The diathesis-stress model: disorders result from a genetic/biological predisposition (diathesis) + environmental triggers (stress). Neither alone is usually sufficient."
+    ],
+    funFact: "About 1 in 5 adults experiences a mental health condition in any given year. Depression and anxiety cost the global economy $1 trillion annually in lost productivity — yet most disorders are highly treatable with proper intervention.",
+    realWorld: "The shift from institutionalization to community-based mental health care (deinstitutionalization) transformed treatment. Today, early intervention programs for psychosis can reduce symptoms by 50% and dramatically improve long-term outcomes.",
+    keyFigures: ["Emil Kraepelin","Aaron Beck","David Rosenhan","Thomas Szasz","Kay Redfield Jamison"]
+  },
+  {
+    id: 15,
+    title: "Therapies",
+    titleKa: "თერაპიები",
+    titleRu: "Терапия",
+    titleHy: "Թերապիաներ",
+    titleAz: "Terapiyalar",
+    description: "Approaches to treating psychological disorders.",
+    descriptionKa: "ფსიქოლოგიური დარღვევების მკურნალობის მიდგომები.",
+    descriptionRu: "Подходы к лечению психологических расстройств.",
+    descriptionHy: "Հոգեբանական խանգարումների բուժման մոտեցումներ.",
+    descriptionAz: "Psixoloji pozğunluqların müalicəsinə yanaşmalar.",
+    icon: "mdi:pill",
+    keyTopics: ["Psychotherapy","CBT","Humanistic Therapy","Biomedical Therapies","Group Therapy"],
+    keyTopicsKa: ["ფსიქოთერაპია","CBT","ჰუმანისტური თერაპია","ბიოსამედიცინო თერაპია","ჯგუფური თერაპია"],
+    keyTopicsRu: ["Психотерапия","ЗБТ","Гуманистическая терапия","Биомедицинская терапия","Групповая терапия"],
+    keyTopicsHy: ["Հոգեթերապիա","CBT","Հումանիստական ​​թերապիա","Կենսաբժշկական թերապիա","Խմբային թերապիա"],
+    keyTopicsAz: ["Psixoterapiya","CBT","Humanist Terapiya","Biotibbi Müalicələr","Qrup terapiyası"],
+    summary: "Therapy comes in many forms: psychoanalytic, CBT, humanistic, and biomedical. Compares therapeutic approaches and their effectiveness.",
+    keyPoints: [
+      "Psychoanalytic/Psychodynamic therapy: explores unconscious conflicts through free association, dream analysis, and transference. Long-term, insight-oriented. Less empirically supported than CBT.",
+      "Cognitive-Behavioral Therapy (CBT): identifies and changes distorted thinking patterns and maladaptive behaviors. The gold standard for anxiety and depression with strong evidence. Short-term (12–20 sessions).",
+      "Beck's cognitive therapy targets cognitive distortions: all-or-nothing thinking, catastrophizing, overgeneralization, mind reading, and personalization.",
+      "Humanistic therapy (Rogers's client-centered): provides unconditional positive regard, empathy, and genuineness. The therapist creates a supportive environment for self-exploration.",
+      "Biomedical therapies: Antidepressants (SSRIs increase serotonin), Anti-anxiety meds (benzodiazepines), Antipsychotics (block dopamine), Mood stabilizers (lithium for bipolar). ECT (electroconvulsive therapy) remains effective for severe, treatment-resistant depression.",
+      "Group therapy and family therapy leverage social support and address relationship dynamics. More cost-effective and can reduce isolation. Self-help groups (AA model) provide peer support.",
+      "Evidence-based practice: combining the best research evidence, clinical expertise, and patient preferences. Not all therapies are equally effective for all disorders — matching treatment to diagnosis matters."
+    ],
+    funFact: "Talking to a therapist actually changes your brain. Brain scans show that CBT produces measurable changes in activity in the prefrontal cortex and amygdala — the same regions affected by antidepressant medication.",
+    realWorld: "Teletherapy (online therapy) exploded during COVID-19 and research shows it's nearly as effective as in-person therapy for most conditions. This massively expanded access to mental health care, especially in rural areas.",
+    keyFigures: ["Aaron Beck","Carl Rogers","Albert Ellis","Joseph Wolpe","Sigmund Freud"]
+  },
+  {
+    id: 16,
+    title: "Applied Psychology",
+    titleKa: "გამოყენებითი ფსიქოლოგია",
+    titleRu: "Прикладная психология",
+    titleHy: "Կիրառական հոգեբանություն",
+    titleAz: "Tətbiqi Psixologiya",
+    description: "Psychology in the real world: work, education, law, and everyday life.",
+    descriptionKa: "ფსიქოლოგია რეალურ სამყაროში: სამუშაო, განათლება, სამართალი და ყოველდღიური ცხოვრება.",
+    descriptionRu: "Психология в реальном мире: работа, образование, право и повседневная жизнь.",
+    descriptionHy: "Հոգեբանությունը իրական աշխարհում. աշխատանք, կրթություն, իրավունք և առօրյա կյանք:",
+    descriptionAz: "Real dünyada psixologiya: iş, təhsil, hüquq və gündəlik həyat.",
+    icon: "mdi:earth",
+    keyTopics: ["Industrial-Organizational Psychology","Educational Psychology","Forensic Psychology","Positive Psychology"],
+    keyTopicsKa: ["ინდუსტრიულ-ორგანიზაციული ფსიქოლოგია","განათლების ფსიქოლოგია","სასამართლო ფსიქოლოგია","პოზიტიური ფსიქოლოგია"],
+    keyTopicsRu: ["Производственно-организационная психология","Педагогическая психология","Судебная психология","Позитивная психология"],
+    keyTopicsHy: ["Արդյունաբերական-կազմակերպչական հոգեբանություն","Կրթության հոգեբանություն","Դատաբժշկական հոգեբանություն","Դրական հոգեբանություն"],
+    keyTopicsAz: ["Sənaye-Təşkilati Psixologiya","Təhsil Psixologiyası","Məhkəmə Psixologiyası","Pozitiv Psixologiya"],
+    summary: "Psychology applies to virtually every area of life. I/O psychology, educational psychology, forensic psychology, and positive psychology all make real-world impact.",
+    keyPoints: [
+      "Industrial-Organizational (I/O) Psychology: applies psychological principles to the workplace. Covers hiring (structured interviews beat unstructured), training design, motivation, leadership, job satisfaction, and reducing turnover.",
+      "Educational Psychology: studies how people learn in educational settings. Applies Piaget, Vygotsky (zone of proximal development), and learning styles research. Growth mindset (Dweck): believing intelligence is malleable improves academic performance.",
+      "Forensic Psychology: intersection of psychology and law. Includes criminal profiling, eyewitness testimony research, jury selection, competency evaluations, and risk assessment for reoffending.",
+      "Health Psychology: promotes healthy behaviors and prevents illness. Covers behavior change models (stages of change), adherence to medical treatment, chronic pain management, and the mind-body connection.",
+      "Positive Psychology (Seligman): the scientific study of what makes life worth living. Focuses on strengths, virtues, and optimal functioning rather than pathology. Key concepts: flow (Csikszentmihalyi), grit (Duckworth), gratitude, and character strengths.",
+      "Environmental Psychology: how physical environments affect behavior and well-being. Includes workspace design, urban planning, crowding effects, and noise pollution impacts.",
+      "Cross-cultural psychology: understanding how culture shapes behavior, cognition, and emotion. Individualistic cultures (US, Western Europe) emphasize personal achievement; collectivistic cultures (East Asia, Latin America) emphasize group harmony."
+    ],
+    funFact: "The \"IKEA effect\" (discovered by behavioral economists using psychological research) shows that people value things they built themselves 63% more than identical pre-built items — even when their creation is objectively worse!",
+    realWorld: "Seligman's positive psychology research is used by the U.S. Army's Comprehensive Soldier Fitness program, training 1.1 million soldiers in resilience skills. Schools worldwide now teach \"character strengths\" and \"growth mindset\" as part of their curriculum.",
+    keyFigures: ["Martin Seligman","Mihaly Csikszentmihalyi","Carol Dweck","Angela Duckworth","Hugo Münsterberg"]
+  }
 ];
 
 export const QUIZZES: Quiz[] = [
@@ -285,6 +737,151 @@ export const PSYCHOLOGISTS: Psychologist[] = [
     fieldKa: 'სტრუქტურალიზმი',
     fieldRu: 'Структурализм',
     fieldHy: 'Ստրուկտուրալիզմ'
+  }
+,
+  {
+    name: "Sigmund Freud",
+    years: "1856–1939",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Sigmund_Freud%2C_by_Max_Halberstadt_%28cropped%29.jpg/220px-Sigmund_Freud%2C_by_Max_Halberstadt_%28cropped%29.jpg",
+    nationality: "Austrian",
+    contribution: "Father of Psychoanalysis",
+    details: "Developed psychoanalytic theory, proposing that unconscious conflicts drive behavior. Introduced the id, ego, superego, defense mechanisms, dream analysis, and psychosexual stages.",
+    field: "Psychoanalysis"
+  },
+  {
+    name: "B.F. Skinner",
+    years: "1904–1990",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/B.F._Skinner_at_Harvard_circa_1950.jpg/220px-B.F._Skinner_at_Harvard_circa_1950.jpg",
+    nationality: "American",
+    contribution: "Pioneer of Operant Conditioning",
+    details: "Developed operant conditioning theory. Invented the Skinner Box and introduced schedules of reinforcement.",
+    field: "Behaviorism"
+  },
+  {
+    name: "Carl Rogers",
+    years: "1902–1987",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Carl_Ransom_Rogers.jpg/220px-Carl_Ransom_Rogers.jpg",
+    nationality: "American",
+    contribution: "Founder of Client-Centered Therapy",
+    details: "Pioneered person-centered therapy. Emphasized unconditional positive regard, empathy, and congruence.",
+    field: "Humanistic Psychology"
+  },
+  {
+    name: "Jean Piaget",
+    years: "1896–1980",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Jean_Piaget_in_Ann_Arbor.png/220px-Jean_Piaget_in_Ann_Arbor.png",
+    nationality: "Swiss",
+    contribution: "Theory of Cognitive Development",
+    details: "Proposed four stages of cognitive development: sensorimotor, preoperational, concrete operational, and formal operational.",
+    field: "Developmental Psychology"
+  },
+  {
+    name: "Ivan Pavlov",
+    years: "1849–1936",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Ivan_Pavlov_%28Nobel%29.png/220px-Ivan_Pavlov_%28Nobel%29.png",
+    nationality: "Russian",
+    contribution: "Discovery of Classical Conditioning",
+    details: "While studying digestion in dogs, discovered classical conditioning—learning through association.",
+    field: "Behavioral Psychology"
+  },
+  {
+    name: "Abraham Maslow",
+    years: "1908–1970",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Photo_of_Abraham_Harold_Maslow_by_William_Carter_%28cropped%29.jpg/220px-Photo_of_Abraham_Harold_Maslow_by_William_Carter_%28cropped%29.jpg",
+    nationality: "American",
+    contribution: "Hierarchy of Needs",
+    details: "Created the hierarchy of needs—from basic physiological needs to self-actualization. Co-founded humanistic psychology.",
+    field: "Humanistic Psychology"
+  },
+  {
+    name: "Philip Zimbardo",
+    years: "1933–2024",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Philip_Zimbardo_at_his_APS_Keynote_Address_at_the_2007_APS_Convention.jpg/220px-Philip_Zimbardo_at_his_APS_Keynote_Address_at_the_2007_APS_Convention.jpg",
+    nationality: "American",
+    contribution: "Stanford Prison Experiment",
+    details: "Conducted the Stanford Prison Experiment (1971), demonstrating how social roles and situational forces influence behavior.",
+    field: "Social Psychology"
+  },
+  {
+    name: "Albert Bandura",
+    years: "1925–2021",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Albert_Bandura_in_his_Stanford_University_office_2005.jpg/220px-Albert_Bandura_in_his_Stanford_University_office_2005.jpg",
+    nationality: "Canadian-American",
+    contribution: "Social Learning Theory & Self-Efficacy",
+    details: "Demonstrated observational learning through Bobo doll experiment. Developed self-efficacy concept.",
+    field: "Social Learning"
+  },
+  {
+    name: "Elizabeth Loftus",
+    years: "1944–present",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Elizabeth_Loftus.jpg/220px-Elizabeth_Loftus.jpg",
+    nationality: "American",
+    contribution: "False Memory Research",
+    details: "Showed memories can be altered through suggestion and misinformation.",
+    field: "Cognitive Psychology"
+  },
+  {
+    name: "Stanley Milgram",
+    years: "1933–1984",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Stanley_Milgram_1974.jpg/220px-Stanley_Milgram_1974.jpg",
+    nationality: "American",
+    contribution: "Obedience Experiments",
+    details: "Showed ordinary people will follow authority figures even when asked to harm others.",
+    field: "Social Psychology"
+  },
+  {
+    name: "Erik Erikson",
+    years: "1902–1994",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Erik_Erikson.png/220px-Erik_Erikson.png",
+    nationality: "German-American",
+    contribution: "Psychosocial Development Theory",
+    details: "Proposed eight stages of psychosocial development spanning the entire lifespan.",
+    field: "Developmental Psychology"
+  },
+  {
+    name: "Carl Jung",
+    years: "1875–1961",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/CGJung.jpg/220px-CGJung.jpg",
+    nationality: "Swiss",
+    contribution: "Collective Unconscious & Archetypes",
+    details: "Proposed the collective unconscious, archetypes, introversion/extraversion, and individuation.",
+    field: "Analytical Psychology"
+  },
+  {
+    name: "Lev Vygotsky",
+    years: "1896–1934",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Lev_Vygotsky_1896-1934.jpg/220px-Lev_Vygotsky_1896-1934.jpg",
+    nationality: "Russian",
+    contribution: "Zone of Proximal Development",
+    details: "Proposed learning is fundamentally social. His ZPD and scaffolding concepts transformed education.",
+    field: "Developmental Psychology"
+  },
+  {
+    name: "Mary Ainsworth",
+    years: "1913–1999",
+    photo: "https://upload.wikimedia.org/wikipedia/en/e/ec/Mary_Ainsworth.jpg",
+    nationality: "Canadian-American",
+    contribution: "Attachment Theory Research",
+    details: "Developed the Strange Situation experiment, identifying secure, avoidant, and anxious attachment styles.",
+    field: "Developmental Psychology"
+  },
+  {
+    name: "Daniel Kahneman",
+    years: "1934–2024",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Daniel_KAHNEMAN.jpg/220px-Daniel_KAHNEMAN.jpg",
+    nationality: "Israeli-American",
+    contribution: "Behavioral Economics & Thinking Biases",
+    details: "Nobel Prize winner. Demonstrated systematic biases. Wrote \"Thinking, Fast and Slow.\"",
+    field: "Cognitive Psychology"
+  },
+  {
+    name: "Martin Seligman",
+    years: "1942–present",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Martin_Seligman.jpg/220px-Martin_Seligman.jpg",
+    nationality: "American",
+    contribution: "Learned Helplessness & Positive Psychology",
+    details: "Discovered learned helplessness. Founded positive psychology. Developed PERMA model of flourishing.",
+    field: "Positive Psychology"
   }
 ];
 
