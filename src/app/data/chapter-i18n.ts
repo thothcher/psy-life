@@ -1,4 +1,13 @@
-﻿import { Chapter, Quiz, Psychologist, Fact, Story } from './book-data';
+﻿import { Chapter, CHAPTERS } from './book-data';
+
+export function chapterText(chapterId: number, field: string, lang: string): string | string[] {
+  const ch = CHAPTERS.find(c => c.id === chapterId);
+  if (!ch) return '';
+  const suffix = lang === 'en' ? '' : lang.charAt(0).toUpperCase() + lang.slice(1);
+  const key = suffix ? field + suffix : field;
+  return (ch as unknown as Record<string, unknown>)[key] as string | string[]
+    || (ch as unknown as Record<string, unknown>)[field] as string | string[];
+}
 
 export const CHAPTER_I18N = {
   en: {
