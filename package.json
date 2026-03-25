@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "deploy": "ng build --base-href /psy-life/ && npx angular-cli-ghpages --dir=dist/psy/browser",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -51,6 +52,7 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
+    "angular-cli-ghpages": "^3.0.2",
     "jsdom": "^27.1.0",
     "vitest": "^4.0.8"
   }
