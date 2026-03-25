@@ -1,5 +1,5 @@
 const express = require('express');
-const { authenticate } = require('../middleware');
+const { authenticate, extractBookId } = require('../middleware');
 
 const router = express.Router();
 
@@ -94,16 +94,16 @@ async function checkBadges(db, userId) {
   return newBadges;
 }
 
-async function awardXp(db, userId, amount, source, sourceId) {
-  await db.execute({ sql: 'INSERT INTO user_xp (user_id, amount, source, source_id) VALUES (?, ?, ?, ?)', args: [userId, amount, source, sourceId] });
+async function awardXp(db, userId, amount, source, sourceId, bookId = 'psy') {
+  await db.execute({ sql: 'INSERT INTO user_xp (user_id, amount, source, source_id, book_id) VALUES (?, ?, ?, ?, ?)', args: [userId, amount, source, sourceId, bookId] });
 
   const streakResult = await updateStreak(db, userId);
   let bonusXp = 0;
   if (streakResult.isNewDay) {
-    await db.execute({ sql: 'INSERT INTO user_xp (user_id, amount, source) VALUES (?, ?, ?)', args: [userId, XP_REWARDS.daily_login, 'daily_login'] });
+    await db.execute({ sql: 'INSERT INTO user_xp (user_id, amount, source, book_id) VALUES (?, ?, ?, ?)', args: [userId, XP_REWARDS.daily_login, 'daily_login', bookId] });
     bonusXp += XP_REWARDS.daily_login;
     if (streakResult.currentStreak > 0 && streakResult.currentStreak % 7 === 0) {
-      await db.execute({ sql: 'INSERT INTO user_xp (user_id, amount, source) VALUES (?, ?, ?)', args: [userId, XP_REWARDS.streak_bonus_7, 'streak_bonus'] });
+      await db.execute({ sql: 'INSERT INTO user_xp (user_id, amount, source, book_id) VALUES (?, ?, ?, ?)', args: [userId, XP_REWARDS.streak_bonus_7, 'streak_bonus', bookId] });
       bonusXp += XP_REWARDS.streak_bonus_7;
     }
   }
@@ -117,11 +117,12 @@ async function awardXp(db, userId, amount, source, sourceId) {
 // GET /api/gamification/stats
 router.get('/stats', authenticate, async (req, res) => {
   const userId = req.user.id;
+  const bookId = extractBookId(req);
   const totalXp = (await req.db.execute({ sql: 'SELECT COALESCE(SUM(amount), 0) as total FROM user_xp WHERE user_id = ?', args: [userId] })).rows[0].total;
   const streak = (await req.db.execute({ sql: 'SELECT * FROM streaks WHERE user_id = ?', args: [userId] })).rows[0];
   const badges = (await req.db.execute({ sql: 'SELECT b.*, ub.earned_at FROM user_badges ub JOIN badges b ON ub.badge_id = b.id WHERE ub.user_id = ? ORDER BY ub.earned_at DESC', args: [userId] })).rows;
   const allBadges = (await req.db.execute('SELECT * FROM badges ORDER BY category, condition_value')).rows;
-  const recentXp = (await req.db.execute({ sql: 'SELECT * FROM user_xp WHERE user_id = ? ORDER BY created_at DESC LIMIT 20', args: [userId] })).rows;
+  const recentXp = (await req.db.execute({ sql: 'SELECT * FROM user_xp WHERE user_id = ? AND book_id = ? ORDER BY created_at DESC LIMIT 20', args: [userId, bookId] })).rows;
   const today = new Date().toISOString().slice(0, 10);
   const todayXp = (await req.db.execute({ sql: "SELECT COALESCE(SUM(amount), 0) as total FROM user_xp WHERE user_id = ? AND DATE(created_at) = ?", args: [userId, today] })).rows[0].total;
 

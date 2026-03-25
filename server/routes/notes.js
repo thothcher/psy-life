@@ -1,12 +1,13 @@
 const express = require('express');
-const { authenticate } = require('../middleware');
+const { authenticate, extractBookId } = require('../middleware');
 const { awardXp, XP_REWARDS } = require('./gamification');
 
 const router = express.Router();
 
 // Get all notes for current user
 router.get('/', authenticate, async (req, res) => {
-  const result = await req.db.execute({ sql: 'SELECT * FROM notes WHERE user_id = ? ORDER BY updated_at DESC', args: [req.user.id] });
+  const bookId = extractBookId(req);
+  const result = await req.db.execute({ sql: 'SELECT * FROM notes WHERE user_id = ? AND book_id = ? ORDER BY updated_at DESC', args: [req.user.id, bookId] });
 
   res.json(result.rows.map(n => ({
     id: n.id, title: n.title, content: n.content, chapterId: n.chapter_id,
@@ -19,16 +20,17 @@ router.post('/', authenticate, async (req, res) => {
   const { title, content, chapterId, color } = req.body;
   if (!title || !content) return res.status(400).json({ error: 'Title and content are required.' });
 
+  const bookId = extractBookId(req);
   const result = await req.db.execute({
-    sql: 'INSERT INTO notes (user_id, title, content, chapter_id, color) VALUES (?, ?, ?, ?, ?)',
-    args: [req.user.id, title, content, chapterId || null, color || '#f0e6ff'],
+    sql: 'INSERT INTO notes (user_id, title, content, chapter_id, color, book_id) VALUES (?, ?, ?, ?, ?, ?)',
+    args: [req.user.id, title, content, chapterId || null, color || '#f0e6ff', bookId],
   });
 
   let gamification = null;
   const today = new Date().toISOString().slice(0, 10);
-  const noteXpToday = await req.db.execute({ sql: "SELECT COUNT(*) as c FROM user_xp WHERE user_id = ? AND source = 'note_created' AND DATE(created_at) = ?", args: [req.user.id, today] });
+  const noteXpToday = await req.db.execute({ sql: "SELECT COUNT(*) as c FROM user_xp WHERE user_id = ? AND source = 'note_created' AND DATE(created_at) = ? AND book_id = ?", args: [req.user.id, today, bookId] });
   if (noteXpToday.rows[0].c < 3) {
-    gamification = await awardXp(req.db, req.user.id, XP_REWARDS.note_created, 'note_created', `note${result.lastInsertRowid}`);
+    gamification = await awardXp(req.db, req.user.id, XP_REWARDS.note_created, 'note_created', `note${result.lastInsertRowid}`, bookId);
   }
 
   res.status(201).json({ id: Number(result.lastInsertRowid), title, content, chapterId, color: color || '#f0e6ff', gamification });

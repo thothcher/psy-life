@@ -1,12 +1,13 @@
 const express = require('express');
-const { authenticate } = require('../middleware');
+const { authenticate, extractBookId } = require('../middleware');
 const { awardXp, XP_REWARDS } = require('./gamification');
 
 const router = express.Router();
 
 // GET /api/flashcards/:chapterId
 router.get('/:chapterId', async (req, res) => {
-  const result = await req.db.execute({ sql: 'SELECT * FROM flashcards WHERE chapter_id = ? ORDER BY id', args: [req.params.chapterId] });
+  const bookId = extractBookId(req);
+  const result = await req.db.execute({ sql: 'SELECT * FROM flashcards WHERE chapter_id = ? AND book_id = ? ORDER BY id', args: [req.params.chapterId, bookId] });
   res.json(result.rows.map(c => ({ id: c.id, chapterId: c.chapter_id, frontEn: c.front_en, frontKa: c.front_ka, backEn: c.back_en, backKa: c.back_ka, category: c.category })));
 });
 
@@ -44,13 +45,14 @@ router.post('/session-complete', authenticate, async (req, res) => {
   const { chapterId } = req.body;
   const today = new Date().toISOString().slice(0, 10);
   const alreadyToday = await req.db.execute({
-    sql: "SELECT id FROM user_xp WHERE user_id = ? AND source = 'flashcard_session' AND source_id = ? AND DATE(created_at) = ?",
-    args: [req.user.id, `ch${chapterId}`, today],
+    sql: "SELECT id FROM user_xp WHERE user_id = ? AND source = 'flashcard_session' AND source_id = ? AND DATE(created_at) = ? AND book_id = ?",
+    args: [req.user.id, `${extractBookId(req)}:ch${chapterId}`, today, extractBookId(req)],
   });
 
   let gamification = null;
   if (alreadyToday.rows.length === 0) {
-    gamification = await awardXp(req.db, req.user.id, XP_REWARDS.flashcard_session, 'flashcard_session', `ch${chapterId}`);
+    const bookId = extractBookId(req);
+    gamification = await awardXp(req.db, req.user.id, XP_REWARDS.flashcard_session, 'flashcard_session', `${bookId}:ch${chapterId}`, bookId);
   }
 
   res.json({ success: true, gamification });
@@ -58,7 +60,8 @@ router.post('/session-complete', authenticate, async (req, res) => {
 
 // GET /api/flashcards/all/summary
 router.get('/all/summary', async (req, res) => {
-  const result = await req.db.execute('SELECT chapter_id, COUNT(*) as count FROM flashcards GROUP BY chapter_id ORDER BY chapter_id');
+  const bookId = extractBookId(req);
+  const result = await req.db.execute({ sql: 'SELECT chapter_id, COUNT(*) as count FROM flashcards WHERE book_id = ? GROUP BY chapter_id ORDER BY chapter_id', args: [bookId] });
   res.json(result.rows.map(s => ({ chapterId: s.chapter_id, count: s.count })));
 });
 

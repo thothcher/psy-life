@@ -1,5 +1,5 @@
 const express = require('express');
-const { authenticate } = require('../middleware');
+const { authenticate, extractBookId } = require('../middleware');
 const { awardXp, XP_REWARDS } = require('./gamification');
 
 const router = express.Router();
@@ -9,20 +9,21 @@ router.post('/score', authenticate, async (req, res) => {
   const { level, moves, timeSeconds } = req.body;
   if (!level || moves == null || timeSeconds == null) return res.status(400).json({ error: 'Level, moves and timeSeconds are required.' });
 
+  const bookId = extractBookId(req);
   const result = await req.db.execute({
-    sql: 'INSERT INTO memory_game_scores (user_id, level, moves, time_seconds) VALUES (?, ?, ?, ?)',
-    args: [req.user.id, level, moves, timeSeconds],
+    sql: 'INSERT INTO memory_game_scores (user_id, level, moves, time_seconds, book_id) VALUES (?, ?, ?, ?, ?)',
+    args: [req.user.id, level, moves, timeSeconds, bookId],
   });
 
   const today = new Date().toISOString().slice(0, 10);
   const alreadyToday = await req.db.execute({
-    sql: "SELECT id FROM user_xp WHERE user_id = ? AND source = 'memory_game' AND source_id = ? AND DATE(created_at) = ?",
-    args: [req.user.id, level, today],
+    sql: "SELECT id FROM user_xp WHERE user_id = ? AND source = 'memory_game' AND source_id = ? AND DATE(created_at) = ? AND book_id = ?",
+    args: [req.user.id, level, today, bookId],
   });
 
   let gamification = null;
   if (alreadyToday.rows.length === 0) {
-    gamification = await awardXp(req.db, req.user.id, XP_REWARDS.memory_game, 'memory_game', level);
+    gamification = await awardXp(req.db, req.user.id, XP_REWARDS.memory_game, 'memory_game', level, bookId);
   }
 
   res.status(201).json({ id: Number(result.lastInsertRowid), gamification });

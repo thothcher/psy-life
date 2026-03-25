@@ -2,6 +2,11 @@ const jwt = require('jsonwebtoken');
 
 const JWT_SECRET = process.env.JWT_SECRET || 'psylearn_secret_key_2026_zimbardo';
 
+/** Extract book_id from X-Book-Id header, default to 'psy' */
+function extractBookId(req) {
+  return req.headers['x-book-id'] || 'psy';
+}
+
 // Verify JWT token middleware
 function authenticate(req, res, next) {
   const authHeader = req.headers.authorization;
@@ -27,4 +32,4 @@ function requireAdmin(req, res, next) {
   next();
 }
 
-module.exports = { authenticate, requireAdmin, JWT_SECRET };
+module.exports = { authenticate, requireAdmin, JWT_SECRET, extractBookId };

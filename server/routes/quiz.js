@@ -1,5 +1,5 @@
 const express = require('express');
-const { authenticate } = require('../middleware');
+const { authenticate, extractBookId } = require('../middleware');
 const { awardXp, XP_REWARDS } = require('./gamification');
 
 const router = express.Router();
@@ -11,9 +11,10 @@ router.post('/submit', authenticate, async (req, res) => {
     return res.status(400).json({ error: 'All quiz fields are required.' });
   }
 
+  const bookId = extractBookId(req);
   const result = await req.db.execute({
-    sql: 'INSERT INTO quiz_progress (user_id, chapter_id, quiz_id, score, total_questions) VALUES (?, ?, ?, ?, ?)',
-    args: [req.user.id, chapterId, quizId, score, totalQuestions],
+    sql: 'INSERT INTO quiz_progress (user_id, chapter_id, quiz_id, score, total_questions, book_id) VALUES (?, ?, ?, ?, ?, ?)',
+    args: [req.user.id, chapterId, quizId, score, totalQuestions, bookId],
   });
 
   const pct = (score / totalQuestions) * 100;
@@ -25,7 +26,7 @@ router.post('/submit', authenticate, async (req, res) => {
 
   let gamification = null;
   if (xpAmount > 0) {
-    gamification = await awardXp(req.db, req.user.id, xpAmount, xpSource, `ch${chapterId}`);
+    gamification = await awardXp(req.db, req.user.id, xpAmount, xpSource, `${bookId}:ch${chapterId}`, bookId);
   }
 
   res.status(201).json({ id: Number(result.lastInsertRowid), chapterId, quizId, score, totalQuestions, gamification });
@@ -33,9 +34,10 @@ router.post('/submit', authenticate, async (req, res) => {
 
 // Get quiz history for a chapter
 router.get('/history/:chapterId', authenticate, async (req, res) => {
+  const bookId = extractBookId(req);
   const result = await req.db.execute({
-    sql: 'SELECT * FROM quiz_progress WHERE user_id = ? AND chapter_id = ? ORDER BY completed_at DESC',
-    args: [req.user.id, req.params.chapterId],
+    sql: 'SELECT * FROM quiz_progress WHERE user_id = ? AND chapter_id = ? AND book_id = ? ORDER BY completed_at DESC',
+    args: [req.user.id, req.params.chapterId, bookId],
   });
 
   res.json(result.rows.map(h => ({ id: h.id, quizId: h.quiz_id, score: h.score, totalQuestions: h.total_questions, completedAt: h.completed_at })));

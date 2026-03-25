@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 3000;
   // Middleware
   const allowedOrigins = process.env.ALLOWED_ORIGINS
     ? process.env.ALLOWED_ORIGINS.split(',').map(s => s.trim())
-    : ['http://localhost:4200', 'http://localhost:4201'];
+    : ['http://localhost:4200', 'http://localhost:4201', 'http://localhost:4202'];
   app.use(cors({ origin: allowedOrigins, credentials: true }));
   app.use(express.json());
 

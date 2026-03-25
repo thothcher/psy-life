@@ -60,6 +60,7 @@ async function initDatabase() {
       quiz_id TEXT NOT NULL,
       score INTEGER NOT NULL,
       total_questions INTEGER NOT NULL,
+      book_id TEXT NOT NULL DEFAULT 'psy',
       completed_at TEXT DEFAULT (datetime('now')),
       FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     );
@@ -69,8 +70,9 @@ async function initDatabase() {
       user_id INTEGER NOT NULL,
       chapter_id INTEGER NOT NULL,
       status TEXT DEFAULT 'not_started' CHECK(status IN ('not_started', 'in_progress', 'completed')),
+      book_id TEXT NOT NULL DEFAULT 'psy',
       updated_at TEXT DEFAULT (datetime('now')),
-      UNIQUE(user_id, chapter_id),
+      UNIQUE(user_id, chapter_id, book_id),
       FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     );
 
@@ -81,6 +83,7 @@ async function initDatabase() {
       content TEXT NOT NULL,
       chapter_id INTEGER,
       color TEXT DEFAULT '#f0e6ff',
+      book_id TEXT NOT NULL DEFAULT 'psy',
       created_at TEXT DEFAULT (datetime('now')),
       updated_at TEXT DEFAULT (datetime('now')),
       FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
@@ -100,6 +103,7 @@ async function initDatabase() {
       level TEXT NOT NULL,
       moves INTEGER NOT NULL,
       time_seconds INTEGER NOT NULL,
+      book_id TEXT NOT NULL DEFAULT 'psy',
       completed_at TEXT DEFAULT (datetime('now')),
       FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     );
@@ -110,6 +114,7 @@ async function initDatabase() {
       amount INTEGER NOT NULL,
       source TEXT NOT NULL,
       source_id TEXT,
+      book_id TEXT NOT NULL DEFAULT 'psy',
       created_at TEXT DEFAULT (datetime('now')),
       FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     );
@@ -150,7 +155,8 @@ async function initDatabase() {
       front_ka TEXT NOT NULL,
       back_en TEXT NOT NULL,
       back_ka TEXT NOT NULL,
-      category TEXT DEFAULT 'general'
+      category TEXT DEFAULT 'general',
+      book_id TEXT NOT NULL DEFAULT 'psy'
     );
 
     CREATE TABLE IF NOT EXISTS user_flashcard_progress (
@@ -280,6 +286,58 @@ async function initDatabase() {
   try {
     await db.execute('ALTER TABLE users ADD COLUMN avatar TEXT');
   } catch (_) { /* column already exists */ }
+
+  // Add book_id columns to existing databases
+  const bookIdMigrations = [
+    "ALTER TABLE quiz_progress ADD COLUMN book_id TEXT NOT NULL DEFAULT 'psy'",
+    "ALTER TABLE chapter_progress ADD COLUMN book_id TEXT NOT NULL DEFAULT 'psy'",
+    "ALTER TABLE notes ADD COLUMN book_id TEXT NOT NULL DEFAULT 'psy'",
+    "ALTER TABLE memory_game_scores ADD COLUMN book_id TEXT NOT NULL DEFAULT 'psy'",
+    "ALTER TABLE user_xp ADD COLUMN book_id TEXT NOT NULL DEFAULT 'psy'",
+    "ALTER TABLE flashcards ADD COLUMN book_id TEXT NOT NULL DEFAULT 'psy'",
+  ];
+  for (const sql of bookIdMigrations) {
+    try { await db.execute(sql); } catch (_) { /* column already exists */ }
+  }
+
+  // Recreate unique constraint on chapter_progress to include book_id
+  try {
+    await db.execute('CREATE UNIQUE INDEX IF NOT EXISTS idx_chapter_progress_user_chapter_book ON chapter_progress(user_id, chapter_id, book_id)');
+  } catch (_) { /* index already exists */ }
+
+  // Seed shta flashcards if not present
+  const shtaFlashcardCount = await db.execute("SELECT COUNT(*) as c FROM flashcards WHERE book_id = 'shta'");
+  if (shtaFlashcardCount.rows[0].c === 0) {
+    const shtaCards = [
+      [1, 'უხილავი ხელი', 'უხილავი ხელი', 'ადამ სმითის კონცეფცია — ბაზარი თვითრეგულირებადია ინდივიდუალური ინტერესების მეშვეობით', 'ადამ სმითის კონცეფცია — ბაზარი თვითრეგულირებადია ინდივიდუალური ინტერესების მეშვეობით', 'concept', 'shta'],
+      [1, 'შრომის განაწილება', 'შრომის განაწილება', 'სპეციალიზაცია სამუშაო პროცესში, რომელიც ზრდის პროდუქტიულობას — სმითის ეკონომიკური თეორიის საფუძველი', 'სპეციალიზაცია სამუშაო პროცესში, რომელიც ზრდის პროდუქტიულობას — სმითის ეკონომიკური თეორიის საფუძველი', 'definition', 'shta'],
+      [1, 'მერკანტილიზმი', 'მერკანტილიზმი', 'ეკონომიკური სისტემა, რომელიც ეფუძნებოდა ძვირფასი ლითონების დაგროვებას — სმითი აკრიტიკებდა ამ მიდგომას', 'ეკონომიკური სისტემა, რომელიც ეფუძნებოდა ძვირფასი ლითონების დაგროვებას — სმითი აკრიტიკებდა ამ მიდგომას', 'concept', 'shta'],
+      [1, 'Laissez-faire', 'Laissez-faire', 'სამეურნეო თავისუფლების პრინციპი — სახელმწიფომ მინიმალურად უნდა ჩაერიოს ეკონომიკაში', 'სამეურნეო თავისუფლების პრინციპი — სახელმწიფომ მინიმალურად უნდა ჩაერიოს ეკონომიკაში', 'concept', 'shta'],
+      [1, 'შრომის ღირებულების თეორია', 'შრომის ღირებულების თეორია', 'საქონლის ღირებულება განისაზღვრება მის წარმოებაზე დახარჯული შრომით', 'საქონლის ღირებულება განისაზღვრება მის წარმოებაზე დახარჯული შრომით', 'definition', 'shta'],
+      [2, 'განმანათლებლობა', 'განმანათლებლობა', 'კანტის განმარტებით — ადამიანის გამოსვლა თვითგამოწვეული არასრულწლოვანებიდან, გონების თავისუფალი გამოყენება', 'კანტის განმარტებით — ადამიანის გამოსვლა თვითგამოწვეული არასრულწლოვანებიდან, გონების თავისუფალი გამოყენება', 'definition', 'shta'],
+      [2, 'Sapere aude', 'Sapere aude', '"გაბედე ცოდნა!" — განმანათლებლობის დევიზი კანტის მიხედვით', '"გაბედე ცოდნა!" — განმანათლებლობის დევიზი კანტის მიხედვით', 'concept', 'shta'],
+      [2, 'გონების საჯარო გამოყენება', 'გონების საჯარო გამოყენება', 'ადამიანის უფლება, საკუთარი აზრები საჯაროდ გამოხატოს — კანტის აზრით, ეს არასოდეს უნდა შეიზღუდოს', 'ადამიანის უფლება, საკუთარი აზრები საჯაროდ გამოხატოს — კანტის აზრით, ეს არასოდეს უნდა შეიზღუდოს', 'concept', 'shta'],
+      [3, 'კლასთა ბრძოლა', 'კლასთა ბრძოლა', 'მარქსის თეორია — ისტორია არის ექსპლუატატორებისა და ექსპლუატირებულების ბრძოლის ისტორია', 'მარქსის თეორია — ისტორია არის ექსპლუატატორებისა და ექსპლუატირებულების ბრძოლის ისტორია', 'definition', 'shta'],
+      [3, 'პროლეტარიატი', 'პროლეტარიატი', 'მუშათა კლასი, რომელიც საკუთარი შრომის ძალის გაყიდვით ცხოვრობს', 'მუშათა კლასი, რომელიც საკუთარი შრომის ძალის გაყიდვით ცხოვრობს', 'definition', 'shta'],
+      [3, 'ბურჟუაზია', 'ბურჟუაზია', 'კაპიტალისტური კლასი, წარმოების საშუალებების მფლობელი', 'კაპიტალისტური კლასი, წარმოების საშუალებების მფლობელი', 'definition', 'shta'],
+      [3, 'კომუნიზმი', 'კომუნიზმი', 'მარქსის იდეალი — უკლასო საზოგადოება, სადაც წარმოების საშუალებები საზოგადოებრივ საკუთრებაშია', 'მარქსის იდეალი — უკლასო საზოგადოება, სადაც წარმოების საშუალებები საზოგადოებრივ საკუთრებაშია', 'concept', 'shta'],
+      [4, 'ბუნებრივი გადარჩევა', 'ბუნებრივი გადარჩევა', 'დარვინის მთავარი მექანიზმი — გარემოსთან უკეთ ადაპტირებული ორგანიზმები უფრო ხშირად გადარჩებიან', 'დარვინის მთავარი მექანიზმი — გარემოსთან უკეთ ადაპტირებული ორგანიზმები უფრო ხშირად გადარჩებიან', 'definition', 'shta'],
+      [4, 'ევოლუცია', 'ევოლუცია', 'სახეობების თანდათანობითი ცვლილება თაობებს შორის მემკვიდრეობითი ვარიაციების მეშვეობით', 'სახეობების თანდათანობითი ცვლილება თაობებს შორის მემკვიდრეობითი ვარიაციების მეშვეობით', 'definition', 'shta'],
+      [4, 'არსებობისთვის ბრძოლა', 'არსებობისთვის ბრძოლა', 'ორგანიზმებს შორის კონკურენცია შეზღუდული რესურსებისთვის — ევოლუციის მამოძრავებელი ძალა', 'ორგანიზმებს შორის კონკურენცია შეზღუდული რესურსებისთვის — ევოლუციის მამოძრავებელი ძალა', 'concept', 'shta'],
+      [4, 'მენდელის კანონები', 'მენდელის კანონები', 'მემკვიდრეობის კანონები, რომლებიც დარვინის თეორიას გენეტიკურ საფუძველს უქმნის', 'მემკვიდრეობის კანონები, რომლებიც დარვინის თეორიას გენეტიკურ საფუძველს უქმნის', 'concept', 'shta'],
+      [5, 'თავისუფლება', 'თავისუფლება', 'მილის მიხედვით — ინდივიდის უფლება, იმოქმედოს როგორც სურს, სანამ სხვებს არ აზიანებს', 'მილის მიხედვით — ინდივიდის უფლება, იმოქმედოს როგორც სურს, სანამ სხვებს არ აზიანებს', 'definition', 'shta'],
+      [5, 'უტილიტარიზმი', 'უტილიტარიზმი', 'ფილოსოფიური მიმდინარეობა — მოქმედება მართებულია, თუ ის მაქსიმალურ ბედნიერებას მოაქვს მაქსიმალურ რაოდენობას', 'ფილოსოფიური მიმდინარეობა — მოქმედება მართებულია, თუ ის მაქსიმალურ ბედნიერებას მოაქვს მაქსიმალურ რაოდენობას', 'concept', 'shta'],
+      [5, 'აზრის თავისუფლება', 'აზრის თავისუფლება', 'მილი ამტკიცებს, რომ ნებისმიერი აზრის ჩახშობა მავნეა საზოგადოებისთვის, თუნდაც ის მცდარი იყოს', 'მილი ამტკიცებს, რომ ნებისმიერი აზრის ჩახშობა მავნეა საზოგადოებისთვის, თუნდაც ის მცდარი იყოს', 'concept', 'shta'],
+      [5, 'უმრავლესობის ტირანია', 'უმრავლესობის ტირანია', 'საფრთხე, რომ უმრავლესობა შეიძლება ჩაგრავდეს უმცირესობის აზრებსა და თავისუფლებებს', 'საფრთხე, რომ უმრავლესობა შეიძლება ჩაგრავდეს უმცირესობის აზრებსა და თავისუფლებებს', 'concept', 'shta'],
+      [6, 'ლიბერალიზმი', 'ლიბერალიზმი', 'ილია ჭავჭავაძის პოლიტიკური ხედვის საფუძველი — პიროვნული თავისუფლების და განათლების მხარდაჭერა', 'ილია ჭავჭავაძის პოლიტიკური ხედვის საფუძველი — პიროვნული თავისუფლების და განათლების მხარდაჭერა', 'concept', 'shta'],
+      [6, 'ეროვნული იდენტობა', 'ეროვნული იდენტობა', 'ჭავჭავაძის მთავარი თემა — ქართული კულტურისა და ენის შენარჩუნების აუცილებლობა', 'ჭავჭავაძის მთავარი თემა — ქართული კულტურისა და ენის შენარჩუნების აუცილებლობა', 'concept', 'shta'],
+      [6, 'განათლება', 'განათლება', 'ილიას აზრით, ერის განვითარების უმთავრესი საშუალება და მომავლის გასაღები', 'ილიას აზრით, ერის განვითარების უმთავრესი საშუალება და მომავლის გასაღები', 'concept', 'shta'],
+    ];
+    await db.batch(
+      shtaCards.map(c => ({ sql: 'INSERT INTO flashcards (chapter_id, front_en, front_ka, back_en, back_ka, category, book_id) VALUES (?,?,?,?,?,?,?)', args: c })),
+      'write'
+    );
+  }
 
   return db;
 }
