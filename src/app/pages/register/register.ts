@@ -43,7 +43,7 @@ import { LanguageService } from '../../services/language.service';
           }
 
           <button type="submit" class="btn btn-accent auth-submit" [disabled]="loading()">
-            {{ loading() ? t.t('register.creating') : t.t('register.createFree') }}
+            {{ loading() ? t.t('register.creating') : t.t('register.createAccount') }}
           </button>
         </form>
 
@@ -168,7 +168,7 @@ export class RegisterPage {
     this.auth.register(email, username, password, displayName).subscribe({
       next: () => {
         this.loading.set(false);
-        this.router.navigate(['/verify-email']);
+        this.router.navigate(['/']);
       },
       error: (err) => {
         this.loading.set(false);

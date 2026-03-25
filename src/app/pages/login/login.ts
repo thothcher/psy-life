@@ -170,11 +170,7 @@ export class LoginPage {
     this.auth.login(login, password).subscribe({
       next: () => {
         this.loading.set(false);
-        if (!this.auth.isEmailVerified()) {
-          this.router.navigate(['/verify-email']);
-        } else {
-          this.router.navigate(['/']);
-        }
+        this.router.navigate(['/']);
       },
       error: (err) => {
         this.loading.set(false);

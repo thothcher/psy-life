@@ -1,11 +1,11 @@
 /**
  * Surgical fix for book-data.ts from 0a17835 commit (UTF-16LE encoded).
- * 
+ *
  * Corruption points:
  * 1. Line 3512: "       export const FACTS: Fact[] = [" appears inside a quiz question
  *    - Need to close quiz question, quiz array, quizzes array, then start FACTS
  * 2. Line ~3896: mid-string "export const STORIES: Story[] = [" inside a fact's textAz
- *    - Need to close fact, facts array, then start STORIES  
+ *    - Need to close fact, facts array, then start STORIES
  * 3. Line ~4003: mid-string "export const MEMORY_CARDS: MemoryCard[] = [" inside a story content
  *    - Need to close story, stories array, then start MEMORY_CARDS
  * 4. Line ~4340: Armenian text leaked outside string quotes after "]"
@@ -37,7 +37,7 @@ content = content.replace(
 );
 
 // Fix 4: Armenian text leaked after "]" on line ~4340
-// Pattern: a line starting with "]" followed by Armenian characters, then several lines of story data  
+// Pattern: a line starting with "]" followed by Armenian characters, then several lines of story data
 // Find the pattern: "]\r\n" followed immediately by non-JSON Armenian text, then titleAz on next meaningful line
 const armenianLeakRegex = /\]\r?\n(.{2,}(?:բ|Մ|փusage|դուusage|Saw|SAT).+?)\r?\n(\s+"titleAz")/s;
 // More reliable: find "]" followed by a line that doesn't start with whitespace+quote or whitespace+}
@@ -49,7 +49,7 @@ let skipMode = false;
 for (let i = 0; i < lines.length; i++) {
   const line = lines[i];
   const trimmed = line.trim();
-  
+
   // Check for the "]<armenian text>" pattern
   if (trimmed.startsWith(']') && trimmed.length > 10 && !trimmed.startsWith('];') && !trimmed.startsWith('],') && !trimmed.match(/^\]\s*$/)) {
     // This is the corrupted line - it should just be the closing of contentHy
@@ -57,7 +57,7 @@ for (let i = 0; i < lines.length; i++) {
     fixedLines.push('    "contentHy": "TRUNCATED"');
     continue;
   }
-  
+
   fixedLines.push(line);
 }
 
