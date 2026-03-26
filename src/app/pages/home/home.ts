@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, inject, signal, OnDestroy, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
@@ -840,13 +841,16 @@ import { LanguageService } from '../../services/language.service';
 })
 export class HomePage implements OnDestroy {
   protected readonly t = inject(LanguageService);
+  private readonly http = inject(HttpClient);
 
   protected readonly surveyVoted = signal(!!localStorage.getItem('psy_survey_vote'));
   protected readonly surveyText = signal('');
 
   vote(text: string) {
-    localStorage.setItem('psy_survey_vote', text.trim());
+    const idea = text.trim();
+    localStorage.setItem('psy_survey_vote', idea);
     this.surveyVoted.set(true);
+    this.http.post('https://formspree.io/f/meepjnan', { message: `[Feature Idea] ${idea}` }).subscribe();
   }
 
   protected readonly quotes = [

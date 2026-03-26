@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy, signal, inject, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { LanguageService } from '../../services/language.service';
-import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-contact',
@@ -90,13 +90,6 @@ import { environment } from '../../../environments/environment';
               <iconify-icon icon="mdi:information-outline" width="18" height="18" style="vertical-align: -0.15em"></iconify-icon>
               {{ t.t('contact.getInTouch') }}
             </h3>
-            <div class="info-item">
-              <iconify-icon icon="mdi:email-fast-outline" width="20" height="20"></iconify-icon>
-              <div>
-                <strong>{{ t.t('contact.emailLabel') }}</strong>
-                <span>g.vakhtangishvili&#64;itstep.ge</span>
-              </div>
-            </div>
             <div class="info-item">
               <iconify-icon icon="mdi:clock-outline" width="20" height="20"></iconify-icon>
               <div>
@@ -255,6 +248,7 @@ import { environment } from '../../../environments/environment';
 export class ContactPage {
   private readonly fb = inject(FormBuilder);
   private readonly http = inject(HttpClient);
+  private readonly router = inject(Router);
   protected readonly t = inject(LanguageService);
 
   protected readonly sending = signal(false);
@@ -278,17 +272,15 @@ export class ContactPage {
     this.errorMsg.set('');
 
     const payload = this.form.getRawValue();
-    console.log('[CONTACT] Sending:', payload);
-    this.http.post<{ message: string }>(`${environment.apiUrl}/api/contact`, payload)
+    this.http.post('https://formspree.io/f/meepjnan', payload)
       .subscribe({
-        next: (res) => {
-          console.log('[CONTACT] Success:', res);
+        next: () => {
           this.successMsg.set(this.t.t('contact.successMsg'));
           this.form.reset();
           this.sending.set(false);
+          setTimeout(() => this.router.navigate(['/']), 2000);
         },
-        error: (err) => {
-          console.error('[CONTACT] Error:', err);
+        error: () => {
           this.errorMsg.set(this.t.t('contact.errorMsg'));
           this.sending.set(false);
         }

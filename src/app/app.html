@@ -67,28 +67,32 @@
     </div>
 
     <!-- Language selector dropdown -->
-    <div class="lang-dropdown">
-      <button class="lang-toggle" type="button" (click)="langDropdownOpen.update(v => !v)" [attr.aria-expanded]="langDropdownOpen()" aria-haspopup="true" aria-label="Select language">
+    <div class="lang-dropdown" [class.open]="langDropdownOpen()">
+      <button class="lang-toggle" type="button" (click)="$event.stopPropagation(); langDropdownOpen.update(v => !v)" [attr.aria-expanded]="langDropdownOpen()" aria-haspopup="true" aria-label="Select language">
         @switch (langService.lang()) {
           @case ('en') { <iconify-icon icon="circle-flags:gb" width="20" height="20"></iconify-icon> }
           @case ('ka') { <iconify-icon icon="circle-flags:ge" width="20" height="20"></iconify-icon> }
           @case ('ru') { <iconify-icon icon="circle-flags:ru" width="20" height="20"></iconify-icon> }
           @case ('hy') { <iconify-icon icon="circle-flags:am" width="20" height="20"></iconify-icon> }
+          @case ('az') { <iconify-icon icon="circle-flags:az" width="20" height="20"></iconify-icon> }
         }
         <iconify-icon icon="mdi:chevron-down" width="14" height="14"></iconify-icon>
       </button>
       <div class="lang-menu" role="menu">
-        <button class="lang-option" [class.active]="langService.lang() === 'en'" (click)="langService.lang.set('en'); closeMenu()" role="menuitem">
-          <iconify-icon icon="circle-flags:gb" width="18" height="18"></iconify-icon> English
+        <button class="lang-option" [class.active]="langService.lang() === 'en'" (click)="langService.lang.set('en'); closeMenu()" role="menuitem" title="English">
+          <iconify-icon icon="circle-flags:gb" width="18" height="18"></iconify-icon>
         </button>
-        <button class="lang-option" [class.active]="langService.lang() === 'ka'" (click)="langService.lang.set('ka'); closeMenu()" role="menuitem">
-          <iconify-icon icon="circle-flags:ge" width="18" height="18"></iconify-icon> ქართული
+        <button class="lang-option" [class.active]="langService.lang() === 'ka'" (click)="langService.lang.set('ka'); closeMenu()" role="menuitem" title="ქართული">
+          <iconify-icon icon="circle-flags:ge" width="18" height="18"></iconify-icon>
         </button>
-        <button class="lang-option" [class.active]="langService.lang() === 'ru'" (click)="langService.lang.set('ru'); closeMenu()" role="menuitem">
-          <iconify-icon icon="circle-flags:ru" width="18" height="18"></iconify-icon> Русский
+        <button class="lang-option" [class.active]="langService.lang() === 'ru'" (click)="langService.lang.set('ru'); closeMenu()" role="menuitem" title="Русский">
+          <iconify-icon icon="circle-flags:ru" width="18" height="18"></iconify-icon>
         </button>
-        <button class="lang-option" [class.active]="langService.lang() === 'hy'" (click)="langService.lang.set('hy'); closeMenu()" role="menuitem">
-          <iconify-icon icon="circle-flags:am" width="18" height="18"></iconify-icon> Հայերեն
+        <button class="lang-option" [class.active]="langService.lang() === 'hy'" (click)="langService.lang.set('hy'); closeMenu()" role="menuitem" title="Հայերեն">
+          <iconify-icon icon="circle-flags:am" width="18" height="18"></iconify-icon>
+        </button>
+        <button class="lang-option" [class.active]="langService.lang() === 'az'" (click)="langService.lang.set('az'); closeMenu()" role="menuitem" title="Azərbaycan">
+          <iconify-icon icon="circle-flags:az" width="18" height="18"></iconify-icon>
         </button>
       </div>
     </div>

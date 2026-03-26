@@ -198,33 +198,46 @@
 }
 
 .lang-menu {
-  display: none;
+  display: flex !important;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
   position: absolute;
   top: calc(100% + 4px);
   right: 0;
-  min-width: 150px;
+  min-width: unset;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
-  padding: 0.35rem 0;
+  padding: 0.35rem;
   z-index: 300;
   flex-direction: column;
+  gap: 0.25rem;
+  transition: all var(--transition-fast);
 }
 
-.lang-dropdown:hover .lang-menu,
+.lang-dropdown.open .lang-menu {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lang-dropdown:hover .lang-menu {
+  /* No longer needed, handled by .open */
+}
+
 .lang-dropdown:focus-within .lang-menu {
-  display: flex;
+  /* No longer needed */
 }
 
 .lang-option {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 0.85rem;
-  font-size: 0.85rem;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
   color: var(--color-text-light);
-  font-weight: 500;
   border: none;
   background: none;
   width: 100%;
