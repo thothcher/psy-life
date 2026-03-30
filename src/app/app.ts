@@ -1,5 +1,6 @@
 import { Component, signal, inject, ChangeDetectionStrategy, CUSTOM_ELEMENTS_SCHEMA, effect, DOCUMENT } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { NgOptimizedImage } from '@angular/common';
 import { AuthService } from './services/auth.service';
 import { LanguageService } from './services/language.service';
 import { GamificationService } from './services/gamification.service';
@@ -7,7 +8,7 @@ import { XpToastComponent } from './components/xp-toast';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, XpToastComponent],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, XpToastComponent, NgOptimizedImage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app.html',
   styleUrl: './app.css',

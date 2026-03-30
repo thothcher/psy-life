@@ -102,7 +102,7 @@
       @if (auth.isLoggedIn()) {
         <a routerLink="/profile" class="btn-profile" (click)="closeMenu()">
           @if (auth.currentUser()?.avatar) {
-            <img [src]="auth.currentUser()?.avatar" alt="" class="profile-avatar" />
+            <img [ngSrc]="auth.currentUser()?.avatar || ''" width="32" height="32" alt="User avatar" class="profile-avatar" />
           } @else {
             <span class="profile-icon"><iconify-icon icon="mdi:account-circle-outline" width="18" height="18"></iconify-icon></span>
           }
