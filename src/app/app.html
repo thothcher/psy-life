@@ -23,6 +23,7 @@
         </button>
         <div class="nav-drop-menu">
           <a routerLink="/chapters" routerLinkActive="active" (click)="closeMenu()">{{ langService.t('nav.chapters') }}</a>
+          <a routerLink="/glossary" routerLinkActive="active" (click)="closeMenu()">{{ langService.t('nav.glossary') }}</a>
           <a routerLink="/flashcards" routerLinkActive="active" (click)="closeMenu()">{{ langService.t('nav.flashcards') }}</a>
           <a routerLink="/notes" routerLinkActive="active" (click)="closeMenu()">{{ langService.t('nav.notes') }}</a>
         </div>
@@ -160,6 +161,7 @@
         <div class="footer-nav-col">
           <h3>{{ langService.t('footer.learn') }}</h3>
           <a routerLink="/chapters">{{ langService.t('nav.chapters') }}</a>
+          <a routerLink="/glossary">{{ langService.t('nav.glossary') }}</a>
           <a routerLink="/flashcards">{{ langService.t('nav.flashcards') }}</a>
           <a routerLink="/memory-game">{{ langService.t('nav.memoryGame') }}</a>
           <a routerLink="/notes">{{ langService.t('nav.notes') }}</a>

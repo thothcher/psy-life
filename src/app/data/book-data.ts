@@ -9,3 +9,4 @@ export { PSYCHOLOGISTS } from './psychologists-data';
 export { FACTS } from './facts-data';
 export { STORIES } from './stories-data';
 export { MEMORY_CARDS } from './memory-cards';
+export { GLOSSARY } from './glossary-data';

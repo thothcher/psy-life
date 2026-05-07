@@ -156,4 +156,20 @@ export interface MemoryCard {
   category: string;
 }
 
+export interface GlossaryTerm {
+  id: number;
+  term: string;
+  termKa?: string;
+  termRu?: string;
+  termHy?: string;
+  termAz?: string;
+  definition: string;
+  definitionKa?: string;
+  definitionRu?: string;
+  definitionHy?: string;
+  definitionAz?: string;
+  chapter: number;
+  category: string;
+}
+
 

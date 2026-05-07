@@ -382,4 +382,18 @@
   'flashcards.sessionComplete': { en: 'Session Complete!', ka: 'სესია დასრულდა!', ru: 'Сессия окончена!', hy: 'Սեսիան ավարտված է:' },
   'flashcards.reviewed': { en: 'You reviewed {count} cards', ka: 'თქვენ გადახედეთ {count} ბარათს', ru: 'Вы повторили {count} карточек', hy: 'Դուք վերանայել եք {count} քարտ' },
   'flashcards.studyAgain': { en: 'Study Again', ka: 'თავიდან სწავლა', ru: 'Учить снова', hy: 'Կրկին սովորել' },
+
+  // -- Glossary --
+  'nav.glossary': { en: 'Glossary', ka: 'ტერმინოლოგია', ru: 'Глоссарий', hy: 'Bararer' },
+  'glossary.badge': { en: 'Terminology', ka: 'ტერმინოლოგია', ru: 'Терминология', hy: 'Terminologia' },
+  'glossary.title': { en: 'Psychology Glossary', ka: 'ფსიქოლოგიის ტერმინოლოგია', ru: 'Глоссарий по психологии', hy: 'Bararaner Hogepanootyunyan' },
+  'glossary.subtitle': { en: 'Key terms from Psychology and Life by Zimbardo & Gerrig', ka: 'ძირითადი ტერმინები ზიმბარდოს წიგნიდან', ru: 'Термины из учебника Зимбардо', hy: 'Terminnerr Zimbarrdo girik' },
+  'glossary.searchPlaceholder': { en: 'Search terms...', ka: 'ძიება ტერმინებში...', ru: 'Поиск терминов...', hy: 'Pretrel terminnerits...' },
+  'glossary.allChapters': { en: 'All Chapters', ka: 'ყველა თავი', ru: 'Все главы', hy: 'Barvor Gluxner' },
+  'glossary.chapter': { en: 'Ch.', ka: 'თ.', ru: 'Гл.', hy: 'Gl.' },
+  'glossary.noResults': { en: 'No terms found.', ka: 'ტერმინები ვერ მოიძებნა.', ru: 'Ничего не найдено.', hy: 'Chgtvets.' },
+  'glossary.showing': { en: 'Showing', ka: 'ნაჩვენებია', ru: 'Показано', hy: 'Ntsvoum e' },
+  'glossary.of': { en: 'of', ka: '-დან', ru: 'из', hy: '-its' },
+  'glossary.terms': { en: 'terms', ka: 'ტერმინი', ru: 'терминов', hy: 'terminov' },
+  'glossary.allLetters': { en: 'All', ka: 'ყველა', ru: 'Все', hy: 'Barvor' },
 };
