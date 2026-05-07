@@ -22,5 +22,6 @@ export const routes: Routes = [
   { path: 'flashcards', title: 'PsyLearn - Flashcards', loadComponent: () => import('./pages/flashcards/flashcards').then(m => m.FlashcardsPage), canActivate: [authGuard] },
   { path: 'flashcards/:chapterId', title: 'PsyLearn - Flashcards', loadComponent: () => import('./pages/flashcards/flashcards').then(m => m.FlashcardsPage), canActivate: [authGuard] },
   { path: 'glossary', title: 'PsyLearn - Glossary', loadComponent: () => import('./pages/glossary/glossary').then(m => m.GlossaryPage) },
+  { path: 'midterm', title: 'PsyLearn - Midterm Practice', loadComponent: () => import('./pages/midterm/midterm').then(m => m.MidtermPage) },
   { path: 'admin', title: 'PsyLearn - Admin', loadComponent: () => import('./pages/admin/admin').then(m => m.AdminPage), canActivate: [authGuard, adminGuard] },
 ];

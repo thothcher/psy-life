@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ' *)",
+      "PowerShell(New-Item *)",
+      "Bash(npx ng *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('projects',{}\\).get\\(list\\(d.get\\('projects',{}\\).keys\\(\\)\\)[0],{}\\).get\\('architect',{}\\).get\\('build',{}\\).get\\('options',{}\\), indent=2\\)\\)\")",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('scripts',{}\\), indent=2\\)\\)\")",
+      "Bash(npm run *)",
+      "Read(//c/Users/vakht/Desktop/**)",
+      "Read(//c/Users/vakht/Desktop/samples/**)",
+      "Bash(cd /tmp)",
+      "Bash(cp \"C:/Users/vakht/Desktop/samples/ვარიანტი 1.docx\" v1.docx)",
+      "Bash(unzip -o v1.docx -d v1)",
+      "Bash(ls /c/Python*)",
+      "Read(//c/Users/vakht/AppData/Local/Programs/Python//**)",
+      "Bash(python *)",
+      "Bash(npx tsc *)",
+      "Bash(curl *)",
+      "mcp__ide__getDiagnostics",
+      "Bash(rm \"C:/Users/vakht/Desktop/psy/.claude/samples_extracted.txt\")",
+      "Bash(rm -rf /tmp/v1 /tmp/v1.docx)",
+      "Bash(git *)"
+    ]
+  }
+}
